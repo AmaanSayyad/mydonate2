@@ -16,10 +16,10 @@ function Home() {
     <div className="space-y-4 col-span-full lg:col-span-2">
       <div className="flex  flex-row items-center mt-16">
         <div className="text-center md:text-left w-full">
-          <h1 className="text-7xl font-semibold w-6/12 text-gray-600 dark:text-gray-300">
-            Give back to the Society
+          <h1 className="text-7xl font-semibold w-full text-gray-600 dark:text-gray-300">
+            Donate and help individuals from all over the world.
           </h1>
-          <p className="md:text-xl mt-2 md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-5/12 ">
+          <p className="md:text-xl mt-2 md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-8/12 ">
             The most{" "}
             <span className="text-blue-600 italic font-bold">Transparent</span>{" "}
             donation platform on the internet. Donate in cryptos let us build a
