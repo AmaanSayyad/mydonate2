@@ -17,11 +17,11 @@ function Home() {
       <div className="relative flex flex-row justify-between p-7 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
         <div className="text-center">
           <ion-icon
-            name="heart-circle-outline"
+            name="heart-circle-outline animate-pulse"
             class="text-5xl text-[#E338C8]"
           ></ion-icon>
-          <h1 className="text-3xl font-semibold text-gray-600">20K</h1>
-          <p>Fundarisers</p>
+          <h1 className="text-2xl font-semibold text-gray-600">20K</h1>
+          <p className="text-xl ">Fundarisers</p>
         </div>
 
         <div className="text-center">
@@ -29,8 +29,8 @@ function Home() {
             name="person-add-outline"
             class="text-5xl text-[#E338C8]"
           ></ion-icon>
-          <h1>10M</h1>
-          <p>People donated</p>
+          <h1 className="text-2xl font-semibold text-gray-600">10M</h1>
+          <p className="text-xl ">People donated</p>
         </div>
 
         <div className="text-center">
@@ -38,8 +38,8 @@ function Home() {
             name="wallet-outline"
             class="text-5xl text-[#E338C8]"
           ></ion-icon>
-          <h1>500ETH+</h1>
-          <p>Amount raised</p>
+          <h1 className="text-2xl font-semibold text-gray-600">500ETH+</h1>
+          <p className="text-xl ">Amount raised</p>
         </div>
       </div>
 
