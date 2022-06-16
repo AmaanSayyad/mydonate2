@@ -71,7 +71,7 @@ function Home() {
             name="wallet-outline"
             class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 darK:text-gray-300">
+          <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
             500ETH+
           </h1>
           <p className="text-xl ">Amount raised</p>
