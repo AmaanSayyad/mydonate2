@@ -14,7 +14,7 @@ import {
 function Home() {
   return (
     <div className="space-y-4 col-span-full lg:col-span-2">
-      <div className="relative flex flex-row space-y-1 p-7 bg-[#d8d5d5] dark:bg-[#131212] dark:text-gray-200 rounded-2xl shadow-md">
+      <div className="relative flex flex-row space-y-1 p-7 bg-[#eeeded] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
         <div>
           <ion-icon
             name="heart-circle-outline"
