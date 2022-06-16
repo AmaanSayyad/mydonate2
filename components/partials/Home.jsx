@@ -95,15 +95,15 @@ function Home() {
       </div>
       <div className="relative flex flex-col space-y-1 ">
         <p className="text-2xl py-3 dark:text-gray-100">Trending Donations</p>
-        <div className="flex flex-row ">
+        <div className="flex flex-row space-x-8 ">
           <div class="w-6/12 h-full">
             <img
               src="/images/dimage.jpeg"
               className="object-cover h-96 rounded-2xl w-full"
             />
           </div>
-          <div>
-            <h2 className="text-3xl">EDUCARE</h2>
+          <div className="py-2">
+            <h2 className="text-3xl font-semibold">EDUCARE</h2>
             <p className="text-2xl">Supporting Education in Africa</p>
             <div className="flex flex-row space-x-2 items-center">
               <ion-icon name="time-outline" class="text-2xl"></ion-icon>
@@ -117,6 +117,41 @@ function Home() {
               <ion-icon name="location-outline" class="text-2xl"></ion-icon>
               <p className="text-xl">Ghana</p>
             </div>
+
+            <div className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white">
+              View Details
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative flex flex-col space-y-1 ">
+        <p className="text-2xl py-3 dark:text-gray-100">Donations</p>
+        <div className="flex flex-row space-x-8 ">
+          <div class="w-6/12 h-full">
+            <img
+              src="/images/dimage.jpeg"
+              className="object-cover h-96 rounded-2xl w-full"
+            />
+          </div>
+          <div className="py-2">
+            <h2 className="text-3xl font-semibold">EDUCARE</h2>
+            <p className="text-2xl">Supporting Education in Africa</p>
+            <div className="flex flex-row space-x-2 items-center">
+              <ion-icon name="time-outline" class="text-2xl"></ion-icon>
+              <p className="text-xl">15 days more</p>
+            </div>
+            <div className="flex flex-row space-x-2 items-center">
+              <ion-icon name="wallet-outline" class="text-2xl"></ion-icon>
+              <p className="text-xl">$1,000.00 / $10,000,000.00</p>
+            </div>
+            <div className="flex flex-row space-x-2 items-center">
+              <ion-icon name="location-outline" class="text-2xl"></ion-icon>
+              <p className="text-xl">Ghana</p>
+            </div>
+          </div>
+          <div className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white">
+            View Details
           </div>
         </div>
       </div>
