@@ -64,9 +64,15 @@ function Header() {
               <span className="text-center group">
                 <ion-icon
                   name={link.icon}
-                  class="text-3xl cursor-pointer hover:animate-bounce text-gray-600"
+                  class={`text-3xl cursor-pointer text-gray-600 ${
+                    link.name === "Settings"
+                      ? "hover:animate-spin"
+                      : link.name === "Donations"
+                      ? "hover:animate-pulse"
+                      : ""
+                  }`}
                 ></ion-icon>
-                <p className="opacity-0 group-hover:opacity-100 duration-300 ">
+                <p className="opacity-0 group-hover:opacity-100 duration-300 pb-2 ">
                   {link.name}
                 </p>
               </span>
