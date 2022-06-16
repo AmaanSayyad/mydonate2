@@ -313,16 +313,16 @@ const Layout = ({ children, title = "myDonate" }) => {
               <ion-icon name="heart-half-outline" size="large"></ion-icon>
             </span>
             <span>
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon name="home-outline" size="large">></ion-icon>
             </span>
             <span>
-              <ion-icon name="person-outline"></ion-icon>
+              <ion-icon name="person-outline" size="large">></ion-icon>
             </span>
             <span>
-              <ion-icon name="settings-outline"></ion-icon>
+              <ion-icon name="settings-outline" size="large">></ion-icon>
             </span>
             <span>
-              <ion-icon name="search-outline"></ion-icon>
+              <ion-icon name="search-outline" size="large">></ion-icon>
             </span>
           </div>
           {web3Provider ? (
