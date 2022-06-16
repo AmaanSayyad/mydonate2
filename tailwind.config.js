@@ -14,6 +14,9 @@ module.exports = {
 
         inter: ["Inter", "sans-serif"],
       },
+      fontSize: {
+         'icons': '2.8rem',
+      },
       colors: {
         gray: {
           100: "#FBFBFB",
