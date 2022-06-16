@@ -30,6 +30,7 @@ function Header() {
 
   const [colorTheme, setTheme] = useDarkMode();
   // detect whether user has scrolled the page down by 10px
+  console.log(colorTheme);
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -45,6 +46,7 @@ function Header() {
     { icon: "person-outline", link: "/", name: "Profile" },
     { icon: "search-outline", link: "/", name: "Search" },
     { icon: "settings-outline", link: "/", name: "Settings" },
+    { icon: "moon-outline", name: colorTheme },
   ];
 
   return (
@@ -61,7 +63,16 @@ function Header() {
 
           <div className="bg-white pt-4  rounded-b-full  flex flex-row justify-evenly w-full">
             {navLinks.map((link) => (
-              <span className="text-center group">
+              <span
+                className="text-center group"
+                onClick={
+                  link.name === "light"
+                    ? () => setTheme("light")
+                    : link.name === "dark"
+                    ? () => setTheme("dark")
+                    : ""
+                }
+              >
                 <ion-icon
                   name={link.icon}
                   class={`text-3xl cursor-pointer text-gray-600 ${
