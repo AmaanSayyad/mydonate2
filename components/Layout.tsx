@@ -308,7 +308,7 @@ const Layout = ({ children, title = "myDonate" }) => {
             <img src="/images/logo.svg" className="w-14 md:w-14 " />
           </Link>
 
-          <div className="bg-[#F2F2F2] p-5 rounded-b-full flex flex-row justify-evenly w-full">
+          <div className="bg-[#F2F2F2] p-3 rounded-b-full flex flex-row justify-evenly w-full">
             <span>
               <ion-icon name="heart-half-outline" size="large"></ion-icon>
             </span>
