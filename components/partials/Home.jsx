@@ -103,19 +103,19 @@ function Home() {
             />
           </div>
           <div>
-            <h2>EDUCARE</h2>
-            <p>Supporting Education in Africa</p>
-            <div>
-              <ion-icon name="time-outline"></ion-icon>
-              <p>15 days more</p>
+            <h2 className="text-3xl">EDUCARE</h2>
+            <p className="text-2xl">Supporting Education in Africa</p>
+            <div className="flex flex-row space-x-2 items-center">
+              <ion-icon name="time-outline" class="text-2xl"></ion-icon>
+              <p className="text-xl">15 days more</p>
             </div>
-            <div>
-              <ion-icon name="wallet-outline"></ion-icon>
-              <p>$1,000.00 / $10,000,000.00</p>
+            <div className="flex flex-row space-x-2 items-center">
+              <ion-icon name="wallet-outline" class="text-2xl"></ion-icon>
+              <p className="text-xl">$1,000.00 / $10,000,000.00</p>
             </div>
-            <div>
-              <ion-icon name="location-outline"></ion-icon>
-              <p>Ghana</p>
+            <div className="flex flex-row space-x-2 items-center">
+              <ion-icon name="location-outline" class="text-2xl"></ion-icon>
+              <p className="text-xl">Ghana</p>
             </div>
           </div>
         </div>
