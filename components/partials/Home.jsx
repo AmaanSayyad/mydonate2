@@ -104,6 +104,19 @@ function Home() {
           </div>
           <div>
             <h2>EDUCARE</h2>
+            <p>Supporting Education in Africa</p>
+            <div>
+              <ion-icon name="time-outline"></ion-icon>
+              <p>15 days more</p>
+            </div>
+            <div>
+              <ion-icon name="wallet-outline"></ion-icon>
+              <p>$1,000.00 / $10,000,000.00</p>
+            </div>
+            <div>
+              <ion-icon name="location-outline"></ion-icon>
+              <p>Ghana</p>
+            </div>
           </div>
         </div>
       </div>
