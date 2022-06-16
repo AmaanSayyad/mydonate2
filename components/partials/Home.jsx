@@ -49,8 +49,8 @@ function Home() {
         </div>
       </div>
 
-      <div className="relative flex flex-row justify-between p-4 px-10  dark:text-gray-200 rounded-2xl">
-        <div className="text-center">
+      <div className="relative flex flex-row justify-between dark:text-gray-200 rounded-2xl">
+        <div className="text-center bg-red-400 p-2 px-8 rounded-2xl">
           <ion-icon
             name="heart-circle-outline"
             class="text-5xl text-[#E338C8] animate-pulse"
