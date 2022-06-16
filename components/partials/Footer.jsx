@@ -89,7 +89,7 @@ function Footer() {
                   >
                     <ion-icon
                       name="logo-twitter"
-                      class="dark:text-gray-200 text-2xl"
+                      class="dark:text-gray-200 text-3xl"
                     ></ion-icon>
                   </div>
                 </Link>
