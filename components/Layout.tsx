@@ -310,19 +310,19 @@ const Layout = ({ children, title = "myDonate" }) => {
 
           <div className="bg-[#F2F2F2] p-3 rounded-b-full flex flex-row justify-evenly w-full">
             <span>
-              <ion-icon name="heart-half-outline" size="large"></ion-icon>
+              <ion-icon name="heart-half-outline" class="text-3xl"></ion-icon>
             </span>
             <span>
-              <ion-icon name="home-outline" size="large">></ion-icon>
+              <ion-icon name="home-outline" class="text-3xl"></ion-icon>
             </span>
             <span>
-              <ion-icon name="person-outline" size="large">></ion-icon>
+              <ion-icon name="person-outline" class="text-3xl"></ion-icon>
             </span>
             <span>
-              <ion-icon name="settings-outline" size="large">></ion-icon>
+              <ion-icon name="settings-outline" class="text-3xl"></ion-icon>
             </span>
             <span>
-              <ion-icon name="search-outline" size="large">></ion-icon>
+              <ion-icon name="search-outline" class="text-3xl"></ion-icon>
             </span>
           </div>
           {web3Provider ? (
