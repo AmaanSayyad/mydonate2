@@ -20,7 +20,7 @@ function Home() {
             name="heart-circle-outline"
             class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 text-gray-300">
+          <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
             20K
           </h1>
           <p className="text-xl ">Fundarisers</p>
@@ -31,7 +31,7 @@ function Home() {
             name="person-add-outline"
             class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 text-gray-300">
+          <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
             10M
           </h1>
           <p className="text-xl ">People donated</p>
@@ -42,7 +42,7 @@ function Home() {
             name="wallet-outline"
             class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 text-gray-300">
+          <h1 className="text-2xl font-semibold text-gray-600 darK:text-gray-300">
             500ETH+
           </h1>
           <p className="text-xl ">Amount raised</p>
