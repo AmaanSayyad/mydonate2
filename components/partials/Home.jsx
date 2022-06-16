@@ -50,12 +50,10 @@ function Home() {
       </div>
 
       {/* <div className="relative flex flex-row justify-between dark:text-gray-200 rounded-2xl"> */}
-      <div className="relative grid grid-cols-4 gap-10 dark:text-gray-200 rounded-2xl py-8">
+      <div className="relative grid grid-cols-4 gap-10 dark:text-gray-200 rounded-2xl py-7">
         <div className="text-center bg-red-400 p-2 px-8 py-8 rounded-2xl">
           <ion-icon name="book-outline" class="text-6xl text-white "></ion-icon>
-          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">
-            Education
-          </h1>
+          <h1 className="text-2xl  text-gray-100 ">Education</h1>
         </div>
 
         <div className="text-center bg-yellow-400 p-2 px-8 py-8 rounded-2xl">
@@ -63,9 +61,7 @@ function Home() {
             name="flask-outline"
             class="text-6xl text-white "
           ></ion-icon>
-          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">
-            Disaster
-          </h1>
+          <h1 className="text-2xl  text-gray-100 ">Disaster</h1>
         </div>
 
         <div className="text-center bg-green-400 p-2 px-8 py-8 rounded-2xl">
@@ -73,7 +69,7 @@ function Home() {
             name="pulse-outline"
             class="text-6xl text-white "
           ></ion-icon>
-          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">Health</h1>
+          <h1 className="text-2xl  text-gray-100 ">Health</h1>
         </div>
 
         <div className="text-center bg-blue-400 p-2 px-8 py-8 rounded-2xl">
@@ -81,7 +77,7 @@ function Home() {
             name="fast-food-outline"
             class="text-6xl text-white "
           ></ion-icon>
-          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">Famine</h1>
+          <h1 className="text-2xl  text-gray-100 ">Famine</h1>
         </div>
       </div>
       <div className="relative flex flex-col space-y-1 dark:bg-[#131212] dark:text-gray-200 bg-white rounded-2xl shadow-md">
