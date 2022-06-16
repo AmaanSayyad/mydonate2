@@ -90,7 +90,9 @@ function Layout(props) {
             {/* 2nd item home page */}
             <div className="flex flex-row items-center mt-16">
               <div className="text-center md:text-left w-full">
-                <h1 className="text-7xl">Give back to the Society</h1>
+                <h1 className="text-7xl text-gray-600">
+                  Give back to the Society
+                </h1>
                 <p className="md:text-lg mt-2 md:mt-3 text-lg text-gray-600 w-3/4 ">
                   The most{" "}
                   <span className="text-blue-600 italic font-bold">
@@ -114,7 +116,7 @@ function Layout(props) {
                 </div>
               </div>
               <div className="">
-                <img src="/images/jumbotron.svg" className="md:w-96 w-96 " />
+                <img src="/images/jumbotron.svg" className="  " />
               </div>
             </div>
             {/* {props.children} */}
