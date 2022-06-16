@@ -40,11 +40,11 @@ function Header() {
   }, [top]);
 
   const navLinks = [
-    { name: "heart-half-outline", link: "/" },
-    { name: "home-outline", link: "/" },
-    { name: "person-outline", link: "/" },
-    { name: "settings-outline", link: "/" },
-    { name: "search-outline", link: "/" },
+    { icon: "heart-half-outline", link: "/", name: "Donations" },
+    { icon: "home-outline", link: "/", name: "Home" },
+    { icon: "person-outline", link: "/", name: "Profile" },
+    { icon: "search-outline", link: "/", name: "Search" },
+    { icon: "settings-outline", link: "/", name: "Settings" },
   ];
 
   return (
@@ -59,15 +59,15 @@ function Header() {
             <img src="/images/logo.svg" className="w-12 md:w-12 " />
           </Link>
 
-          <div className="bg-white p-3  rounded-b-full  flex flex-row justify-evenly w-full">
+          <div className="bg-white pt-4  rounded-b-full  flex flex-row justify-evenly w-full">
             {navLinks.map((link) => (
               <span className="text-center group">
                 <ion-icon
-                  name={link.name}
+                  name={link.icon}
                   class="text-3xl cursor-pointer hover:animate-bounce text-gray-600"
                 ></ion-icon>
-                <p className=" opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 z-10 ">
-                  Home
+                <p className="opacity-0 group-hover:opacity-100 duration-300 ">
+                  {link.name}
                 </p>
               </span>
             ))}
