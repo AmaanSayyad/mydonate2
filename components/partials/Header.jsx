@@ -61,17 +61,20 @@ function Header() {
 
           <div className="bg-white p-3  rounded-b-full  flex flex-row justify-evenly w-full">
             {navLinks.map((link) => (
-              <span>
+              <span className="text-center group">
                 <ion-icon
                   name={link.name}
-                  class="text-3xl cursor-pointer hover:animate-bounce"
+                  class="text-3xl cursor-pointer hover:animate-bounce text-gray-600"
                 ></ion-icon>
+                <p className=" opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 z-10 ">
+                  Home
+                </p>
               </span>
             ))}
           </div>
 
           <div
-            className="border-4 broder-gray-600 px-4 md:px-6 text-gray-900 md:py-2 py-2 rounded-full cursor-pointer text-white"
+            className="border-4 broder-gray-600 px-4 md:px-6 text-gray-800 md:py-2 py-2 rounded-full cursor-pointer"
             onClick={() => {
               connect();
             }}
