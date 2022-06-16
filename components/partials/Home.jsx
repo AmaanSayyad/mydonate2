@@ -14,20 +14,20 @@ import {
 function Home() {
   return (
     <div className="space-y-4 col-span-full lg:col-span-2">
-      <div className="relative flex flex-row space-y-1 p-7 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
+      <div className="relative flex flex-row justify-between p-7 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
         <div className="text-center">
           <ion-icon
             name="heart-circle-outline"
-            class="text-7xl text-[#E338C8]"
+            class="text-5xl text-[#E338C8]"
           ></ion-icon>
-          <h1>20K</h1>
+          <h1 className="text-3xl font-semibold text-gray-600">20K</h1>
           <p>Fundarisers</p>
         </div>
 
         <div className="text-center">
           <ion-icon
             name="person-add-outline"
-            class="text-7xl text-[#E338C8]"
+            class="text-5xl text-[#E338C8]"
           ></ion-icon>
           <h1>10M</h1>
           <p>People donated</p>
@@ -36,7 +36,7 @@ function Home() {
         <div className="text-center">
           <ion-icon
             name="wallet-outline"
-            class="text-7xl text-[#E338C8]"
+            class="text-5xl text-[#E338C8]"
           ></ion-icon>
           <h1>500ETH+</h1>
           <p>Amount raised</p>
