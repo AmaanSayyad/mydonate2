@@ -75,7 +75,7 @@ function Header() {
               >
                 <ion-icon
                   name={link.icon}
-                  class={`text-3xl cursor-pointer text-gray-600 ${
+                  class={`text-2xl cursor-pointer text-gray-600 ${
                     link.name === "Settings"
                       ? "hover:animate-spin"
                       : link.name === "Donations"
