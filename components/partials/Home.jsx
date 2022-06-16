@@ -14,38 +14,14 @@ import {
 function Home() {
   return (
     <div className="space-y-4 col-span-full lg:col-span-2">
-      <div className="relative flex flex-col space-y-1 p-7 bg-white dark:bg-[#131212] dark:text-gray-200 rounded-2xl shadow-md">
-        <div className="flex flex-row space-x-2 pb-3">
-          <PencilAltIcon className="h-6 text-gray-500" />
-          <p>Create some magic</p>
-        </div>
+      <div className="relative flex flex-row space-y-1 p-7 bg-[#d8d5d5] dark:bg-[#131212] dark:text-gray-200 rounded-2xl shadow-md">
         <div>
-          <textarea
-            rows={5}
-            className="w-full rounded-xl outline-none ring-2 bg-transparent ring-gray-400 p-3 focus:outline-none"
-            placeholder="Whats on your mind?"
-          ></textarea>
-        </div>
-        <div className="flex flex-col md:flex-row justify-between pt-3">
-          <div className="flex flex-row space-x-3">
-            <div className="flex flex-row space-x-2 pb-3">
-              <PhotographIcon className="h-6 text-gray-500" />
-              <p>Image</p>
-            </div>
-            <div className="flex flex-row space-x-2 pb-3">
-              <VideoCameraIcon className="h-6 text-gray-500" />
-              <p>Video</p>
-            </div>
-          </div>
-          <div className="space-x-2 items-center flex flex-row">
-            <button className="cursor-pointer ring-2 ring-green-600 text-green-500 text-center bg-transparent rounded-full px-6 py-1">
-              Post
-            </button>
-            <button className="cursor-pointer ring-2 ring-green-600 text-green-500 text-center bg-transparent rounded-full px-6 py-1">
-              <CubeTransparentIcon className="h-6" />
-            </button>
-          </div>
-          {/* <Icon fill="#00000" size={32} svg="eth" /> */}
+          <ion-icon
+            name="heart-circle-outline"
+            class="text-7xl text-[#E338C8]"
+          ></ion-icon>
+          <h1>20K</h1>
+          <p>Fundarisers</p>
         </div>
       </div>
 

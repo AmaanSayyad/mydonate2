@@ -119,7 +119,7 @@ function Layout(props) {
                 <img src="/images/jumbotron.svg" className="  " />
               </div>
             </div>
-            {/* {props.children} */}
+            {props.children}
             {/* 3rd item */}
           </div>
         </div>
