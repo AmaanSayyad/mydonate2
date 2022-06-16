@@ -90,7 +90,7 @@ function Layout(props) {
             {/* 2nd item home page */}
             <div className="flex flex-row items-center mt-16">
               <div className="text-center md:text-left w-full">
-                <h1 className="text-7xl text-gray-600">
+                <h1 className="text-7xl text-gray-600 dark:text-gray-300">
                   Give back to the Society
                 </h1>
                 <p className="md:text-lg mt-2 md:mt-3 text-lg text-gray-600 w-3/4 ">

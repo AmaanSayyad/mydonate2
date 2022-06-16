@@ -61,7 +61,7 @@ function Header() {
             <img src="/images/logo.svg" className="w-12 md:w-12 " />
           </Link>
 
-          <div className="bg-white pt-4  rounded-b-full  flex flex-row justify-evenly w-full">
+          <div className="bg-white dark:bg-black pt-4  rounded-b-full  flex flex-row justify-evenly w-full">
             {navLinks.map((link) => (
               <span
                 className="text-center group"
@@ -75,15 +75,15 @@ function Header() {
               >
                 <ion-icon
                   name={link.icon}
-                  class={`text-2xl cursor-pointer text-gray-600 ${
+                  class={`text-3xl cursor-pointer text-gray-600 ${
                     link.name === "Settings"
                       ? "hover:animate-spin"
                       : link.name === "Donations"
                       ? "hover:animate-pulse"
                       : ""
-                  }`}
+                  } dark:text-gray-200`}
                 ></ion-icon>
-                <p className="opacity-0 group-hover:opacity-100 duration-300 pb-2 ">
+                <p className=" dark:text-gray-200 opacity-0 group-hover:opacity-100 duration-300 pb-2 ">
                   {link.name}
                 </p>
               </span>
@@ -91,7 +91,7 @@ function Header() {
           </div>
 
           <div
-            className="border-4 broder-gray-600 px-4 md:px-6 text-gray-800 md:py-2 py-2 rounded-full cursor-pointer"
+            className="border-4 broder-gray-600 px-4 md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
             onClick={() => {
               connect();
             }}
