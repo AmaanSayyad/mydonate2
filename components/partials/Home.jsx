@@ -14,11 +14,11 @@ import {
 function Home() {
   return (
     <div className="space-y-4 col-span-full lg:col-span-2">
-      <div className="relative flex flex-row justify-between p-7 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
+      <div className="relative flex flex-row justify-between p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
         <div className="text-center">
           <ion-icon
-            name="heart-circle-outline animate-pulse"
-            class="text-5xl text-[#E338C8]"
+            name="heart-circle-outline"
+            class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
           <h1 className="text-2xl font-semibold text-gray-600">20K</h1>
           <p className="text-xl ">Fundarisers</p>
@@ -27,7 +27,7 @@ function Home() {
         <div className="text-center">
           <ion-icon
             name="person-add-outline"
-            class="text-5xl text-[#E338C8]"
+            class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
           <h1 className="text-2xl font-semibold text-gray-600">10M</h1>
           <p className="text-xl ">People donated</p>
@@ -36,7 +36,7 @@ function Home() {
         <div className="text-center">
           <ion-icon
             name="wallet-outline"
-            class="text-5xl text-[#E338C8]"
+            class="text-5xl text-[#E338C8] animate-pulse"
           ></ion-icon>
           <h1 className="text-2xl font-semibold text-gray-600">500ETH+</h1>
           <p className="text-xl ">Amount raised</p>
