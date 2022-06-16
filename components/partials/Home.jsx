@@ -128,10 +128,10 @@ function Home() {
       <div className="relative flex flex-col space-y-1 ">
         <p className="text-2xl py-3 dark:text-gray-100">Donations</p>
         <div className="flex flex-row space-x-8 ">
-          <div class="w-6/12 h-full">
+          <div class="w-3/12 h-full">
             <img
               src="/images/dimage.jpeg"
-              className="object-cover h-96 rounded-2xl w-full"
+              className="object-cover h-60 rounded-2xl w-full"
             />
           </div>
           <div className="py-2">
@@ -150,10 +150,10 @@ function Home() {
               <p className="text-xl">Ghana</p>
             </div>
           </div>
-          <div className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white">
-            View Details
-          </div>
         </div>
+        <button className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white">
+          View Details
+        </button>
       </div>
     </div>
   );
