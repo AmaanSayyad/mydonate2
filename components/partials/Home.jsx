@@ -94,8 +94,8 @@ function Home() {
         </div>
       </div>
       <div className="relative flex flex-col space-y-1 ">
-        <p className="text-2xl">Trending Donations</p>
-        <div className="flex flex-row justify-between">
+        <p className="text-2xl py-3 dark:text-gray-100">Trending Donations</p>
+        <div className="flex flex-row ">
           <div class="w-6/12 h-full">
             <img
               src="/images/dimage.jpeg"
@@ -103,7 +103,7 @@ function Home() {
             />
           </div>
           <div>
-            <p>info</p>
+            <h2>EDUCARE</h2>
           </div>
         </div>
       </div>
