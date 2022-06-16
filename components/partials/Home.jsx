@@ -50,7 +50,7 @@ function Home() {
       </div>
 
       {/* <div className="relative flex flex-row justify-between dark:text-gray-200 rounded-2xl"> */}
-      <div className="relative grid grid-cols-4 gap-10 dark:text-gray-200 rounded-2xl py-7">
+      <div className="relative grid grid-cols-3 gap-10 dark:text-gray-200 rounded-2xl py-7">
         <div className="text-center bg-red-400 p-2 px-8 py-8 rounded-2xl">
           <ion-icon name="book-outline" class="text-6xl text-white "></ion-icon>
           <h1 className="text-2xl  text-gray-100 ">Education</h1>
@@ -78,6 +78,19 @@ function Home() {
             class="text-6xl text-white "
           ></ion-icon>
           <h1 className="text-2xl  text-gray-100 ">Famine</h1>
+        </div>
+
+        <div className="text-center bg-pink-400 p-2 px-8 py-8 rounded-2xl">
+          <ion-icon
+            name="people-outline"
+            class="text-6xl text-white "
+          ></ion-icon>
+          <h1 className="text-2xl  text-gray-100 ">Community</h1>
+        </div>
+
+        <div className="text-center bg-amber-600 p-2 px-8 py-8 rounded-2xl">
+          <ion-icon name="sad-outline" class="text-6xl text-white "></ion-icon>
+          <h1 className="text-2xl  text-gray-100 ">War</h1>
         </div>
       </div>
       <div className="relative flex flex-col space-y-1 dark:bg-[#131212] dark:text-gray-200 bg-white rounded-2xl shadow-md">
