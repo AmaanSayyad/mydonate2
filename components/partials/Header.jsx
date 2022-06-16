@@ -55,7 +55,7 @@ function Header() {
         !top && " dark:bg-gray-900 backdrop-blur-sm "
       }`}
     >
-      <div className="max-w-6xl mx-auto px-2 sm:px-2">
+      <div className="max-w-7xl mx-auto px-2 sm:px-2">
         <div className="flex flex-row justify-between items-center space-x-6 md:space-x-20">
           <Link href="/">
             <img src="/images/logo.svg" className="w-12 md:w-12 " />

@@ -78,7 +78,7 @@ function Layout(props) {
     <section className="relative">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
 
-      <div className="relative max-w-6xl mx-4 md:mx-auto px-2 sm:px-3">
+      <div className="relative max-w-7xl mx-4 md:mx-auto px-2 sm:px-3">
         <div className="py-12 md:py-20">
           {/* Section header */}
 
@@ -90,10 +90,10 @@ function Layout(props) {
             {/* 2nd item home page */}
             <div className="flex flex-row items-center mt-16">
               <div className="text-center md:text-left w-full">
-                <h1 className="text-7xl text-gray-600 dark:text-gray-300">
+                <h1 className="text-7xl w-6/12 text-gray-600 dark:text-gray-300">
                   Give back to the Society
                 </h1>
-                <p className="md:text-lg mt-2 md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-3/4 ">
+                <p className="md:text-lg mt-2 md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-5/12 ">
                   The most{" "}
                   <span className="text-blue-600 italic font-bold">
                     Transparent
