@@ -49,38 +49,34 @@ function Home() {
         </div>
       </div>
 
-      <div className="relative flex flex-row justify-between dark:text-gray-200 rounded-2xl">
+      {/* <div className="relative flex flex-row justify-between dark:text-gray-200 rounded-2xl"> */}
+      <div className="relative grid grid-cols-4 gap-8 dark:text-gray-200 rounded-2xl">
         <div className="text-center bg-red-400 p-2 px-8 rounded-2xl">
-          <ion-icon
-            name="heart-circle-outline"
-            class="text-5xl text-[#E338C8] animate-pulse"
-          ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-            20K
+          <ion-icon name="book-outline" class="text-6xl text-white "></ion-icon>
+          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">
+            Education
           </h1>
-          <p className="text-xl ">Fundarisers</p>
         </div>
 
-        <div className="text-center">
-          <ion-icon
-            name="person-add-outline"
-            class="text-5xl text-[#E338C8] animate-pulse"
-          ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-            10M
+        <div className="text-center bg-red-400 p-2 px-8 rounded-2xl">
+          <ion-icon name="book-outline" class="text-6xl text-white "></ion-icon>
+          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">
+            Education
           </h1>
-          <p className="text-xl ">People donated</p>
         </div>
 
-        <div className="text-center">
-          <ion-icon
-            name="wallet-outline"
-            class="text-5xl text-[#E338C8] animate-pulse"
-          ></ion-icon>
-          <h1 className="text-2xl font-semibold text-gray-600 darK:text-gray-300">
-            500ETH+
+        <div className="text-center bg-red-400 p-2 px-8 rounded-2xl">
+          <ion-icon name="book-outline" class="text-6xl text-white "></ion-icon>
+          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">
+            Education
           </h1>
-          <p className="text-xl ">Amount raised</p>
+        </div>
+
+        <div className="text-center bg-red-400 p-2 px-8 rounded-2xl">
+          <ion-icon name="book-outline" class="text-6xl text-white "></ion-icon>
+          <h1 className="text-2xl  text-gray-100 dark:text-gray-300">
+            Education
+          </h1>
         </div>
       </div>
       <div className="relative flex flex-col space-y-1 dark:bg-[#131212] dark:text-gray-200 bg-white rounded-2xl shadow-md">
