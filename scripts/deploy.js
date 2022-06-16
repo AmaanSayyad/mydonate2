@@ -7,15 +7,15 @@ async function main() {
 
   let txHash, txReceipt;
 
-  const Donation = await hre.ethers.getContractFactory("Donation");
-  const donation = await Donation.deploy();
-  await donation.deployed();
+  const Schain = await hre.ethers.getContractFactory("Schain");
+  const schain = await Schain.deploy();
+  await schain.deployed();
 
-  txHash = donation.deployTransaction.hash;
+  txHash = schain.deployTransaction.hash;
   txReceipt = await ethers.provider.waitForTransaction(txHash);
-  let donationAddress = txReceipt.contractAddress;
+  let schainAddress = txReceipt.contractAddress;
 
-  console.log("donation contract address", donationAddress);
+  console.log("schain contract address", schainAddress);
 }
 
 main()

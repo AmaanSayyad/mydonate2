@@ -9,7 +9,7 @@ import React, {
 
 import Link from "next/link";
 import Head from "next/head";
-import FundRaising from "./FundraisingModal.js";
+import FundRaising from "./AddProductModal.js/index.js";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Modal from "./Modal";
 import { ethers, providers } from "ethers";
@@ -21,26 +21,6 @@ import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
 import Footer from "./Footer";
 
-// import * as React from "react";
-
-// declare global {
-//   namespace JSX {
-//     interface IntrinsicElements {
-//       "ion-icon": React.DetailedHTMLProps<
-//         React.HTMLAttributes<HTMLElement>,
-//         HTMLElement
-//       >;
-//     }
-//   }
-// }
-
-// declare global {
-//   namespace JSX {
-//     interface IntrinisicElements {
-//       "ion-icon": { name: string };
-//     }
-//   }
-// }
 const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
 
 const providerOptions = {
@@ -294,13 +274,7 @@ const Layout = ({ children, title = "myDonate" }) => {
   }, [provider, disconnect]);
 
   const chainData = getChainData(chainId);
-  const navLinks = [
-    { name: "heart-half-outline", link: "/" },
-    { name: "home-outline", link: "/" },
-    { name: "person-outline", link: "/" },
-    { name: "settings-outline", link: "/" },
-    { name: "search-outline", link: "/" },
-  ];
+
   return (
     <div>
       <Head>
@@ -308,22 +282,12 @@ const Layout = ({ children, title = "myDonate" }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className=" mx-4 md:mx-36 my-0 font-Montserrat">
-        <div className="flex flex-row justify-between items-center space-x-6 md:space-x-20">
+      <div className=" mx-4 md:mx-40 my-6  font-Montserrat">
+        <div className="flex flex-row justify-between items-center space-x-6 md:space-x-32">
           <Link href="/">
-            <img src="/images/logo.svg" className="w-12 md:w-12 " />
+            <img src="/images/logo.png" className="w-16 md:w-28 " />
           </Link>
 
-          <div className="bg-[#F2F2F2] p-3 rounded-b-full flex flex-row justify-evenly w-full">
-            {navLinks.map((link) => (
-              <span>
-                <ion-icon
-                  name={link.name}
-                  class="text-3xl cursor-pointer hover:animate-bounce"
-                ></ion-icon>
-              </span>
-            ))}
-          </div>
           {web3Provider ? (
             <div
               className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
@@ -335,7 +299,7 @@ const Layout = ({ children, title = "myDonate" }) => {
             </div>
           ) : (
             <div
-              className="border-4 broder-gray-600 px-4 md:px-6 text-gray-900 md:py-2 py-2 rounded-full cursor-pointer text-white"
+              className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
               onClick={() => {
                 connect();
               }}
@@ -344,11 +308,9 @@ const Layout = ({ children, title = "myDonate" }) => {
             </div>
           )}
         </div>
-
-        <div className="flex mt-16 flex-col md:flex-row-reverse items-center md:justify-between">
-          <div className="md:w-7/12 text-center md:text-left w-full">
-            <h1 className="text-7xl">Given back to the Society</h1>
-            <p className="md:text-lg mt-2 md:mt-3 text-lg text-gray-600 w-3/4 ">
+        <div className="flex mt-16 flex-col-reverse  md:flex-row space-x-0 md:space-x-4 md:justify-between">
+          <div className="md:w-6/12 text-center md:text-left w-full">
+            <p className="md:text-2xl mt-2 md:mt-3 text-xl text-gray-600 md:leading-[3rem] leading-[2rem]  ">
               The most{" "}
               <span className="text-blue-600 italic font-bold">
                 Transparent
@@ -359,20 +321,16 @@ const Layout = ({ children, title = "myDonate" }) => {
             <div
               onClick={() => {
                 setOpen(!open);
-                if (!web3Provider) {
-                  alert("Please connect to a wallet");
-                  return;
-                }
                 setComp(<FundRaising provider={web3Provider} />);
               }}
               className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white"
             >
-              New Fundraising
+              Start New Fundraising
             </div>
           </div>
 
           <div className="">
-            <img src="/images/jumbotron.svg" className="md:w-96 w-96 " />
+            <img src="/images/jumbotron.svg" className="md:w-96 w-52 " />
           </div>
         </div>
         <div className=" mt-16">

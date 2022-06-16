@@ -2,18 +2,18 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">myDonate</h3>
+  <h3 align="center">schain</h3>
 
   <p align="center">
-   A web3 transparent donation application 
+   A supply chain management application on a blockchain
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://mydonate.netlify.app">View App</a>
+    <a href="https://schain.vercel.app/">View App</a>
     
   </p>
 </div>
@@ -48,7 +48,33 @@
 
 <img src="public/images/app.png" alt="Logo" width="" >
 
-Making use of blockchain technology, we have created a crypto donation platform. where users can start a fundraising and others can donate to the application.
+Welcome to Schain`, your number one platform to track your order along the supply chain process on the blockchain.
+
+We're dedicated to giving you the very best of your order, with focus from time of order and every other updates about the order as it moves along the processes of the supply chain all happening on the blockchain.
+
+Founded in 2022, by Sympodium, Schain` has come a long way from its beginnings in Ghana. When Albert, Sarkodie and Brilliant first started out with Schain, the passion for solving supply chain problems with blockchain drove them to undertake several researches so that Schain can offer the very best services it does now along the supply chain of many organizations here in Ghana and abroad and we are thrilled that we are able to turn our passion into such a revolutionary solution in supply chain.
+
+There are about six (6) user types (that is customer, administrator, manager, manufacturer, tester and transporter) that is captured on the platform. Among the six (6) types, user cannot perform an activity of the other user type unless assigned to that role by the administrator.
+The customer only can make an order(s) and track them as they move along the supply chain process on the blockchain to get updated. The customer can also add reviews on an order and also cancel an order. Below are steps the customer can undertake to make an order:
+
+1. Connect to the app with preferred wallet.
+2. Click on the "add order button" and fill in the details of the order.
+3. Click on the order to view the supply chain process or the state of your order.
+
+The Administrator is the user in charge of assigning roles to other users as user type to undertake an action in the supply chain. These roles assigned to a user type, can be overridden by assigning same role to another user of different account. The Administrator can as well add products to the platform by adding the product media, the price of the product and any other details which all will be available to customers.
+to access the admin panel use the following;
+username:"admin"
+password: "63CkBcD{B),M;h2>"
+
+The Manager is the first user type in the supply chain process to approve an order(s) as received to be set up for the next step in the supply chain process.
+
+The Manufacturer undertake his or her activities with regards to an order(s) and then confirms it once done for the next step of the supply chain process.
+
+The Tester undertakes testing activities with regards to an order(s) and then confirms it for the next step of the supply chain process.
+
+The Transporter undertake dispatching activities with regards to an order(s) to be delivered to customers. And once delivered to the customer, he or she confirms the delivery.
+
+All these processes can be seen by the customer with regards to an order(s). And once the customer receives the item, he or she has the liberty to accept the orders or return it.
 
 ### Built With
 
@@ -83,9 +109,9 @@ To run this project locally, follow these steps.
 1. Clone the project locally, change into the directory, and install the dependencies:
 
 ```sh
-git clone https://github.com/mendsalbert/myDonate
+git clone https://github.com/mendsalbert/schain
 
-cd sympodiumCoin
+cd schain
 
 # install using NPM or Yarn
 npm install
@@ -223,5 +249,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
-# mydonate2
-# mydonate2
+
+#
+#
