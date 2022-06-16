@@ -16,7 +16,7 @@ function Home() {
     <div className="space-y-4 col-span-full lg:col-span-2">
       <div className="flex  flex-row items-center mt-16">
         <div className="text-center md:text-left w-full">
-          <h1 className="text-7xl font-semibold w-7/12 text-gray-600 dark:text-gray-300">
+          <h1 className="text-7xl font-semibold w-6/12 text-gray-600 dark:text-gray-300">
             Give back to the Society
           </h1>
           <p className="md:text-xl mt-2 md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-5/12 ">
@@ -40,7 +40,7 @@ function Home() {
           </div>
         </div>
         <div className="">
-          <img src="/images/jumbotron.svg" className="  " />
+          <img src="/images/earth_.svg" />
         </div>
       </div>
       <div className="relative flex flex-row justify-between p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
