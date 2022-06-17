@@ -189,11 +189,11 @@ function Home() {
           <div class="p-5">
             <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Educare
+                Australia Fire Outbreak
               </h5>
             </a>
             <p class="mb-3 font-normal text-lg text-gray-700 dark:text-gray-400">
-              Supporting Education in Africa
+              Supporting get of australias' fire Outbreak
             </p>
             <div className="flex flex-row space-x-2 items-center">
               <ion-icon
@@ -250,11 +250,11 @@ function Home() {
           <div class="p-5">
             <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Educare
+                Corona Virus
               </h5>
             </a>
             <p class="mb-3 font-normal text-lg text-gray-700 dark:text-gray-400">
-              Supporting Education in Africa
+              Supporting Global Pandemic
             </p>
             <div className="flex flex-row space-x-2 items-center">
               <ion-icon
@@ -311,11 +311,11 @@ function Home() {
           <div class="p-5">
             <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Educare
+                Russia vs Ukraine War
               </h5>
             </a>
             <p class="mb-3 font-normal text-lg text-gray-700 dark:text-gray-400">
-              Supporting Education in Africa
+              Supporting less previlage in times of hardship
             </p>
             <div className="flex flex-row space-x-2 items-center">
               <ion-icon
