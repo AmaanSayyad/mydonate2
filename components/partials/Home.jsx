@@ -79,7 +79,7 @@ function Home() {
       </div>
 
       {/* <div className="relative flex flex-row justify-between dark:text-gray-200 rounded-2xl"> */}
-      <div className="relative grid grid-cols-2 md:grid-cols-3 gap-6  md:gap-10 dark:text-gray-200 rounded-2xl py-7">
+      <div className="relative grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-6  md:gap-10 dark:text-gray-200 rounded-2xl py-7">
         <div className="text-center bg-red-400 md:p-2 p-3 md:px-8 md:py-8 rounded-2xl">
           <ion-icon
             name="book-outline"
