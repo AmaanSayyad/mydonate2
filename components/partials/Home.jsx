@@ -177,10 +177,10 @@ function Home() {
 
       {/* <div className="relative flex flex-col space-y-8 "> */}
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
-      <div className="grid grid-cols-4 space-y-8 ">
+      <div className="grid grid-cols-3 gap-10 ">
         <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage.jpeg" alt="" />
+            <img class="rounded-t-lg" src="/images/dimage1.jpeg" alt="" />
           </a>
           <div class="p-5">
             <a href="#">
@@ -237,7 +237,7 @@ function Home() {
 
         <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage.jpeg" alt="" />
+            <img class="rounded-t-lg" src="/images/dimage2.jpeg" alt="" />
           </a>
           <div class="p-5">
             <a href="#">
@@ -294,7 +294,7 @@ function Home() {
 
         <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage.jpeg" alt="" />
+            <img class="rounded-t-lg" src="/images/dimage3.jpeg" alt="" />
           </a>
           <div class="p-5">
             <a href="#">
@@ -351,7 +351,7 @@ function Home() {
 
         <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage.jpeg" alt="" />
+            <img class="rounded-t-lg" src="/images/dimage4.jpeg" alt="" />
           </a>
           <div class="p-5">
             <a href="#">
