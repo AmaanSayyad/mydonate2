@@ -43,11 +43,11 @@ function Home() {
           <img src="/images/earth_.svg" />
         </div>
       </div>
-      <div className="relative grid grid-cols-1 gap-9 md:flex md:flex-row md:justify-between  p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
+      <div className="relative grid grid-cols-1 gap-9 md:flex md:flex-row md:justify-around  p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
         <div className="text-center">
           <ion-icon
             name="heart-circle-outline"
-            class="text-5xl text-[#E338C8] animate-pulse"
+            class="text-5xl text-[#E338C8] "
           ></ion-icon>
           <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
             20K
@@ -58,7 +58,7 @@ function Home() {
         <div className="text-center">
           <ion-icon
             name="person-add-outline"
-            class="text-5xl text-[#E338C8] animate-pulse"
+            class="text-5xl text-[#E338C8] "
           ></ion-icon>
           <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
             10M
@@ -69,7 +69,7 @@ function Home() {
         <div className="text-center">
           <ion-icon
             name="wallet-outline"
-            class="text-5xl text-[#E338C8] animate-pulse"
+            class="text-5xl text-[#E338C8] "
           ></ion-icon>
           <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
             500ETH+
@@ -178,9 +178,13 @@ function Home() {
       {/* <div className="relative flex flex-col space-y-8 "> */}
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
       <div className="grid grid-cols-3 gap-10 ">
-        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage1.jpeg" alt="" />
+        <div class="max-w-sm h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <a href="#" className="w-full h-full">
+            <img
+              class="rounded-t-lg h-52  object-cover w-full"
+              src="/images/dimage2.jpg"
+              alt=""
+            />
           </a>
           <div class="p-5">
             <a href="#">
@@ -216,7 +220,7 @@ function Home() {
             </div>
             <a
               href="#"
-              class="bg-gradient-to-r mt-4 from-indigo-500 via-purple-500 to-pink-500 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="bg-gradient-to-r mt-4 from-indigo-500 via-purple-500 to-pink-500 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-2xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Read more
               <svg
@@ -235,9 +239,13 @@ function Home() {
           </div>
         </div>
 
-        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage2.jpeg" alt="" />
+        <div class="max-w-sm h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <a href="#" className="w-full h-full">
+            <img
+              class="rounded-t-lg h-52  object-cover w-full"
+              src="/images/dimage3.jpg"
+              alt=""
+            />
           </a>
           <div class="p-5">
             <a href="#">
@@ -273,7 +281,7 @@ function Home() {
             </div>
             <a
               href="#"
-              class="bg-gradient-to-r mt-4 from-indigo-500 via-purple-500 to-pink-500 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="bg-gradient-to-r mt-4 from-indigo-500 via-purple-500 to-pink-500 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-2xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Read more
               <svg
@@ -292,9 +300,13 @@ function Home() {
           </div>
         </div>
 
-        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage3.jpeg" alt="" />
+        <div class="max-w-sm h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <a href="#" className="w-full h-full">
+            <img
+              class="rounded-t-lg h-52  object-cover w-full"
+              src="/images/dimage4.jpg"
+              alt=""
+            />
           </a>
           <div class="p-5">
             <a href="#">
@@ -330,7 +342,7 @@ function Home() {
             </div>
             <a
               href="#"
-              class="bg-gradient-to-r mt-4 from-indigo-500 via-purple-500 to-pink-500 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="bg-gradient-to-r mt-4 from-indigo-500 via-purple-500 to-pink-500 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-2xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Read more
               <svg
@@ -349,9 +361,13 @@ function Home() {
           </div>
         </div>
 
-        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-            <img class="rounded-t-lg" src="/images/dimage4.jpeg" alt="" />
+        <div class="max-w-sm h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <a href="#" className="w-full h-full">
+            <img
+              class="rounded-t-lg h-52  object-cover w-full"
+              src="/images/dimage5.jpg"
+              alt=""
+            />
           </a>
           <div class="p-5">
             <a href="#">
