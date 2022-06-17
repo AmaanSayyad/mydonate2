@@ -177,7 +177,7 @@ function Home() {
 
       {/* <div className="relative flex flex-col space-y-8 "> */}
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
-      <div className="grid grid-cols-3 gap-10 ">
+      <div className="grid grid-col-1 md:grid-cols-3 gap-10 ">
         <div class="max-w-sm h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#" className="w-full h-full">
             <img
