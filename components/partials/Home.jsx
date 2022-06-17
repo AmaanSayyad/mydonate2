@@ -177,8 +177,8 @@ function Home() {
       <div className="relative flex flex-col space-y-8 ">
         <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
         <div className="flex md:flex-row flex-col items-center justify-between w-full">
-          <div className="flex space-x-8">
-            <div class="w-4/12 h-full">
+          <div className="md:flex flex-col space-x-0  md:space-x-8">
+            <div class="w-full md:w-4/12 h-full">
               <img
                 src="/images/dimage.jpeg"
                 className="object-cover h-48 rounded-2xl w-full"
@@ -216,7 +216,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="  bg-gradient-to-r w-max from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center   px-6 py-3 rounded-full cursor-pointer text-white">
+          <div className="bg-gradient-to-r w-max from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center px-6 py-3 rounded-full cursor-pointer text-white w-full">
             view
           </div>
         </div>
