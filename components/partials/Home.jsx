@@ -176,7 +176,7 @@ function Home() {
 
       <div className="relative flex flex-col space-y-8 ">
         <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
-        <div className="flex flex-row items-center justify-between w-full">
+        <div className="flex md:flex-row flex-col items-center justify-between w-full">
           <div className="flex space-x-8">
             <div class="w-4/12 h-full">
               <img
