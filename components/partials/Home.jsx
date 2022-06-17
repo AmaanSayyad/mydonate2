@@ -129,7 +129,7 @@ function Home() {
       </div>
       <div className="relative flex flex-col space-y-1 ">
         <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p>
-        <div className="flex flex-row space-x-8 w-full">
+        <div className="flex md:flex-row flex-col space-x-8 w-full">
           <div class="w-6/12 h-full">
             <img
               src="/images/dimage.jpeg"
