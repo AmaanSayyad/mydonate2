@@ -16,7 +16,7 @@ function Home() {
     <div className="space-y-4 col-span-full lg:col-span-2">
       <div className="flex flex-col-reverse  md:flex-row items-center mt-16">
         <div className="text-center md:text-left w-full">
-          <h1 className="text-4xl md:text-6xl font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
+          <h1 className="text-4xl md:text-[5rem] font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
             Put a smile on someone's face
           </h1>
           <p className="md:text-xl mt-2 hidden md:block md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-10/12 ">
@@ -40,7 +40,7 @@ function Home() {
           </div>
         </div>
         <div className="">
-          <img src="/images/jumbo2.svg" />
+          <img src="/images/jumbo3.svg" />
         </div>
       </div>
       <div className="relative grid grid-cols-1 gap-9 md:flex md:flex-row md:justify-around  p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
