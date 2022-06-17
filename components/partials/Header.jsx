@@ -3,18 +3,6 @@ import { motion } from "framer-motion";
 import useDarkMode from "../../hooks/useDarkMode";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import {
-  HomeIcon,
-  UserIcon,
-  ChatIcon,
-  SearchIcon,
-  CogIcon,
-  ChevronDownIcon,
-  ChatAltIcon,
-  TicketIcon,
-  CashIcon,
-} from "@heroicons/react/outline";
-import { Menu, Transition } from "@headlessui/react";
 
 // import { Icon } from "web3uikit";
 function Header() {
@@ -56,12 +44,15 @@ function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-2">
-        <div className="flex flex-row justify-between items-center space-x-6 md:space-x-20">
+        <div className="flex flex-row justify-between items-center space-x-0 md:space-x-20">
           <Link href="/">
-            <img src="/images/logo.svg" className="w-12 md:w-12 " />
+            <img
+              src="/images/logo.svg"
+              className="w-12 md:w-12 hidden md:block"
+            />
           </Link>
 
-          <div className="bg-white dark:bg-black pt-4  rounded-b-full  flex flex-row justify-evenly w-full">
+          <div className="bg-white dark:bg-black pt-4  rounded-b-3xl md:rounded-b-full  flex flex-row justify-evenly w-full">
             {navLinks.map((link) => (
               <span
                 className="text-center group"
@@ -81,9 +72,9 @@ function Header() {
                       : link.name === "Donations"
                       ? "hover:animate-pulse"
                       : ""
-                  } dark:text-gray-200`}
+                  } dark:text-gray-200 pb-4 md:pb-0`}
                 ></ion-icon>
-                <p className=" dark:text-gray-200 opacity-0 group-hover:opacity-100 duration-300 pb-2 ">
+                <p className="hidden md:block dark:text-gray-200 opacity-0 group-hover:opacity-100 duration-300 pb-2 ">
                   {link.name}
                 </p>
               </span>
@@ -91,7 +82,7 @@ function Header() {
           </div>
 
           <div
-            className="border-4 broder-gray-600 px-4 md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
+            className="border-4 broder-gray-600 px-4 hidden md:block md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
             onClick={() => {
               connect();
             }}

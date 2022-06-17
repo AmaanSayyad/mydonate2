@@ -14,12 +14,12 @@ import {
 function Home() {
   return (
     <div className="space-y-4 col-span-full lg:col-span-2">
-      <div className="flex  flex-row items-center mt-16">
+      <div className="flex flex-col-reverse  md:flex-row items-center mt-16">
         <div className="text-center md:text-left w-full">
-          <h1 className="text-7xl font-semibold w-full text-gray-600 dark:text-gray-300">
+          <h1 className="text-5xl md:text-7xl font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
             Donate and help individuals from all over the world.
           </h1>
-          <p className="md:text-xl mt-2 md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-8/12 ">
+          <p className="md:text-xl mt-2 hidden md:block md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-8/12 ">
             The most{" "}
             <span className="text-blue-600 italic font-bold">Transparent</span>{" "}
             donation platform on the internet. Donate in cryptos let us build a
@@ -43,7 +43,7 @@ function Home() {
           <img src="/images/earth_.svg" />
         </div>
       </div>
-      <div className="relative flex flex-row justify-between p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
+      <div className="relative grid grid-cols-1 gap-4 md:flex md:flex-row md:justify-between  p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
         <div className="text-center">
           <ion-icon
             name="heart-circle-outline"
