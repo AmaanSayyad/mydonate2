@@ -129,8 +129,8 @@ function Home() {
       </div>
       <div className="relative flex flex-col space-y-1 ">
         <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p>
-        <div className="flex md:flex-row flex-col space-x-8 w-full">
-          <div class="w-6/12 h-full">
+        <div className="flex md:flex-row flex-col space-x-0 md:space-x-8 w-full">
+          <div class="w-full md:w-6/12 h-full">
             <img
               src="/images/dimage.jpeg"
               className="object-cover h-96 rounded-2xl w-full"
