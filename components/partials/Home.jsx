@@ -1,5 +1,5 @@
 import React from 'react';
-import StasCard from '../templates/home/statsCards';
+import StasCard from '../templates/home/statsCard';
 import HeaderImage from '../templates/home/headerImages';
 import Categories from '../templates/home/categories';
 import Donations from '../templates/home/donations';
