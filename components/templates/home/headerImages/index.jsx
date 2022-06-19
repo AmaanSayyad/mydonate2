@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
+import Modal from '../../../utility/modal';
 const Index = () => {
   const handleClick = () => {
     alert('hey i am a reusable button');
+    setModal(true);
   };
+
+  const [modal, setModal] = useState(false);
+
   return (
     <div className="flex flex-col-reverse  md:flex-row items-center mt-16">
       <div className="text-center md:text-left w-full">
@@ -39,6 +44,7 @@ const Index = () => {
       <div className="">
         <img src="/images/jumbo3.svg" />
       </div>
+      <Modal state={modal} />
     </div>
   );
 };
