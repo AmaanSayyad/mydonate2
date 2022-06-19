@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 // import { div } from "react-router-dom";
-import Link from "next/link";
+import Link from 'next/link';
 function Footer() {
   return (
     <footer>
