@@ -1,4 +1,5 @@
 import React from 'react';
+import GradientButton from '../../../utility/bottons/gradientButton';
 
 const TrendingDonation = () => {
   return (
@@ -40,9 +41,7 @@ const TrendingDonation = () => {
             <p className="text-xl dark:text-gray-100">Ghana</p>
           </div>
 
-          <div className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-2 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white">
-            View Details
-          </div>
+          <GradientButton title="View details" />
         </div>
       </div>
     </div>
