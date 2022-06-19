@@ -20,6 +20,10 @@ export default function Document() {
         ></script>
         <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link rel="icon" type="image/png" href="/images/logo.svg" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />

@@ -25,8 +25,7 @@ const index = ({ name, color }) => {
           icon={"people-outline"}
         />
         <Card name={"War"} color={"bg-amber-600"} icon={"sad-outline"} />
-        <Card name={"War"} color={"bg-amber-600"} icon={"sad-outline"} />
-        <Card name={"War"} color={"bg-amber-600"} icon={"sad-outline"} />
+        {/* <Card name={"War"} color={"bg-amber-600"} icon={"sad-outline"} /> */}
       </div>
       {/* </div> */}
     </>
