@@ -11,7 +11,7 @@ module.exports = {
       fontFamily: {
         Montserrat: "'Montserrat', sans-serif",
         LeagueGothis: "'League Gothic', sans-serif",
-
+        Raleway:"Raleway , sans-serif",
         inter: ["Inter", "sans-serif"],
       },
       fontSize: {

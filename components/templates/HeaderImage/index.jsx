@@ -4,7 +4,7 @@ const Index = () => {
   return (
     <div className="flex flex-col-reverse  md:flex-row items-center mt-16">
       <div className="text-center md:text-left w-full">
-        <h1 className="text-4xl md:text-[5rem] font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
+        <h1 className="text-4xl md:text-[5rem] font-Raleway font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
           Put a smile on someone's face
         </h1>
         <p className="md:text-xl mt-2 hidden md:block md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-10/12 ">
