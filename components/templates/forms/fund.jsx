@@ -23,8 +23,10 @@ export default function Fund() {
             <form action="#" method="POST">
               <div className="shadow sm:rounded-2xl relative sm:overflow-hidden">
                 <div className="flex flex-row justify-center items-center">
-                  <button>Organization</button>
-                  <button>Individuals</button>
+                  <div className="bg-red-500 space-x-4 p-2 rounded-full">
+                    <ion-icon name="people-outline"></ion-icon>{' '}
+                    <ion-icon name="person-outline"></ion-icon>{' '}
+                  </div>
                 </div>
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
