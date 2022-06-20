@@ -21,20 +21,21 @@ export default function Fund() {
         <div className="flex flex-col justify-center items-center ">
           <div className="pt-14 md:mt-0 md:col-span-2  w-9/12">
             <form action="#" method="POST">
-              <div className="shadow sm:rounded-2xl relative sm:overflow-hidden">
-                <div className="flex flex-row justify-center items-center">
-                  <div className="bg-white -mb-5 shadow-md px-5 space-x-4 p-2 rounded-full">
-                    <ion-icon
-                      name="people-outline"
-                      class="text-2xl cursor-pointer"
-                    ></ion-icon>{' '}
-                    <ion-icon
-                      name="person-outline"
-                      class="text-2xl cursor-pointer"
-                    ></ion-icon>{' '}
-                  </div>
+              <div className="flex flex-row z-50 justify-center items-center">
+                <div className="bg-white -mb-5 shadow-md px-5 space-x-4 p-2 py-3 flex flex-row items-center rounded-full">
+                  <ion-icon
+                    name="people-outline"
+                    class="text-3xl cursor-pointer bg-blue-400 px-4 text-white rounded-full"
+                  ></ion-icon>{' '}
+                  <ion-icon
+                    name="person-outline"
+                    class="text-2xl cursor-pointer"
+                  ></ion-icon>{' '}
                 </div>
+              </div>
+              <div className="shadow sm:rounded-2xl  sm:overflow-hidden">
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                  <p className="text-xl text-center">Organization</p>
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
                       <label
