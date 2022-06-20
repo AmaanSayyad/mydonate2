@@ -247,7 +247,7 @@ export default function Fund() {
             htmlFor="company-website"
             className="block text-md font-medium dark:text-gray-200 text-gray-700"
           >
-            Name
+            Full Name
           </label>
 
           <input
@@ -316,7 +316,7 @@ export default function Fund() {
             htmlFor="company-website"
             className="block text-md font-medium dark:text-gray-200 text-gray-700"
           >
-            Website
+            email
           </label>
 
           <input
@@ -328,47 +328,13 @@ export default function Fund() {
       </div>
 
       <div>
-        <label
-          htmlFor="company-website"
-          className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
-        >
-          Social media Handles
-        </label>
-        <div className=" flex flex-row justify-between space-x-4">
-          <div className="w-full">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Facebook
-            </label>
-            <input
-              type="text"
-              id="base-input"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-          <div className="w-full">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Twitter
-            </label>
-            <input
-              type="text"
-              id="base-input"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
         <div className=" flex pt-8 flex-row justify-between space-x-4">
           <div className="w-full">
             <label
               htmlFor="company-website"
               className="block text-md font-medium dark:text-gray-200 text-gray-700"
             >
-              Instagram
+              Contact
             </label>
             <input
               type="text"
@@ -381,7 +347,7 @@ export default function Fund() {
               htmlFor="company-website"
               className="block text-md font-medium dark:text-gray-200 text-gray-700"
             >
-              Youtube
+              Residence
             </label>
             <input
               type="text"
@@ -429,7 +395,7 @@ export default function Fund() {
 
       <div>
         <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
-          Business Document
+          Other supporting Document(s)
         </label>
         <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
           <div className="space-y-1 text-center">
