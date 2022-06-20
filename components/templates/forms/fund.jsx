@@ -21,7 +21,11 @@ export default function Fund() {
         <div className="flex flex-col justify-center items-center ">
           <div className="pt-14 md:mt-0 md:col-span-2  w-9/12">
             <form action="#" method="POST">
-              <div className="shadow sm:rounded-2xl sm:overflow-hidden">
+              <div className="shadow sm:rounded-2xl relative sm:overflow-hidden">
+                <div className="flex flex-row justify-center items-center">
+                  <button>Organization</button>
+                  <button>Individuals</button>
+                </div>
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
