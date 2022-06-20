@@ -237,13 +237,232 @@ export default function Fund() {
     </>
   );
 
-  const individual = <p>fdf</p>;
+  const individual = (
+    <>
+      {/* <div className="px-4 py-5 dark:text-gray-200 bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 space-y-6 sm:p-6"> */}
+      <p className="text-xl text-center pt-3">Individual</p>
+      <div className="dark:text-gray">
+        <div className="">
+          <label
+            htmlFor="company-website"
+            className="block text-md font-medium dark:text-gray-200 text-gray-700"
+          >
+            Name
+          </label>
+
+          <input
+            type="text"
+            id="base-input"
+            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <div className="">
+        <div className="">
+          <label
+            htmlFor="company-website"
+            className="block text-md font-medium dark:text-gray-200 text-gray-700"
+          >
+            Country
+          </label>
+          <select
+            id="countries"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option selected>Choose a country</option>
+            {countries.map((country) => (
+              <option value="US">
+                {country.flag}
+                {country.name.common}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className=" flex flex-row justify-between space-x-4">
+        <div className="w-full">
+          <label
+            htmlFor="company-website"
+            className="block text-md font-medium dark:text-gray-200 text-gray-700"
+          >
+            City
+          </label>
+          <input
+            type="text"
+            id="base-input"
+            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+        <div className="w-full">
+          <label
+            htmlFor="company-website"
+            className="block text-md font-medium dark:text-gray-200 text-gray-700"
+          >
+            Address
+          </label>
+          <input
+            type="text"
+            id="base-input"
+            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <div className="dark:text-gray">
+        <div className="">
+          <label
+            htmlFor="company-website"
+            className="block text-md font-medium dark:text-gray-200 text-gray-700"
+          >
+            Website
+          </label>
+
+          <input
+            type="text"
+            id="base-input"
+            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          htmlFor="company-website"
+          className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
+        >
+          Social media Handles
+        </label>
+        <div className=" flex flex-row justify-between space-x-4">
+          <div className="w-full">
+            <label
+              htmlFor="company-website"
+              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+            >
+              Facebook
+            </label>
+            <input
+              type="text"
+              id="base-input"
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <div className="w-full">
+            <label
+              htmlFor="company-website"
+              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+            >
+              Twitter
+            </label>
+            <input
+              type="text"
+              id="base-input"
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+        <div className=" flex pt-8 flex-row justify-between space-x-4">
+          <div className="w-full">
+            <label
+              htmlFor="company-website"
+              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+            >
+              Instagram
+            </label>
+            <input
+              type="text"
+              id="base-input"
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <div className="w-full">
+            <label
+              htmlFor="company-website"
+              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+            >
+              Youtube
+            </label>
+            <input
+              type="text"
+              id="base-input"
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          htmlFor="company-website"
+          className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
+        >
+          Purpose of Fund
+        </label>
+        <textarea
+          id="comment"
+          rows="4"
+          class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+          placeholder="Purpose of fund"
+          required
+        ></textarea>
+      </div>
+
+      <div className="dark:text-gray">
+        <div className="">
+          <label
+            htmlFor="company-website"
+            className="block text-md font-medium dark:text-gray-200 text-gray-700"
+          >
+            Account for fund (eth)
+          </label>
+
+          <input
+            type="text"
+            id="base-input"
+            placeholder="0x0000000"
+            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
+          Business Document
+        </label>
+        <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+          <div className="space-y-1 text-center">
+            <ion-icon
+              name="document-outline"
+              class="text-4xl text-gray-600"
+            ></ion-icon>
+            <div className="flex text-sm text-gray-600">
+              <label
+                htmlFor="file-upload"
+                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+              >
+                <span>Upload a file</span>
+                <input
+                  id="file-upload"
+                  name="file-upload"
+                  type="file"
+                  className="sr-only"
+                />
+              </label>
+            </div>
+            <p className="text-xs text-gray-500">PDF, DOCX, up to 10MB</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <>
       <div>
         <div className="flex flex-col justify-center items-center ">
-          <div className="pt-14 md:mt-0 md:col-span-2  w-8/12">
+          <div className="pt-14 md:mt-0 md:col-span-2  w-9/12">
             <form action="#" method="POST">
               <div className="flex flex-row z-50 justify-center items-center">
                 <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:border-2 -mb-5 shadow-md px-5 space-x-4 p-2 py-3 flex flex-row items-center rounded-full">
@@ -368,8 +587,8 @@ export default function Fund() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Cover photo
+                      <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
+                        Cover Image
                       </label>
                       <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div className="space-y-1 text-center">
@@ -412,9 +631,9 @@ export default function Fund() {
                     <div className="px-4 py-3 text-right sm:px-6">
                       <button
                         type="submit"
-                        className="inline-flex justify-center py-2 px-8 border border-transparent shadow-sm text-md  font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="inline-flex justify-center py-2 px-8 border border-transparent shadow-sm text-md  font-medium rounded-full text-white bg-blue-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
-                        Save
+                        Upload{' '}
                       </button>
                     </div>
                   </div>

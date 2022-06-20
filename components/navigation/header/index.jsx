@@ -28,7 +28,7 @@ function Header() {
   }, [top]);
 
   const navLinks = [
-    { icon: 'heart-half-outline', link: '/', name: 'Donations' },
+    // { icon: 'heart-half-outline', link: '/', name: 'Donations' },
     { icon: 'home-outline', link: '/', name: 'Home' },
     { icon: 'person-outline', link: '/', name: 'Profile' },
     { icon: 'search-outline', link: '/', name: 'Search' },
