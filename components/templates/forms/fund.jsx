@@ -241,6 +241,7 @@ export default function Fund() {
                       } h-8 cursor-pointer dark:text-gray-200  `}
                     />
                   </span>
+                  <span className="dark:text-gray-300">|</span>
                   <span
                     onClick={() => {
                       setTab(1);
