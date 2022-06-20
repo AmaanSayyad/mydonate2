@@ -428,7 +428,10 @@ export default function Fund() {
     <>
       <div>
         <div className="flex flex-col justify-center items-center ">
-          <div className="pt-14 md:mt-0 md:col-span-2  w-9/12">
+          <div className="pt-14 md:mt-0 md:col-span-2  w-full md:w-9/12">
+            <p className="text-xl text-center py-3 font-bold">
+              Start New Fundraising
+            </p>
             <form action="#" method="POST">
               <div className="flex flex-row z-50 justify-center items-center">
                 <div className="bg-white dark:bg-gray-800 dark:border-gray-700 dark:border-2 -mb-5 shadow-md px-5 space-x-4 p-2 py-3 flex flex-row items-center rounded-full">
