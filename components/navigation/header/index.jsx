@@ -135,7 +135,7 @@ function Header() {
       <Disclosure
         as="nav"
         className={`fixed w-full z-30 md:bg-opacity-90 py-4 transition duration-300 ease-in-out ${
-          !top && ' dark:bg-gray-900 backdrop-blur-sm bg-white'
+          !top && ' dark:bg-gray-800 backdrop-blur-sm bg-white  shadow-lg'
         }`}
         // className="bg-white py-4 dark:bg-gray-800"
       >
@@ -190,7 +190,7 @@ function Header() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-900  text-white'
+                              ? 'bg-gray-900 dark:bg-white dark:text-gray-700  text-white'
                               : 'text-gray-700 dark:text-gray-200 hover:bg-gray-700 hover:text-white',
                             'px-3 py-2 rounded-md text-md font-medium'
                           )}
@@ -214,7 +214,10 @@ function Header() {
                     type="button"
                     className=" p-1 rounded-full text-gray-600 "
                   >
-                    <MoonIcon className="h-6 w-6" aria-hidden="true" />
+                    <MoonIcon
+                      className="h-6 w-6 dark:text-gray-200"
+                      aria-hidden="true"
+                    />
                   </button>
 
                   {/* Profile dropdown */}
@@ -295,7 +298,7 @@ function Header() {
                     className={classNames(
                       item.current
                         ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        : 'hover:bg-gray-700 text-gray-700 dark:text-gray-200 hover:text-white',
                       'block px-3 py-2 rounded-md text-base font-medium'
                     )}
                     aria-current={item.current ? 'page' : undefined}
