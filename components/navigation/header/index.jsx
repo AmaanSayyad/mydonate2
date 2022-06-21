@@ -162,9 +162,9 @@ function Header() {
                       src="/images/logo.svg"
                       alt="Workflow"
                     />
-                    <p className="text-xl font-bold text-gray-600 dark:text-gray-200">
+                    {/* <p className="text-xl font-bold text-gray-600 dark:text-gray-200">
                       MyDonate
-                    </p>{' '}
+                    </p>{' '} */}
                     {/* <img
                       className="hidden lg:block h-8 w-auto"
                       src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
@@ -209,6 +209,13 @@ function Header() {
                   >
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  </button>
+
+                  <button
+                    type="button"
+                    className=" p-1 rounded-full text-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  >
+                    <MoonIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
 
                   {/* Profile dropdown */}
