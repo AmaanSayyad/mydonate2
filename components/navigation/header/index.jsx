@@ -43,15 +43,23 @@ function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-2">
-        <div className="flex flex-row justify-between items-center space-x-0 md:space-x-20">
-          <Link href="/">
-            <img
-              src="/images/logo.svg"
-              className="w-12 md:w-12 hidden md:block"
-            />
-          </Link>
-
-          <div className="bg-white dark:bg-black pt-4  rounded-b-3xl md:rounded-b-full  flex flex-row justify-evenly w-full">
+        <div className="flex flex-row justify-between my-6 items-center space-x-0 md:space-x-20">
+          <div className="flex flex-row items-center space-x-5">
+            <Link href="/">
+              <img
+                src="/images/logo.svg"
+                className="w-12 md:w-12 hidden md:block"
+              />
+            </Link>
+            <span className="h-7 w-0.5 bg-gray-400"></span>
+            <div className="flex flex-row space-x-7">
+              <p>Home</p>
+              <p>Donation</p>
+              <p>About</p>
+              <p>Contact</p>
+            </div>
+          </div>
+          {/* <div className="bg-white dark:bg-black pt-4  rounded-b-3xl md:rounded-b-full  flex flex-row justify-evenly w-full">
             {navLinks.map((link) => (
               <span
                 className="text-center group"
@@ -78,7 +86,7 @@ function Header() {
                 </p>
               </span>
             ))}
-          </div>
+          </div> */}
 
           <div
             className="border-4 broder-gray-600 px-4 hidden md:block md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
