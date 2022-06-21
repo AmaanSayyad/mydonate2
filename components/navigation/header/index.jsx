@@ -39,7 +39,7 @@ function Header() {
   return (
     <header
       className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
-        !top && ' dark:bg-gray-900 backdrop-blur-sm '
+        !top && ' dark:bg-gray-900 backdrop-blur-sm bg-white'
       }`}
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-2">
@@ -52,11 +52,19 @@ function Header() {
               />
             </Link>
             <span className="h-7 w-0.5 bg-gray-400"></span>
-            <div className="flex flex-row space-x-7">
-              <p>Home</p>
-              <p>Donation</p>
-              <p>About</p>
-              <p>Contact</p>
+            <div className="flex flex-row space-x-7 text-lg">
+              <p className="cursor-pointer hover:scale-125 transition-all">
+                Home
+              </p>
+              <p className="cursor-pointer  hover:scale-125 transition-all">
+                Donation
+              </p>
+              <p className="cursor-pointer  hover:scale-125 transition-all">
+                About
+              </p>
+              <p className="cursor-pointer  hover:scale-125 transition-all">
+                Contact
+              </p>
             </div>
           </div>
           {/* <div className="bg-white dark:bg-black pt-4  rounded-b-3xl md:rounded-b-full  flex flex-row justify-evenly w-full">
