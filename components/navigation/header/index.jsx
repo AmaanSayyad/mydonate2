@@ -87,14 +87,19 @@ function Header() {
               </span>
             ))}
           </div> */}
-
-          <div
-            className="border-4 broder-gray-600 px-4 hidden md:block md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
-            onClick={() => {
-              connect();
-            }}
-          >
-            Connect
+          <div className="flex flex-row items-center">
+            <div>
+              <ion-icon name="search-outline"></ion-icon>
+              <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div
+              className="border-4 broder-gray-600 px-4 hidden md:block md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
+              onClick={() => {
+                connect();
+              }}
+            >
+              Connect
+            </div>
           </div>
         </div>
       </div>
