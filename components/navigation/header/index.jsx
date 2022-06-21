@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useDarkMode from '../../../hooks/useDarkMode';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
+import { MoonIcon } from '@heroicons/react/outline';
 
 // import { Icon } from "web3uikit";
 function Header() {
