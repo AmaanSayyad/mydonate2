@@ -52,7 +52,7 @@ function Header() {
               />
             </Link>
             <span className="h-7 w-0.5 bg-gray-400"></span>
-            <div className="flex flex-row space-x-7 text-lg">
+            <div className="flex flex-row space-x-7 text-lg text-gray-700 dark:text-gray-200">
               <p className="cursor-pointer hover:scale-125 transition-all">
                 Home
               </p>
@@ -96,13 +96,40 @@ function Header() {
             ))}
           </div> */}
           <div className="flex flex-row items-center">
-            <div className="flex flex-row items-center space-x-3 mr-3">
-              <ion-icon name="search-outline" class="text-2xl"></ion-icon>
-              <ion-icon name="person-outline" class="text-2xl"></ion-icon>
-              <ion-icon
-                name="notifications-outline"
-                class="text-2xl"
-              ></ion-icon>
+            <div className="flex flex-row items-center space-x-3 mr-4">
+              <span>
+                <ion-icon
+                  name="search-outline"
+                  class="text-2xl dark:text-gray-300"
+                ></ion-icon>
+              </span>
+              <span>
+                <ion-icon
+                  name="person-outline"
+                  class="text-2xl dark:text-gray-300"
+                ></ion-icon>
+              </span>
+              <span
+                onClick={
+                  colorTheme === 'light'
+                    ? () => setTheme('light')
+                    : colorTheme === 'dark'
+                    ? () => setTheme('dark')
+                    : ''
+                }
+              >
+                <ion-icon
+                  name="moon-outline"
+                  class="text-xl dark:text-gray-300"
+                ></ion-icon>
+              </span>
+              <div className="relative mt-1">
+                <span className="absolute -top-3 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
+                <ion-icon
+                  name="notifications-outline"
+                  class="text-2xl dark:text-gray-300"
+                ></ion-icon>
+              </div>
             </div>
             <div
               className="border-4 broder-gray-600 px-4 hidden md:block md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
