@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 import Modal from '../../../utility/modal';
 import FundForm from '../../forms/fund';
+import Link from 'next/link';
 const Index = () => {
   const handleClick = () => {
-    // alert('hey i am a reusable button');
     setModal(true);
   };
 
@@ -22,25 +22,10 @@ const Index = () => {
           donation platform on the internet. Donate in cryptos let us build a
           better world
         </p>
-        {/* <div
-          onClick={() => {
-            setOpen(!open);
-            if (!web3Provider) {
-              alert('Please connect to a wallet');
-              return;
-            }
-            setComp(<FundRaising provider={web3Provider} />);
-          }}
-          className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white"
-        >
-          New Fundraising
-        </div> */}
-        <GradientButton
-          onClick={() => {
-            handleClick();
-          }}
-          title="New Fundraising"
-        />
+
+        <Link href={'/fund'}>
+          <GradientButton title="New Fundraising" />
+        </Link>
       </div>
       <div className="">
         <img src="/images/jumbo3.svg" />
