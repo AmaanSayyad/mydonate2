@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
 const TrendingDonation = () => {
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(scrollToBottom, []);
+
   return (
     <div className="relative flex flex-col space-y-1 ">
       <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p>
@@ -44,6 +52,41 @@ const TrendingDonation = () => {
           <GradientButton title="View details" />
         </div>
       </div>
+
+      {/* <div class="flex flex-col bg-white m-auto p-auto"> */}
+      <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-10 md:mx-10 mx-5 font-bold text-4xl text-gray-800">
+        Example
+      </h1>
+      <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
+        <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
+            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          </div>
+        </div>
+        {/* </div> */}
+      </div>
+      <style></style>
     </div>
   );
 };
