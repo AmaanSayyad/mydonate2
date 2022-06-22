@@ -1,15 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
-
+import Card from '../donations/card';
 const TrendingDonation = () => {
-  // const messagesEndRef = useRef(null);
-
-  // const scrollToBottom = () => {
-  //   messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-  // };
-
-  // useEffect(scrollToBottom, []);
-
   return (
     <div className="relative flex flex-col space-y-1 ">
       <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p>
@@ -53,34 +45,64 @@ const TrendingDonation = () => {
         </div>
       </div>
 
-      {/* <div class="flex flex-col bg-white m-auto p-auto"> */}
-      {/* <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p> */}
-
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
-        <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+        {/* <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 "> */}
+        <div className="flex flex-nowrap mt-5">
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage2.jpg`}
+            />
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage3.jpg`}
+            />
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage4.jpg`}
+            />{' '}
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage5.jpg`}
+            />
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage5.jpg`}
+            />{' '}
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage5.jpg`}
+            />{' '}
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage5.jpg`}
+            />{' '}
           </div>
-          <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
-            <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out"></div>
+          <div class="inline-block px-3 snap-center">
+            <Card
+              title="Australia Fire Outbreak"
+              description={`Supporting get of australias' fire Outbreak`}
+              image={`dimage5.jpg`}
+            />{' '}
           </div>
         </div>
         {/* </div> */}
