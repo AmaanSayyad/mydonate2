@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
 const TrendingDonation = () => {
-  const messagesEndRef = useRef(null);
+  // const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
+  // const scrollToBottom = () => {
+  //   messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  // };
 
-  useEffect(scrollToBottom, []);
+  // useEffect(scrollToBottom, []);
 
   return (
     <div className="relative flex flex-col space-y-1 ">
@@ -54,9 +54,8 @@ const TrendingDonation = () => {
       </div>
 
       {/* <div class="flex flex-col bg-white m-auto p-auto"> */}
-      <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-10 md:mx-10 mx-5 font-bold text-4xl text-gray-800">
-        Example
-      </h1>
+      {/* <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p> */}
+
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
         <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
           <div class="inline-block px-3 snap-center" ref={messagesEndRef}>
