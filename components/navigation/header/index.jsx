@@ -42,8 +42,8 @@ function Header() {
   const navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Donations', href: '/donations', current: false },
-    { name: 'About', href: '#', current: false },
-    { name: 'Contact', href: '#', current: false },
+    { name: 'About', href: '/about', current: false },
+    { name: 'Contact', href: '/contact', current: false },
   ];
 
   function classNames(...classes) {
@@ -56,82 +56,6 @@ function Header() {
         !top && ' dark:bg-gray-900 backdrop-blur-sm bg-white'
       }`}
     >
-      {/* <div className="max-w-7xl mx-auto px-2 sm:px-2">
-        <div className="flex flex-row justify-between my-6 items-center space-x-0 md:space-x-20">
-          <div className="flex flex-row items-center space-x-5">
-            <Link href="/">
-              <img
-                src="/images/logo.svg"
-                className="w-12 md:w-12 hidden md:block"
-              />
-            </Link>
-            <p className="text-xl font-bold text-gray-600 dark:text-gray-200">
-              MyDonate
-            </p>
-            <span className="h-7 w-0.5 bg-gray-400"></span>
-            <div className="flex flex-row space-x-7 text-lg text-gray-700 dark:text-gray-200">
-              <p className="cursor-pointer hover:scale-125 transition-all">
-                Home
-              </p>
-              <p className="cursor-pointer  hover:scale-125 transition-all">
-                Donations
-              </p>
-              <p className="cursor-pointer  hover:scale-125 transition-all">
-                About
-              </p>
-              <p className="cursor-pointer  hover:scale-125 transition-all">
-                Contact
-              </p>
-            </div>
-          </div>
-     
-          <div className="flex flex-row items-center">
-            <div className="flex flex-row items-center space-x-3 mr-4">
-              <span>
-                <ion-icon
-                  name="search-outline"
-                  class="text-2xl dark:text-gray-300"
-                ></ion-icon>
-              </span>
-              <span>
-                <ion-icon
-                  name="person-outline"
-                  class="text-2xl dark:text-gray-300"
-                ></ion-icon>
-              </span>
-              <span
-                onClick={
-                  colorTheme === 'light'
-                    ? () => setTheme('light')
-                    : colorTheme === 'dark'
-                    ? () => setTheme('dark')
-                    : ''
-                }
-              >
-                <ion-icon
-                  name="moon-outline"
-                  class="text-xl dark:text-gray-300"
-                ></ion-icon>
-              </span>
-              <div className="relative mt-1">
-                <span className="absolute -top-3 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
-                <ion-icon
-                  name="notifications-outline"
-                  class="text-2xl dark:text-gray-300"
-                ></ion-icon>
-              </div>
-            </div>
-            <div
-              className="border-4 broder-gray-600 px-4 hidden md:block md:px-6 text-gray-800 md:py-2 py-2 rounded-full dark:text-gray-200 cursor-pointer"
-              onClick={() => {
-                connect();
-              }}
-            >
-              Connect
-            </div>
-          </div>
-        </div>
-      </div> */}
       <Disclosure
         as="nav"
         className={`fixed w-full z-30 md:bg-opacity-90 py-4 transition duration-300 ease-in-out ${
@@ -141,7 +65,6 @@ function Header() {
       >
         {({ open }) => (
           <>
-            {/* <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> */}
             <div className="max-w-7xl mx-auto px-2 sm:px-2">
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -169,12 +92,11 @@ function Header() {
                         <Link href={item.href}>
                           <p
                             key={item.name}
-                            // href={item.href}
                             className={classNames(
-                              item.current
+                              router.pathname === item.href
                                 ? 'bg-gray-900 dark:bg-white dark:text-gray-700  text-white'
                                 : 'text-gray-700 dark:text-gray-200 hover:bg-gray-700 hover:text-white',
-                              'px-3 py-2 rounded-md text-md font-medium'
+                              'px-3 py-2 rounded-md text-md cursor-pointer font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
                           >
@@ -224,7 +146,7 @@ function Header() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 p-4 w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="origin-top-right absolute right-0 mt-2  w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <a
@@ -238,7 +160,7 @@ function Header() {
                             </a>
                           )}
                         </Menu.Item>
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <a
                               href="#"
@@ -250,12 +172,12 @@ function Header() {
                               Settings
                             </a>
                           )}
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item>
                           <button
-                            className={`bg-gradient-to-r mb-3 p-4 flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
+                            className={`bg-gradient-to-r mb-3  flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
                           >
-                            connect
+                            Disconnect
                           </button>
                         </Menu.Item>
                       </Menu.Items>
@@ -273,7 +195,7 @@ function Header() {
                     as="a"
                     href={item.href}
                     className={classNames(
-                      item.current
+                      router.pathname === item.href
                         ? 'bg-gray-900 text-white'
                         : 'hover:bg-gray-700 text-gray-700 dark:text-gray-200 hover:text-white',
                       'block px-3 py-2 rounded-md text-base font-medium'
