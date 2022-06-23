@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const Card = ({ name, color, icon }) => {
   return (
     <div>
       <div
-        className={`text-center ${color} md:p-2 p-3 md:px-8 md:py-8 rounded-2xl`}
+        className={`text-center ${color} w-64 h-max max-w-xs md:p-2 p-3 md:px-8 md:py-8  rounded-2xl`}
       >
         <ion-icon
           name={icon}
