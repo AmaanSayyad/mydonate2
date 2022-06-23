@@ -11,12 +11,12 @@ const Index = () => {
   const [modal, setModal] = useState(false);
 
   return (
-    <div className="flex flex-col-reverse  md:flex-row items-center mt-16">
-      <div className="text-center md:text-left w-full">
-        <h1 className="text-4xl md:text-[5rem] font-Raleway font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
+    <div className="flex flex-col-reverse  lg:flex-row items-center mt-16">
+      <div className="text-center lg:text-left w-full">
+        <h1 className="text-4xl md:text-[4rem] md:py-4 lg:text-[5rem] font-Raleway font-semibold w-full text-gray-600 dark:text-gray-300 leading-[60px] md:leading-none">
           Put a smile on someone's face
         </h1>
-        <p className="md:text-xl mt-2 hidden md:block md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-10/12 ">
+        <p className="md:text-xl mt-2 hidden sm:text-center md:text-left lg:block md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-10/12 ">
           The most{' '}
           <span className="text-blue-600 italic font-bold">Transparent</span>{' '}
           donation platform on the internet. Donate in cryptos let us build a

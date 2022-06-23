@@ -1,10 +1,10 @@
 import React from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
-const Card = ({ title, description, image }) => {
+const TrendingCard = ({ title, description, image }) => {
   return (
     <div>
-      <div class="h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class="max-w-sm w-80 h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <a href="#" className="w-full h-full">
           <img
             class="rounded-t-lg h-52  object-cover w-full"
@@ -51,4 +51,4 @@ const Card = ({ title, description, image }) => {
   );
 };
 
-export default Card;
+export default TrendingCard;

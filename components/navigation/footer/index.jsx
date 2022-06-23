@@ -4,7 +4,7 @@ import Link from 'next/link';
 function Footer() {
   return (
     <footer>
-      <div className="max-w-7xl mx-auto px-6 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Top area: Blocks */}
         <div className="flex flex-col md:flex-row  justify-between">
           {/* 1st block */}

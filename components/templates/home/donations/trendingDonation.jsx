@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
-import Card from '../donations/card';
+import Card from '../donations/tendingCards';
 const TrendingDonation = () => {
   return (
     <div className="relative flex flex-col space-y-1 ">
@@ -42,7 +42,7 @@ const TrendingDonation = () => {
               name="earth-outline"
               class="text-lg md:text-2xl  dark:text-gray-200"
             ></ion-icon>
-            <p className="text-lg md:text-xl dark:text-gray-100">Ghana</p>
+            <p className="text-xl dark:text-gray-100">Ghana</p>
           </div>
 
           <GradientButton title="View details" />
@@ -51,7 +51,7 @@ const TrendingDonation = () => {
 
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
         <div className="flex flex-nowrap mt-5">
-          <div class="inline-block px-3 snap-center">
+          <div class="inline-block  px-3 snap-center">
             <Card
               title="Australia Fire Outbreak"
               description={`Supporting get of australias' fire Outbreak`}
