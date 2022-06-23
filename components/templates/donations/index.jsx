@@ -8,14 +8,13 @@ const Index = () => {
     <div className="space-y-4 mt-8 col-span-full lg:col-span-2">
       {/* <HeaderImage /> */}
 
-      <button
+      <div
         className={`bg-gradient-to-r from-cyan-500 to-blue-500 mt-5 text-center w-full md:w-max items-center flex flex-row  px-6 py-3 rounded-full cursor-pointer text-white `}
       >
         <span>Filter</span>
-        <span>
-          <ion-icon name="funnel-outline"></ion-icon>
-        </span>
-      </button>
+
+        <ion-icon name="funnel-outline " class="text-2xl"></ion-icon>
+      </div>
 
       <Categories />
       <TrendingDonation />
