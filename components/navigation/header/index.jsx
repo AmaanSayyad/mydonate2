@@ -149,15 +149,17 @@ function Header() {
                       <Menu.Items className="origin-top-right absolute right-0 mt-2  w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? '' : '',
-                                'block px-4 py-2 text-sm dark:text-gray-200 text-gray-700'
-                              )}
-                            >
-                              Your Profile
-                            </a>
+                            <Link href="/profile">
+                              <p
+                                href="#"
+                                className={classNames(
+                                  active ? '' : '',
+                                  'block px-4 py-2 text-sm cursor-pointer dark:text-gray-200 text-gray-700'
+                                )}
+                              >
+                                Your Profile
+                              </p>
+                            </Link>
                           )}
                         </Menu.Item>
                         {/* <Menu.Item>
