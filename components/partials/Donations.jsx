@@ -45,7 +45,7 @@ const Donation = () => {
           setModal(false);
         }}
       >
-        <p className="text-lg dark:text-gray-200">Filter Donations</p>
+        <p className="text-lg dark:text-gray-200 py-5">Filter Donations</p>
         <div className="space-y-4">
           <div className="dark:text-gray">
             <div className="">
@@ -126,7 +126,7 @@ const Donation = () => {
             type="button"
             className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-auto sm:text-sm"
           >
-            Cancel
+            Submit
           </button>
         </div>
       </Modal>
