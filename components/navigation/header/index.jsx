@@ -187,7 +187,7 @@ function Header() {
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <Link href={item.href}>
-                          <a
+                          <p
                             key={item.name}
                             // href={item.href}
                             className={classNames(
@@ -199,7 +199,7 @@ function Header() {
                             aria-current={item.current ? 'page' : undefined}
                           >
                             {item.name}
-                          </a>
+                          </p>
                         </Link>
                       ))}
                     </div>
