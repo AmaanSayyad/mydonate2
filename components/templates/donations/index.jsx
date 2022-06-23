@@ -15,7 +15,7 @@ const Index = () => {
         onClick={() => {
           setModal(true);
         }}
-        className={`bg-gradient-to-r from-cyan-500 space-x-0 to-blue-500 mt-5 text-center w-full md:w-max items-center flex flex-row  px-6 py-3 rounded-full cursor-pointer text-white `}
+        className={`bg-gradient-to-r from-cyan-500 space-x-0 to-blue-500 mt-5 text-center w-max md:w-max items-center flex flex-row  px-6 py-3 rounded-full cursor-pointer text-white `}
       >
         <span>Filter</span>
 
