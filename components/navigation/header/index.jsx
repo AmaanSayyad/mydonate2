@@ -163,25 +163,6 @@ function Header() {
                       src="/images/logo.svg"
                       alt="Workflow"
                     />
-                    {/* <p className="text-xl font-bold text-gray-600 dark:text-gray-200">
-                      MyDonate
-                    </p>{' '} */}
-                    {/* <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                      alt="Workflow"
-                    /> */}
-                    {/* <Link href="/"> */}
-                    {/* <Link href="/">
-                      <img
-                        src="/images/logo.svg"
-                        className="w-12 md:w-12 hidden md:block"
-                      />
-                    </Link>
-                    <p className="text-xl font-bold text-gray-600 dark:text-gray-200">
-                      MyDonate
-                    </p> */}
-                    {/* </Link> */}
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
@@ -218,7 +199,7 @@ function Header() {
                     className=" p-1 rounded-full text-gray-600 "
                   >
                     <MoonIcon
-                      className="h-8 w-8 dark:text-gray-200"
+                      className="h-7 w-7 dark:text-gray-200"
                       aria-hidden="true"
                     />
                   </button>
@@ -244,7 +225,7 @@ function Header() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="origin-top-right absolute right-0 mt-2 p-4 w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <a
@@ -273,7 +254,7 @@ function Header() {
                         </Menu.Item>
                         <Menu.Item>
                           <button
-                            className={`bg-gradient-to-r mb-3 flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
+                            className={`bg-gradient-to-r mb-3 p-4 flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
                           >
                             connect
                           </button>

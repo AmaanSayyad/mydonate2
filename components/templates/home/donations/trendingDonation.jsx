@@ -13,32 +13,36 @@ const TrendingDonation = () => {
           />
         </div>
         <div className="py-2">
-          <h2 className="text-3xl font-semibold dark:text-gray-200">EDUCARE</h2>
-          <p className="text-2xl dark:text-gray-100">
+          <h2 className="text-xl sm:text-2xl md:text-3xl  font-semibold dark:text-gray-200">
+            EDUCARE
+          </h2>
+          <p className=" text-lg sm:text-xl md:text-2xl dark:text-gray-100">
             Supporting Education in Africa
           </p>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon
               name="time-outline"
-              class="text-2xl dark:text-gray-100"
+              class=" text-lg md:text-2xl dark:text-gray-100"
             ></ion-icon>
-            <p className="text-xl dark:text-gray-100">15 days more</p>
+            <p className="text-lg md:text-xl dark:text-gray-100">
+              15 days more
+            </p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon
               name="wallet-outline"
-              class="text-2xl dark:text-gray-100"
+              class="text-lg md:text-2xl  dark:text-gray-100"
             ></ion-icon>
-            <p className="text-xl dark:text-gray-200">
+            <p className="text-lg md:text-xl dark:text-gray-200">
               $1,000.00 / $10,000,000.00
             </p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon
               name="earth-outline"
-              class="text-2xl dark:text-gray-200"
+              class="text-lg md:text-2xl  dark:text-gray-200"
             ></ion-icon>
-            <p className="text-xl dark:text-gray-100">Ghana</p>
+            <p className="text-lg md:text-xl dark:text-gray-100">Ghana</p>
           </div>
 
           <GradientButton title="View details" />
