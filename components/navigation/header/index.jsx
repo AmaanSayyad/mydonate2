@@ -5,8 +5,7 @@ import Router, { useRouter } from 'next/router';
 import { MoonIcon } from '@heroicons/react/outline';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
-import GradientButton from '../../utility/bottons/gradientButton';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
 function Header() {
   const router = useRouter();
