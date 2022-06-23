@@ -42,7 +42,7 @@ function Header() {
 
   const navigation = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Donations', href: '#', current: false },
+    { name: 'Donations', href: '/donations', current: false },
     { name: 'About', href: '#', current: false },
     { name: 'Contact', href: '#', current: false },
   ];

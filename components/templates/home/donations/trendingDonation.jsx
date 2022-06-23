@@ -46,7 +46,6 @@ const TrendingDonation = () => {
       </div>
 
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
-        {/* <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 "> */}
         <div className="flex flex-nowrap mt-5">
           <div class="inline-block px-3 snap-center">
             <Card
