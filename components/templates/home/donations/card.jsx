@@ -35,9 +35,7 @@ const Card = ({ title, description, image }) => {
               name="wallet-outline"
               class="text-2xl dark:text-gray-100"
             ></ion-icon>
-            <p className="text-xl w-max dark:text-gray-200">
-              $1,000.00 / $1,000,000
-            </p>
+            <p className="text-xl w-max dark:text-gray-200">$1,000.00</p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon
