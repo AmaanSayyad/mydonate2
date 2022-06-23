@@ -15,7 +15,7 @@ const Donation = () => {
         onClick={() => {
           setModal(true);
         }}
-        className={`bg-gradient-to-r from-cyan-500 space-x-0 to-blue-500 mt-5 text-center w-max md:w-max items-center flex flex-row  px-6 py-3 rounded-full cursor-pointer text-white `}
+        className={`bg-gradient-to-r from-cyan-500 space-x-3 to-blue-500 mt-5 text-center w-max md:w-max items-center flex flex-row  px-6 py-3 rounded-full cursor-pointer text-white `}
       >
         <span>Filter</span>
 
@@ -32,7 +32,12 @@ const Donation = () => {
           setModal(false);
         }}
       >
-        <p>something</p>
+        <div class="border rounded overflow-hidden flex">
+          <input type="text" class="px-4 py-2 w-full" placeholder="Search..." />
+          <button class="flex items-center justify-center px-4 border-l">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
       </Modal>
     </div>
   );
