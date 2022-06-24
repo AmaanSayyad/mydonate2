@@ -84,35 +84,35 @@ function Home() {
                 </div>
               </details>
 
-              <form class="mt-8">
-                <fieldset>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-base font-medium text-blue-700 dark:text-white">
-                      Donations
-                    </span>
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">
-                      45%
-                    </span>
-                  </div>
-                  <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
-                  </div>
+              <form class="">
+                {/* <fieldset> */}
+                <div class="flex justify-between ">
+                  <span class="text-base font-medium text-blue-700 dark:text-white">
+                    Donations
+                  </span>
+                  <span class="text-sm font-medium text-blue-700 dark:text-white">
+                    45%
+                  </span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
+                  <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
+                </div>
 
-                  <div class="flex justify-between py-4 ">
-                    <span class="text-base font-medium text-gray-700 dark:text-white">
-                      50+ Donated
-                    </span>
-                    <div className=" bg-gradient-to-r from-purple-600 via-blue-500 to-green-300 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-8 ">
-                      5 days Left{' '}
-                    </div>
+                <div class="flex justify-between py-4 ">
+                  <span class="text-base font-medium text-gray-700 dark:text-white">
+                    50+ Donated
+                  </span>
+                  <div className=" bg-gradient-to-r from-purple-600 via-blue-500 to-green-300 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-3 ">
+                    5 days Left{' '}
                   </div>
-                </fieldset>
+                </div>
+                {/* </fieldset> */}
 
-                <fieldset class="mt-4">
-                  <button className="inline-block px-8 py-3 text-sm font-medium text-white transition bg-indigo-600 rounde-full active:bg-indigo-500 focus:outline-none focus:ring">
-                    button
-                  </button>
-                </fieldset>
+                {/* <fieldset class=""> */}
+                <button className="inline-block -mt-10 px-8 py-3 text-sm font-medium text-white transition bg-indigo-600 rounded-full w-full active:bg-indigo-500 focus:outline-none focus:ring">
+                  Donate
+                </button>
+                {/* </fieldset> */}
               </form>
             </div>
           </div>
