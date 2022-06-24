@@ -105,7 +105,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               <li
                 className={`${
                   router.pathname === '/profile'
-                    ? 'px-2 py-2 cursor-pointer bg-gray-600 rounded-sm mb-0.5  last:mb-0 '
+                    ? 'px-2 py-2 cursor-pointer  bg-gray-600 rounded-lg mb-0.5  last:mb-0 '
                     : 'px-2 py-2 cursor-pointer rounded-sm mb-0.5  last:mb-0 '
                 }`}
               >
