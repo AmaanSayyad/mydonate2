@@ -40,7 +40,10 @@ function Home() {
                   </h1>
 
                   <div className="flex flex-row items-center space-x-2">
-                    <ion-icon name="cash-outline" class="text-xl"></ion-icon>
+                    <ion-icon
+                      name="cash-outline"
+                      class="text-xl text-gray-200"
+                    ></ion-icon>
                     <p class="text-lg font-bold dark:text-gray-200">
                       $119.99/$20,000.00
                     </p>
@@ -52,7 +55,7 @@ function Home() {
                 <summary class="block">
                   <div>
                     <div class="prose max-w-none group-open:hidden">
-                      <p>
+                      <p className="dark:text-gray-200">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Ipsa veniam dicta beatae eos ex error culpa delectus rem
                         tenetur, architecto quam nesciunt, dolor veritatis nisi
@@ -60,13 +63,13 @@ function Home() {
                       </p>
                     </div>
 
-                    <span class="mt-4 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
+                    <span class="mt-4  dark:text-gray-200 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
                       Read More
                     </span>
                   </div>
                 </summary>
 
-                <div class="pb-6 prose max-w-none">
+                <div class="pb-6 prose max-w-none dark:text-gray-300">
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Ipsa veniam dicta beatae eos ex error culpa delectus rem
