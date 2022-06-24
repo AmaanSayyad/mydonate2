@@ -39,9 +39,6 @@ function Home() {
                     Do you have 3 times meal a day?
                   </h1>
 
-                  <p class="mt-0.5 text-sm">
-                    Some People dont event have food to eat
-                  </p>
                   <div className="flex flex-row items-center space-x-2">
                     <ion-icon name="cash-outline" class="text-xl"></ion-icon>
                     <p class="text-lg font-bold">$119.99/$20,000.00</p>
