@@ -57,8 +57,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   return (
     <div>
-      {/* Sidebar backdrop (mobile only) */}
-
       <div
         className={`fixed inset-0  bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -105,7 +103,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <div>
             <ul className="mt-3">
               <li
-                className={`px-2 py-2 cursor-pointer rounded-sm mb-0.5 last:mb-0 `}
+                className={`${
+                  router.pathname === '/profile'
+                    ? 'px-2 py-2 cursor-pointer bg-gray-600 rounded-sm mb-0.5  last:mb-0 '
+                    : 'px-2 py-2 cursor-pointer rounded-sm mb-0.5  last:mb-0 '
+                }`}
               >
                 <Link href={'/dashboard/customer/'}>
                   <div className={`flex items-center`}>
@@ -142,10 +144,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               <li
                 className={`px-2 py-2 cursor-pointer rounded-sm mb-0.5 last:mb-0 `}
               >
-                <Link
-                  href={'/dashboard/customer/'}
-                  // className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
-                >
+                <Link href={'/dashboard/customer/'}>
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="heart-outline"
