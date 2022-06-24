@@ -23,46 +23,12 @@ function Home() {
         <div class="relative max-w-screen-xl px-4 py-8 mx-auto">
           <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
             <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
-              <div class="aspect-w-1 aspect-h-1">
+              <div class="w-full h-full">
                 <img
                   alt="Mobile Phone Stand"
-                  class="object-cover rounded-xl"
-                  src="https://images.unsplash.com/photo-1627844541143-a561a1a9b72a"
+                  class="object-cover rounded-xl w-full h-96"
+                  src="/images/dimage5.jpg"
                 />
-              </div>
-
-              <div class="grid grid-cols-2 gap-4 lg:mt-4">
-                <div class="aspect-w-1 aspect-h-1">
-                  <img
-                    alt="Mobile Phone Stand"
-                    class="object-cover rounded-xl"
-                    src="https://images.unsplash.com/photo-1627844541143-a561a1a9b72a"
-                  />
-                </div>
-
-                <div class="aspect-w-1 aspect-h-1">
-                  <img
-                    alt="Mobile Phone Stand"
-                    class="object-cover rounded-xl"
-                    src="https://images.unsplash.com/photo-1627844541143-a561a1a9b72a"
-                  />
-                </div>
-
-                <div class="aspect-w-1 aspect-h-1">
-                  <img
-                    alt="Mobile Phone Stand"
-                    class="object-cover rounded-xl"
-                    src="https://images.unsplash.com/photo-1627844541143-a561a1a9b72a"
-                  />
-                </div>
-
-                <div class="aspect-w-1 aspect-h-1">
-                  <img
-                    alt="Mobile Phone Stand"
-                    class="object-cover rounded-xl"
-                    src="https://images.unsplash.com/photo-1627844541143-a561a1a9b72a"
-                  />
-                </div>
               </div>
             </div>
 
