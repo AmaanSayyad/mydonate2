@@ -68,7 +68,7 @@ function WelcomeBanner({ type, message, address }) {
       {/* Content */}
       <div className="relative">
         <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">
-          👋
+          Welcome, Mends Albert👋
         </h1>
         <p>{message || 'Here is what’s happening with your orders today:'}</p>
       </div>

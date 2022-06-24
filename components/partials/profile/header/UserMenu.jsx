@@ -44,7 +44,7 @@ function UserMenu() {
       >
         <img
           className="w-8 h-8 rounded-full"
-          src={'/images/profile.jpg'}
+          src={'/images/profile3.jpg'}
           width="32"
           height="32"
           alt="User"
