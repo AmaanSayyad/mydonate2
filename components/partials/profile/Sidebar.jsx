@@ -70,7 +70,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0  bg-white border-r-2 border-gray-500 p-4 transition-all duration-200 ease-in-out ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0  bg-white border-r-2 border-gray-300 p-4 transition-all duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-64'
         }`}
       >
@@ -176,10 +176,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 viewBox="0 0 24 24"
               >
                 <path
-                  className="text-white"
+                  className="text-gray-600"
                   d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z"
                 />
-                <path className="text-white" d="M3 23H1V1h2z" />
+                <path className="text-gray-600" d="M3 23H1V1h2z" />
               </svg>
             </button>
           </div>
