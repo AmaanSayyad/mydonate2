@@ -20,7 +20,7 @@ function Home() {
 </style> */}
 
       <section>
-        <div class="relative max-w-screen-xl px-4 py-8 mx-auto">
+        <div class="relative max-w-screen-xl px-2 py-8 mx-auto">
           <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
               <div class="w-full h-full">
@@ -97,103 +97,22 @@ function Home() {
                   <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
                     <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
                   </div>
-                </fieldset>
 
-                <fieldset class="mt-4">
-                  <legend class="mb-1 text-sm font-medium">Size</legend>
-
-                  <div class="flow-root">
-                    <div class="flex flex-wrap -m-0.5">
-                      <label for="size_xs" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_xs"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          XS
-                        </span>
-                      </label>
-
-                      <label for="size_s" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_s"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          S
-                        </span>
-                      </label>
-
-                      <label for="size_m" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_m"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          M
-                        </span>
-                      </label>
-
-                      <label for="size_l" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_l"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          L
-                        </span>
-                      </label>
-
-                      <label for="size_xl" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="size_xl"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          XL
-                        </span>
-                      </label>
+                  <div class="flex justify-between py-4 ">
+                    <span class="text-base font-medium text-gray-700 dark:text-white">
+                      50+ Donated
+                    </span>
+                    <div className=" bg-gradient-to-r from-purple-600 via-blue-500 to-green-300 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-8 ">
+                      5 days Left{' '}
                     </div>
                   </div>
                 </fieldset>
 
-                <div class="flex mt-8">
-                  <div>
-                    <label for="quantity" class="sr-only">
-                      Qty
-                    </label>
-
-                    <input
-                      type="number"
-                      id="quantity"
-                      min="1"
-                      value="1"
-                      class="w-12 py-3 text-xs text-center border-gray-200 rounded no-spinners"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="block px-5 py-3 ml-3 text-xs font-medium text-white bg-green-600 rounded hover:bg-green-500"
-                  >
-                    Add to Cart
+                <fieldset class="mt-4">
+                  <button className="inline-block px-8 py-3 text-sm font-medium text-white transition bg-indigo-600 rounde-full active:bg-indigo-500 focus:outline-none focus:ring">
+                    button
                   </button>
-                </div>
+                </fieldset>
               </form>
             </div>
           </div>
