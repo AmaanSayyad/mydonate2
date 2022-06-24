@@ -55,6 +55,28 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   }, [sidebarExpanded]);
   // }
 
+  const navigation = [
+    {
+      name: 'Summary',
+      href: '/profile',
+      icon: 'bar-chart-outline',
+      current: true,
+    },
+    {
+      name: 'Funds',
+      href: '/profile/funds',
+      icon: 'wallet-outline',
+      current: false,
+    },
+    {
+      name: 'Donation',
+      href: '/profile/donation',
+      icon: 'heart-outline',
+      current: false,
+    },
+    // { name: 'Contact', href: '/contact', current: false },
+  ];
+
   return (
     <div>
       <div
@@ -102,61 +124,37 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           {/* Pages group */}
           <div>
             <ul className="mt-3">
-              <li
-                className={`${
-                  router.pathname === '/profile'
-                    ? 'px-2 py-2 cursor-pointer  bg-gray-600 rounded-lg mb-0.5  last:mb-0 '
-                    : 'px-2 py-2 cursor-pointer rounded-sm mb-0.5  last:mb-0 '
-                }`}
-              >
-                <Link href={'/dashboard/customer/'}>
-                  <div className={`flex items-center`}>
-                    <ion-icon
-                      name="bar-chart-outline"
-                      class="text-gray-700 dark:text-gray-200 text-3xl"
-                    ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Summary
-                    </span>
-                  </div>
-                </Link>
-              </li>
-
-              <li
-                className={`px-2 py-2 cursor-pointer rounded-sm mb-0.5 last:mb-0 `}
-              >
-                <Link
-                  href={'/dashboard/customer/'}
-                  // className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
+              {navigation.map((item) => (
+                <li
+                  className={`${
+                    router.pathname === item.href
+                      ? 'px-2 py-2 cursor-pointer  bg-gray-800 dark:bg-gray-200 rounded-lg mb-0.5  last:mb-0 '
+                      : 'px-2 py-2 cursor-pointer rounded-sm mb-0.5  last:mb-0 '
+                  }`}
                 >
-                  <div className={`flex items-center`}>
-                    <ion-icon
-                      name="wallet-outline"
-                      class="text-gray-700 dark:text-gray-200 text-3xl"
-                    ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      My funds
-                    </span>
-                  </div>
-                </Link>
-              </li>
-
-              <li
-                className={`px-2 py-2 cursor-pointer rounded-sm mb-0.5 last:mb-0 `}
-              >
-                <Link href={'/dashboard/customer/'}>
-                  <div className={`flex items-center`}>
-                    <ion-icon
-                      name="heart-outline"
-                      class="text-gray-700 text-3xl dark:text-gray-200"
-                    ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      My Donations
-                    </span>
-                  </div>
-                </Link>
-              </li>
-              {/* Analytics */}
+                  <Link href={item.href}>
+                    <div className={`flex items-center`}>
+                      <ion-icon
+                        name={item.icon}
+                        class={`${
+                          router.pathname === item.href
+                            ? 'text-gray-300 dark:text-gray-600  text-3xl'
+                            : 'text-gray-700 dark:text-gray-200 text-3xl'
+                        } `}
+                      ></ion-icon>
+                      <span
+                        className={`${
+                          router.pathname === item.href
+                            ? 'text-lg font-medium ml-3 text-gray-300 dark:text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200'
+                            : 'ext-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200'
+                        }`}
+                      >
+                        Summary
+                      </span>
+                    </div>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
