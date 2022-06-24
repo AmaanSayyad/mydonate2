@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
 
-import OrdersCards from '../../components/partials/profile/dashboard/OrdersCard';
+import OrdersCards from '../../components/partials/profile/dashboard/StatisticCard';
 import UsersCard from '../../components/partials/profile/dashboard/UsersCard';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
+import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
 
 function Profile() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,9 +35,15 @@ function Profile() {
                 </div>
               </div>
               <div className="grid grid-cols-12 gap-6">
+                <StatisticCard
+                  length={5}
+                  icon="heart-dislike-outline"
+                  title={'Pending Funds'}
+                  text="All fund to be approved"
+                />
+                {/* <OrdersCards length={7} />
                 <OrdersCards length={5} />
-                <UsersCard users={10} />
-                <OrdersCards length={7} />
+                <UsersCard users={10} /> */}
               </div>
             </div>
           </main>

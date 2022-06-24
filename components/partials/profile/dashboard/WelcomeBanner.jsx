@@ -13,7 +13,7 @@ function WelcomeBanner({ type, message, address }) {
           Welcome, Mends Albert👋
         </h1>
         <p className="text-white">
-          {message || 'Here is what’s happening with your orders today:'}
+          {message || 'Check your statistics on mydonate'}
         </p>
       </div>
     </div>
