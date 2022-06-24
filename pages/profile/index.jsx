@@ -41,9 +41,19 @@ function Profile() {
                   title={'Pending Funds'}
                   text="All fund to be approved"
                 />
-                {/* <OrdersCards length={7} />
-                <OrdersCards length={5} />
-                <UsersCard users={10} /> */}
+                <StatisticCard
+                  length={5}
+                  icon="heart-outline"
+                  title={'Donations'}
+                  text="All donations Made"
+                />
+                <StatisticCard
+                  length={5}
+                  icon="wallet-outline"
+                  title={'Donated'}
+                  text="Total of amount donated"
+                  unit={'ETH'}
+                />
               </div>
             </div>
           </main>
