@@ -99,22 +99,22 @@ function Donation() {
                       </tr>
 
                       <tr>
-                        <td class="p-4 font-medium whitespace-nowrap">
-                          Gary Barlow
+                        <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
+                          Donation to Africa...{' '}
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
-                          gary.barlow@email.com
+                          lets get rid of malaria.....
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           <strong class="bg-amber-100 text-amber-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Partially Refunded
+                            Pending
                           </strong>
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
-                          (+44) 2819 450650
+                          USD - 10,000.00 (23 ETH)
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
-                          SHOP-1573-2468
+                          Nigeria
                         </td>
                       </tr>
                     </tbody>
