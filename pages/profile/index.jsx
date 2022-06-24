@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
-import AllOrder from '../../components/partials/profile/dashboard/AllOrders';
-import AllProducts from '../../components/partials/profile/dashboard/AllProductss';
-import OrdersCards from '../../components/partials/profile/dashboard/OrdersCardss';
-import UsersCard from '../../components/partials/profile/dashboard/UsersCards';
+
+import OrdersCards from '../../components/partials/profile/dashboard/OrdersCard';
+import UsersCard from '../../components/partials/profile/dashboard/UsersCard';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 
 function Profile() {
@@ -34,7 +33,12 @@ function Profile() {
                   {/* button */}
                 </div>
               </div>
-              <div className="grid grid-cols-12 gap-6"></div>
+              <div className="grid grid-cols-12 gap-6">
+                <OrdersCards />
+                <UsersCard />
+                <OrdersCards />
+                <OrdersCards />
+              </div>
             </div>
           </main>
         </div>
