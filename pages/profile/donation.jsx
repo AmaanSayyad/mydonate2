@@ -39,16 +39,6 @@ function Donation() {
                   <table class="min-w-full text-sm divide-y divide-gray-200">
                     <thead>
                       <tr>
-                        <th class="sticky left-0 p-4 text-left bg-white">
-                          <label class="sr-only" for="row_all">
-                            Select All
-                          </label>
-                          <input
-                            class="w-5 h-5 border-gray-200 rounded"
-                            type="checkbox"
-                            id="row_all"
-                          />
-                        </th>
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
                           <div class="flex items-center">
                             Name
@@ -139,16 +129,6 @@ function Donation() {
 
                     <tbody class="divide-y divide-gray-100">
                       <tr>
-                        <td class="sticky left-0 p-4 bg-white">
-                          <label class="sr-only" for="row_1">
-                            Row 1
-                          </label>
-                          <input
-                            class="w-5 h-5 border-gray-200 rounded"
-                            type="checkbox"
-                            id="row_1"
-                          />
-                        </td>
                         <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
                           John Doe
                         </td>
@@ -169,16 +149,6 @@ function Donation() {
                       </tr>
 
                       <tr>
-                        <td class="sticky left-0 p-4 bg-white">
-                          <label class="sr-only" for="row_2">
-                            Row 2
-                          </label>
-                          <input
-                            class="w-5 h-5 border-gray-200 rounded"
-                            type="checkbox"
-                            id="row_2"
-                          />
-                        </td>
                         <td class="p-4 font-medium whitespace-nowrap">
                           Jane Doe
                         </td>
