@@ -6,19 +6,7 @@ import Donations from '../templates/home/donations';
 import TrendingDonation from '../templates/home/donations/trendingDonation';
 function Home() {
   return (
-    <div className="space-y-4 col-span-full lg:col-span-2">
-      {/* <style>
-  .no-spinners {
-    -moz-appearance: textfield;
-  }
-
-  .no-spinners::-webkit-outer-spin-button,
-  .no-spinners::-webkit-inner-spin-button {
-    margin: 0;
-    -webkit-appearance: none;
-  }
-</style> */}
-
+    <div className="space-y-4 col-span-full mt-5 lg:col-span-2">
       <section>
         <div class="relative max-w-screen-xl px-2 py-8 mx-auto">
           <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
@@ -36,7 +24,7 @@ function Home() {
               <div class="flex justify-between">
                 <div class="max-w-[35ch]">
                   <h1 class="text-2xl font-bold dark:text-gray-300">
-                    Do you have 3 times meal a day?
+                    1 child 1 dollar
                   </h1>
 
                   <div className="flex flex-row items-center space-x-2">
