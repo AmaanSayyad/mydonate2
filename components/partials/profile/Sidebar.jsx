@@ -111,9 +111,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="bar-chart-outline"
-                      class="text-gray-700 text-3xl"
+                      class="text-gray-700 dark:text-gray-200 text-3xl"
                     ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    <span className="text-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Summary
                     </span>
                   </div>
@@ -130,9 +130,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="wallet-outline"
-                      class="text-gray-700 text-3xl"
+                      class="text-gray-700 dark:text-gray-200 text-3xl"
                     ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    <span className="text-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       My funds
                     </span>
                   </div>
@@ -149,9 +149,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="heart-outline"
-                      class="text-gray-700 text-3xl"
+                      class="text-gray-700 text-3xl dark:text-gray-200"
                     ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    <span className="text-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       My Donations
                     </span>
                   </div>
@@ -172,10 +172,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 viewBox="0 0 24 24"
               >
                 <path
-                  className="text-gray-600"
+                  className="text-gray-600 dark:text-gray-200"
                   d="M19.586 11l-5-5L16 4.586 23.414 12 16 19.414 14.586 18l5-5H7v-2z"
                 />
-                <path className="text-gray-600" d="M3 23H1V1h2z" />
+                <path
+                  className="text-gray-600 dark:text-gray-200"
+                  d="M3 23H1V1h2z"
+                />
               </svg>
             </button>
           </div>

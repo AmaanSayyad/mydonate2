@@ -4,7 +4,7 @@ import GradientButton from '../../../utility/bottons/gradientButton';
 const TrendingCard = ({ title, description, image }) => {
   return (
     <div>
-      <div class="max-w-sm w-80 h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div class="max-w-sm w-max md:w-80 lg:w-80 h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <a href="#" className="w-full h-full">
           <img
             class="rounded-t-lg h-52  object-cover w-full"
@@ -15,7 +15,7 @@ const TrendingCard = ({ title, description, image }) => {
         <div class="p-5">
           <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {title}
+              {/* {title} */}
               {/* Australia Fire Outbreak */}
             </h5>
           </a>

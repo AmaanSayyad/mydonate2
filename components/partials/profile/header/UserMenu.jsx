@@ -60,7 +60,7 @@ function UserMenu() {
       </button>
 
       <Transition
-        className="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white  border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+        className="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200  border border-slate-200 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1"
         show={dropdownOpen}
         enter="transition ease-out duration-200 transform"
         enterStart="opacity-0 -translate-y-2"
@@ -75,7 +75,9 @@ function UserMenu() {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">0000 </div>
+            <div className="font-medium text-slate-800 dark:text-gray-200">
+              0000{' '}
+            </div>
             {/* <div className="text-xs text-slate-500 italic">Customer</div> */}
           </div>
           <ul>
