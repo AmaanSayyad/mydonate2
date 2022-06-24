@@ -36,8 +36,8 @@ function Profile() {
               <div className="grid grid-cols-12 gap-6">
                 <OrdersCards length={5} />
                 <UsersCard users={10} />
-                <OrdersCards />
-                <OrdersCards />
+                <OrdersCards length={7} />
+                <OrdersCards length={8} />
               </div>
             </div>
           </main>
