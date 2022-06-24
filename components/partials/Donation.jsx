@@ -102,14 +102,14 @@ function Home() {
                   <span class="text-base font-medium text-gray-700 dark:text-white">
                     50+ Donated
                   </span>
-                  <div className=" bg-gradient-to-r from-purple-600 via-blue-500 to-green-300 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-3 ">
+                  <div className=" bg-blue-600 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-3 ">
                     5 days Left{' '}
                   </div>
                 </div>
                 {/* </fieldset> */}
 
                 {/* <fieldset class=""> */}
-                <button className="inline-block -mt-10 px-8 py-3 text-sm font-medium text-white transition bg-indigo-600 rounded-full w-full active:bg-indigo-500 focus:outline-none focus:ring">
+                <button className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring">
                   Donate
                 </button>
                 {/* </fieldset> */}

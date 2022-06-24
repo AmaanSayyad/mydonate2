@@ -7,9 +7,10 @@ function Layout(props) {
       <section className="relative">
         <Header />
         <main className="flex-grow">
-          <div className="relative max-w-7xl mx-2 md:mx-auto px-2 sm:px-3">
+          {/* <div className="relative max-w-7xl mx-4 md:mx-auto px-2 sm:px-3"> */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="py-12 md:py-20">
-              <div className="max-w-xs mx-auto sm:max-w-xl  md:max-w-3xl lg:max-w-none">
+              <div className="max-w-sm mx-auto sm:max-w-xl  md:max-w-3xl lg:max-w-none">
                 {props.children}
               </div>
             </div>
