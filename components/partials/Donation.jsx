@@ -39,6 +39,9 @@ function Home() {
                     Do you have 3 times meal a day?
                   </h1>
 
+                  <p class="mt-0.5 text-sm">
+                    Some People dont event have food to eat
+                  </p>
                   <div className="flex flex-row items-center space-x-2">
                     <ion-icon name="cash-outline" class="text-xl"></ion-icon>
                     <p class="text-lg font-bold">$119.99/$20,000.00</p>
@@ -83,49 +86,16 @@ function Home() {
 
               <form class="mt-8">
                 <fieldset>
-                  <legend class="mb-1 text-sm font-medium">Color</legend>
-
-                  <div class="flow-root">
-                    <div class="flex flex-wrap -m-0.5">
-                      <label for="color_tt" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="color"
-                          id="color_tt"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-block px-3 py-1 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          Texas Tea
-                        </span>
-                      </label>
-
-                      <label for="color_fr" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="color"
-                          id="color_fr"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-block px-3 py-1 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          Fiesta Red
-                        </span>
-                      </label>
-
-                      <label for="color_cb" class="cursor-pointer p-0.5">
-                        <input
-                          type="radio"
-                          name="color"
-                          id="color_cb"
-                          class="sr-only peer"
-                        />
-
-                        <span class="inline-block px-3 py-1 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white">
-                          Cobalt Blue
-                        </span>
-                      </label>
-                    </div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-base font-medium text-blue-700 dark:text-white">
+                      Donations
+                    </span>
+                    <span class="text-sm font-medium text-blue-700 dark:text-white">
+                      45%
+                    </span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
+                    <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
                   </div>
                 </fieldset>
 
