@@ -108,10 +108,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               <li
                 className={`px-2 py-2 cursor-pointer rounded-sm mb-0.5 last:mb-0 `}
               >
-                <Link
-                  href={'/dashboard/customer/'}
-                  // className={`block text-slate-200 hover:text-white truncate transition duration-150 ${"hover:text-slate-200"}`}
-                >
+                <Link href={'/dashboard/customer/'}>
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="bar-chart-outline"
