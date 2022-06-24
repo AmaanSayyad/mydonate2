@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
+import AllOrder from '../../components/partials/profile/dashboard/AllOrders';
+import AllProducts from '../../components/partials/profile/dashboard/AllProductss';
+import OrdersCards from '../../components/partials/profile/dashboard/OrdersCardss';
+import UsersCard from '../../components/partials/profile/dashboard/UsersCards';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 
 function Profile() {
