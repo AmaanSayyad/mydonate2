@@ -4,7 +4,7 @@ function StatisticCard({ length, icon, title, text, unit }) {
   return (
     <div className=" overflow-hidden relative flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-xl border border-slate-200">
       <span class="absolute w-full inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
-      <div className="px-5 pt-5">
+      <div className="px-5 pt-5 mb-3">
         <header className="flex justify-between items-start mb-2">
           <ion-icon name={icon} class="text-5xl text-slate-800"></ion-icon>
         </header>
