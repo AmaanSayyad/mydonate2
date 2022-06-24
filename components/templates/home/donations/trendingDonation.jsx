@@ -45,7 +45,7 @@ const TrendingDonation = () => {
             ></ion-icon>
             <p className="text-xl dark:text-gray-100">Ghana</p>
           </div>
-          <Link href={'/donation'}>
+          <Link href={'/4'}>
             <GradientButton title="View details" />
           </Link>
         </div>
