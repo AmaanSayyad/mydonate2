@@ -60,21 +60,21 @@ function Donation() {
                     <tbody class="divide-y divide-gray-100">
                       <tr>
                         <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
-                          Title{' '}
+                          Donation to Africa...{' '}
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
-                          john.doe@email.com
+                          lets get rid of malaria.....
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           <strong class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Cancelled
+                            Rejected
                           </strong>
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
-                          (+44) 2198 450650
+                          USD - 10,000.00 (23 ETH)
                         </td>
                         <td class="p-4 text-gray-700 whitespace-nowrap">
-                          SHOP-1268-8910
+                          Global
                         </td>
                       </tr>
 
