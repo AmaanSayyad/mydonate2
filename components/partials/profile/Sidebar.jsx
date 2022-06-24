@@ -149,7 +149,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                             : 'ext-lg font-medium ml-3 text-gray-700 dark:text-gray-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200'
                         }`}
                       >
-                        Summary
+                        {item.name}
                       </span>
                     </div>
                   </Link>
