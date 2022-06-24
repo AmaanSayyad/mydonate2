@@ -42,7 +42,7 @@ function Home() {
                   <div className="flex flex-row items-center space-x-2">
                     <ion-icon
                       name="cash-outline"
-                      class="text-xl text-gray-200"
+                      class="text-xl dark:text-gray-200"
                     ></ion-icon>
                     <p class="text-lg font-bold dark:text-gray-200">
                       $119.99/$20,000.00
