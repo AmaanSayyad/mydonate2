@@ -35,16 +35,15 @@ function Home() {
             <div class="sticky top-0">
               <div class="flex justify-between">
                 <div class="max-w-[35ch]">
-                  <h1 class="text-2xl font-bold">
+                  <h1 class="text-2xl font-bold dark:text-gray-300">
                     Do you have 3 times meal a day?
                   </h1>
 
-                  <p class="mt-0.5 text-sm">
-                    Some People dont event have food to eat
-                  </p>
                   <div className="flex flex-row items-center space-x-2">
                     <ion-icon name="cash-outline" class="text-xl"></ion-icon>
-                    <p class="text-lg font-bold">$119.99/$20,000.00</p>
+                    <p class="text-lg font-bold dark:text-gray-200">
+                      $119.99/$20,000.00
+                    </p>
                   </div>
                 </div>
               </div>
