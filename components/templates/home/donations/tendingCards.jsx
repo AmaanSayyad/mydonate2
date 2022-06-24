@@ -14,12 +14,12 @@ const TrendingCard = ({ title, description, image }) => {
         </a>
         <div class="p-5">
           <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {/* {title} */}
+            <h5 class="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {title}
               {/* Australia Fire Outbreak */}
             </h5>
           </a>
-          <p class="mb-3 font-normal text-lg text-gray-700 dark:text-gray-400">
+          <p class="mb-3 font-normal text-md md:text-lg text-gray-700 dark:text-gray-400">
             {description}
             {/* Supporting get of australias' fire Outbreak */}
           </p>

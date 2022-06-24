@@ -54,21 +54,21 @@ const TrendingDonation = () => {
           <div class="inline-block  px-3 snap-center">
             <Card
               title="Australia Fire Outbreak"
-              description={`Supporting get of australias' fire Outbreak`}
+              description={`Supporting get of ...`}
               image={`dimage2.jpg`}
             />
           </div>
           <div class="inline-block px-3 snap-center">
             <Card
               title="Australia Fire Outbreak"
-              description={`Supporting get of australias' fire Outbreak`}
+              description={`Supporting get of ....`}
               image={`dimage3.jpg`}
             />
           </div>
           <div class="inline-block px-3 snap-center">
             <Card
               title="Australia Fire Outbreak"
-              description={`Supporting get of australias' fire Outbreak`}
+              description={`Supporting get of ....`}
               image={`dimage4.jpg`}
             />{' '}
           </div>
