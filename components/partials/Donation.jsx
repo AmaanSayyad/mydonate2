@@ -1,9 +1,5 @@
 import React from 'react';
-import StasCard from '../templates/home/statsCard';
-import HeaderImage from '../templates/home/headerImages';
-import Categories from '../templates/home/categories';
-import Donations from '../templates/home/donations';
-import TrendingDonation from '../templates/home/donations/trendingDonation';
+
 function Home() {
   return (
     <div className="space-y-4 col-span-full mt-5 lg:col-span-2">
@@ -74,36 +70,30 @@ function Home() {
                 </div>
               </details>
 
-              <form class="">
-                {/* <fieldset> */}
-                <div class="flex justify-between ">
-                  <span class="text-base font-medium text-blue-700 dark:text-white">
-                    Donations
-                  </span>
-                  <span class="text-sm font-medium text-blue-700 dark:text-white">
-                    45%
-                  </span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
-                  <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
-                </div>
+              <div class="flex justify-between ">
+                <span class="text-base font-medium text-blue-700 dark:text-white">
+                  Donations
+                </span>
+                <span class="text-sm font-medium text-blue-700 dark:text-white">
+                  45%
+                </span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
+                <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
+              </div>
 
-                <div class="flex justify-between py-4 ">
-                  <span class="text-base font-medium text-gray-700 dark:text-white">
-                    50+ Donated
-                  </span>
-                  <div className=" bg-blue-600 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-3 ">
-                    5 days Left{' '}
-                  </div>
+              <div class="flex justify-between py-4 ">
+                <span class="text-base font-medium text-gray-700 dark:text-white">
+                  50+ Donated
+                </span>
+                <div className=" bg-blue-600 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-3 ">
+                  5 days Left{' '}
                 </div>
-                {/* </fieldset> */}
+              </div>
 
-                {/* <fieldset class=""> */}
-                <button className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring">
-                  Donate
-                </button>
-                {/* </fieldset> */}
-              </form>
+              <button className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring">
+                Donate
+              </button>
             </div>
           </div>
         </div>

@@ -43,7 +43,7 @@ function Header() {
     { name: 'Home', href: '/', current: true },
     { name: 'Donations', href: '/donations', current: false },
     { name: 'About', href: '/about', current: false },
-    { name: 'Contact', href: '/contact', current: false },
+    // { name: 'Contact', href: '/contact', current: false },
   ];
 
   function classNames(...classes) {
@@ -61,11 +61,11 @@ function Header() {
         className={`fixed w-full z-30 md:bg-opacity-90 py-4 transition duration-300 ease-in-out ${
           !top && ' dark:bg-gray-800 backdrop-blur-sm bg-white  shadow-lg'
         }`}
-        // className="bg-white py-4 dark:bg-gray-800"
       >
         {({ open }) => (
           <>
-            <div className="max-w-7xl mx-auto px-2 sm:px-2">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              {/* <div className="max-w-7xl mx-auto px-2 sm:px-2"> */}
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
