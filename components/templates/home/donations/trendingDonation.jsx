@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 import Card from '../donations/tendingCards';
+import Link from 'next/link';
 const TrendingDonation = () => {
   return (
     <div className="relative flex flex-col space-y-1 ">
@@ -44,8 +45,9 @@ const TrendingDonation = () => {
             ></ion-icon>
             <p className="text-xl dark:text-gray-100">Ghana</p>
           </div>
-
-          <GradientButton title="View details" />
+          <Link href={'/donation'}>
+            <GradientButton title="View details" />
+          </Link>
         </div>
       </div>
 
