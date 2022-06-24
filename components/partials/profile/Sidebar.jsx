@@ -71,7 +71,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     },
     {
       name: 'Funds',
-      href: '/profile/funds',
+      href: '/profile/fund',
       icon: 'wallet-outline',
       current: false,
     },
