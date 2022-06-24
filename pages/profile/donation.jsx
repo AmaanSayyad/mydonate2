@@ -32,25 +32,7 @@ function Donation() {
                 </div>
               </div>
               <div className="grid grid-cols-12 gap-6">
-                <StatisticCard
-                  length={5}
-                  icon="heart-dislike-outline"
-                  title={'Pending Funds'}
-                  text="All fund to be approved"
-                />
-                <StatisticCard
-                  length={5}
-                  icon="heart-outline"
-                  title={'Donations'}
-                  text="All donations Made"
-                />
-                <StatisticCard
-                  length={5}
-                  icon="wallet-outline"
-                  title={'Donated'}
-                  text="Total of amount donated"
-                  unit={'ETH'}
-                />
+                <p>donation 'add a new table component' </p>
               </div>
             </div>
           </main>
