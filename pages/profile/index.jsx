@@ -37,7 +37,6 @@ function Profile() {
                 <OrdersCards length={5} />
                 <UsersCard users={10} />
                 <OrdersCards length={7} />
-                <OrdersCards length={8} />
               </div>
             </div>
           </main>
