@@ -96,7 +96,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           {/* Logo */}
           <div className="flex flex-col  space-y-4">
             <img src="/images/logo.svg" class="w-9" />
-            {/* <p className="text-white text-xl">myDonate</p> */}
           </div>
         </div>
 
