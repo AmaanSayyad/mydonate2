@@ -112,9 +112,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="bar-chart-outline"
-                      class="text-white text-2xl"
+                      class="text-gray-600 text-2xl"
                     ></ion-icon>
-                    <span className="text-lg font-medium ml-3 text-white lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    <span className="text-lg font-medium ml-3 text-gray-600 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Summary
                     </span>
                   </div>
