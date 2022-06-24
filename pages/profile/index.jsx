@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
-
-import OrdersCards from '../../components/partials/profile/dashboard/StatisticCard';
-import UsersCard from '../../components/partials/profile/dashboard/UsersCard';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
 
@@ -14,7 +11,7 @@ function Profile() {
 
   return (
     <>
-      <div className="flex h-screen overflow-hidden font-Montserrat">
+      <div className="flex h-screen overflow-hidden dark:bg-gray-900 font-Montserrat">
         {/* Sidebar */}
 
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
