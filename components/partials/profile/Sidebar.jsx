@@ -112,7 +112,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="bar-chart-outline"
-                      class="text-gray-700 text-2xl"
+                      class="text-gray-700 text-3xl"
                     ></ion-icon>
                     <span className="text-lg font-medium ml-3 text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       Summary
@@ -131,7 +131,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="wallet-outline"
-                      class="text-gray-700 text-2xl"
+                      class="text-gray-700 text-3xl"
                     ></ion-icon>
                     <span className="text-lg font-medium ml-3 text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       My funds
@@ -150,7 +150,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   <div className={`flex items-center`}>
                     <ion-icon
                       name="heart-outline"
-                      class="text-gray-700 text-2xl"
+                      class="text-gray-700 text-3xl"
                     ></ion-icon>
                     <span className="text-lg font-medium ml-3 text-gray-700 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                       My Donations
