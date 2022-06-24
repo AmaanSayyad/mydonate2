@@ -22,7 +22,7 @@ function Home() {
       <section>
         <div class="relative max-w-screen-xl px-4 py-8 mx-auto">
           <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
               <div class="w-full h-full">
                 <img
                   alt="Mobile Phone Stand"
