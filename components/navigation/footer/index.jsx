@@ -133,7 +133,7 @@ function Footer() {
 
           <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4">
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300 ">
+              <p class="text-lg font-medium text-gray-900 dark:text-gray-300 ">
                 About Us
               </p>
 
@@ -179,7 +179,7 @@ function Footer() {
             </div>
 
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300">
+              <p class="text-lg font-medium text-gray-900 dark:text-gray-300">
                 Our Services
               </p>
 
@@ -225,7 +225,7 @@ function Footer() {
             </div>
 
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300">
+              <p class="text-lg font-medium text-gray-900 dark:text-gray-300">
                 Helpful Links
               </p>
 
@@ -253,7 +253,7 @@ function Footer() {
             </div>
 
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300">
+              <p class="text-lg font-medium text-gray-900 dark:text-gray-300">
                 Contact Us
               </p>
 
