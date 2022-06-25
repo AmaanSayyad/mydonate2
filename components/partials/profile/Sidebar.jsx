@@ -62,17 +62,16 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       icon: 'bar-chart-outline',
       current: true,
     },
-
-    {
-      name: 'Donation',
-      href: '/profile/donation',
-      icon: 'heart-outline',
-      current: false,
-    },
     {
       name: 'Funds',
       href: '/profile/fund',
       icon: 'wallet-outline',
+      current: false,
+    },
+    {
+      name: 'Donation',
+      href: '/profile/donation',
+      icon: 'heart-outline',
       current: false,
     },
   ];
