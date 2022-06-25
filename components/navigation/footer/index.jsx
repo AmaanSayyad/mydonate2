@@ -8,16 +8,16 @@ function Footer() {
         {/* <div class="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24"> */}
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div class="flex justify-center text-teal-600 sm:justify-start">
+            <div class="flex justify-start text-teal-600 sm:justify-start">
               <img src="/images/logo.svg" className="w-16" />
             </div>
 
-            <p class="max-w-md mx-auto mt-6 leading-relaxed text-center text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left">
+            <p class="max-w-md mx-auto mt-6 leading-relaxed text-left text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
               consequuntur amet culpa cum itaque neque.
             </p>
 
-            <ul class="flex justify-center gap-6 mt-8 md:gap-8 sm:justify-start">
+            <ul class="flex justify-start gap-6 mt-8 md:gap-8 sm:justify-start">
               <li>
                 <a
                   href="/"
@@ -132,7 +132,7 @@ function Footer() {
           </div>
 
           <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4">
-            <div class="text-center sm:text-left">
+            <div class="text-left sm:text-left">
               <p class="text-lg font-medium text-gray-900">About Us</p>
 
               <nav class="mt-8">
@@ -176,7 +176,7 @@ function Footer() {
               </nav>
             </div>
 
-            <div class="text-center sm:text-left">
+            <div class="text-left sm:text-left">
               <p class="text-lg font-medium text-gray-900">Our Services</p>
 
               <nav class="mt-8">
@@ -220,7 +220,7 @@ function Footer() {
               </nav>
             </div>
 
-            <div class="text-center sm:text-left">
+            <div class="text-left sm:text-left">
               <p class="text-lg font-medium text-gray-900">Helpful Links</p>
 
               <nav class="mt-8">
@@ -242,33 +242,17 @@ function Footer() {
                       Support
                     </a>
                   </li>
-
-                  <li>
-                    <a
-                      class="flex group justify-center gap-1.5 sm:justify-start"
-                      href="/"
-                    >
-                      <span class="text-gray-700 transition group-hover:text-gray-700/75">
-                        Live Chat
-                      </span>
-
-                      <span class="relative flex w-2 h-2 -mr-2">
-                        <span class="absolute inline-flex w-full h-full bg-teal-400 rounded-full opacity-75 animate-ping"></span>
-                        <span class="relative inline-flex w-2 h-2 bg-teal-500 rounded-full"></span>
-                      </span>
-                    </a>
-                  </li>
                 </ul>
               </nav>
             </div>
 
-            <div class="text-center sm:text-left">
+            <div class="text-left sm:text-left">
               <p class="text-lg font-medium text-gray-900">Contact Us</p>
 
               <ul class="mt-8 space-y-4 text-sm">
                 <li>
                   <a
-                    class="flex items-center justify-center gap-1.5 sm:justify-start"
+                    class="flex items-center justify-start gap-1.5 sm:justify-start"
                     href="/"
                   >
                     <svg
@@ -292,7 +276,7 @@ function Footer() {
 
                 <li>
                   <a
-                    class="flex items-center justify-center gap-1.5 sm:justify-start"
+                    class="flex items-center justify-start gap-1.5 sm:justify-start"
                     href="/"
                   >
                     <svg
@@ -314,7 +298,7 @@ function Footer() {
                   </a>
                 </li>
 
-                <li class="flex items-start justify-center gap-1.5 sm:justify-start">
+                <li class="flex items-start justify-start gap-1.5 sm:justify-start">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="w-5 h-5 text-gray-900 shrink-0"
@@ -345,7 +329,7 @@ function Footer() {
         </div>
 
         <div class="pt-6 mt-12 border-t border-gray-100">
-          <div class="text-center sm:flex sm:justify-between sm:text-left">
+          <div class="text-left sm:flex sm:justify-between sm:text-left">
             <p class="text-sm text-gray-500">
               <span class="block sm:inline">All rights reserved.</span>
 
