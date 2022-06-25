@@ -45,17 +45,17 @@ function Index() {
                   text="All donations Made"
                 />
                 <StatisticCard
+                  length={'5M'}
+                  icon="people-outline"
+                  title={'Users'}
+                  text="Total of Users"
+                />
+                <StatisticCard
                   length={5}
                   icon="wallet-outline"
                   title={'Donated'}
                   text="Total of amount donated"
                   unit={'ETH'}
-                />
-                <StatisticCard
-                  length={'5M'}
-                  icon="people-outline"
-                  title={'Donated'}
-                  text="Total of Users"
                 />
               </div>
             </div>

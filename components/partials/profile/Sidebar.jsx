@@ -74,6 +74,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       icon: 'heart-outline',
       current: false,
     },
+    {
+      name: 'Settings',
+      href: '/profile/setting',
+      icon: 'settings-outline',
+      current: false,
+    },
   ];
 
   return (
@@ -89,9 +95,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0  bg-white dark:bg-gray-800 dark:border-gray-700 border-r-2 border-gray-300 p-4 transition-all duration-200 ease-in-out ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-64'
-        }`}
+        // className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0  bg-white dark:bg-gray-800 dark:border-gray-700 border-r-2 border-gray-300 p-4 transition-all duration-200 ease-in-out ${
+        //   sidebarOpen ? 'translate-x-0' : '-translate-x-64'
+        // }`}
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64   bg-white dark:bg-gray-800 dark:border-gray-700 border-r-2 border-gray-300 p-4 transition-all duration-200 ease-in-out 
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}
+          `}
       >
         {/* Sidebar header */}
         <div className="flex justify-between mb-10 pr-3 pl-2 sm:px-2">
@@ -137,7 +146,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         name={item.icon}
                         class={`${
                           router.pathname === item.href
-                            ? 'text-gray-300 dark:text-gray-600  text-3xl'
+                            ? 'text-gray-300 dark:text-gray-600   text-3xl'
                             : 'text-gray-700 dark:text-gray-200 text-3xl'
                         } `}
                       ></ion-icon>
