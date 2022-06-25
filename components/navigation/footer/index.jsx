@@ -133,13 +133,15 @@ function Footer() {
 
           <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4">
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900">About Us</p>
+              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300 ">
+                About Us
+              </p>
 
               <nav class="mt-8">
-                <ul class="space-y-4 text-sm">
+                <ul class="space-y-4 text-sm ">
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Company History
@@ -148,7 +150,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Meet the Team
@@ -157,7 +159,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Employee Handbook
@@ -166,7 +168,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Careers
@@ -177,13 +179,15 @@ function Footer() {
             </div>
 
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900">Our Services</p>
+              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300">
+                Our Services
+              </p>
 
               <nav class="mt-8">
                 <ul class="space-y-4 text-sm">
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Web Development
@@ -192,7 +196,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Web Design
@@ -201,7 +205,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Marketing
@@ -210,7 +214,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Google Ads
@@ -221,13 +225,15 @@ function Footer() {
             </div>
 
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300">
+                Helpful Links
+              </p>
 
               <nav class="mt-8">
                 <ul class="space-y-4 text-sm">
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       FAQs
@@ -236,7 +242,7 @@ function Footer() {
 
                   <li>
                     <a
-                      class="text-gray-700 transition hover:text-gray-700/75"
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
                       href="/"
                     >
                       Support
@@ -247,7 +253,9 @@ function Footer() {
             </div>
 
             <div class="text-left sm:text-left">
-              <p class="text-lg font-medium text-gray-900">Contact Us</p>
+              <p class="text-lg font-medium text-gray-900 dark:tetx-gray-300">
+                Contact Us
+              </p>
 
               <ul class="mt-8 space-y-4 text-sm">
                 <li>
