@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-800 py-20">
+    <footer className="bg-white dark:text-white dark:bg-gray-800 py-20">
       <div className="max-w-7xl mx-auto  px-4 sm:px-6">
         {/* <div class="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24"> */}
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -12,7 +12,7 @@ function Footer() {
               <img src="/images/logo.svg" className="w-16" />
             </div>
 
-            <p class="max-w-md mx-auto mt-6 leading-relaxed text-left text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left">
+            <p class="max-w-md mx-auto mt-6 leading-relaxed text-left dark:text-white text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
               consequuntur amet culpa cum itaque neque.
             </p>
