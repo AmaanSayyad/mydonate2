@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Sidebar from '../../components/partials/profile/Sidebar';
-import Header from '../../components/partials/profile/Header';
-import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
-import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
+import Sidebar from '../../components/partials/kingpin/Sidebar';
+import Header from '../../components/partials/kingpin/Header';
+import WelcomeBanner from '../../components/partials/kingpin/dashboard/WelcomeBanner';
+import StatisticCard from '../../components/partials/kingpin/dashboard/StatisticCard';
 
 function Index() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
