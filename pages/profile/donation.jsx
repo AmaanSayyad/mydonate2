@@ -45,14 +45,9 @@ function Donation() {
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
                           <div class="flex items-center">Description</div>
                         </th>
+
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Status</div>
-                        </th>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Target</div>
-                        </th>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Scope</div>
+                          <div class="flex items-center">Amount</div>
                         </th>
                       </tr>
                     </thead>
@@ -65,16 +60,9 @@ function Donation() {
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           lets get rid of malaria.....
                         </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          <strong class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Rejected
-                          </strong>
-                        </td>
+
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           USD - 10,000.00 (23 ETH)
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          Global
                         </td>
                       </tr>
 
@@ -85,16 +73,9 @@ function Donation() {
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           lets get rid of malaria.....
                         </td>
-                        <td class="p-4 whitespace-nowrap">
-                          <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Accepted
-                          </strong>
-                        </td>
+
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           USD - 10,000.00 (23 ETH)
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          Ghana
                         </td>
                       </tr>
 
@@ -105,16 +86,9 @@ function Donation() {
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           lets get rid of malaria.....
                         </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          <strong class="bg-amber-100 text-amber-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Pending
-                          </strong>
-                        </td>
+
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           USD - 10,000.00 (23 ETH)
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          Nigeria
                         </td>
                       </tr>
                     </tbody>
