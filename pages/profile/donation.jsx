@@ -47,7 +47,7 @@ function Donation() {
                         </th>
 
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Amount</div>
+                          <div class="flex items-center">Amount Donated</div>
                         </th>
                       </tr>
                     </thead>
