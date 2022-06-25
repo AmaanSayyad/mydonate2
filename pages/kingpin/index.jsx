@@ -5,7 +5,7 @@ import Header from '../../components/partials/profile/Header';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
 
-function Profile() {
+function Index() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -60,4 +60,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Index;
