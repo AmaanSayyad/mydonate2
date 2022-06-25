@@ -51,6 +51,12 @@ function Index() {
                   text="Total of amount donated"
                   unit={'ETH'}
                 />
+                <StatisticCard
+                  length={'5M'}
+                  icon="people-outline"
+                  title={'Donated'}
+                  text="Total of Users"
+                />
               </div>
             </div>
           </main>
