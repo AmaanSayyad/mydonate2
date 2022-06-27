@@ -6,7 +6,6 @@ function WelcomeBanner({ type, message, address }) {
         className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block"
         aria-hidden="true"
       ></div>
-      {/* Content */}
       <div className="relative">
         <h1 className="text-2xl md:text-3xl text-slate-200 font-bold mb-1">
           Welcome, Mends Albert👋
