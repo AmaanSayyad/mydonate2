@@ -4,12 +4,14 @@ import HeaderImage from '../templates/home/headerImages';
 import Categories from '../templates/home/categories';
 import Donations from '../templates/home/donations';
 import TrendingDonation from '../templates/home/donations/trendingDonation';
+import PinnedDonation from '../templates/home/donations/pinnedDonations';
 function Home() {
   return (
     <div className="space-y-4 col-span-full lg:col-span-2">
       <HeaderImage />
       <StasCard />
       <Categories />
+      <PinnedDonation />
       <TrendingDonation />
       <Donations />
       <div className="w-full flex flex-row justify-between">
