@@ -94,6 +94,66 @@ function Home() {
               <button className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring">
                 Donate
               </button>
+
+              <details class="relative mt-4 group">
+                <summary class="block">
+                  <div>
+                    <span class="mt-4  dark:text-gray-200 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
+                      View Doners
+                    </span>
+                  </div>
+                </summary>
+
+                <div class="pb-6 prose max-w-none dark:text-gray-300">
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm divide-y divide-gray-200">
+                      <thead>
+                        <tr>
+                          <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                            <div class="flex items-center">Address</div>
+                          </th>
+                          <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                            <div class="flex items-center">Amount</div>
+                          </th>
+                          <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                            <div class="flex items-center">Date</div>
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody class="divide-y divide-gray-100">
+                        <tr>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <strong class="bg-red-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
+                              0x000000
+                            </strong>
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            4ETH
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            26th June, 2022
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <strong class="bg-red-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
+                              0x000000
+                            </strong>
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            4ETH
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            26th June, 2022
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
