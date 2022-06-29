@@ -109,13 +109,13 @@ function Home() {
                     <table class="min-w-full text-sm divide-y divide-gray-200">
                       <thead>
                         <tr>
-                          <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                          <th class=" font-medium text-left text-gray-900 whitespace-nowrap">
                             <div class="flex items-center">Address</div>
                           </th>
-                          <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                          <th class=" font-medium text-left text-gray-900 whitespace-nowrap">
                             <div class="flex items-center">Amount</div>
                           </th>
-                          <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                          <th class="font-medium text-left text-gray-900 whitespace-nowrap">
                             <div class="flex items-center">Date</div>
                           </th>
                         </tr>
@@ -124,7 +124,7 @@ function Home() {
                       <tbody class="divide-y divide-gray-100">
                         <tr>
                           <td class="p-4 text-gray-700 whitespace-nowrap">
-                            <strong class="bg-red-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
+                            <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                               0x000000
                             </strong>
                           </td>
@@ -138,7 +138,7 @@ function Home() {
 
                         <tr>
                           <td class="p-4 text-gray-700 whitespace-nowrap">
-                            <strong class="bg-red-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
+                            <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                               0x000000
                             </strong>
                           </td>
