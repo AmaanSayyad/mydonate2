@@ -123,29 +123,25 @@ function Home() {
 
                       <tbody class="divide-y divide-gray-100">
                         <tr>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                          <td class=" text-gray-700 whitespace-nowrap">
                             <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                               0x000000
                             </strong>
                           </td>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
-                            4ETH
-                          </td>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                          <td class=" text-gray-700 whitespace-nowrap">4ETH</td>
+                          <td class=" text-gray-700 whitespace-nowrap">
                             26th June, 2022
                           </td>
                         </tr>
 
                         <tr>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                          <td class=" text-gray-700 whitespace-nowrap">
                             <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                               0x000000
                             </strong>
                           </td>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
-                            4ETH
-                          </td>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                          <td class=" text-gray-700 whitespace-nowrap">4ETH</td>
+                          <td class=" text-gray-700 whitespace-nowrap">
                             26th June, 2022
                           </td>
                         </tr>
