@@ -56,10 +56,10 @@ contract Donation {
 
   struct User {
     uint256 id;
+    address _addess;
     string userType;
     string country;
     string city;
-    string _address;
     string email;
     string residenceAddress;
     bool isRegistered;
@@ -164,7 +164,18 @@ contract Donation {
     string memory _category,
     string memory _title,
     string memory _purpose,
-    uint256 _targetAmount
+    uint256 _targetAmount,
+    string memory _userType,
+    string memory _country,
+    string memory _city,
+    string memory _email,
+    string memory _residenceAddress,
+    string memory _website,
+    string memory _facebookurl,
+    string memory _twitterurl,
+    string memory _instagramurl,
+    string memory _youtubeurl,
+    string memory _documenthash
   ) public payable {
     //validating inputs
     require(msg.value > 0, 'Price must be at least 1 wei');
@@ -178,33 +189,57 @@ contract Donation {
     require(msg.sender != address(0x0));
 
     donationCount++;
-    DonationItem storage donation = orders[ordersCount];
-    address payable _owner = companyAddress;
-    _owner.transfer(msg.value);
-    order.id = ordersCount;
-    order.owner = payable(address(msg.sender));
-    order.product = _product;
-    order.quantity = _quantity;
-    order.orderdate = block.timestamp;
-    order.price = msg.value;
-    order.addressLine = _addressline;
-    order.contact = _contact;
-    order.city = _city;
-    order.review = '';
-    order.zipcode = _zipcode;
-    order.state = _state;
-    order.recievedate = 0;
-    order.producedate = 0;
-    order.confirmdate = 0;
-    order.testdate = 0;
-    order.transportdate = 0;
-    order.pending = true;
-    order.returned = false;
-    order.confirmed = false;
-    order.produced = false;
-    order.tested = false;
-    order.transported = false;
-    order.recieved = false;
+    usersCount++;
+    DonationItem storage donation = idToDonationItem[donationCount];
+
+    donation.id = donationCount;
+    donation.owner = msg.sender;
+
+    //add user
+    donation[donationCount].User.id = usersCount;
+    donation[donationCount].User._address = msg.sender;
+    donation[donationCount].User.userType = _userType;
+    donation[donationCount].User.country = _country;
+    donation[donationCount].User.city = _city;
+    donation[donationCount].User.email = _email;
+    donation[donationCount].User.residenceAddress = _residenceAddress;
+    donation[donationCount].User.isRegistered = true;
+    donation[donationCount].User.website = _website;
+    donation[donationCount].User.facebookUrl = _facebookurl;
+    donation[donationCount].User.twitterUrl = _twitterurl;
+    donation[donationCount].User.instagramUrl = _instagramurl;
+    donation[donationCount].User.youtubeUrl = _youtubeurl;
+    donation[donationCount].User.hash = _documenthash;
+
+    users[usersCount].id = usersCount;
+    users[usersCount]._address = msg.sender;
+    users[usersCount].userType = _userType;
+    users[usersCount].country = _country;
+    users[usersCount].city = _city;
+    users[usersCount].email = _email;
+    users[usersCount].residenceAddress = _residenceAddress;
+    users[usersCount].isRegistered = true;
+    users[usersCount].website = _website;
+    users[usersCount].facebookUrl = _facebookurl;
+    users[usersCount].twitterUrl = _twitterurl;
+    users[usersCount].instagramUrl = _instagramurl;
+    users[usersCount].youtubeUrl = _youtubeurl;
+    users[usersCount].hash = _documenthash;
+
+    donation.donationsRaised = 0;
+    donation.startDate = block.timestamp;
+    donation.endDate = _endDate;
+    donation.targetedAmount = _targetAmount;
+    donation.category = _category;
+    donation.title = _title;
+    donation.hash = _imageHash;
+    donation.category = _category;
+    donation.purpose = _purpose;
+    donation.description = _description;
+    donation.completed = false;
+    donation.isPinned = false;
+    donation.isVisible = false;
+    donation.isApproved = false;
   }
 
   //add a donation
