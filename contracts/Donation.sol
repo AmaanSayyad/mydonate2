@@ -56,7 +56,7 @@ contract Donation {
 
   struct User {
     uint256 id;
-    address _addess;
+    address _address;
     string userType;
     string country;
     string city;
@@ -121,42 +121,6 @@ contract Donation {
   //modifier function
 
   //create a new donation
-  function uploadDonation(
-    string memory _imageHash,
-    string memory _description,
-    uint256 _endDate,
-    string memory _category,
-    string memory _title,
-    uint256 _targetPrice
-  ) public {
-    //make sure the image hash exist
-    require(bytes(_imageHash).length > 0, 'Image Hash is required');
-
-    //make sure image description exist
-    require(bytes(_description).length > 0, 'Image description is required');
-    require(bytes(_category).length > 0, 'Image description is required');
-    require(bytes(_title).length > 0, 'Image description is required');
-
-    //make sure uploader address exist
-    require(msg.sender != address(0x0));
-    donationCount++;
-    DonationItem storage donation = idToDonationItem[donationCount];
-    donation.donationAmount = 0;
-    donation.owner = payable(address(msg.sender));
-    doners[donationCount][donersCount] = address(0x0);
-    donation.startDate = block.timestamp;
-    donation.endDate = _endDate;
-    donation.targetPrice = _targetPrice;
-    donation.category = _category;
-    donation.title = _title;
-    donation.id = donationCount;
-    donation.hash = _imageHash;
-    donation.description = _description;
-    donation.completed = false;
-    // emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
-  }
-
-  //create a new donation
   function addDonation(
     string memory _imageHash,
     string memory _description,
@@ -181,11 +145,11 @@ contract Donation {
     require(msg.value > 0, 'Price must be at least 1 wei');
     require(bytes(_imageHash).length > 0, 'Image Hash is required');
     require(bytes(_description).length > 0, 'Description is required');
-    require(bytes(_endDate).length > 0, 'End Date is required');
+    // require(bytes(_endDate).length > 0, 'End Date is required');
     require(bytes(_category).length > 0, 'Category is required');
     require(bytes(_title).length > 0, 'Title is required');
     require(bytes(_purpose).length > 0, 'Purpose is required');
-    require(bytes(_targetAmount).length > 0, 'Targeted amount is required');
+    // require(bytes(_targetAmount).length > 0, 'Targeted amount is required');
     require(msg.sender != address(0x0));
 
     donationCount++;
@@ -193,23 +157,23 @@ contract Donation {
     DonationItem storage donation = idToDonationItem[donationCount];
 
     donation.id = donationCount;
-    donation.owner = msg.sender;
+    donation.owner = payable(address(msg.sender));
 
     //add user
-    donation[donationCount].User.id = usersCount;
-    donation[donationCount].User._address = msg.sender;
-    donation[donationCount].User.userType = _userType;
-    donation[donationCount].User.country = _country;
-    donation[donationCount].User.city = _city;
-    donation[donationCount].User.email = _email;
-    donation[donationCount].User.residenceAddress = _residenceAddress;
-    donation[donationCount].User.isRegistered = true;
-    donation[donationCount].User.website = _website;
-    donation[donationCount].User.facebookUrl = _facebookurl;
-    donation[donationCount].User.twitterUrl = _twitterurl;
-    donation[donationCount].User.instagramUrl = _instagramurl;
-    donation[donationCount].User.youtubeUrl = _youtubeurl;
-    donation[donationCount].User.hash = _documenthash;
+    donation.user.id = usersCount;
+    donation.user._address = msg.sender;
+    donation.user.userType = _userType;
+    donation.user.country = _country;
+    donation.user.city = _city;
+    donation.user.email = _email;
+    donation.user.residenceAddress = _residenceAddress;
+    donation.user.isRegistered = true;
+    donation.user.website = _website;
+    donation.user.facebookUrl = _facebookurl;
+    donation.user.twitterUrl = _twitterurl;
+    donation.user.instagramUrl = _instagramurl;
+    donation.user.youtubeUrl = _youtubeurl;
+    donation.user.hash = _documenthash;
 
     users[usersCount].id = usersCount;
     users[usersCount]._address = msg.sender;
