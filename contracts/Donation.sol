@@ -11,12 +11,15 @@ contract Donation {
   using SafeMath for uint256;
 
   AggregatorV3Interface internal eth_usd_price_feed;
-  // FeedRegistryInterface internal registry;
+
   mapping(uint256 => DonationItem) public idToDonationItem;
-  mapping(uint256 => mapping(uint256 => address)) public doners;
+  mapping(uint256 => mapping(uint256 => Doners)) public doners;
+  mapping(uint256 => User) public users;
 
   uint256 public donersCount = 0;
   uint256 public donationCount = 0;
+  uint256 public usersCount = 0;
+  uint256 public amountRaised = 0;
 
   constructor() {
     eth_usd_price_feed = AggregatorV3Interface(
@@ -24,46 +27,70 @@ contract Donation {
     );
   }
 
+  struct DonationItem {
+    uint256 id;
+    address payable owner;
+    User user;
+    uint256 donationsRaised;
+    uint256 startDate;
+    uint256 endDate;
+    uint256 targetedAmount;
+    string category;
+    string title;
+    string hash;
+    string purpose;
+    string description;
+    bool completed;
+    bool isPinned;
+    bool isVisible;
+    bool isApproved;
+  }
+
   struct Doners {
     uint256 id;
     uint256 amount;
     uint256 date;
+    address doner;
   }
 
-  struct DonationItem {
+  struct User {
     uint256 id;
-    address payable owner;
-    uint256 donationAmount;
-    uint256 startDate;
-    uint256 endDate;
-    uint256 targetPrice;
-    string category;
-    string title;
+    string userType;
+    string country;
+    string city;
+    string _address;
+    string email;
+    string residenceAddress;
+    bool isRegistered;
+    string website;
+    string facebookUrl;
+    string twitterUrl;
+    string instagramUrl;
+    string youtubeUrl;
     string hash;
-    string description;
-    bool completed;
   }
 
-  event DonationItemCreated(
-    uint256 indexed id,
-    address owner,
-    uint256 donationAmount,
-    uint256 donersConut,
-    uint256 startDate,
-    uint256 endDate,
-    uint256 targetPrice,
-    string category,
-    string title,
-    string hash,
-    string description,
-    bool completed
-  );
+  // event DonationItemCreated(
+  //   uint256 indexed id,
+  //   address owner,
+  //   uint256 donationAmount,
+  //   uint256 donersConut,
+  //   uint256 startDate,
+  //   uint256 endDate,
+  //   uint256 targetPrice,
+  //   string category,
+  //   string title,
+  //   string hash,
+  //   string description,
+  //   bool completed
 
-  event DonationTiped(
-    uint256 indexed id,
-    address sender,
-    uint256 donationAmount
-  );
+  // );
+
+  // event DonationTiped(
+  //   uint256 indexed id,
+  //   address sender,
+  //   uint256 donationAmount
+  // );
 
   //get EthUsd
   function getEthUsd() public view returns (uint256) {
@@ -89,6 +116,8 @@ contract Donation {
     uint256 EthUsd = getEthUsd();
     return _amountInUsd.mul(10**16).div(EthUsd);
   }
+
+  //modifier function
 
   //create a new donation
   function uploadDonation(
@@ -124,6 +153,50 @@ contract Donation {
     donation.description = _description;
     donation.completed = false;
     // emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
+  }
+
+  //create a new donation
+  function addDonation(
+    string memory _imageHash,
+    string memory _description,
+    uint256 _endDate,
+    string memory _category,
+    string memory _title,
+    string memory _purpose,
+    uint256 _targetAmount
+  ) public payable {
+    require(msg.value > 0, 'Price must be at least 1 wei');
+    require(_quantity > 0, 'quantity must be greater than 0');
+    require(msg.sender != address(0x0));
+    ordersCount++;
+    usersCount++;
+    OrderItem storage order = orders[ordersCount];
+    address payable _owner = companyAddress;
+    _owner.transfer(msg.value);
+    order.id = ordersCount;
+    order.owner = payable(address(msg.sender));
+    order.product = _product;
+    order.quantity = _quantity;
+    order.orderdate = block.timestamp;
+    order.price = msg.value;
+    order.addressLine = _addressline;
+    order.contact = _contact;
+    order.city = _city;
+    order.review = '';
+    order.zipcode = _zipcode;
+    order.state = _state;
+    order.recievedate = 0;
+    order.producedate = 0;
+    order.confirmdate = 0;
+    order.testdate = 0;
+    order.transportdate = 0;
+    order.pending = true;
+    order.returned = false;
+    order.confirmed = false;
+    order.produced = false;
+    order.tested = false;
+    order.transported = false;
+    order.recieved = false;
   }
 
   //add a donation
