@@ -15,6 +15,8 @@ contract Donation {
   mapping(uint256 => DonationItem) public idToDonationItem;
   mapping(uint256 => mapping(uint256 => Doners)) public doners;
   mapping(uint256 => User) public users;
+  mapping(address => bool) public registeredUsers;
+
   address payable companyAddress;
 
   uint256 public donersCount = 0;
@@ -159,37 +161,41 @@ contract Donation {
     donation.id = donationCount;
     donation.owner = payable(address(msg.sender));
 
+    // check if user is already registered
+    if (registeredUsers[msg.sender] == false) {
+      donation.user.id = usersCount;
+      donation.user._address = msg.sender;
+      donation.user.userType = _userType;
+      donation.user.country = _country;
+      donation.user.city = _city;
+      donation.user.email = _email;
+      donation.user.residenceAddress = _residenceAddress;
+      donation.user.isRegistered = true;
+      donation.user.website = _website;
+      donation.user.facebookUrl = _facebookurl;
+      donation.user.twitterUrl = _twitterurl;
+      donation.user.instagramUrl = _instagramurl;
+      donation.user.youtubeUrl = _youtubeurl;
+      donation.user.hash = _documenthash;
+
+      users[usersCount].id = usersCount;
+      users[usersCount]._address = msg.sender;
+      users[usersCount].userType = _userType;
+      users[usersCount].country = _country;
+      users[usersCount].city = _city;
+      users[usersCount].email = _email;
+      users[usersCount].residenceAddress = _residenceAddress;
+      users[usersCount].isRegistered = true;
+      users[usersCount].website = _website;
+      users[usersCount].facebookUrl = _facebookurl;
+      users[usersCount].twitterUrl = _twitterurl;
+      users[usersCount].instagramUrl = _instagramurl;
+      users[usersCount].youtubeUrl = _youtubeurl;
+      users[usersCount].hash = _documenthash;
+      registeredUsers[msg.sender] = true;
+    }
+
     //add user
-    donation.user.id = usersCount;
-    donation.user._address = msg.sender;
-    donation.user.userType = _userType;
-    donation.user.country = _country;
-    donation.user.city = _city;
-    donation.user.email = _email;
-    donation.user.residenceAddress = _residenceAddress;
-    donation.user.isRegistered = true;
-    donation.user.website = _website;
-    donation.user.facebookUrl = _facebookurl;
-    donation.user.twitterUrl = _twitterurl;
-    donation.user.instagramUrl = _instagramurl;
-    donation.user.youtubeUrl = _youtubeurl;
-    donation.user.hash = _documenthash;
-
-    users[usersCount].id = usersCount;
-    users[usersCount]._address = msg.sender;
-    users[usersCount].userType = _userType;
-    users[usersCount].country = _country;
-    users[usersCount].city = _city;
-    users[usersCount].email = _email;
-    users[usersCount].residenceAddress = _residenceAddress;
-    users[usersCount].isRegistered = true;
-    users[usersCount].website = _website;
-    users[usersCount].facebookUrl = _facebookurl;
-    users[usersCount].twitterUrl = _twitterurl;
-    users[usersCount].instagramUrl = _instagramurl;
-    users[usersCount].youtubeUrl = _youtubeurl;
-    users[usersCount].hash = _documenthash;
-
     donation.donationsRaised = 0;
     donation.startDate = block.timestamp;
     donation.endDate = _endDate;
@@ -206,6 +212,7 @@ contract Donation {
     donation.isApproved = false;
   }
 
+  //
   //add a donation
   function addDonation(uint256 _id) public payable {
     require(_id > 0 && _id <= donationCount);
