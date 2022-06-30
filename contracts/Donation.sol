@@ -123,7 +123,7 @@ contract Donation {
   //modifier function
 
   //create a new donation
-  function addDonation(
+  function createDonation(
     string memory _imageHash,
     string memory _description,
     uint256 _endDate,
@@ -212,7 +212,47 @@ contract Donation {
     donation.isApproved = false;
   }
 
-  //
+  //add a donation
+  function addDonation(uint256 _id) public payable {
+    require(_id > 0 && _id <= donationCount);
+    DonationItem storage donation = idToDonationItem[_id];
+    //check date if it expired.
+    if (donation.donationsRaised >= donation.targetedAmount) {
+      donation.completed = true;
+    }
+    address payable _owner = donation.owner;
+    _owner.transfer(msg.value);
+    amountRaised = amountRaised + msg.value;
+    donation.donationsRaised = donation.donationsRaised + msg.value;
+    donersCount++;
+
+    // doners[donation.id][donersCount].id = address(msg.sender);
+    doners[donation.id][donersCount].id = donersCount;
+    doners[donation.id][donersCount].amount = msg.value;
+    doners[donation.id][donersCount].date = block.timestamp;
+    doners[donation.id][donersCount].doner = address(msg.sender);
+    idToDonationItem[_id] = donation;
+  }
+
+  //approve a donation
+
+  //pin donation
+
+  //getter functions
+
+  //get already registered users
+  //get all donations
+  //get all donations under a category
+  //get all pinned donations
+  //get all approved donations
+  //get all pending donation
+  //get a single donation
+  //get all doners
+
+  //get all my donations
+  //get all my amount donated
+  //get all my pendinge donations
+
   //add a donation
   function addDonation(uint256 _id) public payable {
     require(_id > 0 && _id <= donationCount);
