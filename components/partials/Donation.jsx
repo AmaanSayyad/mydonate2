@@ -96,14 +96,6 @@ function Home() {
               </button>
 
               <details class="relative mt-4 group">
-                <summary class="block">
-                  <div>
-                    <span class="mt-4  dark:text-gray-200 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
-                      View Doners
-                    </span>
-                  </div>
-                </summary>
-
                 <div class="pb-6 prose max-w-none dark:text-gray-300">
                   <div class="overflow-x-auto">
                     <table class="min-w-full text-sm divide-y divide-gray-200">
@@ -123,7 +115,7 @@ function Home() {
 
                       <tbody class="divide-y divide-gray-100">
                         <tr>
-                          <td class=" text-gray-700 whitespace-nowrap">
+                          <td class="py-2 text-gray-700 whitespace-nowrap">
                             <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                               0x000000
                             </strong>
@@ -135,7 +127,7 @@ function Home() {
                         </tr>
 
                         <tr>
-                          <td class=" text-gray-700 whitespace-nowrap">
+                          <td class="py-2 text-gray-700 whitespace-nowrap">
                             <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                               0x000000
                             </strong>
@@ -149,6 +141,14 @@ function Home() {
                     </table>
                   </div>
                 </div>
+
+                <summary class="block">
+                  <div>
+                    <span class="mt-4  dark:text-gray-200 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
+                      View Doners
+                    </span>
+                  </div>
+                </summary>
               </details>
             </div>
           </div>
