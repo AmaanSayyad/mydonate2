@@ -15,6 +15,7 @@ contract Donation {
   mapping(uint256 => DonationItem) public idToDonationItem;
   mapping(uint256 => mapping(uint256 => Doners)) public doners;
   mapping(uint256 => User) public users;
+  address payable companyAddress;
 
   uint256 public donersCount = 0;
   uint256 public donationCount = 0;
@@ -165,12 +166,19 @@ contract Donation {
     string memory _purpose,
     uint256 _targetAmount
   ) public payable {
+    //validating inputs
     require(msg.value > 0, 'Price must be at least 1 wei');
-    require(_quantity > 0, 'quantity must be greater than 0');
+    require(bytes(_imageHash).length > 0, 'Image Hash is required');
+    require(bytes(_description).length > 0, 'Description is required');
+    require(bytes(_endDate).length > 0, 'End Date is required');
+    require(bytes(_category).length > 0, 'Category is required');
+    require(bytes(_title).length > 0, 'Title is required');
+    require(bytes(_purpose).length > 0, 'Purpose is required');
+    require(bytes(_targetAmount).length > 0, 'Targeted amount is required');
     require(msg.sender != address(0x0));
-    ordersCount++;
-    usersCount++;
-    OrderItem storage order = orders[ordersCount];
+
+    donationCount++;
+    DonationItem storage donation = orders[ordersCount];
     address payable _owner = companyAddress;
     _owner.transfer(msg.value);
     order.id = ordersCount;
