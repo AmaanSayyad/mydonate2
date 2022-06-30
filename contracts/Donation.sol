@@ -47,6 +47,7 @@ contract Donation {
     bool isPinned;
     bool isVisible;
     bool isApproved;
+    uint256 approvedDate;
   }
 
   struct Doners {
@@ -210,6 +211,7 @@ contract Donation {
     donation.isPinned = false;
     donation.isVisible = false;
     donation.isApproved = false;
+    donation.approvedDate = '';
   }
 
   //add a donation
@@ -235,7 +237,16 @@ contract Donation {
   }
 
   //approve a donation
-
+  function approveDonation(uint256 _id) public {
+    require(_id > 0 && _id <= donationCount, 'donation id not valid');
+    DonationItem storage donation = idToDonationItem[_id];
+    require(donation.isApproved == false);
+    require(donation.isVisible == false);
+    donation.isApproved = true;
+    donation.isVisible = true;
+    donation.approvedDate = block.timestamp;
+    idToDonationItem[_id] = donation;
+  }
   //pin donation
 
   //getter functions
@@ -252,25 +263,4 @@ contract Donation {
   //get all my donations
   //get all my amount donated
   //get all my pendinge donations
-
-  //add a donation
-  function addDonation(uint256 _id) public payable {
-    require(_id > 0 && _id <= donationCount);
-    DonationItem storage _donation = idToDonationItem[_id];
-    require(_donation.completed == false);
-    require(_donation.donationAmount <= _donation.targetPrice);
-
-    //check date if it expired.
-    if (_donation.donationAmount >= _donation.targetPrice) {
-      _donation.completed = true;
-    }
-
-    address payable _owner = _donation.owner;
-    _owner.transfer(msg.value);
-    _donation.donationAmount = _donation.donationAmount + msg.value;
-    donersCount++;
-    doners[_donation.id][donersCount] = address(msg.sender);
-    idToDonationItem[_id] = _donation;
-    // emit DonationTiped(_id, msg.sender, msg.value);
-  }
 }
