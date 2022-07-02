@@ -23,6 +23,7 @@ contract Donation {
   uint256 public donationCount = 0;
   uint256 public usersCount = 0;
   uint256 public amountRaised = 0;
+  uint256 private constant donationPercentage = 100 / 1.7;
 
   constructor() {
     eth_usd_price_feed = AggregatorV3Interface(
@@ -45,6 +46,8 @@ contract Donation {
     string description;
     bool completed;
     bool isPinned;
+    uint256 pinnedDuration;
+    uint256 pinnedEndDate;
     bool isVisible;
     bool isApproved;
     uint256 approvedDate;
@@ -212,10 +215,12 @@ contract Donation {
     donation.isVisible = false;
     donation.isApproved = false;
     donation.approvedDate = '';
+    donation.pinnedDuration = '';
+    donation.pinnedEndDate = '';
   }
 
   //add a donation
-  function addDonation(uint256 _id) public payable {
+  function addDonation(uint256 _id, uint256 _percentage) public payable {
     require(_id > 0 && _id <= donationCount);
     DonationItem storage donation = idToDonationItem[_id];
     //check date if it expired.
@@ -223,12 +228,15 @@ contract Donation {
       donation.completed = true;
     }
     address payable _owner = donation.owner;
-    _owner.transfer(msg.value);
+    uint256 percentile = 100.div(_percentage);
+    uint256 deduction = msg.value.div(percentile);
+    // uint256 deduction = ((msg.value)/(100/_percentage));
+    _owner.transfer(msg.value.sub(deduction));
+    //tranfer amount to business contract
+    companyAddress.tranfer(deduction);
     amountRaised = amountRaised + msg.value;
     donation.donationsRaised = donation.donationsRaised + msg.value;
     donersCount++;
-
-    // doners[donation.id][donersCount].id = address(msg.sender);
     doners[donation.id][donersCount].id = donersCount;
     doners[donation.id][donersCount].amount = msg.value;
     doners[donation.id][donersCount].date = block.timestamp;
@@ -249,11 +257,20 @@ contract Donation {
   }
 
   //pin donation
-  function pinDonation(uint256 _id) public {
+  function pinDonation(
+    uint256 _id,
+    uint256 _duration,
+    uint256 _pinnedEndDate
+  ) public {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
     require(donation.isPinned == false);
     require(donation.isApproved == true);
+    require(donation.pinnedEndDate < block.timestamp);
+    //send money to company address
+    companyAddress.tranfer(msg.value);
+    donation.pinnedDuration = _duration;
+    donation.pinnedEndDate = _pinnedEndDate;
     donation.isPinned = true;
     idToDonationItem[_id] = donation;
   }
@@ -268,13 +285,29 @@ contract Donation {
       return false;
     }
   }
+
   //get all donations
+  function fetchAllDonationItems() public view returns (ProductItem[] memory) {
+    uint256 itemCount = productCount;
+    uint256 currentIndex = 0;
+    ProductItem[] memory items = new ProductItem[](itemCount);
+    for (uint256 i = 0; i < itemCount; i++) {
+      uint256 currentId = i + 1;
+      ProductItem storage currentItem = idToProductItem[currentId];
+      items[currentIndex] = currentItem;
+      currentIndex += 1;
+    }
+    return items;
+  }
+
   //get all donations under a category
   //get all pinned donations
   //get all approved donations
   //get all pending donation
   //get a single donation
   //get all doners
+  //get all expired pinned donations
+  //net worth of the comapny
 
   //get all my donations
   //get all my amount donated
