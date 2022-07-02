@@ -17,13 +17,15 @@ contract Donation {
   mapping(uint256 => User) public users;
   mapping(address => bool) public registeredUsers;
 
-  address payable companyAddress;
+  address payable companyAddress = payable(address(this));
+  // address payable companyAddress;
 
   uint256 public donersCount = 0;
   uint256 public donationCount = 0;
   uint256 public usersCount = 0;
   uint256 public amountRaised = 0;
-  uint256 private constant donationPercentage = 100 / 1.7;
+
+  // uint256 private constant donationPercentage = 100 / 1.7;
 
   constructor() {
     eth_usd_price_feed = AggregatorV3Interface(
@@ -214,9 +216,9 @@ contract Donation {
     donation.isPinned = false;
     donation.isVisible = false;
     donation.isApproved = false;
-    donation.approvedDate = '';
-    donation.pinnedDuration = '';
-    donation.pinnedEndDate = '';
+    donation.approvedDate = 0;
+    donation.pinnedDuration = 0;
+    donation.pinnedEndDate = 0;
   }
 
   //add a donation
@@ -228,12 +230,15 @@ contract Donation {
       donation.completed = true;
     }
     address payable _owner = donation.owner;
-    uint256 percentile = 100.div(_percentage);
+    uint256 percent = 100;
+    uint256 percentile = percent.div(_percentage);
     uint256 deduction = msg.value.div(percentile);
     // uint256 deduction = ((msg.value)/(100/_percentage));
     _owner.transfer(msg.value.sub(deduction));
-    //tranfer amount to business contract
-    companyAddress.tranfer(deduction);
+    //tranfer amount to business address
+    // companyAddress.tranfer(deduction);
+    // companyAddress.tranfer(msg.value);
+
     amountRaised = amountRaised + msg.value;
     donation.donationsRaised = donation.donationsRaised + msg.value;
     donersCount++;
@@ -287,13 +292,13 @@ contract Donation {
   }
 
   //get all donations
-  function fetchAllDonationItems() public view returns (ProductItem[] memory) {
-    uint256 itemCount = productCount;
+  function fetchAllDonationItems() public view returns (DonationItem[] memory) {
+    uint256 itemCount = donationCount;
     uint256 currentIndex = 0;
-    ProductItem[] memory items = new ProductItem[](itemCount);
+    DonationItem[] memory items = new DonationItem[](itemCount);
     for (uint256 i = 0; i < itemCount; i++) {
       uint256 currentId = i + 1;
-      ProductItem storage currentItem = idToProductItem[currentId];
+      DonationItem storage currentItem = idToDonationItem[currentId];
       items[currentIndex] = currentItem;
       currentIndex += 1;
     }
