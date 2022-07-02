@@ -247,11 +247,27 @@ contract Donation {
     donation.approvedDate = block.timestamp;
     idToDonationItem[_id] = donation;
   }
+
   //pin donation
+  function pinDonation(uint256 _id) public {
+    require(_id > 0 && _id <= donationCount, 'donation id not valid');
+    DonationItem storage donation = idToDonationItem[_id];
+    require(donation.isPinned == false);
+    require(donation.isApproved == true);
+    donation.isPinned = true;
+    idToDonationItem[_id] = donation;
+  }
 
   //getter functions
 
   //get already registered users
+  function isUserRegistered() public view returns (bool) {
+    if (registeredUsers[msg.sender] == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   //get all donations
   //get all donations under a category
   //get all pinned donations
