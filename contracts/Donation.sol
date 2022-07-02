@@ -17,9 +17,8 @@ contract Donation {
   mapping(uint256 => User) public users;
   mapping(address => bool) public registeredUsers;
 
-  address payable companyAddress = payable(address(this));
   // address payable companyAddress;
-
+  address payable companyAddress;
   uint256 public donersCount = 0;
   uint256 public donationCount = 0;
   uint256 public usersCount = 0;
@@ -28,6 +27,7 @@ contract Donation {
   // uint256 private constant donationPercentage = 100 / 1.7;
 
   constructor() {
+    companyAddress = payable(msg.sender);
     eth_usd_price_feed = AggregatorV3Interface(
       0x9326BFA02ADD2366b30bacB125260Af641031331
     );
@@ -236,8 +236,9 @@ contract Donation {
     // uint256 deduction = ((msg.value)/(100/_percentage));
     _owner.transfer(msg.value.sub(deduction));
     //tranfer amount to business address
+    address payable caddr = companyAddress;
+    caddr.transfer(deduction);
     // companyAddress.tranfer(deduction);
-    // companyAddress.tranfer(msg.value);
 
     amountRaised = amountRaised + msg.value;
     donation.donationsRaised = donation.donationsRaised + msg.value;
@@ -266,14 +267,16 @@ contract Donation {
     uint256 _id,
     uint256 _duration,
     uint256 _pinnedEndDate
-  ) public {
+  ) public payable {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
     require(donation.isPinned == false);
     require(donation.isApproved == true);
     require(donation.pinnedEndDate < block.timestamp);
     //send money to company address
-    companyAddress.tranfer(msg.value);
+    // companyAddress.tranfer(msg.value);
+    address payable caddr = companyAddress;
+    caddr.transfer(msg.value);
     donation.pinnedDuration = _duration;
     donation.pinnedEndDate = _pinnedEndDate;
     donation.isPinned = true;
