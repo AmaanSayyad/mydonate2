@@ -1,13 +1,13 @@
-const hre = require("hardhat");
+const hre = require('hardhat');
 
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
 
-  console.log("Deploying contracts with the account:", deployer.address);
+  console.log('Deploying contracts with the account:', deployer.address);
 
   let txHash, txReceipt;
 
-  const Schain = await hre.ethers.getContractFactory("Schain");
+  const Schain = await hre.ethers.getContractFactory('Donation');
   const schain = await Schain.deploy();
   await schain.deployed();
 
@@ -15,7 +15,7 @@ async function main() {
   txReceipt = await ethers.provider.waitForTransaction(txHash);
   let schainAddress = txReceipt.contractAddress;
 
-  console.log("schain contract address", schainAddress);
+  console.log('schain contract address', schainAddress);
 }
 
 main()

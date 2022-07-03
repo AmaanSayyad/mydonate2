@@ -1,4 +1,1 @@
-//contract address
-// export const schainAddress = "0x738F8189F8a7cE9f4D324968BE8bb262eE867206";
-
-export const schainAddress = "0x1B4BF4A3e5BBF7C06a6F2a48b7d8250EF626d30c";
+export const donationAddress = '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6';

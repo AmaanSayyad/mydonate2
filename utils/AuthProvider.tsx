@@ -4,17 +4,17 @@ import {
   useEffect,
   useCallback,
   useReducer,
-} from "react";
-import { useRouter } from "next/router";
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import { ethers, providers } from "ethers";
-import { schainAddress } from "../config";
-import axios from "axios";
-import WalletLink from "walletlink";
-import schainContract from "../artifacts/contracts/Schain.sol/Schain.json";
-import Web3Modal from "web3modal";
-import { ellipseAddress, getChainData } from "../lib/utilities";
-import { sign, verify } from "crypto";
+} from 'react';
+import { useRouter } from 'next/router';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+import { ethers, providers } from 'ethers';
+import { donationAddress } from '../config';
+import axios from 'axios';
+import WalletLink from 'walletlink';
+import donationContract from '../artifacts/contracts/Donation.sol/Donation.json';
+import Web3Modal from 'web3modal';
+import { ellipseAddress, getChainData } from '../lib/utilities';
+import { sign, verify } from 'crypto';
 
 //write a type for status and user
 type authContextType = {
@@ -24,10 +24,11 @@ type authContextType = {
   contract?: any;
   address?: string;
   chainId?: number;
-  connect?: (value: string) => void;
+  connect?: () => void;
   disconnect?: () => void;
   logout?: () => void;
 };
+
 const authContextDefaultValues: authContextType = {
   provider: null,
   signer: null,
@@ -39,11 +40,12 @@ const authContextDefaultValues: authContextType = {
   disconnect: null,
   logout: () => {},
 };
+
 export const AuthContext = createContext<authContextType>(
   authContextDefaultValues
 );
 
-const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
+const INFURA_ID = '460f40a260564ac4a4f4b3fffb032dad';
 
 const providerOptions = {
   walletconnect: {
@@ -52,14 +54,15 @@ const providerOptions = {
       infuraId: INFURA_ID, // required
     },
   },
-  "custom-walletlink": {
+
+  'custom-walletlink': {
     display: {
-      logo: "https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0",
-      name: "Coinbase",
-      description: "Connect to Coinbase Wallet (not Coinbase App)",
+      logo: 'https://play-lh.googleusercontent.com/PjoJoG27miSglVBXoXrxBSLveV6e3EeBPpNY55aiUUBM9Q1RCETKCOqdOkX2ZydqVf0',
+      name: 'Coinbase',
+      description: 'Connect to Coinbase Wallet (not Coinbase App)',
     },
     options: {
-      appName: "Coinbase", // Your app name
+      appName: 'Coinbase', // Your app name
       networkUrl: `https://mainnet.infura.io/v3/${INFURA_ID}`,
       chainId: 1,
     },
@@ -77,9 +80,9 @@ const providerOptions = {
 };
 
 let web3Modal;
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   web3Modal = new Web3Modal({
-    network: "mainnet", // optional
+    network: 'mainnet', // optional
     cacheProvider: true,
     providerOptions, // required
   });
@@ -96,32 +99,32 @@ type StateType = {
 
 type ActionType =
   | {
-      type: "SET_WEB3_PROVIDER";
-      provider?: StateType["provider"];
-      web3Provider?: StateType["web3Provider"];
-      address?: StateType["address"];
-      chainId?: StateType["chainId"];
+      type: 'SET_WEB3_PROVIDER';
+      provider?: StateType['provider'];
+      web3Provider?: StateType['web3Provider'];
+      address?: StateType['address'];
+      chainId?: StateType['chainId'];
     }
   | {
-      type: "SET_CONTRACT";
+      type: 'SET_CONTRACT';
 
-      contract?: StateType["contract"];
+      contract?: StateType['contract'];
     }
   | {
-      type: "SET_SIGNER";
+      type: 'SET_SIGNER';
 
-      signer?: StateType["signer"];
+      signer?: StateType['signer'];
     }
   | {
-      type: "SET_ADDRESS";
-      address?: StateType["address"];
+      type: 'SET_ADDRESS';
+      address?: StateType['address'];
     }
   | {
-      type: "SET_CHAIN_ID";
-      chainId?: StateType["chainId"];
+      type: 'SET_CHAIN_ID';
+      chainId?: StateType['chainId'];
     }
   | {
-      type: "RESET_WEB3_PROVIDER";
+      type: 'RESET_WEB3_PROVIDER';
     };
 
 const initialState: StateType = {
@@ -135,7 +138,7 @@ const initialState: StateType = {
 
 function reducer(state: StateType, action: ActionType): StateType {
   switch (action.type) {
-    case "SET_WEB3_PROVIDER":
+    case 'SET_WEB3_PROVIDER':
       return {
         ...state,
         provider: action.provider,
@@ -143,28 +146,28 @@ function reducer(state: StateType, action: ActionType): StateType {
         address: action.address,
         chainId: action.chainId,
       };
-    case "SET_CONTRACT":
+    case 'SET_CONTRACT':
       return {
         ...state,
 
         contract: action.contract,
       };
-    case "SET_SIGNER":
+    case 'SET_SIGNER':
       return {
         ...state,
         signer: action.signer,
       };
-    case "SET_ADDRESS":
+    case 'SET_ADDRESS':
       return {
         ...state,
         address: action.address,
       };
-    case "SET_CHAIN_ID":
+    case 'SET_CHAIN_ID':
       return {
         ...state,
         chainId: action.chainId,
       };
-    case "RESET_WEB3_PROVIDER":
+    case 'RESET_WEB3_PROVIDER':
       return initialState;
     default:
       throw new Error();
@@ -179,28 +182,31 @@ const AuthProvider = ({ children }) => {
   async function loadContracts() {
     /* create a generic provider and query for unsold market items */
     // const provider = new ethers.providers.JsonRpcProvider();
-    const provider = new ethers.providers.JsonRpcProvider('https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c');
-    // "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
-    //
+    const provider = new ethers.providers.JsonRpcProvider(
+      'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
+    );
+
     const contract = new ethers.Contract(
-      schainAddress,
-      schainContract.abi,
+      donationAddress,
+      donationContract.abi,
       provider
     );
 
     const { chainId } = await provider.getNetwork();
     if (chainId) {
       dispatch({
-        type: "SET_CONTRACT",
+        type: 'SET_CONTRACT',
         contract: contract,
       });
       // const data = await contract.donationCount();
     } else {
-      window.alert("Donation contract not deployed to detected network");
+      window.alert('Donation contract not deployed to detected network');
     }
   }
 
-  const connect = useCallback(async function (role = "") {
+  const connect = useCallback(async function () {
+    // console.log('button of connect clicked');
+
     // This is the initial `provider` that is returned when
     // using web3Modal to connect. Can be MetaMask or WalletConnect.
     const provider = await web3Modal.connect();
@@ -214,91 +220,32 @@ const AuthProvider = ({ children }) => {
     const address = await signer.getAddress();
     const network = (await web3Provider.getNetwork()) as any;
 
-    // console.log(signer);
+    console.log(signer);
+
     dispatch({
-      type: "SET_WEB3_PROVIDER",
+      type: 'SET_WEB3_PROVIDER',
       provider,
       web3Provider,
       address,
       chainId: network.chainId,
     });
-
-    //auth users page
-    // console.log(role);
-
-    // console.log(verifyRole);
-    // if (signer) {
-    // let verify = false;
-    // if (signer) {
-    // let verify = await signer.validateRole(role, address);
-    // }
-    // if (typeof signer.validateRole === "function") {
-    // let validate = await signer.validateRole(role, address);
-    switch (role) {
-      case "customer":
-        if (address) {
-          localStorage.setItem("customerAddr", address);
-          router.push("/dashboard/customer/");
-        }
-        break;
-      case "adminstrator":
-        router.push("/dashboard/admin/");
-        break;
-      case "manager":
-        if (address) {
-          localStorage.setItem("managerAddr", address);
-          router.push("/dashboard/manager/");
-        } else {
-          router.push("/");
-        }
-        break;
-      case "manufacturer":
-        if (address) {
-          localStorage.setItem("manufactureAddr", address);
-          router.push("/dashboard/manufacture/");
-        } else {
-          router.push("/");
-        }
-        break;
-      case "tester":
-        if (address) {
-          localStorage.setItem("testerAddr", address);
-          router.push("/dashboard/tester/");
-        } else {
-          router.push("/");
-        }
-        break;
-      case "transporter":
-        if (address) {
-          localStorage.setItem("transportAddr", address);
-          router.push("/dashboard/transport/");
-        } else {
-          router.push("/");
-        }
-        break;
-
-      default:
-        // router.push("/");
-        break;
-      // }
-    }
   }, []);
 
   const disconnect = useCallback(
     async function () {
       await web3Modal.clearCachedProvider();
-      if (provider?.disconnect && typeof provider.disconnect === "function") {
+      if (provider?.disconnect && typeof provider.disconnect === 'function') {
         await provider.disconnect();
       }
       dispatch({
-        type: "RESET_WEB3_PROVIDER",
+        type: 'RESET_WEB3_PROVIDER',
       });
     },
     [provider]
   );
 
   const logout = () => {
-    alert("something");
+    alert('something');
   };
 
   useEffect(() => {
@@ -312,22 +259,22 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (provider?.on) {
       const handleAccountsChanged = (accounts: string[]) => {
-        console.log("accountsChanged", accounts);
+        console.log('accountsChanged', accounts);
         dispatch({
-          type: "SET_ADDRESS",
+          type: 'SET_ADDRESS',
           address: accounts[0],
         });
       };
 
       const signer_ = web3Provider.getSigner();
       const signer = new ethers.Contract(
-        schainAddress,
-        schainContract.abi,
+        donationAddress,
+        donationContract.abi,
         signer_
       );
 
       dispatch({
-        type: "SET_SIGNER",
+        type: 'SET_SIGNER',
         signer: signer,
       });
 
@@ -336,20 +283,20 @@ const AuthProvider = ({ children }) => {
       };
 
       const handleDisconnect = (error: { code: number; message: string }) => {
-        console.log("disconnect", error);
+        console.log('disconnect', error);
         disconnect();
       };
 
-      provider.on("accountsChanged", handleAccountsChanged);
-      provider.on("chainChanged", handleChainChanged);
-      provider.on("disconnect", handleDisconnect);
+      provider.on('accountsChanged', handleAccountsChanged);
+      provider.on('chainChanged', handleChainChanged);
+      provider.on('disconnect', handleDisconnect);
 
       // Subscription Cleanup
       return () => {
         if (provider.removeListener) {
-          provider.removeListener("accountsChanged", handleAccountsChanged);
-          provider.removeListener("chainChanged", handleChainChanged);
-          provider.removeListener("disconnect", handleDisconnect);
+          provider.removeListener('accountsChanged', handleAccountsChanged);
+          provider.removeListener('chainChanged', handleChainChanged);
+          provider.removeListener('disconnect', handleDisconnect);
         }
       };
     }
@@ -358,7 +305,6 @@ const AuthProvider = ({ children }) => {
   const chainData = getChainData(chainId);
 
   const contextValue = {
-    // status{
     provider,
     web3Provider,
     contract,
@@ -368,7 +314,6 @@ const AuthProvider = ({ children }) => {
     connect,
     disconnect,
     logout,
-    // },
   };
 
   // console.log(signer);

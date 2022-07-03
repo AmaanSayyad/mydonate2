@@ -46,6 +46,18 @@ contract Donation {
     string hash;
     string purpose;
     string description;
+    DonationStatus donationstatus;
+
+    // bool completed;
+    // bool isPinned;
+    // uint256 pinnedDuration;
+    // uint256 pinnedEndDate;
+    // bool isVisible;
+    // bool isApproved;
+    // uint256 approvedDate;
+  }
+
+  struct DonationStatus {
     bool completed;
     bool isPinned;
     uint256 pinnedDuration;
@@ -54,7 +66,6 @@ contract Donation {
     bool isApproved;
     uint256 approvedDate;
   }
-
   struct Doners {
     uint256 id;
     uint256 amount;
@@ -130,33 +141,24 @@ contract Donation {
 
   //create a new donation
   function createDonation(
-    string memory _imageHash,
-    string memory _description,
-    uint256 _endDate,
-    string memory _category,
-    string memory _title,
-    string memory _purpose,
-    uint256 _targetAmount,
-    string memory _userType,
-    string memory _country,
-    string memory _city,
-    string memory _email,
-    string memory _residenceAddress,
-    string memory _website,
-    string memory _facebookurl,
-    string memory _twitterurl,
-    string memory _instagramurl,
-    string memory _youtubeurl,
-    string memory _documenthash
+    // string memory _imageHash,
+    // string memory _description,
+    // uint256 _endDate,
+    // string memory _category,
+    // string memory _title,
+    // string memory _purpose,
+    // uint256 _targetAmount,
+    DonationItem memory donation_,
+    User memory user
   ) public payable {
     //validating inputs
     require(msg.value > 0, 'Price must be at least 1 wei');
-    require(bytes(_imageHash).length > 0, 'Image Hash is required');
-    require(bytes(_description).length > 0, 'Description is required');
+    require(bytes(donation_.hash).length > 0, 'Image Hash is required');
+    require(bytes(donation_.description).length > 0, 'Description is required');
     // require(bytes(_endDate).length > 0, 'End Date is required');
-    require(bytes(_category).length > 0, 'Category is required');
-    require(bytes(_title).length > 0, 'Title is required');
-    require(bytes(_purpose).length > 0, 'Purpose is required');
+    require(bytes(donation_.category).length > 0, 'Category is required');
+    require(bytes(donation_.title).length > 0, 'Title is required');
+    require(bytes(donation_.purpose).length > 0, 'Purpose is required');
     // require(bytes(_targetAmount).length > 0, 'Targeted amount is required');
     require(msg.sender != address(0x0));
 
@@ -171,54 +173,55 @@ contract Donation {
     if (registeredUsers[msg.sender] == false) {
       donation.user.id = usersCount;
       donation.user._address = msg.sender;
-      donation.user.userType = _userType;
-      donation.user.country = _country;
-      donation.user.city = _city;
-      donation.user.email = _email;
-      donation.user.residenceAddress = _residenceAddress;
+      donation.user.userType = user.userType;
+      donation.user.country = user.country;
+      donation.user.city = user.city;
+      donation.user.email = user.email;
+      donation.user.residenceAddress = user.residenceAddress;
       donation.user.isRegistered = true;
-      donation.user.website = _website;
-      donation.user.facebookUrl = _facebookurl;
-      donation.user.twitterUrl = _twitterurl;
-      donation.user.instagramUrl = _instagramurl;
-      donation.user.youtubeUrl = _youtubeurl;
-      donation.user.hash = _documenthash;
+      donation.user.website = user.website;
+      donation.user.facebookUrl = user.facebookUrl;
+      donation.user.twitterUrl = user.twitterUrl;
+      donation.user.instagramUrl = user.instagramUrl;
+      donation.user.youtubeUrl = user.youtubeUrl;
+      donation.user.hash = user.hash;
 
       users[usersCount].id = usersCount;
       users[usersCount]._address = msg.sender;
-      users[usersCount].userType = _userType;
-      users[usersCount].country = _country;
-      users[usersCount].city = _city;
-      users[usersCount].email = _email;
-      users[usersCount].residenceAddress = _residenceAddress;
+      users[usersCount].userType = user.userType;
+      users[usersCount].country = user.country;
+      users[usersCount].city = user.city;
+      users[usersCount].email = user.email;
+      users[usersCount].residenceAddress = user.residenceAddress;
       users[usersCount].isRegistered = true;
-      users[usersCount].website = _website;
-      users[usersCount].facebookUrl = _facebookurl;
-      users[usersCount].twitterUrl = _twitterurl;
-      users[usersCount].instagramUrl = _instagramurl;
-      users[usersCount].youtubeUrl = _youtubeurl;
-      users[usersCount].hash = _documenthash;
+      users[usersCount].website = user.website;
+      users[usersCount].facebookUrl = user.facebookUrl;
+      users[usersCount].twitterUrl = user.twitterUrl;
+      users[usersCount].instagramUrl = user.instagramUrl;
+      users[usersCount].youtubeUrl = user.youtubeUrl;
+      users[usersCount].hash = user.hash;
       registeredUsers[msg.sender] = true;
     }
 
     //add user
     donation.donationsRaised = 0;
     donation.startDate = block.timestamp;
-    donation.endDate = _endDate;
-    donation.targetedAmount = _targetAmount;
-    donation.category = _category;
-    donation.title = _title;
-    donation.hash = _imageHash;
-    donation.category = _category;
-    donation.purpose = _purpose;
-    donation.description = _description;
-    donation.completed = false;
-    donation.isPinned = false;
-    donation.isVisible = false;
-    donation.isApproved = false;
-    donation.approvedDate = 0;
-    donation.pinnedDuration = 0;
-    donation.pinnedEndDate = 0;
+    donation.endDate = donation_.endDate;
+    donation.targetedAmount = donation_.targetedAmount;
+    donation.category = donation_.category;
+    donation.title = donation_.title;
+    donation.hash = donation_.hash;
+    donation.category = donation_.category;
+    donation.purpose = donation_.purpose;
+    donation.description = donation_.description;
+
+    donation.donationstatus.completed = false;
+    donation.donationstatus.isPinned = false;
+    donation.donationstatus.isVisible = false;
+    donation.donationstatus.isApproved = false;
+    donation.donationstatus.approvedDate = 0;
+    donation.donationstatus.pinnedDuration = 0;
+    donation.donationstatus.pinnedEndDate = 0;
   }
 
   //add a donation
@@ -227,7 +230,7 @@ contract Donation {
     DonationItem storage donation = idToDonationItem[_id];
     //check date if it expired.
     if (donation.donationsRaised >= donation.targetedAmount) {
-      donation.completed = true;
+      donation.donationstatus.completed = true;
     }
     address payable _owner = donation.owner;
     uint256 percent = 100;
@@ -238,7 +241,6 @@ contract Donation {
     //tranfer amount to business address
     address payable caddr = companyAddress;
     caddr.transfer(deduction);
-    // companyAddress.tranfer(deduction);
 
     amountRaised = amountRaised + msg.value;
     donation.donationsRaised = donation.donationsRaised + msg.value;
@@ -254,11 +256,11 @@ contract Donation {
   function approveDonation(uint256 _id) public {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
-    require(donation.isApproved == false);
-    require(donation.isVisible == false);
-    donation.isApproved = true;
-    donation.isVisible = true;
-    donation.approvedDate = block.timestamp;
+    require(donation.donationstatus.isApproved == false);
+    require(donation.donationstatus.isVisible == false);
+    donation.donationstatus.isApproved = true;
+    donation.donationstatus.isVisible = true;
+    donation.donationstatus.approvedDate = block.timestamp;
     idToDonationItem[_id] = donation;
   }
 
@@ -270,16 +272,16 @@ contract Donation {
   ) public payable {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
-    require(donation.isPinned == false);
-    require(donation.isApproved == true);
-    require(donation.pinnedEndDate < block.timestamp);
+    require(donation.donationstatus.isPinned == false);
+    require(donation.donationstatus.isApproved == true);
+    require(donation.donationstatus.pinnedEndDate < block.timestamp);
     //send money to company address
     // companyAddress.tranfer(msg.value);
     address payable caddr = companyAddress;
     caddr.transfer(msg.value);
-    donation.pinnedDuration = _duration;
-    donation.pinnedEndDate = _pinnedEndDate;
-    donation.isPinned = true;
+    donation.donationstatus.pinnedDuration = _duration;
+    donation.donationstatus.pinnedEndDate = _pinnedEndDate;
+    donation.donationstatus.isPinned = true;
     idToDonationItem[_id] = donation;
   }
 

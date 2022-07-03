@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../utils/AuthProvider';
 import useDarkMode from '../../../hooks/useDarkMode';
 import Link from 'next/link';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { MoonIcon } from '@heroicons/react/outline';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
@@ -14,9 +15,10 @@ function Header() {
     closed: { opacity: 0, x: '-100%' },
   };
 
+  const { address, disconnect, connect, web3Provider } =
+    useContext(AuthContext);
+
   const [top, setTop] = useState(true);
-  const [open, setOpen] = useState(false);
-  const [comp, setComp] = useState('');
 
   const [colorTheme, setTheme] = useDarkMode();
   // detect whether user has scrolled the page down by 10px
@@ -89,6 +91,23 @@ function Header() {
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
+                      {!web3Provider ? (
+                        <button
+                          onClick={connect}
+                          className={`bg-gradient-to-r mb-3  flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
+                        >
+                          connect
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            onClick={disconnect}
+                            className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                          >
+                            Disconnect
+                          </button>
+                        </>
+                      )}
                       {navigation.map((item) => (
                         <Link href={item.href}>
                           <p
@@ -163,25 +182,25 @@ function Header() {
                             </Link>
                           )}
                         </Menu.Item>
-                        {/* <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? '' : '',
-                                'block px-4 py-2 text-sm dark:text-gray-200 text-gray-700'
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item> */}
+
                         <Menu.Item>
-                          <button
-                            className={`bg-gradient-to-r mb-3  flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
-                          >
-                            Disconnect
-                          </button>
+                          {!web3Provider ? (
+                            <button
+                              onClick={connect}
+                              className={`bg-gradient-to-r mb-3  flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
+                            >
+                              connect
+                            </button>
+                          ) : (
+                            <>
+                              <button
+                                onClick={disconnect}
+                                className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                              >
+                                Disconnect
+                              </button>
+                            </>
+                          )}
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>
