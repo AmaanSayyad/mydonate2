@@ -1,5 +1,5 @@
 import { UserGroupIcon, UserIcon } from '@heroicons/react/outline';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 export default function Fund() {
   const [countries, setcountries] = useState([]);
@@ -16,9 +16,31 @@ export default function Fund() {
   }, []);
 
   const [tab, setTab] = useState(1);
+  const [formInput, updateFormInput] = useState({
+    name: '',
+    country: '',
+    city: '',
+    address: '',
+    website: '',
+    facebook: '',
+    twitter: '',
+    instagram: '',
+    youtube: '',
+    purpose: '',
+    targetedAmount: '',
+    facebook: '',
+    contact: '',
+    residence: '',
+    email: '',
+    title: '',
+    description: '',
+    category: '',
+    endDate: '',
+  });
+
   const organization = (
     <>
-      {/* <div className="px-4 py-5 dark:text-gray-200 bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 space-y-6 sm:p-6"> */}
+      {' '}
       <p className="text-xl text-center pt-3">Organization</p>
       <div className="dark:text-gray">
         <div className="">
@@ -36,7 +58,6 @@ export default function Fund() {
           />
         </div>
       </div>
-
       <div className="">
         <div className="">
           <label
@@ -59,7 +80,6 @@ export default function Fund() {
           </select>
         </div>
       </div>
-
       <div className=" flex flex-row justify-between space-x-4">
         <div className="w-full">
           <label
@@ -88,7 +108,6 @@ export default function Fund() {
           />
         </div>
       </div>
-
       <div className="dark:text-gray">
         <div className="">
           <label
@@ -105,7 +124,6 @@ export default function Fund() {
           />
         </div>
       </div>
-
       <div>
         <label
           htmlFor="company-website"
@@ -170,7 +188,6 @@ export default function Fund() {
           </div>
         </div>
       </div>
-
       <div>
         <label
           htmlFor="company-website"
@@ -187,7 +204,6 @@ export default function Fund() {
           required
         ></textarea>
       </div>
-
       <div className="dark:text-gray">
         <div className="">
           <label
@@ -205,7 +221,6 @@ export default function Fund() {
           />
         </div>
       </div>
-
       <div>
         <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
           Business Document
