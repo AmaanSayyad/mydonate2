@@ -25,6 +25,7 @@ export default function Fund() {
     country: '',
     city: '',
     address: '',
+    account: '',
     website: '',
     facebook: '',
     twitter: '',
@@ -129,6 +130,7 @@ export default function Fund() {
           </label>
           <input
             type="text"
+            required
             placeholder="city of the organization"
             onChange={(e) =>
               updateFormInput({ ...formInput, city: e.target.value })
@@ -147,6 +149,7 @@ export default function Fund() {
           <input
             type="text"
             id="base-input"
+            required
             placeholder="address of the organization"
             onChange={(e) =>
               updateFormInput({ ...formInput, address: e.target.value })
@@ -167,6 +170,10 @@ export default function Fund() {
           <input
             type="text"
             id="base-input"
+            placeholder="website"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, website: e.target.value })
+            }
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -188,6 +195,10 @@ export default function Fund() {
             </label>
             <input
               type="text"
+              placeholder="facebook account url"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, facebook: e.target.value })
+              }
               id="base-input"
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
@@ -202,6 +213,10 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
+              placeholder="twitter account url"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, twitter: e.target.value })
+              }
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -217,6 +232,10 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
+              placeholder="instagram account url"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, instagram: e.target.value })
+              }
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -230,6 +249,10 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
+              placeholder="youtube account url"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, youtube: e.target.value })
+              }
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -247,7 +270,10 @@ export default function Fund() {
           rows="4"
           class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-          placeholder="Purpose of fund"
+          placeholder="Give us some reasons why you want to start this fund raising"
+          onChange={(e) =>
+            updateFormInput({ ...formInput, purpose: e.target.value })
+          }
           required
         ></textarea>
       </div>
@@ -257,13 +283,17 @@ export default function Fund() {
             htmlFor="company-website"
             className="block text-md font-medium dark:text-gray-200 text-gray-700"
           >
-            Account for fund (eth)
+            Account for fund (eth) (default account will be current eth address
+            connected to the website)
           </label>
 
           <input
             type="text"
             id="base-input"
             placeholder="0x0000000"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, account: e.target.value })
+            }
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -288,11 +318,13 @@ export default function Fund() {
                   id="file-upload"
                   name="file-upload"
                   type="file"
+                  required
                   className="sr-only"
+                  onChange={onChangeSupportingDocument}
                 />
               </label>
             </div>
-            <p className="text-xs text-gray-500">PDF, DOCX, up to 10MB</p>
+            <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
           </div>
         </div>
       </div>
@@ -315,6 +347,10 @@ export default function Fund() {
           <input
             type="text"
             id="base-input"
+            required
+            onChange={(e) =>
+              updateFormInput({ ...formInput, name: e.target.value })
+            }
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -329,12 +365,16 @@ export default function Fund() {
             Country
           </label>
           <select
+            required
+            onChange={(e) =>
+              updateFormInput({ ...formInput, country: e.target.value })
+            }
             id="countries"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected>Choose a country</option>
             {countries.map((country) => (
-              <option value="US">
+              <option value={country.name.common}>
                 {country.flag}
                 {country.name.common}
               </option>
@@ -353,6 +393,10 @@ export default function Fund() {
           </label>
           <input
             type="text"
+            required
+            onChange={(e) =>
+              updateFormInput({ ...formInput, city: e.target.value })
+            }
             id="base-input"
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -366,6 +410,10 @@ export default function Fund() {
           </label>
           <input
             type="text"
+            required
+            onChange={(e) =>
+              updateFormInput({ ...formInput, address: e.target.value })
+            }
             id="base-input"
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -383,6 +431,10 @@ export default function Fund() {
 
           <input
             type="text"
+            required
+            onChange={(e) =>
+              updateFormInput({ ...formInput, email: e.target.value })
+            }
             id="base-input"
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -401,6 +453,10 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
+              required
+              onChange={(e) =>
+                updateFormInput({ ...formInput, contact: e.target.value })
+              }
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -414,6 +470,10 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
+              required
+              onChange={(e) =>
+                updateFormInput({ ...formInput, residence: e.target.value })
+              }
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -430,6 +490,9 @@ export default function Fund() {
         <textarea
           id="comment"
           rows="4"
+          onChange={(e) =>
+            updateFormInput({ ...formInput, purpose: e.target.value })
+          }
           class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
           placeholder="Purpose of fund"
@@ -443,12 +506,16 @@ export default function Fund() {
             htmlFor="company-website"
             className="block text-md font-medium dark:text-gray-200 text-gray-700"
           >
-            Account for fund (eth)
+            Account for fund (eth) (default account will be the one connected to
+            this website)
           </label>
 
           <input
             type="text"
             id="base-input"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, account: e.target.value })
+            }
             placeholder="0x0000000"
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -476,10 +543,12 @@ export default function Fund() {
                   name="file-upload"
                   type="file"
                   className="sr-only"
+                  required
+                  onChange={onChangeSupportingDocument}
                 />
               </label>
             </div>
-            <p className="text-xs text-gray-500">PDF, DOCX, up to 10MB</p>
+            <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
           </div>
         </div>
       </div>
@@ -546,6 +615,13 @@ export default function Fund() {
 
                         <input
                           type="text"
+                          required
+                          onChange={(e) =>
+                            updateFormInput({
+                              ...formInput,
+                              title: e.target.value,
+                            })
+                          }
                           id="base-input"
                           class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         />
@@ -566,6 +642,12 @@ export default function Fund() {
                         //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                         placeholder="Purpose of fund"
                         required
+                        onChange={(e) =>
+                          updateFormInput({
+                            ...formInput,
+                            description: e.target.value,
+                          })
+                        }
                       ></textarea>
                     </div>
 
@@ -579,11 +661,18 @@ export default function Fund() {
                         </label>
                         <select
                           id="countries"
+                          onChange={(e) =>
+                            updateFormInput({
+                              ...formInput,
+                              category: e.target.value,
+                            })
+                          }
+                          required
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         >
                           <option selected>Choose a category</option>
-                          <option selected>War</option>
-                          <option selected>Health</option>
+                          <option value={'war'}>War</option>
+                          <option value={'health'}>Health</option>
                         </select>
                       </div>
                     </div>
@@ -599,6 +688,13 @@ export default function Fund() {
                         <input
                           type="date"
                           id="base-input"
+                          required
+                          onChange={(e) =>
+                            updateFormInput({
+                              ...formInput,
+                              endDate: e.target.value,
+                            })
+                          }
                           class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         />
                       </div>
@@ -612,6 +708,13 @@ export default function Fund() {
                         <input
                           type="text"
                           id="base-input"
+                          required
+                          onChange={(e) =>
+                            updateFormInput({
+                              ...formInput,
+                              targetedAmount: e.target.value,
+                            })
+                          }
                           class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         />
                       </div>
@@ -648,12 +751,12 @@ export default function Fund() {
                                 name="file-upload"
                                 type="file"
                                 className="sr-only"
+                                onChange={onChangeCoverImage}
                               />
                             </label>
-                            <p className="pl-1">or drag and drop</p>
                           </div>
                           <p className="text-xs text-gray-500">
-                            PNG, JPG, GIF up to 10MB
+                            PNG, JPG up to 10MB
                           </p>
                         </div>
                       </div>
