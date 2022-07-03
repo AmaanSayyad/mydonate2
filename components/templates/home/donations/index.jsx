@@ -1,7 +1,21 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import Card from './card';
 import { AuthContext } from '../../../../utils/AuthProvider';
+
 const Index = () => {
+  const { address, signer, contract } = useContext(AuthContext);
+
+  const [donations, setdonations] = useState([]);
+  useEffect(() => {
+    if (address) {
+      const loadDonations = async () => {
+        const data = await signer.fetchAllDonationItems();
+        console.log(data);
+      };
+      loadDonations();
+    }
+  }, [signer]);
+
   return (
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>

@@ -28,25 +28,25 @@ export default function Fund() {
   const [coverImageUrl, setCoverImageUrl] = useState(null);
 
   const [formInput, updateFormInput] = useState({
-    name: 'name',
-    country: 'country',
-    city: 'city',
-    address: 'address',
-    account: 'acc',
-    website: 'web',
-    facebook: 'fac',
-    twitter: 'twi',
-    instagram: 'ins',
-    youtube: 'ty',
-    purpose: 'pr',
+    name: '',
+    country: '',
+    city: '',
+    address: '',
+    account: '',
+    website: '',
+    facebook: '',
+    twitter: '',
+    instagram: '',
+    youtube: '',
+    purpose: '',
     targetedAmount: '',
-    facebook: 'gb',
-    contact: '32',
-    residence: 'fd',
-    email: 'fd',
-    title: 'fd',
-    description: 'fdf',
-    category: 'fdf',
+    facebook: '',
+    contact: '',
+    residence: '',
+    email: '',
+    title: '',
+    description: '',
+    category: '',
     endDate: '',
     userType: '',
   });
@@ -139,7 +139,6 @@ export default function Fund() {
             id="base-input"
             placeholder="name of organization"
             required
-            value="name"
             onChange={(e) =>
               updateFormInput({ ...formInput, name: e.target.value })
             }
@@ -185,7 +184,6 @@ export default function Fund() {
             type="text"
             required
             placeholder="city of the organization"
-            value="city"
             onChange={(e) =>
               updateFormInput({ ...formInput, city: e.target.value })
             }
@@ -204,7 +202,6 @@ export default function Fund() {
             type="text"
             id="base-input"
             required
-            value={'address'}
             placeholder="address of the organization"
             onChange={(e) =>
               updateFormInput({ ...formInput, address: e.target.value })
@@ -226,7 +223,6 @@ export default function Fund() {
             type="text"
             id="base-input"
             placeholder="website"
-            value={'website'}
             onChange={(e) =>
               updateFormInput({ ...formInput, website: e.target.value })
             }
@@ -251,7 +247,6 @@ export default function Fund() {
             </label>
             <input
               type="text"
-              value={'facebook'}
               placeholder="facebook account url"
               onChange={(e) =>
                 updateFormInput({ ...formInput, facebook: e.target.value })
@@ -270,7 +265,6 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
-              value={'twittere'}
               placeholder="twitter account url"
               onChange={(e) =>
                 updateFormInput({ ...formInput, twitter: e.target.value })
@@ -289,7 +283,6 @@ export default function Fund() {
             </label>
             <input
               type="text"
-              value={'instagram'}
               id="base-input"
               placeholder="instagram account url"
               onChange={(e) =>
@@ -308,7 +301,6 @@ export default function Fund() {
             <input
               type="text"
               id="base-input"
-              value={'youtube'}
               placeholder="youtube account url"
               onChange={(e) =>
                 updateFormInput({ ...formInput, youtube: e.target.value })
@@ -328,7 +320,6 @@ export default function Fund() {
         <textarea
           id="comment"
           rows="4"
-          value={'haha i dont even know'}
           class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           //   class="px-0 w-full text-sm \:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
           placeholder="Give us some reasons why you want to start this fund raising"
@@ -351,7 +342,6 @@ export default function Fund() {
           <input
             type="text"
             id="base-input"
-            value={'0x0'}
             placeholder="0x0000000"
             onChange={(e) =>
               updateFormInput({ ...formInput, account: e.target.value })
