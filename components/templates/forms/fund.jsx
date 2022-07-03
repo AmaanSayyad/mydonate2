@@ -120,6 +120,13 @@ export default function Fund() {
     alert('Order sent succesfully');
     //  window.location.reload();
   };
+
+  const loadOrders = async () => {
+    const data = await signer.fetchAllDonationItems();
+    console.log(data);
+  };
+  loadOrders();
+
   const organization = (
     <>
       {' '}

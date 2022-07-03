@@ -32,6 +32,7 @@
     "postcss": "^8.4.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-transition-group": "^4.4.2",
     "walletlink": "^2.5.0",
     "web3": "^1.7.3",
     "web3modal": "^1.9.7"
