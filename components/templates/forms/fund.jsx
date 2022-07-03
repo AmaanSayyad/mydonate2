@@ -679,7 +679,6 @@ export default function Fund() {
                         <input
                           type="text"
                           required
-                          value={'title'}
                           onChange={(e) =>
                             updateFormInput({
                               ...formInput,
@@ -706,7 +705,6 @@ export default function Fund() {
                         //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                         placeholder="Purpose of fund"
                         required
-                        value={'description'}
                         onChange={(e) =>
                           updateFormInput({
                             ...formInput,
