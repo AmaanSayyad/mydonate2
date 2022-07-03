@@ -11,6 +11,7 @@ const Index = () => {
       const loadDonations = async () => {
         const data = await signer.fetchAllDonationItems();
         console.log(data);
+        setdonations(data);
       };
       loadDonations();
     }
