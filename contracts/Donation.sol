@@ -148,11 +148,10 @@ contract Donation {
     // string memory _title,
     // string memory _purpose,
     // uint256 _targetAmount,
-    DonationItem memory donation_,
-    User memory user
+    DonationItem memory donation_ // User memory user
   ) public payable {
     //validating inputs
-    require(msg.value > 0, 'Price must be at least 1 wei');
+    // require(msg.value > 0, 'Price must be at least 1 wei');
     require(bytes(donation_.hash).length > 0, 'Image Hash is required');
     require(bytes(donation_.description).length > 0, 'Description is required');
     // require(bytes(_endDate).length > 0, 'End Date is required');
@@ -173,33 +172,33 @@ contract Donation {
     if (registeredUsers[msg.sender] == false) {
       donation.user.id = usersCount;
       donation.user._address = msg.sender;
-      donation.user.userType = user.userType;
-      donation.user.country = user.country;
-      donation.user.city = user.city;
-      donation.user.email = user.email;
-      donation.user.residenceAddress = user.residenceAddress;
+      donation.user.userType = donation_.user.userType;
+      donation.user.country = donation_.user.country;
+      donation.user.city = donation_.user.city;
+      donation.user.email = donation_.user.email;
+      donation.user.residenceAddress = donation_.user.residenceAddress;
       donation.user.isRegistered = true;
-      donation.user.website = user.website;
-      donation.user.facebookUrl = user.facebookUrl;
-      donation.user.twitterUrl = user.twitterUrl;
-      donation.user.instagramUrl = user.instagramUrl;
-      donation.user.youtubeUrl = user.youtubeUrl;
-      donation.user.hash = user.hash;
+      donation.user.website = donation_.user.website;
+      donation.user.facebookUrl = donation_.user.facebookUrl;
+      donation.user.twitterUrl = donation_.user.twitterUrl;
+      donation.user.instagramUrl = donation_.user.instagramUrl;
+      donation.user.youtubeUrl = donation_.user.youtubeUrl;
+      donation.user.hash = donation_.user.hash;
 
       users[usersCount].id = usersCount;
       users[usersCount]._address = msg.sender;
-      users[usersCount].userType = user.userType;
-      users[usersCount].country = user.country;
-      users[usersCount].city = user.city;
-      users[usersCount].email = user.email;
-      users[usersCount].residenceAddress = user.residenceAddress;
+      users[usersCount].userType = donation_.user.userType;
+      users[usersCount].country = donation_.user.country;
+      users[usersCount].city = donation_.user.city;
+      users[usersCount].email = donation_.user.email;
+      users[usersCount].residenceAddress = donation_.user.residenceAddress;
       users[usersCount].isRegistered = true;
-      users[usersCount].website = user.website;
-      users[usersCount].facebookUrl = user.facebookUrl;
-      users[usersCount].twitterUrl = user.twitterUrl;
-      users[usersCount].instagramUrl = user.instagramUrl;
-      users[usersCount].youtubeUrl = user.youtubeUrl;
-      users[usersCount].hash = user.hash;
+      users[usersCount].website = donation_.user.website;
+      users[usersCount].facebookUrl = donation_.user.facebookUrl;
+      users[usersCount].twitterUrl = donation_.user.twitterUrl;
+      users[usersCount].instagramUrl = donation_.user.instagramUrl;
+      users[usersCount].youtubeUrl = donation_.user.youtubeUrl;
+      users[usersCount].hash = donation_.user.hash;
       registeredUsers[msg.sender] = true;
     }
 
