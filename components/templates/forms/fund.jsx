@@ -16,6 +16,10 @@ export default function Fund() {
   }, []);
 
   const [tab, setTab] = useState(1);
+
+  const [supportingDocument, setsupportingDocument] = useState(null);
+  const [coverImageUrl, setCoverImageUrl] = useState(null);
+
   const [formInput, updateFormInput] = useState({
     name: '',
     country: '',
@@ -38,6 +42,32 @@ export default function Fund() {
     endDate: '',
   });
 
+  async function onChangeSupportingDocument(e) {
+    const file = e.target.files[0];
+    try {
+      const added = await client.add(file, {
+        progress: (prog) => console.log(`received: ${prog}`),
+      });
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      setsupportingDocument(url);
+    } catch (error) {
+      console.log('Error uploading file: ', error);
+    }
+  }
+
+  async function onChangeCoverImage(e) {
+    const file = e.target.files[0];
+    try {
+      const added = await client.add(file, {
+        progress: (prog) => console.log(`received: ${prog}`),
+      });
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      setCoverImageUrl(url);
+    } catch (error) {
+      console.log('Error uploading file: ', error);
+    }
+  }
+
   const organization = (
     <>
       {' '}
@@ -54,6 +84,11 @@ export default function Fund() {
           <input
             type="text"
             id="base-input"
+            placeholder="name of organization"
+            required
+            onChange={(e) =>
+              updateFormInput({ ...formInput, name: e.target.value })
+            }
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
@@ -67,12 +102,16 @@ export default function Fund() {
             Country
           </label>
           <select
+            required
             id="countries"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, contact: e.target.value })
+            }
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected>Choose a country</option>
             {countries.map((country) => (
-              <option value="US">
+              <option value={country.name.common}>
                 {country.flag}
                 {country.name.common}
               </option>
@@ -90,6 +129,10 @@ export default function Fund() {
           </label>
           <input
             type="text"
+            placeholder="city of the organization"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, city: e.target.value })
+            }
             id="base-input"
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
@@ -104,6 +147,10 @@ export default function Fund() {
           <input
             type="text"
             id="base-input"
+            placeholder="address of the organization"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, address: e.target.value })
+            }
             class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
