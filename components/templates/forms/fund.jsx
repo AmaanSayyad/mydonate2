@@ -379,6 +379,9 @@ export default function Fund() {
             <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
           </div>
         </div>
+        {supportingDocument && (
+          <img className="rounded mt-4" width="full" src={supportingDocument} />
+        )}
       </div>
     </>
   );
@@ -603,6 +606,9 @@ export default function Fund() {
             <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
           </div>
         </div>
+        {supportingDocument && (
+          <img className="rounded mt-4" width="full" src={supportingDocument} />
+        )}
       </div>
     </>
   );
