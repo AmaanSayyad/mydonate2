@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Card from './card';
-import { CodeIcon } from '@heroicons/react/outline';
+import { AuthContext } from '../../../../utils/AuthProvider';
 const Index = () => {
   return (
     <div>
