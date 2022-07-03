@@ -43,6 +43,7 @@ export default function Fund() {
     endDate: '',
   });
 
+  console.log(formInput);
   async function onChangeSupportingDocument(e) {
     const file = e.target.files[0];
     try {
@@ -315,7 +316,6 @@ export default function Fund() {
               >
                 <span>Upload a file</span>
                 <input
-                  id="file-upload"
                   name="file-upload"
                   type="file"
                   required
@@ -539,7 +539,6 @@ export default function Fund() {
               >
                 <span>Upload a file</span>
                 <input
-                  id="file-upload"
                   name="file-upload"
                   type="file"
                   className="sr-only"
@@ -747,7 +746,6 @@ export default function Fund() {
                             >
                               <span>Upload a file</span>
                               <input
-                                id="file-upload"
                                 name="file-upload"
                                 type="file"
                                 className="sr-only"
