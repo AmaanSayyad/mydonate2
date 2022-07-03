@@ -121,12 +121,6 @@ export default function Fund() {
     //  window.location.reload();
   };
 
-  const loadOrders = async () => {
-    const data = await signer.fetchAllDonationItems();
-    console.log(data);
-  };
-  loadOrders();
-
   const organization = (
     <>
       {' '}
