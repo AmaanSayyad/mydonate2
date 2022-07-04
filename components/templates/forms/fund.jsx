@@ -143,7 +143,7 @@ export default function Fund() {
   console.log(status);
   // console.log('isRegisted', isUserRegistered());
   let organization = '';
-  if (status[0].userType == false) {
+  if (status[0].status == false || status[0].userType === 'organization') {
     organization = (
       <>
         {' '}
