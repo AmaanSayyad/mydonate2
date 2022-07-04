@@ -5,6 +5,7 @@ import Donation from '../components/partials/Donation';
 const Donatino = () => {
   const router = useRouter();
   const { id } = router.query;
+  console.log(id);
   return (
     <Layout>
       <Donation />

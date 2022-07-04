@@ -162,7 +162,7 @@ contract Donation {
     require(msg.sender != address(0x0));
 
     donationCount++;
-    usersCount++;
+    usersCount = usersCount + 1;
     DonationItem storage donation = idToDonationItem[donationCount];
 
     donation.id = donationCount;
@@ -206,6 +206,8 @@ contract Donation {
       // donation.user.id = users[id_].id;
       console.log(id_);
       console.log('user country', users[id_].country);
+
+      donation.user.id = users[id_].id;
       donation.user._address = msg.sender;
       donation.user.userType = users[id_].userType;
       donation.user.country = users[id_].country;

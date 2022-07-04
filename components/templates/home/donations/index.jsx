@@ -26,7 +26,7 @@ const Index = () => {
         {donations.map((donation, index) => (
           <Card
             key={index}
-            index={donation.user.id.toString()}
+            id={donation.id.toString()}
             title={donation.title}
             description={donation.description}
             image={donation.hash}

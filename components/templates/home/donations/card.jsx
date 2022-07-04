@@ -11,7 +11,6 @@ const Card = ({
   country,
   id,
 }) => {
-  // console.log('enddate', endDate);
   return (
     <div>
       <div class="h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
