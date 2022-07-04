@@ -1,18 +1,28 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../utils/AuthProvider';
-
+import { ethers } from 'ethers';
+import { truncateString } from '../../lib/utilities';
 function Home({ id }) {
   const { signer, address } = useContext(AuthContext);
+  const [donation_, setdonation_] = useState({
+    donationsRaised: 0,
+    targetedAmount: 0,
+    description: '',
+  });
+  let ethprice = 1276;
+
   useEffect(() => {
     if (address) {
       const donation = async () => {
         const data = await signer.getDonation(id);
         //  setstatus(data);
+        setdonation_(data);
         console.log(data);
       };
       donation();
     }
   }, [signer]);
+
   return (
     <div className="space-y-4 col-span-full mt-5 lg:col-span-2">
       <section>
@@ -23,7 +33,7 @@ function Home({ id }) {
                 <img
                   alt="Mobile Phone Stand"
                   class="object-cover rounded-xl w-full h-96"
-                  src="/images/dimage5.jpg"
+                  src={donation_.hash}
                 />
               </div>
             </div>
@@ -32,7 +42,7 @@ function Home({ id }) {
               <div class="flex justify-between">
                 <div class="max-w-[35ch]">
                   <h1 class="text-2xl font-bold dark:text-gray-300">
-                    1 child 1 dollar
+                    {donation_.title}
                   </h1>
 
                   <div className="flex flex-row items-center space-x-2">
@@ -41,7 +51,22 @@ function Home({ id }) {
                       class="text-xl dark:text-gray-200"
                     ></ion-icon>
                     <p class="text-lg font-bold dark:text-gray-200">
-                      $119.99/$20,000.00
+                      {/* $119.99/$20,000.00 targetedAmount= */}
+                      {(
+                        Number(
+                          ethers.utils.formatEther(
+                            donation_.donationsRaised.toString()
+                          )
+                        ) * ethprice
+                      ).toLocaleString()}{' '}
+                      /{' '}
+                      {(
+                        Number(
+                          ethers.utils.formatEther(
+                            donation_.targetedAmount.toString()
+                          )
+                        ) * ethprice
+                      ).toLocaleString()}
                     </p>
                   </div>
                 </div>
@@ -52,10 +77,7 @@ function Home({ id }) {
                   <div>
                     <div class="prose max-w-none group-open:hidden">
                       <p className="dark:text-gray-200">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ipsa veniam dicta beatae eos ex error culpa delectus rem
-                        tenetur, architecto quam nesciunt, dolor veritatis nisi
-                        minus inventore, rerum at recusandae?
+                        {truncateString(donation_.description.toString(), 60)}
                       </p>
                     </div>
 
@@ -66,19 +88,7 @@ function Home({ id }) {
                 </summary>
 
                 <div class="pb-6 prose max-w-none dark:text-gray-300">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa veniam dicta beatae eos ex error culpa delectus rem
-                    tenetur, architecto quam nesciunt, dolor veritatis nisi
-                    minus inventore, rerum at recusandae?
-                  </p>
-
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Placeat nam sapiente nobis ea veritatis error consequatur
-                    nisi exercitationem iure laudantium culpa, animi temporibus
-                    non! Maxime et quisquam amet. A, deserunt!
-                  </p>
+                  {donation_.description}
                 </div>
               </details>
 

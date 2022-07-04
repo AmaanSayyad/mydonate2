@@ -53,14 +53,6 @@ contract Donation {
     string purpose;
     string description;
     DonationStatus donationstatus;
-
-    // bool completed;
-    // bool isPinned;
-    // uint256 pinnedDuration;
-    // uint256 pinnedEndDate;
-    // bool isVisible;
-    // bool isApproved;
-    // uint256 approvedDate;
   }
 
   struct DonationStatus {
