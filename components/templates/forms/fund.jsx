@@ -106,7 +106,7 @@ export default function Fund() {
       ],
       0,
       0,
-      date,
+      Math.floor(date.getTime() / 1000),
       amount_,
       formInput.category,
       formInput.title,
