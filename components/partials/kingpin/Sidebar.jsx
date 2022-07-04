@@ -9,7 +9,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
-  console.log(router.pathname);
+  // console.log(router.pathname);
   let storedSidebarExpanded;
 
   if (typeof window !== 'undefined') {
@@ -46,7 +46,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   useEffect(() => {
     localStorage.setItem('sidebar-expanded', sidebarExpanded);
-    console.log(localStorage.getItem('sidebar-expanded'));
+    // console.log(localStorage.getItem('sidebar-expanded'));
     if (sidebarExpanded) {
       document.querySelector('body').classList.add('sidebar-expanded');
     } else {

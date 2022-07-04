@@ -22,7 +22,6 @@ function Header() {
 
   const [colorTheme, setTheme] = useDarkMode();
   // detect whether user has scrolled the page down by 10px
-  console.log(colorTheme);
 
   useEffect(() => {
     const scrollHandler = () => {

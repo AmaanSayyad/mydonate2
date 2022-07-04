@@ -8,13 +8,12 @@ const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 export default function Fund() {
   const [countries, setcountries] = useState([]);
   const { signer, address } = useContext(AuthContext);
-  console.log('signer', signer);
-  console.log('address', address);
+  // console.log('signer', signer);
+  // console.log('address', address);
   useEffect(() => {
     axios
       .get('https://restcountries.com/v3.1/all')
       .then((response) => {
-        // console.log(response.data);
         setcountries(response.data);
       })
       .catch((e) => {
@@ -24,14 +23,9 @@ export default function Fund() {
 
   const [tab, setTab] = useState(1);
   const [loading, setloading] = useState(false);
-  const [supportingDocument, setsupportingDocument] = useState(null);
-  const [coverImageUrl, setCoverImageUrl] = useState(null);
-  const [status, setstatus] = useState([
-    {
-      status: '',
-      userType: '',
-    },
-  ]);
+  const [supportingDocument, setsupportingDocument] = useState('');
+  const [coverImageUrl, setCoverImageUrl] = useState('');
+  const [status, setstatus] = useState('');
   const [formInput, updateFormInput] = useState({
     name: '',
     country: '',
@@ -56,7 +50,7 @@ export default function Fund() {
     userType: '',
   });
 
-  console.log(formInput);
+  // console.log(status.status);
 
   async function onChangeSupportingDocument(e) {
     const file = e.target.files[0];
@@ -90,37 +84,40 @@ export default function Fund() {
       formInput.targetedAmount.toString(),
       'ether'
     );
-    let transaction = await signer.createDonation([
-      0,
-      '0x0000000000000000000000000000000000000000',
+    let transaction = await signer.createDonation(
       [
         0,
         '0x0000000000000000000000000000000000000000',
-        tab === 0 ? 'organization' : tab === 1 ? 'individual' : '',
+        [
+          0,
+          '0x0000000000000000000000000000000000000000',
+          tab === 0 ? 'organization' : tab === 1 ? 'individual' : '',
 
-        formInput.country,
-        formInput.city,
-        formInput.email,
-        formInput.address,
-        false,
-        formInput.website,
-        formInput.facebook,
-        formInput.twitter,
-        formInput.instagram,
-        formInput.youtube,
-        supportingDocument,
+          formInput.country,
+          formInput.city,
+          formInput.email,
+          formInput.address,
+          false,
+          formInput.website,
+          formInput.facebook,
+          formInput.twitter,
+          formInput.instagram,
+          formInput.youtube,
+          supportingDocument,
+        ],
+        0,
+        0,
+        Math.floor(date.getTime() / 1000),
+        amount_,
+        formInput.category,
+        formInput.title,
+        coverImageUrl,
+        formInput.purpose,
+        formInput.description,
+        [false, false, 0, 0, false, false, 0],
       ],
-      0,
-      0,
-      Math.floor(date.getTime() / 1000),
-      amount_,
-      formInput.category,
-      formInput.title,
-      coverImageUrl,
-      formInput.purpose,
-      formInput.description,
-      [false, false, 0, 0, false, false, 0],
-    ]);
+      status.id.toString()
+    );
     setloading(true);
     await transaction.wait();
     setloading(false);
@@ -132,147 +129,82 @@ export default function Fund() {
     if (address) {
       const isUserRegistered = async () => {
         const data = await signer.isUserRegistered();
-        console.log(data);
         setstatus(data);
-        // setdonations(data);
+        console.log(data.id.toString());
       };
       isUserRegistered();
     }
   }, [signer]);
 
-  console.log(status);
-  // console.log('isRegisted', isUserRegistered());
   let organization = '';
-  if (status[0].status == false || status[0].userType === 'organization') {
-    organization = (
-      <>
-        {' '}
-        <p className="text-xl text-center pt-3">Organization</p>
-        <div className="dark:text-gray">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Name
-            </label>
 
-            <input
-              type="text"
-              id="base-input"
-              placeholder="name of organization"
-              required
-              onChange={(e) =>
-                updateFormInput({ ...formInput, name: e.target.value })
-              }
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
-        <div className="">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Country
-            </label>
-            <select
-              required
-              id="countries"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, country: e.target.value })
-              }
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected>Choose a country</option>
-              {countries.map((country) => (
-                <option value={country.name.common}>
-                  {country.flag}
-                  {country.name.common}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className=" flex flex-row justify-between space-x-4">
-          <div className="w-full">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              City
-            </label>
-            <input
-              type="text"
-              required
-              placeholder="city of the organization"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, city: e.target.value })
-              }
-              id="base-input"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-          <div className="w-full">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Address
-            </label>
-            <input
-              type="text"
-              id="base-input"
-              required
-              placeholder="address of the organization"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, address: e.target.value })
-              }
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
-        <div className="dark:text-gray">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Website
-            </label>
+  if (typeof status[0] !== 'undefined') {
+    if (status.status === false) {
+      organization = (
+        <>
+          {' '}
+          <p className="text-xl text-center pt-3">Organization</p>
+          <div className="dark:text-gray">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                Name
+              </label>
 
-            <input
-              type="text"
-              id="base-input"
-              placeholder="website"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, website: e.target.value })
-              }
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
+              <input
+                type="text"
+                id="base-input"
+                placeholder="name of organization"
+                required
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, name: e.target.value })
+                }
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <label
-            htmlFor="company-website"
-            className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
-          >
-            Social media Handles
-          </label>
+          <div className="">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                Country
+              </label>
+              <select
+                required
+                id="countries"
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, country: e.target.value })
+                }
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Choose a country</option>
+                {countries.map((country) => (
+                  <option value={country.name.common}>
+                    {country.flag}
+                    {country.name.common}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
           <div className=" flex flex-row justify-between space-x-4">
             <div className="w-full">
               <label
                 htmlFor="company-website"
                 className="block text-md font-medium dark:text-gray-200 text-gray-700"
               >
-                Facebook
+                City
               </label>
               <input
                 type="text"
-                placeholder="facebook account url"
+                required
+                placeholder="city of the organization"
                 onChange={(e) =>
-                  updateFormInput({ ...formInput, facebook: e.target.value })
+                  updateFormInput({ ...formInput, city: e.target.value })
                 }
                 id="base-input"
                 class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -283,271 +215,279 @@ export default function Fund() {
                 htmlFor="company-website"
                 className="block text-md font-medium dark:text-gray-200 text-gray-700"
               >
-                Twitter
+                Address
               </label>
               <input
                 type="text"
                 id="base-input"
-                placeholder="twitter account url"
+                required
+                placeholder="address of the organization"
                 onChange={(e) =>
-                  updateFormInput({ ...formInput, twitter: e.target.value })
+                  updateFormInput({ ...formInput, address: e.target.value })
                 }
                 class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
           </div>
-          <div className=" flex pt-8 flex-row justify-between space-x-4">
-            <div className="w-full">
+          <div className="dark:text-gray">
+            <div className="">
               <label
                 htmlFor="company-website"
                 className="block text-md font-medium dark:text-gray-200 text-gray-700"
               >
-                Instagram
+                Website
               </label>
+
               <input
                 type="text"
                 id="base-input"
-                placeholder="instagram account url"
+                placeholder="website"
                 onChange={(e) =>
-                  updateFormInput({ ...formInput, instagram: e.target.value })
-                }
-                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full">
-              <label
-                htmlFor="company-website"
-                className="block text-md font-medium dark:text-gray-200 text-gray-700"
-              >
-                Youtube
-              </label>
-              <input
-                type="text"
-                id="base-input"
-                placeholder="youtube account url"
-                onChange={(e) =>
-                  updateFormInput({ ...formInput, youtube: e.target.value })
+                  updateFormInput({ ...formInput, website: e.target.value })
                 }
                 class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
           </div>
-        </div>
-        <div>
-          <label
-            htmlFor="company-website"
-            className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
-          >
-            Purpose of Fund
-          </label>
-          <textarea
-            id="comment"
-            rows="4"
-            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            //   class="px-0 w-full text-sm \:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-            placeholder="Give us some reasons why you want to start this fund raising"
-            onChange={(e) =>
-              updateFormInput({ ...formInput, purpose: e.target.value })
-            }
-            required
-          ></textarea>
-        </div>
-        <div className="dark:text-gray">
-          <div className="">
+          <div>
             <label
               htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
             >
-              Account for fund (eth) (default account will be current eth
-              address connected to the website)
+              Social media Handles
             </label>
-
-            <input
-              type="text"
-              id="base-input"
-              placeholder="0x0000000"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, account: e.target.value })
-              }
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
-        <div>
-          <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
-            Business Document
-          </label>
-          <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div className="space-y-1 text-center">
-              <ion-icon
-                name="document-outline"
-                class="text-4xl text-gray-600"
-              ></ion-icon>
-              <div className="flex text-sm text-gray-600">
+            <div className=" flex flex-row justify-between space-x-4">
+              <div className="w-full">
                 <label
-                  htmlFor="file-upload-organization"
-                  className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                  htmlFor="company-website"
+                  className="block text-md font-medium dark:text-gray-200 text-gray-700"
                 >
-                  <span>Upload a file</span>
-                  <input
-                    id="file-upload-organization"
-                    name="file-upload-organization"
-                    type="file"
-                    required
-                    className="sr-only"
-                    onChange={onChangeSupportingDocument}
-                  />
+                  Facebook
                 </label>
+                <input
+                  type="text"
+                  placeholder="facebook account url"
+                  onChange={(e) =>
+                    updateFormInput({ ...formInput, facebook: e.target.value })
+                  }
+                  id="base-input"
+                  class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
               </div>
-              <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
+              <div className="w-full">
+                <label
+                  htmlFor="company-website"
+                  className="block text-md font-medium dark:text-gray-200 text-gray-700"
+                >
+                  Twitter
+                </label>
+                <input
+                  type="text"
+                  id="base-input"
+                  placeholder="twitter account url"
+                  onChange={(e) =>
+                    updateFormInput({ ...formInput, twitter: e.target.value })
+                  }
+                  class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+            </div>
+            <div className=" flex pt-8 flex-row justify-between space-x-4">
+              <div className="w-full">
+                <label
+                  htmlFor="company-website"
+                  className="block text-md font-medium dark:text-gray-200 text-gray-700"
+                >
+                  Instagram
+                </label>
+                <input
+                  type="text"
+                  id="base-input"
+                  placeholder="instagram account url"
+                  onChange={(e) =>
+                    updateFormInput({ ...formInput, instagram: e.target.value })
+                  }
+                  class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="w-full">
+                <label
+                  htmlFor="company-website"
+                  className="block text-md font-medium dark:text-gray-200 text-gray-700"
+                >
+                  Youtube
+                </label>
+                <input
+                  type="text"
+                  id="base-input"
+                  placeholder="youtube account url"
+                  onChange={(e) =>
+                    updateFormInput({ ...formInput, youtube: e.target.value })
+                  }
+                  class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
             </div>
           </div>
-          {supportingDocument && (
-            <img
-              className="rounded mt-4"
-              width="full"
-              src={supportingDocument}
-            />
-          )}
-        </div>
-      </>
-    );
-  } else {
-    organization = (
-      <>
-        <p>not found</p>
-      </>
-    );
-  }
+          <div>
+            <label
+              htmlFor="company-website"
+              className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
+            >
+              Purpose of Fund
+            </label>
+            <textarea
+              id="comment"
+              rows="4"
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              //   class="px-0 w-full text-sm \:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+              placeholder="Give us some reasons why you want to start this fund raising"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, purpose: e.target.value })
+              }
+              required
+            ></textarea>
+          </div>
+          <div className="dark:text-gray">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                Account for fund (eth) (default account will be current eth
+                address connected to the website)
+              </label>
 
+              <input
+                type="text"
+                id="base-input"
+                placeholder="0x0000000"
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, account: e.target.value })
+                }
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
+              Business Document
+            </label>
+            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+              <div className="space-y-1 text-center">
+                <ion-icon
+                  name="document-outline"
+                  class="text-4xl text-gray-600"
+                ></ion-icon>
+                <div className="flex text-sm text-gray-600">
+                  <label
+                    htmlFor="file-upload-organization"
+                    className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                  >
+                    <span>Upload a file</span>
+                    <input
+                      id="file-upload-organization"
+                      name="file-upload-organization"
+                      type="file"
+                      required
+                      className="sr-only"
+                      onChange={onChangeSupportingDocument}
+                    />
+                  </label>
+                </div>
+                <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
+              </div>
+            </div>
+            {supportingDocument && (
+              <img
+                className="rounded mt-4"
+                width="full"
+                src={supportingDocument}
+              />
+            )}
+          </div>
+        </>
+      );
+    } else {
+      organization = (
+        <>
+          <p className="text-center dark:text-gray-200 pt-3">
+            You've already registered; would you please add a donation?{' '}
+          </p>
+        </>
+      );
+    }
+  }
   let individual = '';
-  if (status[0].status === false) {
-    individual = (
-      <>
-        {/* <div className="px-4 py-5 dark:text-gray-200 bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 space-y-6 sm:p-6"> */}
-        <p className="text-xl text-center pt-3">Individual</p>
-        <div className="dark:text-gray">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              id="base-input"
-              required
-              onChange={(e) =>
-                updateFormInput({ ...formInput, name: e.target.value })
-              }
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        <div className="">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Country
-            </label>
-            <select
-              required
-              onChange={(e) =>
-                updateFormInput({ ...formInput, country: e.target.value })
-              }
-              id="countries"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected>Choose a country</option>
-              {countries.map((country) => (
-                <option value={country.name.common}>
-                  {country.flag}
-                  {country.name.common}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className=" flex flex-row justify-between space-x-4">
-          <div className="w-full">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              City
-            </label>
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                updateFormInput({ ...formInput, city: e.target.value })
-              }
-              id="base-input"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-          <div className="w-full">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Address
-            </label>
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                updateFormInput({ ...formInput, address: e.target.value })
-              }
-              id="base-input"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        <div className="dark:text-gray">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              email
-            </label>
-
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                updateFormInput({ ...formInput, email: e.target.value })
-              }
-              id="base-input"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        <div>
-          <div className=" flex pt-8 flex-row justify-between space-x-4">
-            <div className="w-full">
+  if (typeof status[0] !== 'undefined') {
+    if (status.status === false) {
+      individual = (
+        <>
+          {/* <div className="px-4 py-5 dark:text-gray-200 bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 space-y-6 sm:p-6"> */}
+          <p className="text-xl text-center pt-3">Individual</p>
+          <div className="dark:text-gray">
+            <div className="">
               <label
                 htmlFor="company-website"
                 className="block text-md font-medium dark:text-gray-200 text-gray-700"
               >
-                Contact
+                Full Name
               </label>
+
               <input
                 type="text"
                 id="base-input"
                 required
                 onChange={(e) =>
-                  updateFormInput({ ...formInput, contact: e.target.value })
+                  updateFormInput({ ...formInput, name: e.target.value })
                 }
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <div className="">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                Country
+              </label>
+              <select
+                required
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, country: e.target.value })
+                }
+                id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Choose a country</option>
+                {countries.map((country) => (
+                  <option value={country.name.common}>
+                    {country.flag}
+                    {country.name.common}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className=" flex flex-row justify-between space-x-4">
+            <div className="w-full">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                required
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, city: e.target.value })
+                }
+                id="base-input"
                 class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -556,110 +496,171 @@ export default function Fund() {
                 htmlFor="company-website"
                 className="block text-md font-medium dark:text-gray-200 text-gray-700"
               >
-                Residence
+                Address
               </label>
               <input
                 type="text"
-                id="base-input"
                 required
                 onChange={(e) =>
-                  updateFormInput({ ...formInput, residence: e.target.value })
+                  updateFormInput({ ...formInput, address: e.target.value })
                 }
+                id="base-input"
                 class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
           </div>
-        </div>
 
-        <div>
-          <label
-            htmlFor="company-website"
-            className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
-          >
-            Purpose of Fund
-          </label>
-          <textarea
-            id="comment"
-            rows="4"
-            onChange={(e) =>
-              updateFormInput({ ...formInput, purpose: e.target.value })
-            }
-            class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-            placeholder="Purpose of fund"
-            required
-          ></textarea>
-        </div>
+          <div className="dark:text-gray">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                email
+              </label>
 
-        <div className="dark:text-gray">
-          <div className="">
-            <label
-              htmlFor="company-website"
-              className="block text-md font-medium dark:text-gray-200 text-gray-700"
-            >
-              Account for fund (eth) (default account will be the one connected
-              to this website)
-            </label>
-
-            <input
-              type="text"
-              id="base-input"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, account: e.target.value })
-              }
-              placeholder="0x0000000"
-              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
+              <input
+                type="text"
+                required
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, email: e.target.value })
+                }
+                id="base-input"
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
-            Other supporting Document(s)
-          </label>
-          <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div className="space-y-1 text-center">
-              <ion-icon
-                name="document-outline"
-                class="text-4xl text-gray-600"
-              ></ion-icon>
-              <div className="flex text-sm text-gray-600">
+          <div>
+            <div className=" flex pt-8 flex-row justify-between space-x-4">
+              <div className="w-full">
                 <label
-                  htmlFor="file-upload-individual"
-                  className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                  htmlFor="company-website"
+                  className="block text-md font-medium dark:text-gray-200 text-gray-700"
                 >
-                  <span>Upload a file</span>
-                  <input
-                    id="file-upload-individual"
-                    name="file-upload-individual"
-                    type="file"
-                    className="sr-only"
-                    required
-                    onChange={onChangeSupportingDocument}
-                  />
+                  Contact
                 </label>
+                <input
+                  type="text"
+                  id="base-input"
+                  required
+                  onChange={(e) =>
+                    updateFormInput({ ...formInput, contact: e.target.value })
+                  }
+                  class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
               </div>
-              <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
+              <div className="w-full">
+                <label
+                  htmlFor="company-website"
+                  className="block text-md font-medium dark:text-gray-200 text-gray-700"
+                >
+                  Residence
+                </label>
+                <input
+                  type="text"
+                  id="base-input"
+                  required
+                  onChange={(e) =>
+                    updateFormInput({ ...formInput, residence: e.target.value })
+                  }
+                  class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
             </div>
           </div>
-          {supportingDocument && (
-            <img
-              className="rounded mt-4"
-              width="full"
-              src={supportingDocument}
-            />
-          )}
-        </div>
-      </>
-    );
-  } else {
-    individual = (
-      <>
-        <p>not found</p>
-      </>
-    );
-  }
 
+          <div>
+            <label
+              htmlFor="company-website"
+              className="block text-md mb-2 font-medium dark:text-gray-200 text-gray-700"
+            >
+              Purpose of Fund
+            </label>
+            <textarea
+              id="comment"
+              rows="4"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, purpose: e.target.value })
+              }
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              //   class="px-0 w-full text-sm focus:outline-none text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+              placeholder="Purpose of fund"
+              required
+            ></textarea>
+          </div>
+
+          <div className="dark:text-gray">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                Account for fund (eth) (default account will be the one
+                connected to this website)
+              </label>
+
+              <input
+                type="text"
+                id="base-input"
+                onChange={(e) =>
+                  updateFormInput({ ...formInput, account: e.target.value })
+                }
+                placeholder="0x0000000"
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-md font-medium dark:text-gray-200 text-gray-700">
+              Other supporting Document(s)
+            </label>
+            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+              <div className="space-y-1 text-center">
+                <ion-icon
+                  name="document-outline"
+                  class="text-4xl text-gray-600"
+                ></ion-icon>
+                <div className="flex text-sm text-gray-600">
+                  <label
+                    htmlFor="file-upload-individual"
+                    className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                  >
+                    <span>Upload a file</span>
+                    <input
+                      id="file-upload-individual"
+                      name="file-upload-individual"
+                      type="file"
+                      className="sr-only"
+                      required
+                      onChange={onChangeSupportingDocument}
+                    />
+                  </label>
+                </div>
+                <p className="text-xs text-gray-500">JPEG, PNG, up to 10MB</p>
+              </div>
+            </div>
+            {supportingDocument && (
+              <img
+                className="rounded mt-4"
+                width="full"
+                src={supportingDocument}
+              />
+            )}
+          </div>
+        </>
+      );
+    } else {
+      individual = (
+        <>
+          <p className="text-center dark:text-gray-200 pt-3">
+            You've already registered; would you please add a donation?{' '}
+          </p>
+        </>
+      );
+    }
+  }
   return (
     <>
       <div>

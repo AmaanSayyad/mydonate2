@@ -9,7 +9,7 @@ const Card = ({
   targetedAmount,
   country,
 }) => {
-  console.log('enddate', endDate);
+  // console.log('enddate', endDate);
   return (
     <div>
       <div class="h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">

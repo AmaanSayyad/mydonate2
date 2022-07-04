@@ -15,7 +15,7 @@ async function main() {
   txReceipt = await ethers.provider.waitForTransaction(txHash);
   let schainAddress = txReceipt.contractAddress;
 
-  console.log('schain contract address', schainAddress);
+  console.log('Mydonate contract address', schainAddress);
 }
 
 main()

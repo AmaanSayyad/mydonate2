@@ -220,7 +220,7 @@ const AuthProvider = ({ children }) => {
     const address = await signer.getAddress();
     const network = (await web3Provider.getNetwork()) as any;
 
-    console.log(signer);
+    // console.log(signer);
 
     dispatch({
       type: 'SET_WEB3_PROVIDER',
@@ -259,7 +259,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (provider?.on) {
       const handleAccountsChanged = (accounts: string[]) => {
-        console.log('accountsChanged', accounts);
+        // console.log('accountsChanged', accounts);
         dispatch({
           type: 'SET_ADDRESS',
           address: accounts[0],

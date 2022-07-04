@@ -36,6 +36,7 @@ contract Donation {
   struct IsRegistered {
     bool status;
     string userType;
+    uint256 id;
   }
 
   struct DonationItem {
@@ -145,7 +146,10 @@ contract Donation {
   //modifier function
 
   //create a new donation
-  function createDonation(DonationItem memory donation_) public payable {
+  function createDonation(DonationItem memory donation_, uint256 id_)
+    public
+    payable
+  {
     //validating inputs
     // require(msg.value > 0, 'Price must be at least 1 wei');
     require(bytes(donation_.hash).length > 0, 'Image Hash is required');
@@ -153,7 +157,7 @@ contract Donation {
     // require(bytes(_endDate).length > 0, 'End Date is required');
     require(bytes(donation_.category).length > 0, 'Category is required');
     require(bytes(donation_.title).length > 0, 'Title is required');
-    require(bytes(donation_.purpose).length > 0, 'Purpose is required');
+    // require(bytes(donation_.purpose).length > 0, 'Purpose is required');
     // require(bytes(_targetAmount).length > 0, 'Targeted amount is required');
     require(msg.sender != address(0x0));
 
@@ -197,21 +201,23 @@ contract Donation {
       users[usersCount].hash = donation_.user.hash;
       registeredUsers[msg.sender].status = true;
       registeredUsers[msg.sender].userType = donation_.user.userType;
+      registeredUsers[msg.sender].id = usersCount;
     } else {
-      donation.user.id = users[donation_.user.id].id;
+      // donation.user.id = users[id_].id;
+      console.log(id_);
+      console.log('user country', users[id_].country);
       donation.user._address = msg.sender;
-      donation.user.userType = users[donation_.user.id].userType;
-      donation.user.country = users[donation_.user.id].country;
-      donation.user.city = users[donation_.user.id].city;
-      donation.user.email = users[donation_.user.id].email;
-      donation.user.residenceAddress = users[donation_.user.id]
-        .residenceAddress;
+      donation.user.userType = users[id_].userType;
+      donation.user.country = users[id_].country;
+      donation.user.city = users[id_].city;
+      donation.user.email = users[id_].email;
+      donation.user.residenceAddress = users[id_].residenceAddress;
       donation.user.isRegistered = true;
-      donation.user.website = users[donation_.user.id].website;
-      donation.user.facebookUrl = users[donation_.user.id].facebookUrl;
-      donation.user.twitterUrl = users[donation_.user.id].twitterUrl;
-      donation.user.instagramUrl = users[donation_.user.id].instagramUrl;
-      donation.user.youtubeUrl = users[donation_.user.id].youtubeUrl;
+      donation.user.website = users[id_].website;
+      donation.user.facebookUrl = users[id_].facebookUrl;
+      donation.user.twitterUrl = users[id_].twitterUrl;
+      donation.user.instagramUrl = users[id_].instagramUrl;
+      donation.user.youtubeUrl = users[id_].youtubeUrl;
       donation.user.hash = donation_.user.hash;
     }
 
