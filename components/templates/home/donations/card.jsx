@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
@@ -8,6 +9,7 @@ const Card = ({
   endDate,
   targetedAmount,
   country,
+  id,
 }) => {
   // console.log('enddate', endDate);
   return (
@@ -54,7 +56,9 @@ const Card = ({
             ></ion-icon>
             <p className="text-xl dark:text-gray-100">{country}</p>
           </div>
-          <GradientButton title={'Read more'}></GradientButton>
+          <Link href={`/${id}`}>
+            <GradientButton title={'Read more'}></GradientButton>
+          </Link>
         </div>
       </div>
     </div>

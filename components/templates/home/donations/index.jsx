@@ -26,6 +26,7 @@ const Index = () => {
         {donations.map((donation, index) => (
           <Card
             key={index}
+            index={donation.user.id.toString()}
             title={donation.title}
             description={donation.description}
             image={donation.hash}
@@ -49,21 +50,6 @@ const Index = () => {
             country={donation.user.country}
           />
         ))}
-        {/* <Card
-          title="Australia Fire Outbreak"
-          description={`Supporting get of australias' fire Outbreak`}
-          image={`dimage3.jpg`}
-        />
-        <Card
-          title="Australia Fire Outbreak"
-          description={`Supporting get of australias' fire Outbreak`}
-          image={`dimage4.jpg`}
-        />
-        <Card
-          title="Australia Fire Outbreak"
-          description={`Supporting get of australias' fire Outbreak`}
-          image={`dimage5.jpg`}
-        /> */}{' '}
       </div>
     </div>
   );
