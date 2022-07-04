@@ -8,7 +8,7 @@ const Donatino = () => {
   console.log(id);
   return (
     <Layout>
-      <Donation />
+      <Donation id={id} />
     </Layout>
   );
 };

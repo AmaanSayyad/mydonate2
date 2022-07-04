@@ -330,6 +330,13 @@ contract Donation {
     return items;
   }
 
+  //get single donation
+  function getDonation(uint256 _id) public view returns (DonationItem memory) {
+    if (idToDonationItem[_id].id == _id) {
+      return idToDonationItem[_id];
+      // return registeredUsers[msg.sender];
+    }
+  }
   //get all donations under a category
   //get all pinned donations
   //get all approved donations

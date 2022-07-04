@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../utils/AuthProvider';
 
-function Home() {
+function Home({ id }) {
+  const { signer, address } = useContext(AuthContext);
+  useEffect(() => {
+    if (address) {
+      const donation = async () => {
+        const data = await signer.getDonation(id);
+        //  setstatus(data);
+        console.log(data);
+      };
+      donation();
+    }
+  }, [signer]);
   return (
     <div className="space-y-4 col-span-full mt-5 lg:col-span-2">
       <section>
