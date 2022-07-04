@@ -80,6 +80,7 @@ export default function Fund() {
   }
 
   const onCreateDonation = async () => {
+    const date = new Date(formInput.endDate);
     const amount_ = ethers.utils.parseUnits(
       formInput.targetedAmount.toString(),
       'ether'
@@ -105,7 +106,7 @@ export default function Fund() {
       ],
       0,
       0,
-      formInput.endDate,
+      date,
       amount_,
       formInput.category,
       formInput.title,
