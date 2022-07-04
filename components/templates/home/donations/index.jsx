@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import Card from './card';
 import { AuthContext } from '../../../../utils/AuthProvider';
-
+import { numDaysBetween } from '../../../../lib/utilities';
 const Index = () => {
   const { address, signer, contract } = useContext(AuthContext);
 
@@ -21,12 +21,32 @@ const Index = () => {
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-10 ">
-        <Card
-          title="Australia Fire Outbreak"
-          description={`Supporting get of australias' fire Outbreak`}
-          image={`dimage2.jpg`}
-        />
-        <Card
+        {donations.map((donation, index) => (
+          <Card
+            key={index}
+            title={donation.title}
+            description={donation.description}
+            image={donation.hash}
+            endDate={
+              Math.round(
+                numDaysBetween(
+                  Number(donation.endDate.toString()),
+
+                  new Date()
+                )
+              ) < 1
+                ? 'Donation Ended'
+                : Math.round(
+                    numDaysBetween(
+                      Number(donation.endDate.toString()),
+
+                      new Date()
+                    )
+                  ) + ' Days Left'
+            }
+          />
+        ))}
+        {/* <Card
           title="Australia Fire Outbreak"
           description={`Supporting get of australias' fire Outbreak`}
           image={`dimage3.jpg`}
@@ -40,8 +60,8 @@ const Index = () => {
           title="Australia Fire Outbreak"
           description={`Supporting get of australias' fire Outbreak`}
           image={`dimage5.jpg`}
-        />
-        {/* card */}
+        /> */}
+        ={' '}
       </div>
     </div>
   );

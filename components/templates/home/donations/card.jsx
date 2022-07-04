@@ -8,7 +8,7 @@ const Card = ({ title, description, image }) => {
         <a href="#" className="w-full h-full">
           <img
             class="rounded-t-lg h-52  object-cover w-full"
-            src={`/images/${image}`}
+            src={image}
             alt=""
           />
         </a>
