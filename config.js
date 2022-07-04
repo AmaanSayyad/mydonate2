@@ -1,1 +1,1 @@
-export const donationAddress = '0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0';
+export const donationAddress = '0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1';

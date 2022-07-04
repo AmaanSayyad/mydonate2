@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import Card from './card';
 import { AuthContext } from '../../../../utils/AuthProvider';
 import { numDaysBetween } from '../../../../lib/utilities';
+import { ethers } from 'ethers';
+
 const Index = () => {
   const { address, signer, contract } = useContext(AuthContext);
-
+  let ethprice = 1276;
   const [donations, setdonations] = useState([]);
   useEffect(() => {
     if (address) {
@@ -39,6 +41,12 @@ const Index = () => {
                     )
                   ) + ' Days Left'
             }
+            targetedAmount={(
+              Number(
+                ethers.utils.formatEther(donation.targetedAmount.toString())
+              ) * ethprice
+            ).toLocaleString()}
+            country={donation.user.country}
           />
         ))}
         {/* <Card
@@ -55,8 +63,7 @@ const Index = () => {
           title="Australia Fire Outbreak"
           description={`Supporting get of australias' fire Outbreak`}
           image={`dimage5.jpg`}
-        /> */}
-        ={' '}
+        /> */}{' '}
       </div>
     </div>
   );

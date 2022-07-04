@@ -15,7 +15,7 @@ contract Donation {
   mapping(uint256 => DonationItem) public idToDonationItem;
   mapping(uint256 => mapping(uint256 => Doners)) public doners;
   mapping(uint256 => User) public users;
-  mapping(address => bool) public registeredUsers;
+  mapping(address => IsRegistered) public registeredUsers;
 
   // address payable companyAddress;
   address payable companyAddress;
@@ -31,6 +31,11 @@ contract Donation {
     eth_usd_price_feed = AggregatorV3Interface(
       0x9326BFA02ADD2366b30bacB125260Af641031331
     );
+  }
+
+  struct IsRegistered {
+    bool status;
+    string userType;
   }
 
   struct DonationItem {
@@ -140,16 +145,7 @@ contract Donation {
   //modifier function
 
   //create a new donation
-  function createDonation(
-    // string memory _imageHash,
-    // string memory _description,
-    // uint256 _endDate,
-    // string memory _category,
-    // string memory _title,
-    // string memory _purpose,
-    // uint256 _targetAmount,
-    DonationItem memory donation_ // User memory user
-  ) public payable {
+  function createDonation(DonationItem memory donation_) public payable {
     //validating inputs
     // require(msg.value > 0, 'Price must be at least 1 wei');
     require(bytes(donation_.hash).length > 0, 'Image Hash is required');
@@ -169,7 +165,7 @@ contract Donation {
     donation.owner = payable(address(msg.sender));
 
     // check if user is already registered
-    if (registeredUsers[msg.sender] == false) {
+    if (registeredUsers[msg.sender].status == false) {
       donation.user.id = usersCount;
       donation.user._address = msg.sender;
       donation.user.userType = donation_.user.userType;
@@ -199,7 +195,24 @@ contract Donation {
       users[usersCount].instagramUrl = donation_.user.instagramUrl;
       users[usersCount].youtubeUrl = donation_.user.youtubeUrl;
       users[usersCount].hash = donation_.user.hash;
-      registeredUsers[msg.sender] = true;
+      registeredUsers[msg.sender].status = true;
+      registeredUsers[msg.sender].userType = donation_.user.userType;
+    } else {
+      donation.user.id = users[donation_.user.id].id;
+      donation.user._address = msg.sender;
+      donation.user.userType = users[donation_.user.id].userType;
+      donation.user.country = users[donation_.user.id].country;
+      donation.user.city = users[donation_.user.id].city;
+      donation.user.email = users[donation_.user.id].email;
+      donation.user.residenceAddress = users[donation_.user.id]
+        .residenceAddress;
+      donation.user.isRegistered = true;
+      donation.user.website = users[donation_.user.id].website;
+      donation.user.facebookUrl = users[donation_.user.id].facebookUrl;
+      donation.user.twitterUrl = users[donation_.user.id].twitterUrl;
+      donation.user.instagramUrl = users[donation_.user.id].instagramUrl;
+      donation.user.youtubeUrl = users[donation_.user.id].youtubeUrl;
+      donation.user.hash = donation_.user.hash;
     }
 
     //add user
@@ -287,11 +300,11 @@ contract Donation {
   //getter functions
 
   //get already registered users
-  function isUserRegistered() public view returns (bool) {
-    if (registeredUsers[msg.sender] == true) {
-      return true;
+  function isUserRegistered() public view returns (IsRegistered memory) {
+    if (registeredUsers[msg.sender].status == true) {
+      return registeredUsers[msg.sender];
     } else {
-      return false;
+      return registeredUsers[msg.sender];
     }
   }
 

@@ -1,7 +1,14 @@
 import React from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
-const Card = ({ title, description, image, endDate }) => {
+const Card = ({
+  title,
+  description,
+  image,
+  endDate,
+  targetedAmount,
+  country,
+}) => {
   console.log('enddate', endDate);
   return (
     <div>
@@ -36,14 +43,16 @@ const Card = ({ title, description, image, endDate }) => {
               name="wallet-outline"
               class="text-2xl dark:text-gray-100"
             ></ion-icon>
-            <p className="text-xl w-max dark:text-gray-200">$1,000.00</p>
+            <p className="text-xl w-max dark:text-gray-200">
+              ${targetedAmount}
+            </p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon
               name="earth-outline"
               class="text-2xl dark:text-gray-200"
             ></ion-icon>
-            <p className="text-xl dark:text-gray-100">Ghana</p>
+            <p className="text-xl dark:text-gray-100">{country}</p>
           </div>
           <GradientButton title={'Read more'}></GradientButton>
         </div>
