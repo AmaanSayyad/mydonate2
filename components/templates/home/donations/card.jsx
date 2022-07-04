@@ -1,7 +1,8 @@
 import React from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
-const Card = ({ title, description, image }) => {
+const Card = ({ title, description, image, endDate }) => {
+  console.log('enddate', endDate);
   return (
     <div>
       <div class="h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -28,7 +29,7 @@ const Card = ({ title, description, image }) => {
               name="time-outline"
               class="text-2xl dark:text-gray-100"
             ></ion-icon>
-            <p className="text-xl dark:text-gray-100">15 days more</p>
+            <p className="text-xl dark:text-gray-100">{endDate}</p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon

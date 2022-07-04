@@ -29,17 +29,12 @@ const Index = () => {
             image={donation.hash}
             endDate={
               Math.round(
-                numDaysBetween(
-                  Number(donation.endDate.toString()),
-
-                  new Date()
-                )
+                numDaysBetween(Number(donation.endDate.toString()), new Date())
               ) < 1
                 ? 'Donation Ended'
                 : Math.round(
                     numDaysBetween(
                       Number(donation.endDate.toString()),
-
                       new Date()
                     )
                   ) + ' Days Left'

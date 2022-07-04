@@ -105,7 +105,7 @@ export default function Fund() {
       ],
       0,
       0,
-      0,
+      formInput.endDate,
       amount_,
       formInput.category,
       formInput.title,
