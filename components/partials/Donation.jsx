@@ -29,7 +29,7 @@ function Home({ id }) {
   const addDonation = async (value = amount) => {
     const amount_ = ethers.utils.parseUnits(value, 'ether');
     //  const amount_ = ethers.utils.parseUnits(amount.toString(), 'ether');
-    let transaction = await signer.addDonation(id, 1.7, {
+    let transaction = await signer.addDonation(id, {
       value: amount_,
     });
     setloading(true);
