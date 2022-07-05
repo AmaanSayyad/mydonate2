@@ -2,7 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../utils/AuthProvider';
 import { ethers } from 'ethers';
 import { truncateString } from '../../lib/utilities';
+import Modal from '../utility/modal';
 function Home({ id }) {
+  const [modal, setModal] = useState(false);
+
   const { signer, address } = useContext(AuthContext);
   const [donation_, setdonation_] = useState({
     donationsRaised: 0,
@@ -113,7 +116,12 @@ function Home({ id }) {
                 </div>
               </div>
 
-              <button className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring">
+              <button
+                onClick={() => {
+                  setModal(true);
+                }}
+                className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring"
+              >
                 Donate
               </button>
 
@@ -176,6 +184,66 @@ function Home({ id }) {
           </div>
         </div>
       </section>
+
+      <Modal
+        state={modal}
+        onClick={() => {
+          setModal(false);
+        }}
+      >
+        <p className="text-lg dark:text-gray-200 py-5">Filter Donations</p>
+        <div className="space-y-4">
+          <div
+            onClick={() => {
+              // tipDonation(props.donationId, '5');
+            }}
+            className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-green-300 text-gray-700 "
+          >
+            5 ETH
+          </div>
+          <div
+            onClick={() => {
+              // tipDonation(props.donationId, '10');
+            }}
+            className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-blue-300 text-gray-700 "
+          >
+            10 ETH
+          </div>
+          <div
+            onClick={() => {
+              // tipDonation(props.donationId, '15');
+            }}
+            className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-purple-300 text-gray-700 "
+          >
+            15 ETH
+          </div>
+          <div className="">
+            <label
+              htmlFor="company-website"
+              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+            >
+              Input Manually
+            </label>
+
+            <input
+              type="number"
+              // value={amount}
+              onChange={(e) => {
+                // setamount(e.target.value);
+              }}
+              placeholder="Enter amount manually"
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+
+          <button
+            type="button"
+            className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-full sm:text-sm"
+          >
+            Submit
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }
