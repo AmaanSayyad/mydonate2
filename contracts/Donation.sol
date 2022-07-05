@@ -240,7 +240,7 @@ contract Donation {
   }
 
   //add a donation
-  function addDonation(uint256 _id, uint256 _percentage) public payable {
+  function addDonation(uint256 _id) public payable {
     require(_id > 0 && _id <= donationCount);
     DonationItem storage donation = idToDonationItem[_id];
     //check date if it expired.
@@ -248,8 +248,11 @@ contract Donation {
       donation.donationstatus.completed = true;
     }
     address payable _owner = donation.owner;
+    uint256 fnum = 17;
+    uint256 snum = 10;
+    uint256 percentage = fnum.div(snum);
     uint256 percent = 100;
-    uint256 percentile = percent.div(_percentage);
+    uint256 percentile = percent.div(percentage);
     uint256 deduction = msg.value.div(percentile);
     // uint256 deduction = ((msg.value)/(100/_percentage));
     _owner.transfer(msg.value.sub(deduction));

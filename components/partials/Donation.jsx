@@ -6,6 +6,8 @@ import Modal from '../utility/modal';
 function Home({ id }) {
   const [modal, setModal] = useState(false);
   const [amount, setamount] = useState(0);
+
+  const [loading, setloading] = useState(false);
   const { signer, address } = useContext(AuthContext);
   const [donation_, setdonation_] = useState({
     donationsRaised: 0,
