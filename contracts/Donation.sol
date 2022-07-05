@@ -43,6 +43,8 @@ contract Donation {
     uint256 id;
     address payable owner;
     User user;
+    // Doners doners;
+    uint256 donersCount;
     uint256 donationsRaised;
     uint256 startDate;
     uint256 endDate;
@@ -217,6 +219,7 @@ contract Donation {
 
     //add user
     donation.donationsRaised = 0;
+    donation.donersCount = 0;
     donation.startDate = block.timestamp;
     donation.endDate = donation_.endDate;
     donation.targetedAmount = donation_.targetedAmount;
@@ -256,11 +259,13 @@ contract Donation {
 
     amountRaised = amountRaised + msg.value;
     donation.donationsRaised = donation.donationsRaised + msg.value;
+    donation.donersCount = donersCount;
+    donation.donersCount = donation.donersCount + 1;
     donersCount++;
-    doners[donation.id][donersCount].id = donersCount;
-    doners[donation.id][donersCount].amount = msg.value;
-    doners[donation.id][donersCount].date = block.timestamp;
-    doners[donation.id][donersCount].doner = address(msg.sender);
+    doners[donation.id][donation.donersCount].id = donation.donersCount;
+    doners[donation.id][donation.donersCount].amount = msg.value;
+    doners[donation.id][donation.donersCount].date = block.timestamp;
+    doners[donation.id][donation.donersCount].doner = address(msg.sender);
     idToDonationItem[_id] = donation;
   }
 
