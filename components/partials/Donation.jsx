@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../utils/AuthProvider';
+import { Progress } from '@material-tailwind/react';
+
 import { ethers } from 'ethers';
 import {
   numDaysBetween,
   truncateString,
   ellipseAddress,
+  timeConverter,
 } from '../../lib/utilities';
 import Modal from '../utility/modal';
 function Home({ id }) {
@@ -20,6 +23,47 @@ function Home({ id }) {
     endDate: 0,
   });
   let ethprice = 1276;
+
+  const getDonationPercentage = () => {
+    let fixVal = 2;
+    let percentage =
+      (parseInt(
+        Number(
+          ethers.utils.formatEther(donation_.donationsRaised.toString()) *
+            ethprice
+        )
+      ) /
+        parseInt(
+          Number(
+            ethers.utils.formatEther(donation_.targetedAmount.toString()) *
+              ethprice
+          )
+        )) *
+      100;
+
+    if (percentage >= 90) {
+      fixVal = 0;
+    }
+
+    console.log(percentage);
+    return parseFloat(
+      (parseInt(
+        Number(
+          ethers.utils.formatEther(donation_.donationsRaised.toString()) *
+            ethprice
+        )
+      ) /
+        parseInt(
+          Number(
+            ethers.utils.formatEther(donation_.targetedAmount.toString()) *
+              ethprice
+          )
+        )) *
+        100
+    ).toFixed(fixVal);
+  };
+
+  console.log('donationRaised');
 
   useEffect(() => {
     if (address) {
@@ -95,7 +139,6 @@ function Home({ id }) {
                   </div>
                 </div>
               </div>
-
               <details class="relative mt-4 group">
                 <summary class="block">
                   <div>
@@ -115,19 +158,20 @@ function Home({ id }) {
                   {donation_.description}
                 </div>
               </details>
-
               <div class="flex justify-between ">
                 <span class="text-base font-medium text-blue-700 dark:text-white">
                   Donations
                 </span>
                 <span class="text-sm font-medium text-blue-700 dark:text-white">
-                  45%
+                  {getDonationPercentage()}%
                 </span>
               </div>
               <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
-                <div class="bg-blue-600 h-4 rounded-full w-[45%]"></div>
+                <div
+                  class={`bg-blue-600 h-4 rounded-full `}
+                  style={{ width: `${100}%` }}
+                ></div>
               </div>
-
               <div class="flex justify-between py-4 ">
                 <span class="text-base font-medium text-gray-700 dark:text-white">
                   {doners.length}+ Donated
@@ -148,7 +192,6 @@ function Home({ id }) {
                       ) + ' Days Left'}
                 </div>
               </div>
-
               <button
                 onClick={() => {
                   setModal(true);
@@ -157,7 +200,6 @@ function Home({ id }) {
               >
                 Donate
               </button>
-
               <details class="relative mt-4 group">
                 <div class="pb-6 prose max-w-none dark:text-gray-300">
                   <div class="overflow-x-auto">
@@ -179,19 +221,19 @@ function Home({ id }) {
                       <tbody class="divide-y-0 divide-gray-50">
                         {doners.map((doners) => (
                           <tr>
-                            <td class="py-2 text-gray-700 whitespace-nowrap">
+                            <td class="py-2 text-gray-700 dark:text-gray-200 whitespace-nowrap">
                               {/* <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium"> */}
                               {ellipseAddress(doners.doner)}
                               {/* </strong> */}
                             </td>
-                            <td class=" text-gray-700 whitespace-nowrap">
+                            <td class=" text-gray-700 dark:text-gray-100 whitespace-nowrap">
                               {ethers.utils.formatEther(
                                 doners.amount.toString()
                               )}{' '}
                               ETH
                             </td>
-                            <td class=" text-gray-700 whitespace-nowrap">
-                              26th June, 2022
+                            <td class=" text-gray-700 dark:text-gray-100 whitespace-nowrap">
+                              {timeConverter(doners.date.toString())}
                             </td>
                           </tr>
                         ))}
