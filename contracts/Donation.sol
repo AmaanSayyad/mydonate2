@@ -265,7 +265,7 @@ contract Donation {
     donation.donationsRaised = donation.donationsRaised + msg.value;
     // donation.donersCount = donersCount;
     donation.donersCount = donation.donersCount + 1;
-    // donersCount++;
+    donersCount++;
     doners[donation.id][donation.donersCount].id = donation.donersCount;
     doners[donation.id][donation.donersCount].amount = msg.value;
     doners[donation.id][donation.donersCount].date = block.timestamp;
@@ -356,18 +356,29 @@ contract Donation {
       currentIndex += 1;
     }
     return items;
-    // if (idToDonationItem[_id].id == _id) {
-    //   return idToDonationItem[_id];
-    //   // return registeredUsers[msg.sender];
-    // }
   }
 
   //get all donations under a category
-  //get all pinned donations
+
   //get all approved donations
   //get all pending donation
   //get a single donation
+
   //get all doners
+  function getAllDoners() public view returns (uint256) {
+    return donersCount;
+  }
+
+  //get all amount raised
+  function getAmountRaised() public view returns (uint256) {
+    return amountRaised;
+  }
+
+  //get all users raised
+  function getAllUsers() public view returns (uint256) {
+    return usersCount;
+  }
+
   //get all expired pinned donations
   //net worth of the comapny
 

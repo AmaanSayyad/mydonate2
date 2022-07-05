@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../../utils/AuthProvider';
+import { ethers } from 'ethers';
+import millify from 'millify';
 
 const Index = () => {
+  const { address, signer, contract } = useContext(AuthContext);
+  const [doners, setdoners] = useState('');
+  const [amountraised, setamountraised] = useState('');
+  const [users, setusers] = useState('');
+  useEffect(() => {
+    if (address) {
+      const loadDonations = async () => {
+        const allDoners = await signer.getAllDoners();
+        const amountRaised = await signer.getAmountRaised();
+        const alluser = await signer.getAllUsers();
+        setdoners(allDoners.toString());
+        setamountraised(ethers.utils.formatEther(amountRaised.toString()));
+        setusers(alluser.toString());
+        // console.log('allDoners', allDoners.toString());
+        // console.log(
+        //   'amount raised',
+        //   ethers.utils.formatEther(amountRaised.toString())
+        // );
+        // console.log('allusers', alluser.toString());
+        // console.log(data);
+        // setdonations(data);
+      };
+      loadDonations();
+    }
+  }, [signer]);
+
   return (
     <div className="relative grid grid-cols-1 gap-9 md:flex md:flex-row md:justify-around  p-4 px-10 bg-[#ffffff] dark:bg-[#131212] dark:text-gray-200 rounded-2xl">
       <div className="text-center">
@@ -9,7 +38,8 @@ const Index = () => {
           class="text-5xl text-[#E338C8] "
         ></ion-icon>
         <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-          20K
+          {millify(users)}
+          {'+'}
         </h1>
         <p className="text-xl ">Fundarisers</p>
       </div>
@@ -20,7 +50,8 @@ const Index = () => {
           class="text-5xl text-[#E338C8] "
         ></ion-icon>
         <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-          10M
+          {milify(doners)}
+          {'+ '}
         </h1>
         <p className="text-xl ">People donated</p>
       </div>
@@ -31,7 +62,7 @@ const Index = () => {
           class="text-5xl text-[#E338C8] "
         ></ion-icon>
         <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-          500ETH+
+          {milify(amountraised)}ETH+
         </h1>
         <p className="text-xl ">Amount raised</p>
       </div>

@@ -28,6 +28,7 @@
     "hardhat": "^2.9.9",
     "install": "^0.13.0",
     "ipfs-http-client": "^56.0.2",
+    "millify": "^4.0.0",
     "next": "latest",
     "postcss": "^8.4.12",
     "react": "^17.0.2",
