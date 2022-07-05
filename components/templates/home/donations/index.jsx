@@ -23,33 +23,38 @@ const Index = () => {
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-10 ">
-        {donations.map((donation, index) => (
-          <Card
-            key={index}
-            id={donation.id.toString()}
-            title={donation.title}
-            description={truncateString(donation.description, 40)}
-            image={donation.hash}
-            endDate={
-              Math.round(
-                numDaysBetween(Number(donation.endDate.toString()), new Date())
-              ) < 1
-                ? 'Donation Ended'
-                : Math.round(
-                    numDaysBetween(
-                      Number(donation.endDate.toString()),
-                      new Date()
-                    )
-                  ) + ' Days Left'
-            }
-            targetedAmount={(
-              Number(
-                ethers.utils.formatEther(donation.targetedAmount.toString())
-              ) * ethprice
-            ).toLocaleString()}
-            country={donation.user.country}
-          />
-        ))}
+        {donations
+          .map((donation, index) => (
+            <Card
+              key={index}
+              id={donation.id.toString()}
+              title={donation.title}
+              description={truncateString(donation.description, 30)}
+              image={donation.hash}
+              endDate={
+                Math.round(
+                  numDaysBetween(
+                    Number(donation.endDate.toString()),
+                    new Date()
+                  )
+                ) < 1
+                  ? 'Donation Ended'
+                  : Math.round(
+                      numDaysBetween(
+                        Number(donation.endDate.toString()),
+                        new Date()
+                      )
+                    ) + ' Days Left'
+              }
+              targetedAmount={(
+                Number(
+                  ethers.utils.formatEther(donation.targetedAmount.toString())
+                ) * ethprice
+              ).toLocaleString()}
+              country={donation.user.country}
+            />
+          ))
+          .reverse()}
       </div>
     </div>
   );

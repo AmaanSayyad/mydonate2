@@ -1,24 +1,56 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 import Card from '../donations/tendingCards';
 import Link from 'next/link';
+import { numDaysBetween, truncateString } from '../../../../lib/utilities';
+import { ethers } from 'ethers';
+import { AuthContext } from '../../../../utils/AuthProvider';
 const TrendingDonation = () => {
+  const { address, signer, contract } = useContext(AuthContext);
+  let ethprice = 1276;
+  const [donations, setdonations] = useState([
+    {
+      title: '',
+      description: '',
+      endDate: 0,
+      targetedAmount: 0,
+      user: {
+        country: '',
+      },
+    },
+  ]);
+  useEffect(() => {
+    if (address) {
+      const loadDonations = async () => {
+        const data = await signer.fetchAllDonationItems();
+        console.log(data);
+        setdonations(data);
+      };
+      loadDonations();
+    }
+  }, [signer]);
+
+  console.log(donations);
+
   return (
     <div className="relative flex flex-col space-y-1 ">
-      <p className="text-2xl py-4 dark:text-gray-100">Trending Donations</p>
+      <p className="text-2xl py-4 dark:text-gray-100">Recent Donation</p>
       <div className="flex md:flex-row flex-col space-x-0 md:space-x-8 w-full">
         <div class="w-full md:w-6/12 h-full">
           <img
-            src="/images/dimage.jpeg"
+            src={`${donations[donations.length - 1].hash}`}
             className="object-cover h-96 rounded-2xl w-full"
           />
         </div>
         <div className="py-2">
           <h2 className="text-xl sm:text-2xl md:text-3xl  font-semibold dark:text-gray-200">
-            EDUCARE
+            {donations[donations.length - 1].title}{' '}
           </h2>
           <p className=" text-lg sm:text-xl md:text-2xl dark:text-gray-100">
-            Supporting Education in Africa
+            {truncateString(
+              donations[donations.length - 1].description.toString(),
+              40
+            )}{' '}
           </p>
           <div className="flex flex-row space-x-2 items-center">
             <ion-icon
@@ -26,7 +58,21 @@ const TrendingDonation = () => {
               class=" text-lg md:text-2xl dark:text-gray-100"
             ></ion-icon>
             <p className="text-lg md:text-xl dark:text-gray-100">
-              15 days more
+              {Math.round(
+                numDaysBetween(
+                  Number(donations[donations.length - 1].endDate.toString()),
+                  new Date()
+                )
+              ) < 1
+                ? 'Donation Ended'
+                : Math.round(
+                    numDaysBetween(
+                      Number(
+                        donations[donations.length - 1].endDate.toString()
+                      ),
+                      new Date()
+                    )
+                  ) + ' Days Left'}
             </p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
@@ -35,7 +81,13 @@ const TrendingDonation = () => {
               class="text-lg md:text-2xl  dark:text-gray-100"
             ></ion-icon>
             <p className="text-lg md:text-xl dark:text-gray-200">
-              $1,000.00 / $10,000,000.00
+              {(
+                Number(
+                  ethers.utils.formatEther(
+                    donations[donations.length - 1].targetedAmount.toString()
+                  )
+                ) * ethprice
+              ).toLocaleString()}
             </p>
           </div>
           <div className="flex flex-row space-x-2 items-center">
@@ -43,75 +95,16 @@ const TrendingDonation = () => {
               name="earth-outline"
               class="text-lg md:text-2xl  dark:text-gray-200"
             ></ion-icon>
-            <p className="text-xl dark:text-gray-100">Ghana</p>
+            <p className="text-xl dark:text-gray-100">
+              {donations[donations.length - 1].user.country}
+            </p>
           </div>
-          <Link href={'/4'}>
+          <Link href={`${donations[donations.length - 1].id}`}>
             <GradientButton title="View details" />
           </Link>
         </div>
       </div>
 
-      <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
-        <div className="flex flex-nowrap mt-5">
-          <div class="inline-block  px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ...`}
-              image={`dimage2.jpg`}
-            />
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image={`dimage3.jpg`}
-            />
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image={`dimage3.jpg`}
-            />{' '}
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image={`dimage5.jpg`}
-            />
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image={`dimage5.jpg`}
-            />{' '}
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image={`dimage3.jpg`}
-            />{' '}
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image="dimage5.jpg"
-            />{' '}
-          </div>
-          <div class="inline-block px-3 snap-center">
-            <Card
-              title="Australia Fire Outbreak"
-              description={`Supporting get of ....`}
-              image={`dimage5.jpg`}
-            />{' '}
-          </div>
-        </div>
-        {/* </div> */}
-      </div>
       <style></style>
     </div>
   );
