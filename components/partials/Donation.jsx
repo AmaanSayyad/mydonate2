@@ -185,7 +185,10 @@ function Home({ id }) {
                               {/* </strong> */}
                             </td>
                             <td class=" text-gray-700 whitespace-nowrap">
-                              {doners.amount.toString()}ETH
+                              {ethers.utils.formatEther(
+                                doners.amount.toString()
+                              )}{' '}
+                              ETH
                             </td>
                             <td class=" text-gray-700 whitespace-nowrap">
                               26th June, 2022
