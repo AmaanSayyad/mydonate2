@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../utils/AuthProvider';
 import { ethers } from 'ethers';
-import { truncateString } from '../../lib/utilities';
+import { numDaysBetween, truncateString } from '../../lib/utilities';
 import Modal from '../utility/modal';
 function Home({ id }) {
   const [modal, setModal] = useState(false);
   const [amount, setamount] = useState(0);
-
+  const [doners, setdoners] = useState([]);
   const [loading, setloading] = useState(false);
   const { signer, address } = useContext(AuthContext);
   const [donation_, setdonation_] = useState({
@@ -20,7 +20,9 @@ function Home({ id }) {
     if (address) {
       const donation = async () => {
         const data = await signer.getDonation(id);
-        //  setstatus(data);
+        const doners = await signer.getDonersOfDonation(id);
+        setdoners(doners);
+        console.log('get doners', doners);
         setdonation_(data);
         console.log(data);
       };
@@ -123,10 +125,22 @@ function Home({ id }) {
 
               <div class="flex justify-between py-4 ">
                 <span class="text-base font-medium text-gray-700 dark:text-white">
-                  50+ Donated
+                  {doners.length}+ Donated
                 </span>
                 <div className=" bg-blue-600 py-1 px-3 text-white text-lg rounded-full overflow-hidden mb-3 ">
-                  5 days Left{' '}
+                  {Math.round(
+                    numDaysBetween(
+                      Number(donation_.endDate.toString()),
+                      new Date()
+                    )
+                  ) < 1
+                    ? 'Donation Ended'
+                    : Math.round(
+                        numDaysBetween(
+                          Number(donation_.endDate.toString()),
+                          new Date()
+                        )
+                      ) + ' Days Left'}
                 </div>
               </div>
 

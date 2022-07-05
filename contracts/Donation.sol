@@ -337,6 +337,30 @@ contract Donation {
       // return registeredUsers[msg.sender];
     }
   }
+
+  //get all doners of a donatoin
+  function getDonersOfDonation(uint256 _id)
+    public
+    view
+    returns (Doners[] memory)
+  {
+    uint256 itemCount = idToDonationItem[_id].donersCount;
+    uint256 currentIndex = 0;
+    Doners[] memory items = new Doners[](itemCount);
+    for (uint256 i = 0; i < itemCount; i++) {
+      uint256 currentId = i + 1;
+      // DonationItem storage currentItem = idToDonationItem[currentId];
+      Doners storage currentItem = doners[_id][currentId];
+      items[currentIndex] = currentItem;
+      currentIndex += 1;
+    }
+    return items;
+    // if (idToDonationItem[_id].id == _id) {
+    //   return idToDonationItem[_id];
+    //   // return registeredUsers[msg.sender];
+    // }
+  }
+
   //get all donations under a category
   //get all pinned donations
   //get all approved donations
