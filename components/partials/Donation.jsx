@@ -63,6 +63,19 @@ function Home({ id }) {
     ).toFixed(fixVal);
   };
 
+  const targetedAmount = () => {
+    return (
+      Number(ethers.utils.formatEther(donation_.targetedAmount.toString())) *
+      ethprice
+    ).toLocaleString();
+  };
+
+  const donationRaised = () => {
+    return (
+      Number(ethers.utils.formatEther(donation_.donationsRaised.toString())) *
+      ethprice
+    ).toLocaleString();
+  };
   console.log('donationRaised');
 
   useEffect(() => {
@@ -120,21 +133,14 @@ function Home({ id }) {
                     ></ion-icon>
                     <p class="text-lg font-bold dark:text-gray-200">
                       {/* $119.99/$20,000.00 targetedAmount= */}
-                      {(
-                        Number(
-                          ethers.utils.formatEther(
-                            donation_.donationsRaised.toString()
-                          )
-                        ) * ethprice
-                      ).toLocaleString()}{' '}
-                      /{' '}
-                      {(
-                        Number(
-                          ethers.utils.formatEther(
-                            donation_.targetedAmount.toString()
-                          )
-                        ) * ethprice
-                      ).toLocaleString()}
+                      {/* {Math.floor(getDonationPercentage()) >= 100
+                        } */}
+                      {Math.floor(getDonationPercentage()) >= 100
+                        ? targetedAmount() +
+                          '/' +
+                          targetedAmount() +
+                          'Donation Target Reached'
+                        : donationRaised() + '/' + targetedAmount()}
                     </p>
                   </div>
                 </div>
@@ -163,13 +169,25 @@ function Home({ id }) {
                   Donations
                 </span>
                 <span class="text-sm font-medium text-blue-700 dark:text-white">
-                  {getDonationPercentage()}%
+                  {Math.floor(getDonationPercentage()) >= 100
+                    ? '100% +'
+                    : getDonationPercentage() + '%'}
                 </span>
               </div>
               <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
                 <div
-                  class={`bg-blue-600 h-4 rounded-full `}
-                  style={{ width: `${100}%` }}
+                  class={`${
+                    Math.floor(getDonationPercentage()) == 100
+                      ? `bg-green-600`
+                      : ''
+                  }bg-blue-600 h-4 rounded-full `}
+                  style={{
+                    width: `${
+                      Math.floor(getDonationPercentage()) >= 100
+                        ? 100
+                        : Math.floor(getDonationPercentage())
+                    }%`,
+                  }}
                 ></div>
               </div>
               <div class="flex justify-between py-4 ">
@@ -219,24 +237,26 @@ function Home({ id }) {
                       </thead>
 
                       <tbody class="divide-y-0 divide-gray-50">
-                        {doners.map((doners) => (
-                          <tr>
-                            <td class="py-2 text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                              {/* <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium"> */}
-                              {ellipseAddress(doners.doner)}
-                              {/* </strong> */}
-                            </td>
-                            <td class=" text-gray-700 dark:text-gray-100 whitespace-nowrap">
-                              {ethers.utils.formatEther(
-                                doners.amount.toString()
-                              )}{' '}
-                              ETH
-                            </td>
-                            <td class=" text-gray-700 dark:text-gray-100 whitespace-nowrap">
-                              {timeConverter(doners.date.toString())}
-                            </td>
-                          </tr>
-                        ))}
+                        {doners
+                          .map((doners) => (
+                            <tr>
+                              <td class="py-2 text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                {/* <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium"> */}
+                                {ellipseAddress(doners.doner)}
+                                {/* </strong> */}
+                              </td>
+                              <td class=" text-gray-700 dark:text-gray-100 whitespace-nowrap">
+                                {ethers.utils.formatEther(
+                                  doners.amount.toString()
+                                )}{' '}
+                                ETH
+                              </td>
+                              <td class=" text-gray-700 dark:text-gray-100 whitespace-nowrap">
+                                {timeConverter(doners.date.toString())}
+                              </td>
+                            </tr>
+                          ))
+                          .reverse()}
                       </tbody>
                     </table>
                   </div>
