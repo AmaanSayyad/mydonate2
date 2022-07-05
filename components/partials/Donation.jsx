@@ -178,7 +178,7 @@ function Home({ id }) {
               <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
                 <div
                   class={`${
-                    Math.floor(getDonationPercentage()) == 100
+                    Math.floor(getDonationPercentage()) >= 100
                       ? `bg-green-600`
                       : ''
                   }bg-blue-600 h-4 rounded-full `}
