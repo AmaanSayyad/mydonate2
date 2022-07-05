@@ -126,7 +126,7 @@ function Home({ id }) {
                     {donation_.title}
                   </h1>
 
-                  <div className="flex flex-row items-center space-x-2">
+                  <div className="flex flex-row items-center space-x-4">
                     <ion-icon
                       name="cash-outline"
                       class="text-xl dark:text-gray-200"
@@ -139,7 +139,8 @@ function Home({ id }) {
                         ? targetedAmount() +
                           '/' +
                           targetedAmount() +
-                          'Donation Target Reached'
+                          '+' +
+                          '  Target Reached 🎉'
                         : donationRaised() + '/' + targetedAmount()}
                     </p>
                   </div>
