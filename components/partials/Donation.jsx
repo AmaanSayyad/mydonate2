@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../utils/AuthProvider';
 import { ethers } from 'ethers';
-import { numDaysBetween, truncateString } from '../../lib/utilities';
+import {
+  numDaysBetween,
+  truncateString,
+  ellipseAddress,
+} from '../../lib/utilities';
 import Modal from '../utility/modal';
 function Home({ id }) {
   const [modal, setModal] = useState(false);
@@ -13,6 +17,7 @@ function Home({ id }) {
     donationsRaised: 0,
     targetedAmount: 0,
     description: '',
+    endDate: 0,
   });
   let ethprice = 1276;
 
@@ -171,30 +176,22 @@ function Home({ id }) {
                         </tr>
                       </thead>
 
-                      <tbody class="divide-y divide-gray-100">
-                        <tr>
-                          <td class="py-2 text-gray-700 whitespace-nowrap">
-                            <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
-                              0x000000
-                            </strong>
-                          </td>
-                          <td class=" text-gray-700 whitespace-nowrap">4ETH</td>
-                          <td class=" text-gray-700 whitespace-nowrap">
-                            26th June, 2022
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="py-2 text-gray-700 whitespace-nowrap">
-                            <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
-                              0x000000
-                            </strong>
-                          </td>
-                          <td class=" text-gray-700 whitespace-nowrap">4ETH</td>
-                          <td class=" text-gray-700 whitespace-nowrap">
-                            26th June, 2022
-                          </td>
-                        </tr>
+                      <tbody class="divide-y-0 divide-gray-50">
+                        {doners.map((doners) => (
+                          <tr>
+                            <td class="py-2 text-gray-700 whitespace-nowrap">
+                              {/* <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium"> */}
+                              {ellipseAddress(doners.doner)}
+                              {/* </strong> */}
+                            </td>
+                            <td class=" text-gray-700 whitespace-nowrap">
+                              {doners.amount.toString()}ETH
+                            </td>
+                            <td class=" text-gray-700 whitespace-nowrap">
+                              26th June, 2022
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
