@@ -90,23 +90,6 @@ function Header() {
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
-                      {!web3Provider ? (
-                        <button
-                          onClick={connect}
-                          className={`bg-gradient-to-r mb-3  flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
-                        >
-                          connect
-                        </button>
-                      ) : (
-                        <>
-                          <button
-                            onClick={disconnect}
-                            className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
-                          >
-                            Disconnect
-                          </button>
-                        </>
-                      )}
                       {navigation.map((item) => (
                         <Link href={item.href}>
                           <p
@@ -126,6 +109,23 @@ function Header() {
                     </div>
                   </div>
                 </div>
+                {!web3Provider ? (
+                  <button
+                    onClick={connect}
+                    className=" bg-gradient-to-r from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                  >
+                    connect
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={disconnect}
+                      className=" bg-gradient-to-r from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                    >
+                      Disconnect
+                    </button>
+                  </>
+                )}
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <button
                     onClick={

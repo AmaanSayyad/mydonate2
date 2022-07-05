@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import Card from './card';
 import { AuthContext } from '../../../../utils/AuthProvider';
-import { numDaysBetween } from '../../../../lib/utilities';
+import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
 
 const Index = () => {
@@ -28,7 +28,7 @@ const Index = () => {
             key={index}
             id={donation.id.toString()}
             title={donation.title}
-            description={donation.description}
+            description={truncateString(donation.description, 40)}
             image={donation.hash}
             endDate={
               Math.round(

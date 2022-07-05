@@ -220,6 +220,7 @@ contract Donation {
     //add user
     donation.donationsRaised = 0;
     donation.donersCount = 0;
+
     donation.startDate = block.timestamp;
     donation.endDate = donation_.endDate;
     donation.targetedAmount = donation_.targetedAmount;
@@ -262,9 +263,9 @@ contract Donation {
 
     amountRaised = amountRaised + msg.value;
     donation.donationsRaised = donation.donationsRaised + msg.value;
-    donation.donersCount = donersCount;
+    // donation.donersCount = donersCount;
     donation.donersCount = donation.donersCount + 1;
-    donersCount++;
+    // donersCount++;
     doners[donation.id][donation.donersCount].id = donation.donersCount;
     doners[donation.id][donation.donersCount].amount = msg.value;
     doners[donation.id][donation.donersCount].date = block.timestamp;

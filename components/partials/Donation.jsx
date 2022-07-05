@@ -126,7 +126,7 @@ function Home({ id }) {
                     {donation_.title}
                   </h1>
 
-                  <div className="flex flex-row items-center space-x-4">
+                  <div className="flex flex-row items-center space-x-2">
                     <ion-icon
                       name="cash-outline"
                       class="text-xl dark:text-gray-200"
@@ -179,9 +179,9 @@ function Home({ id }) {
                 <div
                   class={`${
                     Math.floor(getDonationPercentage()) >= 100
-                      ? `bg-green-600`
-                      : ''
-                  }bg-blue-600 h-4 rounded-full `}
+                      ? `bg-green-600 h-4 rounded-full`
+                      : 'bg-blue-600 h-4 rounded-full '
+                  }`}
                   style={{
                     width: `${
                       Math.floor(getDonationPercentage()) >= 100
