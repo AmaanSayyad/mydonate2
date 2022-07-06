@@ -112,23 +112,7 @@ function Header() {
                     </div>
                   </div>
                 </div>
-                {!web3Provider ? (
-                  <button
-                    onClick={connect}
-                    className=" bg-gradient-to-r from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
-                  >
-                    connect
-                  </button>
-                ) : (
-                  <>
-                    <button
-                      onClick={disconnect}
-                      className=" bg-gradient-to-r from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
-                    >
-                      Disconnect
-                    </button>
-                  </>
-                )}
+
                 <div className="absolute space-x-3 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* <div> */}
                   <ion-icon
@@ -172,7 +156,7 @@ function Header() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2  w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="origin-top-right absolute right-0 mt-2 flex flex-col justify-center items-center w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <Link href="/profile">
@@ -193,7 +177,7 @@ function Header() {
                           {!web3Provider ? (
                             <button
                               onClick={connect}
-                              className={`bg-gradient-to-r mb-3  flex flex-col justify-center mx-auto from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-1 items-center rounded-full cursor-pointer text-white `}
+                              className=" bg-gradient-to-r mb-4 from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
                             >
                               connect
                             </button>
@@ -201,7 +185,7 @@ function Header() {
                             <>
                               <button
                                 onClick={disconnect}
-                                className="bg-gradient-to-r active:outline-none active:border-none from-[#0469A1] via-[#0469A1]  to-[#0C9FF2]  text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                                className=" bg-gradient-to-r mb-4 from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
                               >
                                 Disconnect
                               </button>
@@ -264,7 +248,7 @@ function Header() {
                 onChange={(e) => {
                   setquery(e.target.value);
                 }}
-                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
           </div>
