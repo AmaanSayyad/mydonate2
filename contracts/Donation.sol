@@ -156,7 +156,7 @@ contract Donation {
     require(msg.sender != address(0x0));
 
     donationCount++;
-    usersCount = usersCount + 1;
+
     DonationItem storage donation = idToDonationItem[donationCount];
 
     donation.id = donationCount;
@@ -164,6 +164,7 @@ contract Donation {
 
     // check if user is already registered
     if (registeredUsers[msg.sender].status == false) {
+      usersCount = usersCount + 1;
       donation.user.id = usersCount;
       donation.user._address = msg.sender;
       donation.user.userType = donation_.user.userType;

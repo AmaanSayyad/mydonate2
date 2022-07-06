@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 export default function Fund() {
   const [countries, setcountries] = useState([]);
-  const { signer, address } = useContext(AuthContext);
+  const { signer, address, contract } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -125,16 +125,25 @@ export default function Fund() {
     //  window.location.reload();
   };
 
+  // useEffect(() => {
+  //   if (address) {
+  //     const isUserRegistered = async () => {
+  //       const data = await signer.isUserRegistered();
+  //       setstatus(data);
+  //       console.log(data.id.toString());
+  //     };
+  //     isUserRegistered();
+  //   }
+  // }, [signer]);
+
+  async function isUserRegistered() {
+    const data = await signer.isUserRegistered();
+    setstatus(data);
+    console.log('user id', data.id.toString());
+  }
   useEffect(() => {
-    if (address) {
-      const isUserRegistered = async () => {
-        const data = await signer.isUserRegistered();
-        setstatus(data);
-        console.log(data.id.toString());
-      };
-      isUserRegistered();
-    }
-  }, [signer]);
+    isUserRegistered();
+  }, [contract]);
 
   let organization = '';
 
