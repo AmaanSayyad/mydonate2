@@ -3,13 +3,12 @@ import React from 'react';
 
 import Layout from '../components/layouts/primary';
 import Donation from '../components/partials/Donations';
-function Fund() {
+function Donations() {
   return (
     <Layout>
-      {/* <Donations /> */}
       <Donation />
     </Layout>
   );
 }
 
-export default Fund;
+export default Donations;

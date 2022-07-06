@@ -1,11 +1,16 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-
-const Query = () => {
+import Layout from '../../components/layouts/primary';
+import Query from '../../components/partials/Query';
+const QueryPage = () => {
   const router = useRouter();
   const { query } = router.query;
 
-  return <div>{query}</div>;
+  return (
+    <Layout>
+      <Query />
+    </Layout>
+  );
 };
 
-export default Query;
+export default QueryPage;
