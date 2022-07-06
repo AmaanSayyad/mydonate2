@@ -53,6 +53,14 @@ const index = ({ name, color }) => {
           <div class="inline-block px-3 snap-center">
             <Card name={'War'} color={'bg-amber-600'} icon={'sad-outline'} />
           </div>
+
+          <div class="inline-block px-3 snap-center">
+            <Card
+              name={'Others'}
+              color={'bg-slate-600'}
+              icon={'help-outline'}
+            />
+          </div>
         </div>
       </div>
     </div>

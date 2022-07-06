@@ -7,6 +7,7 @@ import { MoonIcon } from '@heroicons/react/outline';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import Modal from '../../utility/modal';
 
 function Header() {
   const router = useRouter();
@@ -14,6 +15,8 @@ function Header() {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: '-100%' },
   };
+  const [modal, setModal] = useState(false);
+  const [query, setquery] = useState('');
 
   const { address, disconnect, connect, web3Provider } =
     useContext(AuthContext);
@@ -126,8 +129,17 @@ function Header() {
                     </button>
                   </>
                 )}
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
+                <div className="absolute space-x-3 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  {/* <div> */}
+                  <ion-icon
+                    onClick={() => {
+                      setModal(true);
+                    }}
+                    name="search-outline"
+                    class="text-2xl dark:text-white cursor-pointer"
+                  ></ion-icon>
+                  {/* <div> */}
+                  <ion-icon
                     onClick={
                       colorTheme === 'light'
                         ? () => setTheme('light')
@@ -135,14 +147,9 @@ function Header() {
                         ? () => setTheme('dark')
                         : ''
                     }
-                    type="button"
-                    className=" p-1 rounded-full text-gray-600 "
-                  >
-                    <MoonIcon
-                      className="h-7 w-7 dark:text-gray-200"
-                      aria-hidden="true"
-                    />
-                  </button>
+                    name="moon-outline"
+                    class="text-2xl dark:text-white cursor-pointer"
+                  ></ion-icon>
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="ml-3 relative">
@@ -231,6 +238,51 @@ function Header() {
           </>
         )}
       </Disclosure>
+
+      <Modal
+        state={modal}
+        onClick={() => {
+          setModal(false);
+        }}
+      >
+        <p className="text-lg dark:text-gray-200 py-5">Search Donations</p>
+        <div className="space-y-4">
+          <div className="dark:text-gray">
+            <div className="">
+              <label
+                htmlFor="company-website"
+                className="block text-md font-medium dark:text-gray-200 text-gray-700"
+              >
+                Search
+              </label>
+
+              <input
+                type="search"
+                placeholder="search......"
+                id="base-input"
+                value={query}
+                onChange={(e) => {
+                  setquery(e.target.value);
+                }}
+                class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          <Link href={`/query/${query}`}>
+            <button
+              type="button"
+              onClick={() => {
+                setquery('');
+                setModal(false);
+              }}
+              className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-full sm:text-sm"
+            >
+              Submit
+            </button>
+          </Link>
+        </div>
+      </Modal>
     </header>
   );
 }

@@ -8,7 +8,7 @@ const QueryPage = () => {
 
   return (
     <Layout>
-      <Query />
+      <Query query={query} />
     </Layout>
   );
 };
