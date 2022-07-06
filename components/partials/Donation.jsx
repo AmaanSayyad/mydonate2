@@ -92,6 +92,7 @@ function Home({ id }) {
     }
   }, [signer]);
 
+  console.log(parseInt(targetedAmount()));
   const addDonation = async (value = amount) => {
     const amount_ = ethers.utils.parseUnits(value, 'ether');
     //  const amount_ = ethers.utils.parseUnits(amount.toString(), 'ether');
@@ -140,10 +141,22 @@ function Home({ id }) {
                           '/' +
                           targetedAmount() +
                           '+' +
-                          '  Target Reached 🎉'
+                          '  Target Exceeded 🎉'
                         : donationRaised() + '/' + targetedAmount()}
                     </p>
                   </div>
+                  {Math.floor(getDonationPercentage()) >= 100 ? (
+                    <div className="flex flex-row items-center space-x-2">
+                      <p class="text-lg font-bold dark:text-gray-200">
+                        {'+'}
+                        {parseInt(donationRaised()) -
+                          parseInt(targetedAmount()) +
+                          ' USD'}
+                      </p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
               <details class="relative mt-4 group">

@@ -5,9 +5,9 @@ import millify from 'millify';
 
 const Index = () => {
   const { address, signer, contract } = useContext(AuthContext);
-  const [doners, setdoners] = useState('');
-  const [amountraised, setamountraised] = useState('');
-  const [users, setusers] = useState('');
+  const [doners, setdoners] = useState(0);
+  const [amountraised, setamountraised] = useState(0);
+  const [users, setusers] = useState(0);
   useEffect(() => {
     if (address) {
       const loadDonations = async () => {
@@ -38,7 +38,8 @@ const Index = () => {
           class="text-5xl text-[#E338C8] "
         ></ion-icon>
         <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-          {millify(users)}
+          {millify(parseInt(users))}
+          {/* {millify()} */}
           {'+'}
         </h1>
         <p className="text-xl ">Fundarisers</p>
@@ -50,7 +51,7 @@ const Index = () => {
           class="text-5xl text-[#E338C8] "
         ></ion-icon>
         <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-          {milify(doners)}
+          {millify(parseInt(doners))}
           {'+ '}
         </h1>
         <p className="text-xl ">People donated</p>
@@ -62,7 +63,7 @@ const Index = () => {
           class="text-5xl text-[#E338C8] "
         ></ion-icon>
         <h1 className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-          {milify(amountraised)}ETH+
+          {millify(parseInt(amountraised))}ETH+
         </h1>
         <p className="text-xl ">Amount raised</p>
       </div>
