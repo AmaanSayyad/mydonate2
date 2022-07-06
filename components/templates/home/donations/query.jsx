@@ -41,6 +41,16 @@ const Index = ({ query }) => {
     }
   }, [signer, query]);
 
+  async function loadDonations() {
+    const data = await contract?.fetchAllDonationItems();
+    console.log(data);
+    setdonations(data);
+  }
+
+  useEffect(() => {
+    loadDonations();
+  }, [contract, query]);
+
   return (
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">

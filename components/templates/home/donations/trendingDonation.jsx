@@ -6,7 +6,7 @@ import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
 import { AuthContext } from '../../../../utils/AuthProvider';
 const TrendingDonation = () => {
-  const { address, signer, contract } = useContext(AuthContext);
+  const { address, connect, contract } = useContext(AuthContext);
   let ethprice = 1276;
   const [donations, setdonations] = useState([
     {
@@ -20,21 +20,31 @@ const TrendingDonation = () => {
       },
     },
   ]);
-  useEffect(() => {
-    if (address) {
-      const loadDonations = async () => {
-        const data = await signer.fetchAllDonationItems();
-        console.log(data);
+  // useEffect(() => {
+  //   if (address) {
+  //     const loadDonations = async () => {
+  //       const data = await signer.fetchAllDonationItems();
+  //       console.log(data);
 
-        setdonations(data);
-      };
-      loadDonations();
-    }
-  }, [signer]);
+  //       setdonations(data);
+  //     };
+  //     loadDonations();
+  //   }
+  // }, [signer]);
+
+  async function loadDonations() {
+    const data = await contract?.fetchAllDonationItems();
+    console.log(data);
+    setdonations(data);
+  }
+
+  useEffect(() => {
+    loadDonations();
+  }, [contract]);
 
   console.log(donations);
   // if (!donations[donations.length - 1].hash === undefined) {
-  if (typeof donations[donations.length - 1] !== 'undefined') {
+  if (typeof donations !== 'undefined') {
     return (
       <div className="relative flex flex-col space-y-1 ">
         <p className="text-2xl py-4 dark:text-gray-100">Recent Donation</p>
@@ -102,9 +112,22 @@ const TrendingDonation = () => {
                 {donations[donations.length - 1].user.country}
               </p>
             </div>
-            <Link href={`${donations[donations.length - 1].id}`}>
+            {!address ? (
+              <div
+                onClick={() => {
+                  !address ? connect() : '';
+                }}
+              >
+                <GradientButton o title={'Read more'}></GradientButton>
+              </div>
+            ) : (
+              <Link href={`${donations[donations.length - 1].id}`}>
+                <GradientButton title={'Read more'}></GradientButton>
+              </Link>
+            )}
+            {/* <Link href={`${donations[donations.length - 1].id}`}>
               <GradientButton title="View details" />
-            </Link>
+            </Link> */}
           </div>
         </div>
 

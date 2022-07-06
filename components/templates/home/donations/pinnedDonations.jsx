@@ -8,17 +8,27 @@ const pinnedDonations = () => {
   const { address, signer, contract } = useContext(AuthContext);
   let ethprice = 1276;
   const [donations, setdonations] = useState([]);
+  // useEffect(() => {
+  //   if (address) {
+  //     const pinnedDonations = async () => {
+  //       const data = await signer.fetchAllDonationItems();
+  //       const pinned = data.filter((p) => p.donationstatus.isPinned === true);
+  //       // console.log('pinned donation', pinned);
+  //       setdonations(pinned);
+  //     };
+  //     pinnedDonations();
+  //   }
+  // }, [signer]);
+  async function pinnedDonations() {
+    const data = await contract?.fetchAllDonationItems();
+    const pinned = data?.filter((p) => p.donationstatus.isPinned === true);
+    console.log('pinned donation', pinned);
+    setdonations(pinned);
+  }
+
   useEffect(() => {
-    if (address) {
-      const pinnedDonations = async () => {
-        const data = await signer.fetchAllDonationItems();
-        const pinned = data.filter((p) => p.donationstatus.isPinned === true);
-        // console.log('pinned donation', pinned);
-        setdonations(pinned);
-      };
-      pinnedDonations();
-    }
-  }, [signer]);
+    pinnedDonations();
+  }, [contract]);
 
   return (
     <div className="relative flex flex-col space-y-1 ">
@@ -32,7 +42,7 @@ const pinnedDonations = () => {
 
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
         <div className="flex flex-nowrap mt-5">
-          {donations.map((donation, index) => (
+          {donations?.map((donation, index) => (
             <div class="inline-block  px-3 snap-center">
               <Card
                 key={index}
