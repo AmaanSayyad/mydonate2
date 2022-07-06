@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HeaderImage from '../templates/home/headerImages';
 import Categories from '../templates/home/categories';
-import Donations from '../templates/home/donations';
-import TrendingDonation from '../templates/home/donations/trendingDonation';
+import QueryComponent from '../templates/home/donations/query';
 import Modal from '../utility/modal';
 import axios from 'axios';
 const Query = () => {
@@ -36,8 +35,8 @@ const Query = () => {
       </div>
 
       <Categories />
-      <TrendingDonation />
-      <Donations />
+
+      <QueryComponent />
 
       <Modal
         state={modal}
