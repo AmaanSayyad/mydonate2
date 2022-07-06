@@ -8,8 +8,7 @@ const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 export default function Fund() {
   const [countries, setcountries] = useState([]);
   const { signer, address } = useContext(AuthContext);
-  // console.log('signer', signer);
-  // console.log('address', address);
+
   useEffect(() => {
     axios
       .get('https://restcountries.com/v3.1/all')

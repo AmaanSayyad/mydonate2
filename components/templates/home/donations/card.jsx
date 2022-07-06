@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { AuthContext } from '../../../../utils/AuthProvider';
 import GradientButton from '../../../utility/bottons/gradientButton';
 
 const Card = ({
@@ -11,6 +12,8 @@ const Card = ({
   country,
   id,
 }) => {
+  const { address, connect } = useContext(AuthContext);
+
   return (
     <div>
       <div class="h-min bg-white rounded-2xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -55,9 +58,19 @@ const Card = ({
             ></ion-icon>
             <p className="text-xl dark:text-gray-100">{country}</p>
           </div>
-          <Link href={`/${id}`}>
-            <GradientButton title={'Read more'}></GradientButton>
-          </Link>
+          {!address ? (
+            <div
+              onClick={() => {
+                !address ? connect() : '';
+              }}
+            >
+              <GradientButton o title={'Read more'}></GradientButton>
+            </div>
+          ) : (
+            <Link href={`/${id}`}>
+              <GradientButton title={'Read more'}></GradientButton>
+            </Link>
+          )}
         </div>
       </div>
     </div>

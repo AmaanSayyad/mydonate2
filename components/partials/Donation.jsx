@@ -15,7 +15,7 @@ function Home({ id }) {
   const [amount, setamount] = useState(0);
   const [doners, setdoners] = useState([]);
   const [loading, setloading] = useState(false);
-  const { signer, address } = useContext(AuthContext);
+  const { signer, address, contract } = useContext(AuthContext);
   const [donation_, setdonation_] = useState({
     donationsRaised: 0,
     targetedAmount: 0,
