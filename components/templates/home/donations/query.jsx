@@ -9,42 +9,29 @@ const Index = ({ query }) => {
   let ethprice = 1276;
   const [donations, setdonations] = useState([]);
   // const [first, setfirst] = useState(second)
-  useEffect(() => {
-    if (address) {
-      const loadDonations = async () => {
-        const data = await signer.fetchAllDonationItems();
-        const query_ = data.filter((p) => p.category === query.toLowerCase());
-
-        const searchItems = (searchValue) => {
-          //   setSearchInput(searchValue);
-          if (query !== '') {
-            const filteredData = data.filter((item) => {
-              return Object.values(item)
-                .join('')
-                .toLowerCase()
-                .includes(query.toLowerCase());
-            });
-            setdonations(filteredData);
-            // setFilteredResults(filteredData);
-          } else {
-            setdonations(query_);
-            // setFilteredResults(APIData);
-          }
-        };
-
-        searchItems(query);
-        console.log('query', query_);
-        console.log('data----', data);
-        // setdonations(query_);
-      };
-      loadDonations();
-    }
-  }, [signer, query]);
 
   async function loadDonations() {
-    const data = await contract?.fetchAllDonationItems();
-    console.log(data);
-    setdonations(data);
+    const data = (await contract?.fetchAllDonationItems()) || [];
+    const query_ = data.filter((p) => p.category === query.toLowerCase());
+
+    const searchItems = (searchValue) => {
+      //   setSearchInput(searchValue);
+      if (query !== '') {
+        const filteredData = data.filter((item) => {
+          return Object.values(item)
+            .join('')
+            .toLowerCase()
+            .includes(query.toLowerCase());
+        });
+        setdonations(filteredData);
+        // setFilteredResults(filteredData);
+      } else {
+        setdonations(query_);
+        // setFilteredResults(APIData);
+      }
+    };
+
+    searchItems(query);
   }
 
   useEffect(() => {
