@@ -156,7 +156,7 @@ function Header() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 flex flex-col justify-center items-center w-48 rounded-md shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="origin-top-right absolute right-0 mt-2 flex flex-col justify-center items-center w-48  shadow-lg py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 bg-white ring-1 ring-black  rounded-2xl ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <Link href="/profile">
@@ -177,7 +177,7 @@ function Header() {
                           {!web3Provider ? (
                             <button
                               onClick={connect}
-                              className=" bg-gradient-to-r mb-4 from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                              className=" bg-gradient-to-r mb-4 from-blue-400 to-emerald-400 text-center w-max   px-4 py-1  rounded-full cursor-pointer text-white"
                             >
                               connect
                             </button>
@@ -185,7 +185,7 @@ function Header() {
                             <>
                               <button
                                 onClick={disconnect}
-                                className=" bg-gradient-to-r mb-4 from-blue-400 to-emerald-400 text-center w-max   px-4 py-2  rounded-full cursor-pointer text-white"
+                                className=" bg-gradient-to-r mb-4 from-blue-400 to-emerald-400 text-center w-max   px-4 py-1  rounded-full cursor-pointer text-white"
                               >
                                 Disconnect
                               </button>

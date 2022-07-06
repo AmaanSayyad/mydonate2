@@ -182,9 +182,8 @@ const AuthProvider = ({ children }) => {
   async function loadContracts() {
     /* create a generic provider and query for unsold market items */
     // const provider = new ethers.providers.JsonRpcProvider();
-    const provider = new ethers.providers.JsonRpcProvider(
-      'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
-    );
+    const provider = new ethers.providers.JsonRpcProvider();
+    // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
 
     const contract = new ethers.Contract(
       donationAddress,

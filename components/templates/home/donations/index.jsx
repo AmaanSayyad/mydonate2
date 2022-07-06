@@ -5,26 +5,27 @@ import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
 
 const Index = () => {
-  const { address, signer, contract } = useContext(AuthContext);
+  const { address, signer, contract, provider, chainId } =
+    useContext(AuthContext);
   let ethprice = 1276;
   const [donations, setdonations] = useState([]);
+
+  async function loadDonations() {
+    const data = await contract?.fetchAllDonationItems();
+    console.log(data);
+    setdonations(data);
+  }
+
   useEffect(() => {
-    if (address) {
-      const loadDonations = async () => {
-        const data = await signer.fetchAllDonationItems();
-        console.log(data);
-        setdonations(data);
-      };
-      loadDonations();
-    }
-  }, [signer]);
+    loadDonations();
+  }, [contract]);
 
   return (
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-10 ">
         {donations
-          .map((donation, index) => (
+          ?.map((donation, index) => (
             <Card
               key={index}
               id={donation.id.toString()}
