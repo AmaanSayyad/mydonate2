@@ -12,50 +12,50 @@ function Profile() {
 
   const { signer, address } = useContext(AuthContext);
   const [donation, setdonation] = useState([]);
+  const [num, setnum] = useState([]);
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
         const donation = await signer.getMyDonations();
-        const pendingDonation = donation.filter(
-          (p) => p.donationstatus.isApproved === false
-        );
-        console.log('pending donatin', pendingDonation);
+        // const pendingDonation = donation.filter(
+        //   (p) => p.donationstatus.isApproved === false
+        // );
+        // console.log('pending donatin', pendingDonation);
         setdonation(donation);
       };
       myDonations();
     }
   }, [signer]);
 
-  // const getDoners = async = () => {
-  //       donation.map((d) => {
-  //         console.log(d);
-  //         const doners = await signer.getDonersOfDonation(id);
-  //         console.log(doners)
-  //       });
-  // }
-
-  const getDoners = Promise.all(
+  useEffect(() => {
     donation.map(function (donation) {
-      let total = 0;
-      // console.log(donation.id.toString());
       const doners = signer
         .getDonersOfDonation(donation.id.toString())
         .then((res) => {
-          // console.log('doners,', res);
-          res.map((tl) => {
-            total =
-              total + Number(ethers.utils.formatEther(tl.amount.toString()));
-            // console.log(Number(ethers.utils.formatEther(tl.amount.toString())));
-          });
+          console.log('results', res);
+          var total = 0;
+          res
+            .filter((p) => p.doner === address)
+            .map((tl) => {
+              total =
+                total + Number(ethers.utils.formatEther(tl.amount.toString()));
+            });
+          setnum((oldValue) => [...oldValue, total]);
+          return total;
         });
+    });
+  }, [donation]);
+  console.log(num);
 
-      console.log(total);
-      // Promise.all(signer.getDonersOfDonation(innerPromiseArray.id.toString()));
-      //  const doners = await signer.getDonersOfDonation(id);
-      // return Promise.all();
-    })
-  );
+  function getTotalAmountOfEthDonated() {
+    let sum = 0;
+    for (var i = 0; i < num.length; i++) {
+      sum = sum + num[i];
+    }
+    return sum;
+  }
 
+  console.log(getTotalAmountOfEthDonated());
   return (
     <>
       <div className="flex h-screen overflow-hidden dark:bg-gray-900 font-Montserrat">
@@ -80,22 +80,22 @@ function Profile() {
               </div>
               <div className="grid grid-cols-12 gap-6">
                 <StatisticCard
-                  length={5}
-                  icon="heart-dislike-outline"
-                  title={'Pending Funds'}
-                  text="All fund to be approved"
+                  length={donation.length}
+                  icon="heart-half-outline"
+                  title={'Funds'}
+                  text="Every Donation Created"
                 />
                 <StatisticCard
-                  length={5}
+                  length={num.length}
                   icon="heart-outline"
                   title={'Donations'}
-                  text="All donations Made"
+                  text="All of the donations you have contributed"
                 />
                 <StatisticCard
-                  length={5}
+                  length={getTotalAmountOfEthDonated()}
                   icon="wallet-outline"
                   title={'Donated'}
-                  text="Total of amount donated"
+                  text="Total of amount of ETH donated"
                   unit={'ETH'}
                 />
               </div>
