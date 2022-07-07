@@ -65,6 +65,7 @@ contract Donation {
     bool isVisible;
     bool isApproved;
     uint256 approvedDate;
+    bool isRejected;
   }
   struct Doners {
     uint256 id;
@@ -236,6 +237,7 @@ contract Donation {
     donation.donationstatus.isPinned = false;
     donation.donationstatus.isVisible = false;
     donation.donationstatus.isApproved = false;
+    donation.donationstatus.isRejected = false;
     donation.donationstatus.approvedDate = 0;
     donation.donationstatus.pinnedDuration = 0;
     donation.donationstatus.pinnedEndDate = 0;
@@ -282,10 +284,24 @@ contract Donation {
     require(donation.donationstatus.isVisible == false);
     donation.donationstatus.isApproved = true;
     donation.donationstatus.isVisible = true;
+    donation.donationstatus.isRejected = false;
     donation.donationstatus.approvedDate = block.timestamp;
     idToDonationItem[_id] = donation;
   }
 
+  function rejectDonation(uint256 _id) public {
+    require(_id > 0 && _id <= donationCount, 'donation id not valid');
+    DonationItem storage donation = idToDonationItem[_id];
+    require(donation.donationstatus.isApproved == false);
+    require(donation.donationstatus.isVisible == false);
+    donation.donationstatus.isApproved = false;
+    donation.donationstatus.isVisible = false;
+    donation.donationstatus.isRejected = true;
+    donation.donationstatus.approvedDate = block.timestamp;
+    idToDonationItem[_id] = donation;
+  }
+
+  //function re
   //pin donation
   function pinDonation(
     uint256 _id,
@@ -405,7 +421,4 @@ contract Donation {
     }
     return items;
   }
-  //get all my amount donated
-
-  //get all my pendinge donations
 }

@@ -65,7 +65,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     {
       name: 'Funds',
       href: '/profile/fund',
-      icon: 'heart-filled-outline',
+      icon: 'heart-half-outline',
       current: false,
     },
     {
