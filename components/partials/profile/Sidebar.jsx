@@ -65,19 +65,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     {
       name: 'Funds',
       href: '/profile/fund',
-      icon: 'wallet-outline',
+      icon: 'heart-filled-outline',
       current: false,
     },
     {
       name: 'Donation',
       href: '/profile/donation',
       icon: 'heart-outline',
-      current: false,
-    },
-    {
-      name: 'Settings',
-      href: '/profile/setting',
-      icon: 'settings-outline',
       current: false,
     },
   ];
