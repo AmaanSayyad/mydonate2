@@ -20,20 +20,9 @@ const TrendingDonation = () => {
       },
     },
   ]);
-  // useEffect(() => {
-  //   if (address) {
-  //     const loadDonations = async () => {
-  //       const data = await signer.fetchAllDonationItems();
-  //       console.log(data);
-
-  //       setdonations(data);
-  //     };
-  //     loadDonations();
-  //   }
-  // }, [signer]);
 
   async function loadDonations() {
-    const data = await contract?.fetchAllDonationItems();
+    const data = (await contract?.fetchAllDonationItems()) || donations;
     console.log(data);
     setdonations(data);
   }
@@ -44,7 +33,8 @@ const TrendingDonation = () => {
 
   console.log(donations);
   // if (!donations[donations.length - 1].hash === undefined) {
-  if (typeof donations !== 'undefined') {
+  // if (typeof donations !== 'undefined') {
+  if (donations[donations.length - 1]?.hash) {
     return (
       <div className="relative flex flex-col space-y-1 ">
         <p className="text-2xl py-4 dark:text-gray-100">Recent Donation</p>

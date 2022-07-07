@@ -21,6 +21,7 @@
     "axios": "^0.26.1",
     "chai": "^4.3.6",
     "chart.js": "^3.7.1",
+    "classnames": "^2.3.1",
     "date-and-time": "^2.3.1",
     "ethereum-waffle": "^3.4.4",
     "ethers": "^5.6.4",

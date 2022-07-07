@@ -15,6 +15,7 @@ function Home({ id }) {
   const [amount, setamount] = useState(0);
   const [doners, setdoners] = useState([]);
   const [loading, setloading] = useState(false);
+  const [modalAlert, setModalAlert] = useState(false);
   const { signer, address, contract } = useContext(AuthContext);
   const [donation_, setdonation_] = useState({
     donationsRaised: 0,
@@ -90,7 +91,7 @@ function Home({ id }) {
       };
       donation();
     }
-  }, [signer]);
+  }, [signer, loading]);
 
   console.log(parseInt(targetedAmount()));
   const addDonation = async (value = amount) => {
@@ -101,8 +102,13 @@ function Home({ id }) {
     });
     setloading(true);
     await transaction.wait();
-    setloading(false);
-    alert('donation added succesfully');
+
+    setModal(false);
+
+    // setloading(false);
+    setModalAlert(true);
+
+    // alert('donation added succesfully');
   };
 
   return (
@@ -288,7 +294,6 @@ function Home({ id }) {
           </div>
         </div>
       </section>
-
       <Modal
         state={modal}
         onClick={() => {
@@ -351,6 +356,21 @@ function Home({ id }) {
           </button>
         </div>
       </Modal>
+      <Modal
+        state={modalAlert}
+        onClick={() => {
+          setModalAlert(false);
+        }}
+      >
+        <p className="text-2xl dark:text-gray-200 py-5">Thank You 💖</p>
+        <div className="space-y-4">
+          <p className="text-lg dark:text-gray-200">
+            The mydonate team sincerely appreciates your generosity and
+            contribution to improving the world.
+          </p>
+        </div>
+      </Modal>
+      ;
     </div>
   );
 }
