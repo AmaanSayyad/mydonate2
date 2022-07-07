@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
-import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
+import { AuthContext } from '../../utils/AuthProvider';
+import { truncateString } from '../../lib/utilities';
 
 function Fund() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const { signer, address } = useContext(AuthContext);
+  const [donation, setdonation] = useState([]);
+  useEffect(() => {
+    if (address) {
+      const myDonations = async () => {
+        const donation = await signer.getMyDonations();
+        // const pendingDonation = donation.filter(
+        //   (p) => p.donationstatus.isApproved === false
+        // );
+        // console.log('pending donatin', pendingDonation);
+        setdonation(donation);
+      };
+      myDonations();
+    }
+  }, [signer]);
   return (
     <>
       <div className="flex h-screen overflow-hidden dark:bg-gray-900 font-Montserrat">
@@ -31,9 +47,7 @@ function Fund() {
                   {/* button */}
                 </div>
               </div>
-              {/* <div className="grid grid-cols-12 gap-6">
-                <p>donation 'add a new table component' </p>
-              </div> */}
+
               <div>
                 <div class="overflow-x-auto">
                   <div className="min-w-full items-center flex flex-row justify-between">
@@ -62,27 +76,47 @@ function Fund() {
                     </thead>
 
                     <tbody class="divide-y divide-gray-100">
-                      <tr>
-                        <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
-                          Donation to Africa...{' '}
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          lets get rid of malaria.....
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          <strong class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">
-                            Rejected
-                          </strong>
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          USD - 10,000.00 (23 ETH)
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          Global
-                        </td>
-                      </tr>
+                      {donation.map((donationItem) => (
+                        <tr>
+                          <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
+                            {donationItem.title}{' '}
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            {truncateString(
+                              donationItem.description.toString(),
+                              20
+                            )}{' '}
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            {donationItem.donationstatus.isApproved ===
+                            false ? (
+                              <strong class="bg-yellow-100 text-yellow-700 px-3 py-1.5 rounded text-xs font-medium">
+                                Pending
+                              </strong>
+                            ) : donationItem.donationstatus.isApproved ===
+                              true ? (
+                              <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
+                                Pending
+                              </strong>
+                            ) : donationItem.donationstatus.rejected ===
+                              true ? (
+                              <strong class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">
+                                Rejected
+                              </strong>
+                            ) : (
+                              ''
+                            )}
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            USD - 10,000.00 (23 ETH)
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            Global
+                          </td>
+                        </tr>
+                      ))}
 
-                      <tr>
+                      {/* <tr>
                         <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
                           Donation to Africa...{' '}
                         </td>
@@ -120,7 +154,7 @@ function Fund() {
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           Nigeria
                         </td>
-                      </tr>
+                      </tr> */}
                     </tbody>
                   </table>
                 </div>
