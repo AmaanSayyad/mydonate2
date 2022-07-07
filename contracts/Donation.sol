@@ -359,11 +359,9 @@ contract Donation {
     return items;
   }
 
-  //get all donations under a category
-
   //get all approved donations
+
   //get all pending donation
-  //get a single donation
 
   //get all doners
   function getAllDoners() public view returns (uint256) {
@@ -384,6 +382,29 @@ contract Donation {
   //net worth of the comapny
 
   //get all my donations
+  //my donations
+  function getMyDonations() public view returns (DonationItem[] memory) {
+    uint256 totalItemCount = donationCount;
+    uint256 itemCount = 0;
+    uint256 currentIndex = 0;
+
+    for (uint256 i = 0; i < totalItemCount; i++) {
+      if (idToDonationItem[i + 1].user._address == msg.sender) {
+        itemCount += 1;
+      }
+    }
+
+    DonationItem[] memory items = new DonationItem[](itemCount);
+    for (uint256 i = 0; i < totalItemCount; i++) {
+      if (idToDonationItem[i + 1].user._address == msg.sender) {
+        uint256 currentId = i + 1;
+        DonationItem storage donation = idToDonationItem[currentId];
+        items[currentIndex] = donation;
+        currentIndex += 1;
+      }
+    }
+    return items;
+  }
   //get all my amount donated
   //get all my pendinge donations
 }

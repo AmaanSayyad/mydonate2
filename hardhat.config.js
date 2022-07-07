@@ -10,7 +10,15 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 1337,
+      allowUnlimitedContractSize: true,
     },
+    // hardhat: {
+    //   throwOnTransactionFailures: true,
+    //   throwOnCallFailures: true,
+    //   allowUnlimitedContractSize: true,
+    //   blockGasLimit: 0x1fffffffffffff,
+    //   // accounts: accounts()
+    // },
     //  unused configuration commented out for now
     mumbai: {
       url: 'https://rpc-mumbai.maticvigil.com',
