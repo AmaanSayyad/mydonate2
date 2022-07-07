@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import GradientButton from '../../../utility/bottons/gradientButton';
 import Modal from '../../../utility/modal';
 import FundForm from '../../forms/fund';
 import Link from 'next/link';
+import { AuthContext } from '../../../../utils/AuthProvider';
+
 const Index = () => {
   const handleClick = () => {
     setModal(true);
   };
 
   const [modal, setModal] = useState(false);
+  const { address, connect } = useContext(AuthContext);
 
   return (
     <div className="flex flex-col-reverse  lg:flex-row items-center mt-16">
@@ -23,9 +26,19 @@ const Index = () => {
           better world
         </p>
 
-        <Link href={'/fund'}>
-          <GradientButton title="New Fundraising" />
-        </Link>
+        {!address ? (
+          <div
+            onClick={() => {
+              !address ? connect() : '';
+            }}
+          >
+            <GradientButton title={'New Donation'}></GradientButton>
+          </div>
+        ) : (
+          <Link href={`/fund`}>
+            <GradientButton title={'New Donation '}></GradientButton>
+          </Link>
+        )}
       </div>
       <div className="">
         <img src="/images/jumbo3.svg" />

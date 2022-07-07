@@ -1,13 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
-
+import { AuthContext } from '../../utils/AuthProvider';
+import { ethers } from 'ethers';
 function Profile() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const { signer, address } = useContext(AuthContext);
+  const [donation, setdonation] = useState([]);
+  useEffect(() => {
+    if (address) {
+      const myDonations = async () => {
+        const donation = await signer.getMyDonations();
+        const pendingDonation = donation.filter(
+          (p) => p.donationstatus.isApproved === false
+        );
+        console.log('pending donatin', pendingDonation);
+        setdonation(donation);
+      };
+      myDonations();
+    }
+  }, [signer]);
+
+  // const getDoners = async = () => {
+  //       donation.map((d) => {
+  //         console.log(d);
+  //         const doners = await signer.getDonersOfDonation(id);
+  //         console.log(doners)
+  //       });
+  // }
+
+  const getDoners = Promise.all(
+    donation.map(function (donation) {
+      let total = 0;
+      // console.log(donation.id.toString());
+      const doners = signer
+        .getDonersOfDonation(donation.id.toString())
+        .then((res) => {
+          // console.log('doners,', res);
+          res.map((tl) => {
+            total =
+              total + Number(ethers.utils.formatEther(tl.amount.toString()));
+            // console.log(Number(ethers.utils.formatEther(tl.amount.toString())));
+          });
+        });
+
+      console.log(total);
+      // Promise.all(signer.getDonersOfDonation(innerPromiseArray.id.toString()));
+      //  const doners = await signer.getDonersOfDonation(id);
+      // return Promise.all();
+    })
+  );
 
   return (
     <>
