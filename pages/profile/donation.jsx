@@ -1,13 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 import StatisticCard from '../../components/partials/profile/dashboard/StatisticCard';
-
+import Link from 'next/link';
+import { AuthContext } from '../../utils/AuthProvider';
+import { ethers } from 'ethers';
+import { truncateString } from '../../lib/utilities';
 function Donation() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
+  const { signer, address } = useContext(AuthContext);
+  const [donation, setdonation] = useState([]);
+  const [num, setnum] = useState([]);
+  useEffect(() => {
+    if (address) {
+      const myDonations = async () => {
+        const donation = await signer.getMyDonations();
+        setdonation(donation);
+      };
+      myDonations();
+    }
+  }, [signer]);
+
+  useEffect(() => {
+    donation.map(function (donation) {
+      const doners = signer
+        .getDonersOfDonation(donation.id.toString())
+        .then((res) => {
+          console.log('results', res);
+          var total = 0;
+          res
+            .filter((p) => p.doner === address)
+            .map((tl) => {
+              total =
+                total + Number(ethers.utils.formatEther(tl.amount.toString()));
+            });
+          setnum((oldValue) => [...oldValue, total]);
+          return total;
+        });
+    });
+  }, [donation]);
+  console.log(num);
+
+  function getTotalAmountOfEthDonated() {
+    let sum = 0;
+    for (var i = 0; i < num.length; i++) {
+      sum = sum + num[i];
+    }
+    return sum;
+  }
 
   return (
     <>
@@ -31,9 +74,7 @@ function Donation() {
                   {/* button */}
                 </div>
               </div>
-              {/* <div className="grid grid-cols-12 gap-6">
-                <p>donation 'add a new table component' </p>
-              </div> */}
+
               <div>
                 <div class="overflow-x-auto">
                   <table class="min-w-full text-sm divide-y divide-gray-200">
@@ -53,7 +94,34 @@ function Donation() {
                     </thead>
 
                     <tbody class="divide-y divide-gray-100">
-                      <tr>
+                      {donation.map((donationItem, index) => (
+                        <tr>
+                          <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
+                            {donationItem.title}{' '}
+                          </td>
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            {truncateString(
+                              donationItem.description.toString(),
+                              20
+                            )}{' '}
+                          </td>
+
+                          <td class="p-4 text-gray-700 whitespace-nowrap">
+                            {/* {num.map((total) => total)} */}
+                            {num[index]}
+                            {/* {ethers.utils.formatEther(
+                              donationItem.targetedAmount.toString()
+                            )}{' '} */}
+                            {'ETH'}
+                          </td>
+                          <Link href={'/'}>
+                            <td class="p-4 text-blue-700 underline whitespace-nowrap">
+                              view
+                            </td>
+                          </Link>
+                        </tr>
+                      ))}
+                      {/* <tr>
                         <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
                           Donation to Africa...{' '}
                         </td>
@@ -64,33 +132,12 @@ function Donation() {
                         <td class="p-4 text-gray-700 whitespace-nowrap">
                           USD - 10,000.00 (23 ETH)
                         </td>
-                      </tr>
-
-                      <tr>
-                        <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
-                          Donation to Africa...{' '}
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          lets get rid of malaria.....
-                        </td>
-
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          USD - 10,000.00 (23 ETH)
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
-                          Donation to Africa...{' '}
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          lets get rid of malaria.....
-                        </td>
-
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          USD - 10,000.00 (23 ETH)
-                        </td>
-                      </tr>
+                        <Link href={'/'}>
+                          <td class="p-4 text-blue-700 underline whitespace-nowrap">
+                            view
+                          </td>
+                        </Link>
+                      </tr> */}
                     </tbody>
                   </table>
                 </div>
