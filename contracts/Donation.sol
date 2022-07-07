@@ -297,7 +297,7 @@ contract Donation {
     donation.donationstatus.isApproved = false;
     donation.donationstatus.isVisible = false;
     donation.donationstatus.isRejected = true;
-    donation.donationstatus.approvedDate = block.timestamp;
+    // donation.donationstatus.approvedDate = block.timestamp;
     idToDonationItem[_id] = donation;
   }
 
@@ -323,6 +323,17 @@ contract Donation {
     idToDonationItem[_id] = donation;
   }
 
+  function disablePinnedDonation(uint256 _id) public {
+    require(_id > 0 && _id <= donationCount, 'donation id not valid');
+    DonationItem storage donation = idToDonationItem[_id];
+
+    // donation.donationstatus.isApproved = false;
+    // donation.donationstatus.isVisible = false;
+    donation.donationstatus.isPinned = false;
+    // donation.donationstatus.approvedDate = block.timestamp;
+    idToDonationItem[_id] = donation;
+  }
+
   //getter functions
 
   //get already registered users
@@ -340,10 +351,12 @@ contract Donation {
     uint256 currentIndex = 0;
     DonationItem[] memory items = new DonationItem[](itemCount);
     for (uint256 i = 0; i < itemCount; i++) {
-      uint256 currentId = i + 1;
-      DonationItem storage currentItem = idToDonationItem[currentId];
-      items[currentIndex] = currentItem;
-      currentIndex += 1;
+      if (idToDonationItem[i + 1].donationstatus.isApproved == true) {
+        uint256 currentId = i + 1;
+        DonationItem storage currentItem = idToDonationItem[currentId];
+        items[currentIndex] = currentItem;
+        currentIndex += 1;
+      }
     }
     return items;
   }
