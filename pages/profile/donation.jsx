@@ -111,14 +111,11 @@ function Donation() {
                             </td>
 
                             <td class="p-4 text-gray-700 whitespace-nowrap">
-                              {/* {num.map((total) => total)} */}
                               {num[index]}
-                              {/* {ethers.utils.formatEther(
-                              donationItem.targetedAmount.toString()
-                            )}{' '} */}
+
                               {'ETH'}
                             </td>
-                            <Link href={'/'}>
+                            <Link href={`/${donationItem.id.toString()}`}>
                               <td class="p-4 cursor-pointer text-blue-700 underline whitespace-nowrap">
                                 view
                               </td>

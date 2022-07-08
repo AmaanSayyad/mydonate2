@@ -26,8 +26,8 @@ contract Donation {
 
   // uint256 private constant donationPercentage = 100 / 1.7;
 
-  constructor() {
-    companyAddress = payable(msg.sender);
+  constructor(address companyaddress_) {
+    companyAddress = payable(companyaddress_);
     eth_usd_price_feed = AggregatorV3Interface(
       0x9326BFA02ADD2366b30bacB125260Af641031331
     );

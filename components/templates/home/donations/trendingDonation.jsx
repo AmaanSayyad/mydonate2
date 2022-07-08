@@ -24,7 +24,7 @@ const TrendingDonation = () => {
   async function loadDonations() {
     const data = (await contract?.fetchAllDonationItems()) || donations;
     console.log(data);
-    let filter = data.filter((p) => p.donationstatus.isApproved === true);
+    let filter = data.filter((p) => p.donationstatus?.isApproved === true);
     setdonations(filter);
   }
 

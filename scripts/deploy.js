@@ -1,14 +1,16 @@
 const hre = require('hardhat');
 
 async function main() {
-  const [deployer] = await hre.ethers.getSigners();
+  const [deployer, companyaddress] = await hre.ethers.getSigners();
 
   console.log('Deploying contracts with the account:', deployer.address);
 
   let txHash, txReceipt;
 
   const Schain = await hre.ethers.getContractFactory('Donation');
-  const schain = await Schain.deploy();
+  const schain = await Schain.deploy(companyaddress.address);
+
+  console.log('company address', companyaddress.address);
   await schain.deployed();
 
   txHash = schain.deployTransaction.hash;
