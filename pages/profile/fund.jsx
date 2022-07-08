@@ -12,6 +12,7 @@ function Fund() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   let ethprice = 1270;
+  const [id, setid] = useState(0);
   const { signer, address } = useContext(AuthContext);
   const [donation, setdonation] = useState([]);
   const [status, setstatus] = useState('');
@@ -47,12 +48,19 @@ function Fund() {
 
   const approveDonation = async (id) => {
     let transaction = await signer.approveDonation(id);
-    // setloading(true);
     await transaction.wait();
-
-    // setModal(false);
-    // setModalAlert(true);
     alert('donation approved');
+  };
+
+  const addPinDonation = async (amount) => {
+    console.log('donation amount', amount);
+    console.log('donation id', id);
+    const amount_ = ethers.utils.parseUnits(amount, 'ether');
+    let transaction = await signer.pinDonation(id, getDuration(), date, {
+      value: amount_,
+    });
+    await transaction.wait();
+    alert('donation has been pinned');
   };
   return (
     <>
@@ -192,6 +200,7 @@ function Fund() {
                               <button
                                 onClick={() => {
                                   setModalAlert(true);
+                                  setid(donationItem.id.toString());
                                   // approveDonation(donationItem.id.toString());
                                 }}
                               >
@@ -215,24 +224,44 @@ function Fund() {
         }}
       >
         <p className="text-2xl dark:text-gray-200 py-5">Pin Donation 📍</p>
-        <div className="space-y-4">
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => {
-              setdate(e.target.value);
-            }}
-          />
 
-          <p>
-            This duration for your pin donation {getDuration()} is going to be
-            cost : {getDuration() * 0.02} {'ETH'}
-          </p>
-          <p className="text-lg dark:text-gray-200">
-            The mydonate team sincerely appreciates your generosity and
-            contribution to improving the world.
+        <div className=" flex flex-row justify-between space-x-4">
+          <div className="w-full">
+            <label
+              htmlFor="company-website"
+              className="block text-md font-medium dark:text-gray-200 text-gray-700"
+            >
+              End Date for pin dontation
+            </label>
+            <input
+              type="date"
+              id="base-input"
+              required
+              value={date}
+              onChange={(e) => {
+                setdate(e.target.value);
+              }}
+              class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+        <div className="space-y-4">
+          <p className="text-lg pt-4 dark:text-gray-200">
+            This period for your {getDuration()}-day pin donation will cost you{' '}
+            {''}
+            {getDuration() * 0.02} ETH.
           </p>
         </div>
+
+        <button
+          onClick={() => {
+            addPinDonation(`${getDuration() * 0.02}`);
+          }}
+          type="button"
+          className="w-full mt-3 inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-full sm:text-sm"
+        >
+          Add Pin Donation
+        </button>
       </Modal>
     </>
   );
