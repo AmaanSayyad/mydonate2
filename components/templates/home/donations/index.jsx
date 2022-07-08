@@ -34,8 +34,8 @@ const Index = () => {
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-10 ">
-        {onation
-          .filter((p) => p.donationstatus.isApproved === true)
+        {donations
+          ?.filter((p) => p.donationstatus.isApproved === true)
           ?.map((donation, index) => (
             <Card
               key={index}

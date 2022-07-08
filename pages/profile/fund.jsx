@@ -144,7 +144,7 @@ function Fund() {
 
                     <tbody class="divide-y divide-gray-100">
                       {donation
-                        .filter((p) =>
+                        ?.filter((p) =>
                           status === 'pending'
                             ? p.donationstatus.isApproved === false
                             : status === 'rejected'
