@@ -58,9 +58,14 @@ function Fund() {
     const date_ = new Date(date);
 
     const amount_ = ethers.utils.parseUnits(amount, 'ether');
-    let transaction = await signer.pinDonation(id, getDuration(), date_, {
-      value: amount_,
-    });
+    let transaction = await signer.pinDonation(
+      id,
+      getDuration(),
+      Math.floor(date_.getTime() / 1000),
+      {
+        value: amount_,
+      }
+    );
     await transaction.wait();
     alert('donation has been pinned');
   };
@@ -199,15 +204,28 @@ function Fund() {
                             </td>
 
                             <td class="p-4 text-gray-700 whitespace-nowrap">
-                              <button
-                                onClick={() => {
-                                  setModalAlert(true);
-                                  setid(donationItem.id.toString());
-                                  // approveDonation(donationItem.id.toString());
-                                }}
-                              >
-                                Pin Donation
-                              </button>
+                              {donationItem.donationstatus.isApproved ===
+                              true ? (
+                                <button
+                                  type="button"
+                                  disabled={
+                                    donationItem.donationstatus.isPinned ===
+                                    true
+                                  }
+                                  className="w-max  inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-max sm:text-sm"
+                                  onClick={() => {
+                                    setModalAlert(true);
+                                    setid(donationItem.id.toString());
+                                    // approveDonation(donationItem.id.toString());
+                                  }}
+                                >
+                                  {donationItem.donationstatus.isPinned === true
+                                    ? 'Pinned'
+                                    : 'Pin Donation'}
+                                </button>
+                              ) : (
+                                ''
+                              )}
                             </td>
                           </tr>
                         ))}
