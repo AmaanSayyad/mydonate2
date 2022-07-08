@@ -56,6 +56,8 @@ function Profile() {
   }
 
   console.log(getTotalAmountOfEthDonated());
+
+  // console.log(num[])
   return (
     <>
       <div className="flex h-screen overflow-hidden dark:bg-gray-900 font-Montserrat">
@@ -86,7 +88,7 @@ function Profile() {
                   text="Every Donation Created"
                 />
                 <StatisticCard
-                  length={num.length}
+                  length={num[0] !== 0 ? num.length : 0}
                   icon="heart-outline"
                   title={'Donations'}
                   text="All of the donations you have contributed"
