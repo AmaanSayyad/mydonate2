@@ -125,23 +125,6 @@ function Donation() {
                             </Link>
                           </tr>
                         ))}
-                      {/* <tr>
-                        <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
-                          Donation to Africa...{' '}
-                        </td>
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          lets get rid of malaria.....
-                        </td>
-
-                        <td class="p-4 text-gray-700 whitespace-nowrap">
-                          USD - 10,000.00 (23 ETH)
-                        </td>
-                        <Link href={'/'}>
-                          <td class="p-4 text-blue-700 underline whitespace-nowrap">
-                            view
-                          </td>
-                        </Link>
-                      </tr> */}
                     </tbody>
                   </table>
                 </div>
