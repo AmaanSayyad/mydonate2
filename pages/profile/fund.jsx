@@ -55,8 +55,10 @@ function Fund() {
   const addPinDonation = async (amount) => {
     console.log('donation amount', amount);
     console.log('donation id', id);
+    const date_ = new Date(date);
+
     const amount_ = ethers.utils.parseUnits(amount, 'ether');
-    let transaction = await signer.pinDonation(id, getDuration(), date, {
+    let transaction = await signer.pinDonation(id, getDuration(), date_, {
       value: amount_,
     });
     await transaction.wait();
