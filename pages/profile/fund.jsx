@@ -4,8 +4,9 @@ import Sidebar from '../../components/partials/profile/Sidebar';
 import Header from '../../components/partials/profile/Header';
 import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
 import { AuthContext } from '../../utils/AuthProvider';
-import { truncateString } from '../../lib/utilities';
+import { numDaysBetween, truncateString } from '../../lib/utilities';
 import { ethers } from 'ethers';
+import Modal from '../../components/utility/modal';
 
 function Fund() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -14,6 +15,19 @@ function Fund() {
   const { signer, address } = useContext(AuthContext);
   const [donation, setdonation] = useState([]);
   const [status, setstatus] = useState('');
+  const [modalAlert, setModalAlert] = useState(false);
+  const [date, setdate] = useState(new Date());
+
+  const getDuration = () => {
+    var date2 = new Date(date);
+    var date1 = new Date();
+    var Difference_In_Time = date2.getTime() - date1.getTime();
+
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    return Math.round(Difference_In_Days);
+    console.log('day diff', Math.round(Difference_In_Days));
+  };
+  getDuration();
 
   useEffect(() => {
     if (address) {
@@ -28,6 +42,18 @@ function Fund() {
       myDonations();
     }
   }, [signer]);
+
+  console.log(donation);
+
+  const approveDonation = async (id) => {
+    let transaction = await signer.approveDonation(id);
+    // setloading(true);
+    await transaction.wait();
+
+    // setModal(false);
+    // setModalAlert(true);
+    alert('donation approved');
+  };
   return (
     <>
       <div className="flex h-screen overflow-hidden dark:bg-gray-900 font-Montserrat">
@@ -132,7 +158,7 @@ function Fund() {
                               ) : donationItem.donationstatus.isApproved ===
                                 true ? (
                                 <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
-                                  Pending
+                                  Approved
                                 </strong>
                               ) : donationItem.donationstatus.rejected ===
                                 true ? (
@@ -152,6 +178,26 @@ function Fund() {
                             <td class="p-4 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
+                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                              <button
+                                onClick={() => {
+                                  approveDonation(donationItem.id.toString());
+                                }}
+                              >
+                                Approve
+                              </button>
+                            </td>
+
+                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                              <button
+                                onClick={() => {
+                                  setModalAlert(true);
+                                  // approveDonation(donationItem.id.toString());
+                                }}
+                              >
+                                Pin Donation
+                              </button>
+                            </td>
                           </tr>
                         ))}
                     </tbody>
@@ -162,6 +208,32 @@ function Fund() {
           </main>
         </div>
       </div>
+      <Modal
+        state={modalAlert}
+        onClick={() => {
+          setModalAlert(false);
+        }}
+      >
+        <p className="text-2xl dark:text-gray-200 py-5">Pin Donation 📍</p>
+        <div className="space-y-4">
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => {
+              setdate(e.target.value);
+            }}
+          />
+
+          <p>
+            This duration for your pin donation {getDuration()} is going to be
+            cost : {getDuration() * 0.02} {'ETH'}
+          </p>
+          <p className="text-lg dark:text-gray-200">
+            The mydonate team sincerely appreciates your generosity and
+            contribution to improving the world.
+          </p>
+        </div>
+      </Modal>
     </>
   );
 }
