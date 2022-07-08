@@ -14,10 +14,12 @@ function Donation() {
   const { signer, address } = useContext(AuthContext);
   const [donation, setdonation] = useState([]);
   const [num, setnum] = useState([]);
+
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
         const donation = await signer.getMyDonations();
+
         setdonation(donation);
       };
       myDonations();
@@ -94,33 +96,35 @@ function Donation() {
                     </thead>
 
                     <tbody class="divide-y divide-gray-100">
-                      {donation.map((donationItem, index) => (
-                        <tr>
-                          <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
-                            {donationItem.title}{' '}
-                          </td>
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
-                            {truncateString(
-                              donationItem.description.toString(),
-                              20
-                            )}{' '}
-                          </td>
+                      {donation
+                        .filter((p) => p.donationstatus.isApproved === true)
+                        .map((donationItem, index) => (
+                          <tr>
+                            <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
+                              {donationItem.title}{' '}
+                            </td>
+                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                              {truncateString(
+                                donationItem.description.toString(),
+                                20
+                              )}{' '}
+                            </td>
 
-                          <td class="p-4 text-gray-700 whitespace-nowrap">
-                            {/* {num.map((total) => total)} */}
-                            {num[index]}
-                            {/* {ethers.utils.formatEther(
+                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                              {/* {num.map((total) => total)} */}
+                              {num[index]}
+                              {/* {ethers.utils.formatEther(
                               donationItem.targetedAmount.toString()
                             )}{' '} */}
-                            {'ETH'}
-                          </td>
-                          <Link href={'/'}>
-                            <td class="p-4 text-blue-700 underline whitespace-nowrap">
-                              view
+                              {'ETH'}
                             </td>
-                          </Link>
-                        </tr>
-                      ))}
+                            <Link href={'/'}>
+                              <td class="p-4 cursor-pointer text-blue-700 underline whitespace-nowrap">
+                                view
+                              </td>
+                            </Link>
+                          </tr>
+                        ))}
                       {/* <tr>
                         <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
                           Donation to Africa...{' '}

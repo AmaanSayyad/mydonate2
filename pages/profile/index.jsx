@@ -57,7 +57,6 @@ function Profile() {
 
   console.log(getTotalAmountOfEthDonated());
 
-  // console.log(num[])
   return (
     <>
       <div className="flex h-screen overflow-hidden dark:bg-gray-900 font-Montserrat">
