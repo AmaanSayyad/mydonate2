@@ -5,9 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
-    "prepare": "husky install",
-    "create-hook": "husky add .husky/pre-commit"
+    "type-check": "tsc"
     },
   "dependencies": {
     "@chainlink/contracts": "^0.4.0",

@@ -23,9 +23,8 @@ npm manifest:
       "dev": "next",
       "build": "next build",
       "start": "next start",
-      "type-check": "tsc",
-       "prepare": "husky install"
-    },
+      "type-check": "tsc"
+          },
     "dependencies": {
       "@chainlink/contracts": "^0.4.0",
       "@headlessui/react": "^1.5.0",
