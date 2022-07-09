@@ -122,19 +122,7 @@ export default function Fund() {
     await transaction.wait();
     setloading(false);
     alert('Order sent succesfully');
-    //  window.location.reload();
   };
-
-  // useEffect(() => {
-  //   if (address) {
-  //     const isUserRegistered = async () => {
-  //       const data = await signer.isUserRegistered();
-  //       setstatus(data);
-  //       console.log(data.id.toString());
-  //     };
-  //     isUserRegistered();
-  //   }
-  // }, [signer]);
 
   async function isUserRegistered() {
     const data = await signer.isUserRegistered();
@@ -529,7 +517,7 @@ export default function Fund() {
               </label>
 
               <input
-                type="text"
+                type="email"
                 required
                 onChange={(e) =>
                   updateFormInput({ ...formInput, email: e.target.value })
