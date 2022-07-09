@@ -14,7 +14,7 @@ export default function Fund() {
       .get('https://restcountries.com/v3.1/all')
       .then((response) => {
         setcountries(response.data);
-        console.log('countries', response.data);
+        console.log('countries', response.data[0].name.official);
       })
       .catch((e) => {
         console.log(e);
@@ -126,9 +126,8 @@ export default function Fund() {
   };
 
   async function isUserRegistered() {
-    const data = await signer.isUserRegistered();
+    const data = (await contract?.isUserRegistered()) || [];
     setstatus(data);
-    console.log('user id', data.id.toString());
   }
   useEffect(() => {
     isUserRegistered();
@@ -181,9 +180,9 @@ export default function Fund() {
               >
                 <option selected>Choose a country</option>
                 {countries.map((country) => (
-                  <option value={country.name.common}>
+                  <option value={country.name.official}>
                     {country.flag}
-                    {country.name.common}
+                    {country.name.official}
                   </option>
                 ))}
               </select>
