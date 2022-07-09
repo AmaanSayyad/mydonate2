@@ -14,6 +14,7 @@ export default function Fund() {
       .get('https://restcountries.com/v3.1/all')
       .then((response) => {
         setcountries(response.data);
+        console.log('countries', response.data);
       })
       .catch((e) => {
         console.log(e);
