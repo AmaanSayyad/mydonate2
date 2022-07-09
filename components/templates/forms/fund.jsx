@@ -789,6 +789,12 @@ export default function Fund() {
                           <option selected>Choose a category</option>
                           <option value={'war'}>War</option>
                           <option value={'health'}>Health</option>
+                          <option value={'environment'}>Environment</option>
+                          <option value={'education'}>Education</option>
+                          <option value={'disaster'}>Disaster</option>
+                          <option value={'famine'}>Famine</option>
+                          <option value={'community'}>Community</option>
+                          <option value={'others'}>Others</option>
                         </select>
                       </div>
                     </div>
