@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../../../utils/AuthProvider';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { ethers } from 'ethers';
+import Modal from '../../utility/modal';
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 export default function Fund() {
   const [countries, setcountries] = useState([]);
@@ -26,6 +27,8 @@ export default function Fund() {
   const [supportingDocument, setsupportingDocument] = useState('');
   const [coverImageUrl, setCoverImageUrl] = useState('');
   const [status, setstatus] = useState('');
+  const [modalAlert, setModalAlert] = useState(false);
+
   const [formInput, updateFormInput] = useState({
     name: '',
     country: '',
@@ -49,8 +52,6 @@ export default function Fund() {
     endDate: '',
     userType: '',
   });
-
-  // console.log(status.status);
 
   async function onChangeSupportingDocument(e) {
     const file = e.target.files[0];
@@ -121,14 +122,18 @@ export default function Fund() {
     );
     setloading(true);
     await transaction.wait();
+
     setloading(false);
-    alert('Order sent succesfully');
+    setModalAlert(true);
+
+    // alert('Order sent succesfully');
   };
 
   async function isUserRegistered() {
     const data = (await contract?.isUserRegistered()) || [];
     setstatus(data);
   }
+
   useEffect(() => {
     isUserRegistered();
   }, [contract]);
@@ -461,9 +466,9 @@ export default function Fund() {
               >
                 <option selected>Choose a country</option>
                 {countries.map((country) => (
-                  <option value={country.name.common}>
+                  <option value={country.name.official}>
                     {country.flag}
-                    {country.name.common}
+                    {country.name.official}
                   </option>
                 ))}
               </select>
@@ -913,6 +918,22 @@ export default function Fund() {
           <div className="border-t border-gray-200" />
         </div>
       </div>
+
+      <Modal
+        state={modalAlert}
+        onClick={() => {
+          setModalAlert(false);
+        }}
+      >
+        <p className="text-2xl dark:text-gray-200 py-5">
+          Donation Uploaded Successfully ✅
+        </p>
+        <div className="space-y-4">
+          <p className="text-lg dark:text-gray-200">
+            Donation will be evaluated in under 24 hours.
+          </p>
+        </div>
+      </Modal>
     </>
   );
 }
