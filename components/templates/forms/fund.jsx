@@ -13,7 +13,7 @@ export default function Fund() {
     axios
       .get('https://restcountries.com/v3.1/all')
       .then((response) => {
-        setcountries(response.data);
+        setcountries(response.data.sort());
         console.log('countries', response.data[0].name.official);
       })
       .catch((e) => {
