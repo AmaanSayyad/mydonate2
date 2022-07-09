@@ -370,7 +370,6 @@ function Home({ id }) {
           </p>
         </div>
       </Modal>
-      ;
     </div>
   );
 }

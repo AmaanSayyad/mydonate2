@@ -69,7 +69,7 @@ function Donation() {
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
-              <WelcomeBanner type="Admin" />
+              <WelcomeBanner type="Admin" address={address} />
               {/* Cards */}
               <div className="sm:flex sm:justify-end sm:items-center mb-8">
                 <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
@@ -83,14 +83,20 @@ function Donation() {
                     <thead>
                       <tr>
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Title</div>
+                          <div class="flex items-center dark:text-gray-200">
+                            Title
+                          </div>
                         </th>
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Description</div>
+                          <div class="flex items-center dark:text-gray-200">
+                            Description
+                          </div>
                         </th>
 
                         <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
-                          <div class="flex items-center">Amount Donated</div>
+                          <div class="flex items-center dark:text-gray-200">
+                            Amount Donated
+                          </div>
                         </th>
                       </tr>
                     </thead>
@@ -100,17 +106,17 @@ function Donation() {
                         .filter((p) => p.donationstatus.isApproved === true)
                         .map((donationItem, index) => (
                           <tr>
-                            <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               {donationItem.title}{' '}
                             </td>
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {truncateString(
                                 donationItem.description.toString(),
                                 20
                               )}{' '}
                             </td>
 
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {num[index]}
 
                               {'ETH'}

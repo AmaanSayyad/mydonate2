@@ -72,7 +72,7 @@ function Profile() {
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
-              <WelcomeBanner type="Admin" />
+              <WelcomeBanner type="Admin" address={address} />
               {/* Cards */}
               <div className="sm:flex sm:justify-end sm:items-center mb-8">
                 <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">

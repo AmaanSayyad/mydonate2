@@ -130,7 +130,7 @@ export default function Fund() {
   };
 
   async function isUserRegistered() {
-    const data = (await contract?.isUserRegistered()) || [];
+    const data = await signer.isUserRegistered();
     setstatus(data);
   }
 

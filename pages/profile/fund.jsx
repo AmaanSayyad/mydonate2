@@ -84,7 +84,7 @@ function Fund() {
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
               {/* Welcome banner */}
-              <WelcomeBanner type="Admin" />
+              <WelcomeBanner type="Admin" address={address} />
               {/* Cards */}
               <div className="sm:flex sm:justify-end sm:items-center mb-8">
                 <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
@@ -94,7 +94,12 @@ function Fund() {
 
               <div>
                 <div class="overflow-x-auto">
-                  <h2 className="font-semibold text-slate-800">All Funds</h2>
+                  <h2
+                    className="font-semibold  dark:text-gray-600 pb-4
+                   text-slate-800"
+                  >
+                    All Funds
+                  </h2>
 
                   <div className="w-max md:w-max ">
                     <div className="relative">
@@ -124,19 +129,19 @@ function Fund() {
                   <table class="min-w-full text-sm divide-y divide-gray-200">
                     <thead>
                       <tr>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Title</div>
                         </th>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Description</div>
                         </th>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Status</div>
                         </th>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Target</div>
                         </th>
-                        <th class="p-4 font-medium text-left text-gray-900 whitespace-nowrap">
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Coutry</div>
                         </th>
                       </tr>
@@ -155,10 +160,10 @@ function Fund() {
                         )
                         .map((donationItem) => (
                           <tr>
-                            <td class="p-4 font-medium text-gray-900 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               {donationItem.title}{' '}
                             </td>
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {truncateString(
                                 donationItem.description.toString(),
                                 20
@@ -184,16 +189,16 @@ function Fund() {
                                 ''
                               )}
                             </td>
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 text-gray-200 text-gray-700 whitespace-nowrap">
                               {ethers.utils.formatEther(
                                 donationItem.targetedAmount.toString()
                               )}{' '}
                               {'ETH'}
                             </td>
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4  text-gray-200 text-gray-700 whitespace-nowrap">
                               <button
                                 onClick={() => {
                                   approveDonation(donationItem.id.toString());
