@@ -195,7 +195,7 @@ function Fund() {
                             <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-                            <td class="p-4  dark:text-gray-200 text-gray-700 whitespace-nowrap">
+                            {/* <td class="p-4  dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               <button
                                 onClick={() => {
                                   approveDonation(donationItem.id.toString());
@@ -203,32 +203,24 @@ function Fund() {
                               >
                                 Approve
                               </button>
-                            </td>
+                            </td> */}
 
                             <td class="p-4 text-gray-700 whitespace-nowrap">
-                              {donationItem.donationstatus.isApproved ===
-                              true ? (
-                                <button
-                                  type="button"
-                                  disabled={
-                                    donationItem.donationstatus.isApproved ===
-                                    true
-                                  }
-                                  // className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-max sm:text-sm"
-                                  onClick={() => {
-                                    setModalAlert(true);
-                                    setid(donationItem.id.toString());
-                                    // approveDonation(donationItem.id.toString());
-                                  }}
-                                >
-                                  {donationItem.donationstatus.isApproved ===
+                              <button
+                                type="button"
+                                disabled={
+                                  donationItem.donationstatus.isApproved ===
                                   true
-                                    ? 'Approved'
-                                    : 'Approve'}
-                                </button>
-                              ) : (
-                                ''
-                              )}
+                                }
+                                className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-max sm:text-sm"
+                                onClick={() => {
+                                  approveDonation(donationItem.id.toString());
+                                }}
+                              >
+                                {donationItem.donationstatus.isApproved === true
+                                  ? 'Approved'
+                                  : 'Approve'}
+                              </button>
                             </td>
                           </tr>
                         ))}
