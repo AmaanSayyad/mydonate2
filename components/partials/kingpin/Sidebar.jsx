@@ -58,20 +58,20 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const navigation = [
     {
       name: 'Summary',
-      href: '/profile',
+      href: '/kingpin',
       icon: 'bar-chart-outline',
       current: true,
     },
     {
       name: 'Funds',
-      href: '/profile/fund',
-      icon: 'wallet-outline',
+      href: '/kingpin/fund',
+      icon: 'heart-half-outline',
       current: false,
     },
     {
-      name: 'Donation',
-      href: '/profile/donation',
-      icon: 'heart-outline',
+      name: 'Users',
+      href: '/kingpin/users',
+      icon: 'people-outline',
       current: false,
     },
   ];

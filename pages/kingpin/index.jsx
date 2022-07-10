@@ -10,7 +10,7 @@ import StatisticCard from '../../components/partials/kingpin/dashboard/Statistic
 function Index() {
   const { signer, address } = useContext(AuthContext);
   const [totalAmount, settotalAmount] = useState(0);
-  const [users, setuser] = useState(0);
+  const [users, setusers] = useState(0);
   const [donation, setdonation] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
@@ -21,8 +21,8 @@ function Index() {
         const amount = await signer.amountRaised();
         const users = await signer.usersCount();
         const donations = await signer.donationCount();
-        setuser(users);
-        setdonation(donations);
+        setusers(users.toString());
+        setdonation(donations.toString());
         settotalAmount(amount);
       };
       statistics();
