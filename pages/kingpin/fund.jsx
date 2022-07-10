@@ -49,6 +49,11 @@ function Fund() {
     alert('donation approved');
   };
 
+  const rejectDonation = async (id) => {
+    let transaction = await signer.rejectDonation(id);
+    await transaction.wait();
+    alert('donation rejected');
+  };
   const addPinDonation = async (amount) => {
     console.log('donation amount', amount);
     console.log('donation id', id);
@@ -175,6 +180,7 @@ function Fund() {
                           <tr>
                             <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               <img
+                                // onClick={}
                                 className=""
                                 src={donationItem.user.hash.toString()}
                               />
@@ -212,7 +218,7 @@ function Fund() {
                                 <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">
                                   Approved
                                 </strong>
-                              ) : donationItem.donationstatus.rejected ===
+                              ) : donationItem.donationstatus.isRejected ===
                                 true ? (
                                 <strong class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">
                                   Rejected

@@ -198,15 +198,6 @@ function Fund() {
                             <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-                            <td class="p-4  dark:text-gray-200 text-gray-700 whitespace-nowrap">
-                              <button
-                                onClick={() => {
-                                  approveDonation(donationItem.id.toString());
-                                }}
-                              >
-                                Approve
-                              </button>
-                            </td>
 
                             <td class="p-4 text-gray-700 whitespace-nowrap">
                               {donationItem.donationstatus.isApproved ===
