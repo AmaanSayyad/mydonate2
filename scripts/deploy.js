@@ -8,9 +8,9 @@ async function main() {
   let txHash, txReceipt;
 
   const Schain = await hre.ethers.getContractFactory('Donation');
-  const schain = await Schain.deploy(companyaddress.address);
+  const schain = await Schain.deploy(deployer.address);
 
-  console.log('company address', companyaddress.address);
+  // console.log('company address', companyaddress.address);
   await schain.deployed();
 
   txHash = schain.deployTransaction.hash;

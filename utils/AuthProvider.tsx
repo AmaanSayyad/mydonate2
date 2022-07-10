@@ -181,7 +181,10 @@ const AuthProvider = ({ children }) => {
   async function loadContracts() {
     /* create a generic provider and query for unsold market items */
     // const provider = new ethers.providers.JsonRpcProvider();
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      'https://rpc-mumbai.maticvigil.com'
+      // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
+    );
     // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
 
     const contract = new ethers.Contract(
@@ -313,8 +316,6 @@ const AuthProvider = ({ children }) => {
     disconnect,
     logout,
   };
-
-  // console.log(signer);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

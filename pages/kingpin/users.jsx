@@ -114,7 +114,7 @@ function Fund() {
                           status === 'individual'
                             ? p.userType === 'individual'
                             : status === 'organization'
-                            ? p.donationstatus.rejected === 'organization'
+                            ? p.userType === 'organization'
                             : users
                         )
                         .map((user) => (

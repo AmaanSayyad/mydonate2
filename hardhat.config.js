@@ -1,5 +1,6 @@
 /* hardhat.config.js */
 require('@nomiclabs/hardhat-waffle');
+require('hardhat-contract-sizer');
 const fs = require('fs');
 const privateKey =
   'fbad5b495a37387d8d4278fbf8c7cf87728c787f0487a283b78b930991132192';
@@ -22,6 +23,8 @@ module.exports = {
     //  unused configuration commented out for now
     mumbai: {
       url: 'https://rpc-mumbai.maticvigil.com',
+      allowUnlimitedContractSize: true,
+
       // url: "https://goerli.infura.io/v3/8b7ba5517c414450a93ec7334975a7fe",
       accounts: [privateKey],
     },

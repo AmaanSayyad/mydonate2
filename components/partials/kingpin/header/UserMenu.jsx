@@ -2,10 +2,14 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 // import Transition from '../../../utils/Transition';
 import Transition from '../../../../utils/Transition';
 import { useRouter } from 'next/router';
+import { ellipseAddress } from '../../../../lib/utilities';
+import { AuthContext } from '../../../../utils/AuthProvider';
 
 function UserMenu() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
+  const { disconnect, address } = useContext(AuthContext);
+
   const trigger = useRef(null);
   const dropdown = useRef(null);
   // close on click outside
@@ -76,7 +80,7 @@ function UserMenu() {
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
             <div className="font-medium text-slate-800 dark:text-gray-200">
-              0000{' '}
+              {ellipseAddress(address)}{' '}
             </div>
             {/* <div className="text-xs text-slate-500 italic">Customer</div> */}
           </div>
