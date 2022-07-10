@@ -180,7 +180,6 @@ function Fund() {
                           <tr>
                             <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               <img
-                                // onClick={}
                                 className=""
                                 src={donationItem.user.hash.toString()}
                               />
