@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import Sidebar from '../../components/partials/profile/Sidebar';
-import Header from '../../components/partials/profile/Header';
-import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
+import Sidebar from '../../components/partials/kingpin/Sidebar';
+import Header from '../../components/partials/kingpin/Header';
+import WelcomeBanner from '../../components/partials/kingpin/dashboard/WelcomeBanner';
 import { AuthContext } from '../../utils/AuthProvider';
 import { numDaysBetween, truncateString } from '../../lib/utilities';
 import { ethers } from 'ethers';
@@ -33,11 +33,8 @@ function Fund() {
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
-        const donation = await signer.getMyDonations();
-        // const pendingDonation = donation.filter(
-        //   (p) => p.donationstatus.isApproved === false
-        // );
-        // console.log('pending donatin', pendingDonation);
+        const donation = await signer.fetchAllDonations();
+
         setdonation(donation);
       };
       myDonations();
@@ -189,16 +186,16 @@ function Fund() {
                                 ''
                               )}
                             </td>
-                            <td class="p-4 text-gray-200 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {ethers.utils.formatEther(
                                 donationItem.targetedAmount.toString()
                               )}{' '}
                               {'ETH'}
                             </td>
-                            <td class="p-4 text-gray-200 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-                            <td class="p-4  text-gray-200 text-gray-700 whitespace-nowrap">
+                            <td class="p-4  dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               <button
                                 onClick={() => {
                                   approveDonation(donationItem.id.toString());
@@ -214,19 +211,20 @@ function Fund() {
                                 <button
                                   type="button"
                                   disabled={
-                                    donationItem.donationstatus.isPinned ===
+                                    donationItem.donationstatus.isApproved ===
                                     true
                                   }
-                                  className="w-max  inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-max sm:text-sm"
+                                  // className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-max sm:text-sm"
                                   onClick={() => {
                                     setModalAlert(true);
                                     setid(donationItem.id.toString());
                                     // approveDonation(donationItem.id.toString());
                                   }}
                                 >
-                                  {donationItem.donationstatus.isPinned === true
-                                    ? 'Pinned'
-                                    : 'Pin Donation'}
+                                  {donationItem.donationstatus.isApproved ===
+                                  true
+                                    ? 'Approved'
+                                    : 'Approve'}
                                 </button>
                               ) : (
                                 ''

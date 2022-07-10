@@ -361,6 +361,34 @@ contract Donation {
     return items;
   }
 
+  //get all donations for admin
+  function fetchAllDonations() public view returns (DonationItem[] memory) {
+    uint256 itemCount = donationCount;
+    uint256 currentIndex = 0;
+    DonationItem[] memory items = new DonationItem[](itemCount);
+    for (uint256 i = 0; i < itemCount; i++) {
+      uint256 currentId = i + 1;
+      DonationItem storage currentItem = idToDonationItem[currentId];
+      items[currentIndex] = currentItem;
+      currentIndex += 1;
+    }
+    return items;
+  }
+
+  //get all users for admin
+  function fetchAllUsers() public view returns (User[] memory) {
+    uint256 itemCount = usersCount;
+    uint256 currentIndex = 0;
+    User[] memory items = new User[](itemCount);
+    for (uint256 i = 0; i < itemCount; i++) {
+      uint256 currentId = i + 1;
+      User storage currentItem = users[currentId];
+      items[currentIndex] = currentItem;
+      currentIndex += 1;
+    }
+    return items;
+  }
+
   //get single donation
   function getDonation(uint256 _id) public view returns (DonationItem memory) {
     if (idToDonationItem[_id].id == _id) {

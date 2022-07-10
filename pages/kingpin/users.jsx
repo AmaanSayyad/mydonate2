@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import Sidebar from '../../components/partials/profile/Sidebar';
-import Header from '../../components/partials/profile/Header';
-import WelcomeBanner from '../../components/partials/profile/dashboard/WelcomeBanner';
+import Sidebar from '../../components/partials/kingpin/Sidebar';
+import Header from '../../components/partials/kingpin/Header';
+import WelcomeBanner from '../../components/partials/kingpin/dashboard/WelcomeBanner';
 import { AuthContext } from '../../utils/AuthProvider';
 import { numDaysBetween, truncateString } from '../../lib/utilities';
 import { ethers } from 'ethers';

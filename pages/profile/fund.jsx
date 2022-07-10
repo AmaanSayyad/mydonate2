@@ -189,16 +189,16 @@ function Fund() {
                                 ''
                               )}
                             </td>
-                            <td class="p-4 text-gray-200 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {ethers.utils.formatEther(
                                 donationItem.targetedAmount.toString()
                               )}{' '}
                               {'ETH'}
                             </td>
-                            <td class="p-4 text-gray-200 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-                            <td class="p-4  text-gray-200 text-gray-700 whitespace-nowrap">
+                            <td class="p-4  dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               <button
                                 onClick={() => {
                                   approveDonation(donationItem.id.toString());
