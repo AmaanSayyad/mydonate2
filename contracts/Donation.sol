@@ -4,13 +4,14 @@ import 'hardhat/console.sol';
 import '@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol';
 import '@openzeppelin/contracts/utils/math/SafeCast.sol';
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
-import '@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol';
+
+// import '@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol';
 
 contract Donation {
   using SafeCast for int256;
   using SafeMath for uint256;
 
-  AggregatorV3Interface internal eth_usd_price_feed;
+  // AggregatorV3Interface internal eth_usd_price_feed;
 
   mapping(uint256 => DonationItem) public idToDonationItem;
   mapping(uint256 => mapping(uint256 => Doners)) public doners;
@@ -28,9 +29,9 @@ contract Donation {
 
   constructor(address companyaddress_) {
     companyAddress = payable(companyaddress_);
-    eth_usd_price_feed = AggregatorV3Interface(
-      0x9326BFA02ADD2366b30bacB125260Af641031331
-    );
+    // eth_usd_price_feed = AggregatorV3Interface(
+    //   0x9326BFA02ADD2366b30bacB125260Af641031331
+    // );
   }
 
   struct IsRegistered {
@@ -43,7 +44,6 @@ contract Donation {
     uint256 id;
     address payable owner;
     User user;
-    // Doners doners;
     uint256 donersCount;
     uint256 donationsRaised;
     uint256 startDate;
@@ -114,32 +114,31 @@ contract Donation {
   // );
 
   //get EthUsd
-  function getEthUsd() public view returns (uint256) {
-    (, int256 price, , , ) = eth_usd_price_feed.latestRoundData();
-    return price.toUint256();
-  }
+  // function getEthUsd() public view returns (uint256) {
+  //   (, int256 price, , , ) = eth_usd_price_feed.latestRoundData();
+  //   return price.toUint256();
+  // }
 
-  function getLatestPrice() public view returns (int256) {
-    (
-      uint80 roundID,
-      int256 price,
-      uint256 startedAt,
-      uint256 timeStamp,
-      uint80 answeredInRound
-    ) = eth_usd_price_feed.latestRoundData();
-    // If the round is not complete yet, timestamp is 0
-    require(timeStamp > 0, 'Round not complete');
-    return price;
-  }
+  // function getLatestPrice() public view returns (int256) {
+  //   (
+  //     uint80 roundID,
+  //     int256 price,
+  //     uint256 startedAt,
+  //     uint256 timeStamp,
+  //     uint80 answeredInRound
+  //   ) = eth_usd_price_feed.latestRoundData();
+  //   // If the round is not complete yet, timestamp is 0
+  //   require(timeStamp > 0, 'Round not complete');
+  //   return price;
+  // }
 
-  //convert eth to USD
-  function convertEthUsd(uint256 _amountInUsd) public view returns (uint256) {
-    uint256 EthUsd = getEthUsd();
-    return _amountInUsd.mul(10**16).div(EthUsd);
-  }
+  // //convert eth to USD
+  // function convertEthUsd(uint256 _amountInUsd) public view returns (uint256) {
+  //   uint256 EthUsd = getEthUsd();
+  //   return _amountInUsd.mul(10**16).div(EthUsd);
+  // }
 
   //modifier function
-
   //create a new donation
   function createDonation(DonationItem memory donation_, uint256 id_)
     public
