@@ -127,6 +127,9 @@ function Fund() {
                     <thead>
                       <tr>
                         <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
+                          <div class="flex items-center">Image</div>
+                        </th>
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Title</div>
                         </th>
                         <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
@@ -150,13 +153,19 @@ function Fund() {
                           status === 'pending'
                             ? p.donationstatus.isApproved === false
                             : status === 'rejected'
-                            ? p.donationstatus.rejected === true
+                            ? p.donationstatus.isRejected === true
                             : status === 'approved'
                             ? p.donationstatus.isApproved === true
                             : donation
                         )
                         .map((donationItem) => (
                           <tr>
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
+                              <img
+                                className=""
+                                src={donationItem.user.hash.toString()}
+                              />
+                            </td>
                             <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               {donationItem.title}{' '}
                             </td>
@@ -195,17 +204,8 @@ function Fund() {
                             <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-                            {/* <td class="p-4  dark:text-gray-200 text-gray-700 whitespace-nowrap">
-                              <button
-                                onClick={() => {
-                                  approveDonation(donationItem.id.toString());
-                                }}
-                              >
-                                Approve
-                              </button>
-                            </td> */}
 
-                            <td class="p-4 text-gray-700 whitespace-nowrap">
+                            <td class="p-4 space-x-3 text-gray-700 whitespace-nowrap">
                               <button
                                 type="button"
                                 disabled={
@@ -220,6 +220,17 @@ function Fund() {
                                 {donationItem.donationstatus.isApproved === true
                                   ? 'Approved'
                                   : 'Approve'}
+                              </button>
+
+                              <button
+                                className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-red-600 text-base font-medium text-white hover:bg-red-700   sm:w-max sm:text-sm"
+                                onClick={() => {
+                                  rejectDonation(donationItem.id.toString());
+                                }}
+                              >
+                                {donationItem.donationstatus.isRejected === true
+                                  ? 'Rejected'
+                                  : 'Reject'}
                               </button>
                             </td>
                           </tr>
