@@ -209,7 +209,9 @@ function Fund() {
                             </td>
                             <td class="p-4 text-gray-700 whitespace-nowrap">
                               {donationItem.donationstatus.isApproved ===
-                              false ? (
+                                false &&
+                              !donationItem.donationstatus.isRejected ===
+                                true ? (
                                 <strong class="bg-yellow-100 text-yellow-700 px-3 py-1.5 rounded text-xs font-medium">
                                   Pending
                                 </strong>
