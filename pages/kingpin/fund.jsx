@@ -129,8 +129,21 @@ function Fund() {
                         <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Image</div>
                         </th>
+
                         <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Title</div>
+                        </th>
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
+                          <div class="flex items-center">User Type</div>
+                        </th>
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
+                          <div class="flex items-center">Address</div>
+                        </th>
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
+                          <div class="flex items-center">Email</div>
+                        </th>
+                        <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
+                          <div class="flex items-center">Eth address</div>
                         </th>
                         <th class="p-4 font-medium text-left text-gray-900 dark:text-gray-300 whitespace-nowrap">
                           <div class="flex items-center">Description</div>
@@ -169,6 +182,19 @@ function Fund() {
                             <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               {donationItem.title}{' '}
                             </td>
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
+                              {donationItem.user.userType}{' '}
+                            </td>
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
+                              {donationItem.user.residenceAddress}{' '}
+                            </td>
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
+                              {donationItem.user.email}{' '}
+                            </td>
+                            <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
+                              {donationItem.user._address}{' '}
+                            </td>
+                            {/* residenceAddress */}
                             <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {truncateString(
                                 donationItem.description.toString(),
@@ -204,7 +230,6 @@ function Fund() {
                             <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-
                             <td class="p-4 space-x-3 text-gray-700 whitespace-nowrap">
                               <button
                                 type="button"
