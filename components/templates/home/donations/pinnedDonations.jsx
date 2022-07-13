@@ -5,8 +5,7 @@ import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
 
 const pinnedDonations = () => {
-  const { address, signer, contract } = useContext(AuthContext);
-  let ethprice = 1276;
+  const { address, signer, contract, ethprice } = useContext(AuthContext);
   const [donations, setdonations] = useState([]);
   // useEffect(() => {
   //   if (address) {
@@ -42,38 +41,42 @@ const pinnedDonations = () => {
 
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
         <div className="flex flex-nowrap mt-5">
-          {donations?.map((donation, index) => (
-            <div class="inline-block  px-3 snap-center">
-              <Card
-                key={index}
-                id={donation.id.toString()}
-                title={donation.title}
-                description={truncateString(donation.description, 30)}
-                image={donation.hash}
-                endDate={
-                  Math.round(
-                    numDaysBetween(
-                      Number(donation.endDate.toString()),
-                      new Date()
-                    )
-                  ) < 1
-                    ? 'Donation Ended'
-                    : Math.round(
-                        numDaysBetween(
-                          Number(donation.endDate.toString()),
-                          new Date()
-                        )
-                      ) + ' Days Left'
-                }
-                targetedAmount={(
-                  Number(
-                    ethers.utils.formatEther(donation.targetedAmount.toString())
-                  ) * ethprice
-                ).toLocaleString()}
-                country={donation.user.country}
-              />
-            </div>
-          ))}
+          {donations
+            ?.filter((p) => p.donationstatus.isApproved === true)
+            .map((donation, index) => (
+              <div class="inline-block  px-3 snap-center">
+                <Card
+                  key={index}
+                  id={donation.id.toString()}
+                  title={donation.title}
+                  description={truncateString(donation.description, 30)}
+                  image={donation.hash}
+                  endDate={
+                    Math.round(
+                      numDaysBetween(
+                        Number(donation.endDate.toString()),
+                        new Date()
+                      )
+                    ) < 1
+                      ? 'Donation Ended'
+                      : Math.round(
+                          numDaysBetween(
+                            Number(donation.endDate.toString()),
+                            new Date()
+                          )
+                        ) + ' Days Left'
+                  }
+                  targetedAmount={(
+                    Number(
+                      ethers.utils.formatEther(
+                        donation.targetedAmount.toString()
+                      )
+                    ) * ethprice
+                  ).toLocaleString()}
+                  country={donation.user.country}
+                />
+              </div>
+            ))}
         </div>
         {/* </div> */}
       </div>

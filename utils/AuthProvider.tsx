@@ -23,6 +23,7 @@ type authContextType = {
   contract?: any;
   address?: string;
   chainId?: number;
+  ethprice?: string;
   connect?: () => void;
   disconnect?: () => void;
   logout?: () => void;
@@ -35,6 +36,7 @@ const authContextDefaultValues: authContextType = {
   contract: null,
   address: null,
   chainId: null,
+  ethprice: null,
   connect: null,
   disconnect: null,
   logout: () => {},
@@ -94,6 +96,7 @@ type StateType = {
   web3Provider?: any;
   address?: string;
   chainId?: number;
+  ethprice?: string;
 };
 
 type ActionType =
@@ -103,10 +106,10 @@ type ActionType =
       web3Provider?: StateType['web3Provider'];
       address?: StateType['address'];
       chainId?: StateType['chainId'];
+      // ethprice?: StateType['ethprice'];
     }
   | {
       type: 'SET_CONTRACT';
-
       contract?: StateType['contract'];
     }
   | {
@@ -123,6 +126,10 @@ type ActionType =
       chainId?: StateType['chainId'];
     }
   | {
+      type: 'SET_ETH_PRICE';
+      ethprice?: StateType['ethprice'];
+    }
+  | {
       type: 'RESET_WEB3_PROVIDER';
     };
 
@@ -133,6 +140,7 @@ const initialState: StateType = {
   web3Provider: null,
   address: null,
   chainId: null,
+  ethprice: null,
 };
 
 function reducer(state: StateType, action: ActionType): StateType {
@@ -166,6 +174,11 @@ function reducer(state: StateType, action: ActionType): StateType {
         ...state,
         chainId: action.chainId,
       };
+    case 'SET_ETH_PRICE':
+      return {
+        ...state,
+        ethprice: action.ethprice,
+      };
     case 'RESET_WEB3_PROVIDER':
       return initialState;
     default:
@@ -175,16 +188,25 @@ function reducer(state: StateType, action: ActionType): StateType {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { provider, web3Provider, contract, signer, address, chainId } = state;
+  const {
+    provider,
+    web3Provider,
+    contract,
+    signer,
+    address,
+    chainId,
+    ethprice,
+  } = state;
   const router = useRouter();
 
   async function loadContracts() {
     /* create a generic provider and query for unsold market items */
     // const provider = new ethers.providers.JsonRpcProvider();
     const provider = new ethers.providers.JsonRpcProvider(
-      'https://rpc-mumbai.maticvigil.com'
-      // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
+      'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
     );
+    // 'https://rpc-mumbai.maticvigil.com'
+    // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
     // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
 
     const contract = new ethers.Contract(
@@ -193,12 +215,20 @@ const AuthProvider = ({ children }) => {
       provider
     );
 
+    const getUsd = await contract?.getEthUsd();
+    let number = Number(getUsd.toString());
+    let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+    dispatch({
+      type: 'SET_ETH_PRICE',
+      ethprice: ethUSDPrice,
+    });
     const { chainId } = await provider.getNetwork();
     if (chainId) {
       dispatch({
         type: 'SET_CONTRACT',
         contract: contract,
       });
+
       // const data = await contract.donationCount();
     } else {
       window.alert('Donation contract not deployed to detected network');
@@ -312,6 +342,7 @@ const AuthProvider = ({ children }) => {
     signer,
     address,
     chainId,
+    ethprice,
     connect,
     disconnect,
     logout,

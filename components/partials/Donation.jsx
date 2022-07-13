@@ -16,15 +16,15 @@ function Home({ id }) {
   const [doners, setdoners] = useState([]);
   const [loading, setloading] = useState(false);
   const [modalAlert, setModalAlert] = useState(false);
-  const { signer, address, contract } = useContext(AuthContext);
+  const { signer, address, contract, ethprice } = useContext(AuthContext);
   const [donation_, setdonation_] = useState({
     donationsRaised: 0,
     targetedAmount: 0,
     description: '',
     endDate: 0,
   });
-  let ethprice = 1276;
 
+  console.log('ethprice------', ethprice);
   const getDonationPercentage = () => {
     let fixVal = 2;
     let percentage =
@@ -84,6 +84,7 @@ function Home({ id }) {
       const donation = async () => {
         const data = await signer.getDonation(id);
         const doners = await signer.getDonersOfDonation(id);
+
         setdoners(doners);
         console.log('get doners', doners);
         setdonation_(data);

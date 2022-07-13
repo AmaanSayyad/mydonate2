@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 import 'hardhat/console.sol';
+
 import '@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol';
 import '@openzeppelin/contracts/utils/math/SafeCast.sol';
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
-
-// import '@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol';
+import '@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol';
 
 contract Donation {
   using SafeCast for int256;
   using SafeMath for uint256;
 
-  // AggregatorV3Interface internal eth_usd_price_feed;
+  AggregatorV3Interface internal eth_usd_price_feed;
 
   mapping(uint256 => DonationItem) public idToDonationItem;
   mapping(uint256 => mapping(uint256 => Doners)) public doners;
@@ -20,18 +20,16 @@ contract Donation {
 
   // address payable companyAddress;
   address payable companyAddress;
-  uint256 public donersCount = 0;
-  uint256 public donationCount = 0;
-  uint256 public usersCount = 0;
-  uint256 public amountRaised = 0;
-
-  // uint256 private constant donationPercentage = 100 / 1.7;
+  uint256 public donersCount;
+  uint256 public donationCount;
+  uint256 public usersCount;
+  uint256 public amountRaised;
 
   constructor(address companyaddress_) {
     companyAddress = payable(companyaddress_);
-    // eth_usd_price_feed = AggregatorV3Interface(
-    //   0x9326BFA02ADD2366b30bacB125260Af641031331
-    // );
+    eth_usd_price_feed = AggregatorV3Interface(
+      0x9326BFA02ADD2366b30bacB125260Af641031331
+    );
   }
 
   struct IsRegistered {
@@ -57,23 +55,6 @@ contract Donation {
     DonationStatus donationstatus;
   }
 
-  struct DonationStatus {
-    bool completed;
-    bool isPinned;
-    uint256 pinnedDuration;
-    uint256 pinnedEndDate;
-    bool isVisible;
-    bool isApproved;
-    uint256 approvedDate;
-    bool isRejected;
-  }
-  struct Doners {
-    uint256 id;
-    uint256 amount;
-    uint256 date;
-    address doner;
-  }
-
   struct User {
     uint256 id;
     address _address;
@@ -91,52 +72,29 @@ contract Donation {
     string hash;
   }
 
-  // event DonationItemCreated(
-  //   uint256 indexed id,
-  //   address owner,
-  //   uint256 donationAmount,
-  //   uint256 donersConut,
-  //   uint256 startDate,
-  //   uint256 endDate,
-  //   uint256 targetPrice,
-  //   string category,
-  //   string title,
-  //   string hash,
-  //   string description,
-  //   bool completed
+  struct DonationStatus {
+    bool completed;
+    bool isPinned;
+    uint256 pinnedDuration;
+    uint256 pinnedEndDate;
+    bool isVisible;
+    bool isApproved;
+    uint256 approvedDate;
+    bool isRejected;
+  }
 
-  // );
-
-  // event DonationTiped(
-  //   uint256 indexed id,
-  //   address sender,
-  //   uint256 donationAmount
-  // );
+  struct Doners {
+    uint256 id;
+    uint256 amount;
+    uint256 date;
+    address doner;
+  }
 
   //get EthUsd
-  // function getEthUsd() public view returns (uint256) {
-  //   (, int256 price, , , ) = eth_usd_price_feed.latestRoundData();
-  //   return price.toUint256();
-  // }
-
-  // function getLatestPrice() public view returns (int256) {
-  //   (
-  //     uint80 roundID,
-  //     int256 price,
-  //     uint256 startedAt,
-  //     uint256 timeStamp,
-  //     uint80 answeredInRound
-  //   ) = eth_usd_price_feed.latestRoundData();
-  //   // If the round is not complete yet, timestamp is 0
-  //   require(timeStamp > 0, 'Round not complete');
-  //   return price;
-  // }
-
-  // //convert eth to USD
-  // function convertEthUsd(uint256 _amountInUsd) public view returns (uint256) {
-  //   uint256 EthUsd = getEthUsd();
-  //   return _amountInUsd.mul(10**16).div(EthUsd);
-  // }
+  function getEthUsd() public view returns (uint256) {
+    (, int256 price, , , ) = eth_usd_price_feed.latestRoundData();
+    return price.toUint256();
+  }
 
   //modifier function
   //create a new donation
@@ -146,11 +104,11 @@ contract Donation {
   {
     //validating inputs
     // require(msg.value > 0, 'Price must be at least 1 wei');
-    require(bytes(donation_.hash).length > 0, 'Image Hash is required');
-    require(bytes(donation_.description).length > 0, 'Description is required');
+    // require(bytes(donation_.hash).length > 0, 'Image Hash is required');
+    // require(bytes(donation_.description).length > 0, 'Description is required');
     // require(bytes(_endDate).length > 0, 'End Date is required');
-    require(bytes(donation_.category).length > 0, 'Category is required');
-    require(bytes(donation_.title).length > 0, 'Title is required');
+    // require(bytes(donation_.category).length > 0, 'Category is required');
+    // require(bytes(donation_.title).length > 0, 'Title is required');
     // require(bytes(donation_.purpose).length > 0, 'Purpose is required');
     // require(bytes(_targetAmount).length > 0, 'Targeted amount is required');
     require(msg.sender != address(0x0));
@@ -199,8 +157,8 @@ contract Donation {
       registeredUsers[msg.sender].id = usersCount;
     } else {
       // donation.user.id = users[id_].id;
-      console.log(id_);
-      console.log('user country', users[id_].country);
+      // console.log(id_);
+      // console.log('user country', users[id_].country);
 
       donation.user.id = users[id_].id;
       donation.user._address = msg.sender;
@@ -257,7 +215,7 @@ contract Donation {
     uint256 percent = 100;
     uint256 percentile = percent.div(percentage);
     uint256 deduction = msg.value.div(percentile);
-    // uint256 deduction = ((msg.value)/(100/_percentage));
+    // uint deduction = ((msg.value)/(100/_percentage));
     _owner.transfer(msg.value.sub(deduction));
     //tranfer amount to business address
     address payable caddr = companyAddress;
@@ -325,16 +283,13 @@ contract Donation {
   function disablePinnedDonation(uint256 _id) public {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
-
-    // donation.donationstatus.isApproved = false;
-    // donation.donationstatus.isVisible = false;
+    donation.donationstatus.isApproved = false;
+    donation.donationstatus.isVisible = false;
     donation.donationstatus.isPinned = false;
-    // donation.donationstatus.approvedDate = block.timestamp;
     idToDonationItem[_id] = donation;
   }
 
   //getter functions
-
   //get already registered users
   function isUserRegistered() public view returns (IsRegistered memory) {
     if (registeredUsers[msg.sender].status == true) {
@@ -350,22 +305,6 @@ contract Donation {
     uint256 currentIndex = 0;
     DonationItem[] memory items = new DonationItem[](itemCount);
     for (uint256 i = 0; i < itemCount; i++) {
-      if (idToDonationItem[i + 1].donationstatus.isApproved == true) {
-        uint256 currentId = i + 1;
-        DonationItem storage currentItem = idToDonationItem[currentId];
-        items[currentIndex] = currentItem;
-        currentIndex += 1;
-      }
-    }
-    return items;
-  }
-
-  //get all donations for admin
-  function fetchAllDonations() public view returns (DonationItem[] memory) {
-    uint256 itemCount = donationCount;
-    uint256 currentIndex = 0;
-    DonationItem[] memory items = new DonationItem[](itemCount);
-    for (uint256 i = 0; i < itemCount; i++) {
       uint256 currentId = i + 1;
       DonationItem storage currentItem = idToDonationItem[currentId];
       items[currentIndex] = currentItem;
@@ -373,6 +312,20 @@ contract Donation {
     }
     return items;
   }
+
+  //get all donations for admin
+  // function fetchAllDonations() public view returns (DonationItem[] memory) {
+  //   uint256 itemCount = donationCount;
+  //   uint256 currentIndex = 0;
+  //   DonationItem[] memory items = new DonationItem[](itemCount);
+  //   for (uint256 i = 0; i < itemCount; i++) {
+  //     uint256 currentId = i + 1;
+  //     DonationItem storage currentItem = idToDonationItem[currentId];
+  //     items[currentIndex] = currentItem;
+  //     currentIndex += 1;
+  //   }
+  //   return items;
+  // }
 
   //get all users for admin
   function fetchAllUsers() public view returns (User[] memory) {
@@ -388,11 +341,10 @@ contract Donation {
     return items;
   }
 
-  //get single donation
+  // get single donation
   function getDonation(uint256 _id) public view returns (DonationItem memory) {
     if (idToDonationItem[_id].id == _id) {
       return idToDonationItem[_id];
-      // return registeredUsers[msg.sender];
     }
   }
 
@@ -407,7 +359,6 @@ contract Donation {
     Doners[] memory items = new Doners[](itemCount);
     for (uint256 i = 0; i < itemCount; i++) {
       uint256 currentId = i + 1;
-      // DonationItem storage currentItem = idToDonationItem[currentId];
       Doners storage currentItem = doners[_id][currentId];
       items[currentIndex] = currentItem;
       currentIndex += 1;
@@ -415,50 +366,43 @@ contract Donation {
     return items;
   }
 
-  //get all approved donations
+  // //get all doners
+  // function getAllDoners() public view returns (uint256) {
+  //   return donersCount;
+  // }
 
-  //get all pending donation
+  // //get all amount raised
+  // function getAmountRaised() public view returns (uint256) {
+  //   return amountRaised;
+  // }
 
-  //get all doners
-  function getAllDoners() public view returns (uint256) {
-    return donersCount;
-  }
-
-  //get all amount raised
-  function getAmountRaised() public view returns (uint256) {
-    return amountRaised;
-  }
-
-  //get all users raised
-  function getAllUsers() public view returns (uint256) {
-    return usersCount;
-  }
-
-  //get all expired pinned donations
-  //net worth of the comapny
+  // //get all users raised
+  // function getAllUsers() public view returns (uint256) {
+  //   return usersCount;
+  // }
 
   //get all my donations
   //my donations
-  function getMyDonations() public view returns (DonationItem[] memory) {
-    uint256 totalItemCount = donationCount;
-    uint256 itemCount = 0;
-    uint256 currentIndex = 0;
+  // function getMyDonations() public view returns (DonationItem[] memory) {
+  //   uint256 totalItemCount = donationCount;
+  //   uint256 itemCount = 0;
+  //   uint256 currentIndex = 0;
 
-    for (uint256 i = 0; i < totalItemCount; i++) {
-      if (idToDonationItem[i + 1].user._address == msg.sender) {
-        itemCount += 1;
-      }
-    }
+  //   for (uint256 i = 0; i < totalItemCount; i++) {
+  //     if (idToDonationItem[i + 1].user._address == msg.sender) {
+  //       itemCount += 1;
+  //     }
+  //   }
 
-    DonationItem[] memory items = new DonationItem[](itemCount);
-    for (uint256 i = 0; i < totalItemCount; i++) {
-      if (idToDonationItem[i + 1].user._address == msg.sender) {
-        uint256 currentId = i + 1;
-        DonationItem storage donation = idToDonationItem[currentId];
-        items[currentIndex] = donation;
-        currentIndex += 1;
-      }
-    }
-    return items;
-  }
+  //   DonationItem[] memory items = new DonationItem[](itemCount);
+  //   for (uint256 i = 0; i < totalItemCount; i++) {
+  //     if (idToDonationItem[i + 1].user._address == msg.sender) {
+  //       uint256 currentId = i + 1;
+  //       DonationItem storage donation = idToDonationItem[currentId];
+  //       items[currentIndex] = donation;
+  //       currentIndex += 1;
+  //     }
+  //   }
+  //   return items;
+  // }
 }

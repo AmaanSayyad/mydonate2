@@ -9,9 +9,8 @@ const Index = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { address, signer, contract, provider, chainId } =
+  const { address, signer, contract, provider, ethprice, chainId } =
     useContext(AuthContext);
-  let ethprice = 1276;
   const [donations, setdonations] = useState([]);
 
   const currentTableData = useMemo(() => {

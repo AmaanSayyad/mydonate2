@@ -16,12 +16,11 @@ function Profile() {
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
-        const donation = await signer.getMyDonations();
-        // const pendingDonation = donation.filter(
-        //   (p) => p.donationstatus.isApproved === false
-        // );
-        // console.log('pending donatin', pendingDonation);
-        setdonation(donation);
+        const donation = await signer.fetchAllDonationItems();
+        const filter = donation.filter(
+          (p) => p.donationstatus.user?._address === address
+        );
+        setdonation(filter);
       };
       myDonations();
     }

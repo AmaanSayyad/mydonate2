@@ -10,9 +10,9 @@ const Index = () => {
   const [users, setusers] = useState(0);
 
   async function loadDonations() {
-    const allDoners = (await contract?.getAllDoners()) || 0;
-    const amountRaised = (await contract?.getAmountRaised()) || 0;
-    const alluser = (await contract?.getAllUsers()) || 0;
+    const allDoners = (await contract?.donersCount()) || 0;
+    const amountRaised = (await contract?.amountRaised()) || 0;
+    const alluser = (await contract?.usersCount()) || 0;
     setdoners(allDoners.toString());
     setamountraised(ethers.utils.formatEther(amountRaised.toString()));
     setusers(alluser.toString());

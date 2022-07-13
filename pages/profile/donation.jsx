@@ -18,9 +18,11 @@ function Donation() {
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
-        const donation = await signer.getMyDonations();
-
-        setdonation(donation);
+        const donation = await signer.fetchAllDonationItems();
+        const filter = donation.filter(
+          (p) => p.donationstatus.user?._address === address
+        );
+        setdonation(filter);
       };
       myDonations();
     }

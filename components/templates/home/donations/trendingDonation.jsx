@@ -6,8 +6,7 @@ import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
 import { AuthContext } from '../../../../utils/AuthProvider';
 const TrendingDonation = () => {
-  const { address, connect, contract } = useContext(AuthContext);
-  let ethprice = 1276;
+  const { address, connect, contract, ethprice } = useContext(AuthContext);
   const [donations, setdonations] = useState([
     {
       title: '',

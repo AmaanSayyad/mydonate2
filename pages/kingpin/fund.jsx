@@ -11,7 +11,6 @@ import Modal from '../../components/utility/modal';
 function Fund() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  let ethprice = 1270;
   const [id, setid] = useState(0);
   const { signer, address } = useContext(AuthContext);
   const [donation, setdonation] = useState([]);
@@ -33,8 +32,8 @@ function Fund() {
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
-        const donation = await signer.fetchAllDonations();
-
+        const donation = await signer.fetchAllDonationItems();
+        console.log('fund kingpin ', donation);
         setdonation(donation);
       };
       myDonations();

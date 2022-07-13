@@ -5,8 +5,7 @@ import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
 
 const Index = ({ query }) => {
-  const { address, signer, contract } = useContext(AuthContext);
-  let ethprice = 1276;
+  const { address, signer, contract, ethprice } = useContext(AuthContext);
   const [donations, setdonations] = useState([]);
   // const [first, setfirst] = useState(second)
 
@@ -47,6 +46,7 @@ const Index = ({ query }) => {
       </p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-10 ">
         {donations
+          ?.filter((p) => p.donationstatus.isApproved === true)
           .map((donation, index) => (
             <Card
               key={index}
