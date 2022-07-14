@@ -116,8 +116,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          <div className="flex flex-col  space-y-4">
-            <img src="/images/logo.svg" class="w-9" />
+          <div className="flex flex-col cursor-pointer space-y-4">
+            <Link href={'/'}>
+              <img src="/images/logo.svg" class="w-9" />
+            </Link>
           </div>
         </div>
 
