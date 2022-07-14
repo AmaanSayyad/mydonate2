@@ -165,13 +165,16 @@ function PinDonation() {
                     <tbody class="divide-y divide-gray-100">
                       {pindonation
                         ?.filter((p) =>
-                          status === 'pending'
-                            ? p.donationstatus.isApproved === false
-                            : status === 'rejected'
-                            ? p.donationstatus.isRejected === true
-                            : status === 'approved'
-                            ? p.donationstatus.isApproved === true
-                            : donation
+                          status === 'expired'
+                            ? Math.round(
+                                numDaysBetween(
+                                  Number(
+                                    p.donationstatus.pinnedEndDate.toString()
+                                  ),
+                                  new Date()
+                                )
+                              ) < 1
+                            : pindonation
                         )
                         .map((donationItem) => (
                           <tr>
