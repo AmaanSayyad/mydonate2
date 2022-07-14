@@ -17,9 +17,7 @@ function Profile() {
     if (address) {
       const myDonations = async () => {
         const donation = await signer.fetchAllDonationItems();
-        const filter = donation.filter(
-          (p) => p.donationstatus.user?._address === address
-        );
+        const filter = donation.filter((p) => p.user?._address === address);
         setdonation(filter);
       };
       myDonations();
@@ -54,7 +52,7 @@ function Profile() {
     return sum;
   }
 
-  console.log(getTotalAmountOfEthDonated());
+  console.log(parseInt(getTotalAmountOfEthDonated()).toFixed(7));
 
   return (
     <>
