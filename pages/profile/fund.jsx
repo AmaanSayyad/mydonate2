@@ -7,18 +7,18 @@ import { AuthContext } from '../../utils/AuthProvider';
 import { numDaysBetween, truncateString } from '../../lib/utilities';
 import { ethers } from 'ethers';
 import Modal from '../../components/utility/modal';
+import Spinner from '../../components/utility/spinner/Spinner';
 
 function Fund() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  let ethprice = 1270;
   const [id, setid] = useState(0);
   const { signer, address } = useContext(AuthContext);
   const [donation, setdonation] = useState([]);
   const [status, setstatus] = useState('');
   const [modalAlert, setModalAlert] = useState(false);
   const [date, setdate] = useState(new Date());
-
+  const [loading, setloading] = useState(false);
   const getDuration = () => {
     var date2 = new Date(date);
     var date1 = new Date();
@@ -45,12 +45,6 @@ function Fund() {
 
   console.log(donation);
 
-  const approveDonation = async (id) => {
-    let transaction = await signer.approveDonation(id);
-    await transaction.wait();
-    alert('donation approved');
-  };
-
   const addPinDonation = async (amount) => {
     console.log('donation amount', amount);
     console.log('donation id', id);
@@ -65,7 +59,9 @@ function Fund() {
         value: amount_,
       }
     );
+    setloading(true);
     await transaction.wait();
+    setloading(false);
     alert('donation has been pinned');
   };
   return (
@@ -277,6 +273,7 @@ function Fund() {
           type="button"
           className="w-full mt-3 inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-full sm:text-sm"
         >
+          {loading ? <Spinner /> : ''}
           Add Pin Donation
         </button>
       </Modal>
