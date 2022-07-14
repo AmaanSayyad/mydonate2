@@ -9,12 +9,14 @@ function Footer() {
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div class="flex justify-start text-teal-600 sm:justify-start">
-              <img src="/images/logo.svg" className="w-16" />
+              <img src="/images/logo.svg" className="w-12" />
             </div>
 
             <p class="max-w-md mx-auto mt-6 leading-relaxed text-left dark:text-white text-gray-500 sm:max-w-xs sm:mx-0 sm:text-left">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-              consequuntur amet culpa cum itaque neque.
+              With MyDonate, all individuals and organisations have to their
+              disposer tools they need to raise funds and share their cause far
+              and wide and make use of the power of generosity through our usage
+              of blockchain technology.
             </p>
 
             <ul class="flex justify-start gap-6 mt-8 md:gap-8 sm:justify-start">

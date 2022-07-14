@@ -22,8 +22,8 @@ const Index = () => {
         <p className="md:text-xl mt-2 hidden sm:text-center md:text-left lg:block md:mt-3 text-lg text-gray-600 dark:text-gray-200 w-10/12 ">
           The most{' '}
           <span className="text-blue-600 italic font-bold">Transparent</span>{' '}
-          donation platform on the internet. Donate in cryptos let us build a
-          better world
+          fundraising platform of the giving layer of the internet. Donate in
+          cryptos and let us build a better world
         </p>
 
         {!address ? (
