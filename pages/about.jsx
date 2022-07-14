@@ -6,11 +6,11 @@ const About = () => {
     <Layout>
       <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 sm:py-24">
         <div class="max-w-xl mx-auto text-center">
-          <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
+          <h2 class="text-4xl dark:text-gray-200 font-bold tracking-tight sm:text-5xl">
             About My Donate
           </h2>
 
-          <p class="max-w-6xl mx-auto mt-4 text-gring-offset-warm-gray-500">
+          <p class="max-w-6xl  dark:text-gray-300 mt-4 text-gring-offset-warm-gray-500">
             The world can only become a better if we all dream of making the
             world a better place to live in. That desire to offer alms to
             people, fix communities, or better still contribute to the
@@ -20,7 +20,7 @@ const About = () => {
             the world a better place.
           </p>
 
-          <p class="max-w-6xl mx-auto mt-4 text-gring-offset-warm-gray-500">
+          <p class="max-w-6xl dark:text-gray-300 mx-auto mt-4 text-gring-offset-warm-gray-500">
             What we intend to do is to create and contribute to the giving layer
             of the internet with blockchain technology: a community where all
             individuals, organisations, and nonprofits can champion causes that
@@ -71,6 +71,27 @@ const About = () => {
                 platforms to amass support for your cause. We as also have a
                 team that look for great stories to amplify and share with the
                 media and our community.
+              </p>
+            </blockquote>
+          </div>
+
+          <div>
+            <div className="mx-auto flex flex-row justify-center items-center">
+              <ion-icon
+                name="refresh-outline"
+                class="text-4xl p-4 rounded-full bg-green-300  mx-auto shadow-xl"
+              ></ion-icon>
+            </div>
+
+            <blockquote class="flex flex-col justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
+              <p class="text-lg font-bold text-gray-700">Restoration</p>
+
+              <p class="mt-4 text-sm text-gray-500">
+                We intend to help individuals, families and communities get back
+                on their feet as early as possible through our platform. Create
+                a fundraising, make use of the available tools to get the
+                community donate funds to your fundraising to undertake whatever
+                cause.
               </p>
             </blockquote>
           </div>
