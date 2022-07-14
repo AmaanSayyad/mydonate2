@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/layouts/primary';
 import Donation from '../components/partials/Donation';
-const Donatino = () => {
+const Donation = () => {
   const router = useRouter();
   const { id } = router.query;
   console.log(id);
@@ -13,4 +13,4 @@ const Donatino = () => {
   );
 };
 
-export default Donatino;
+export default Donation;

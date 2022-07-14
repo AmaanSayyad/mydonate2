@@ -13,6 +13,7 @@ function Index() {
   const [users, setusers] = useState(0);
   const [donation, setdonation] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [pindonation, setpindonation] = useState([]);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -21,6 +22,11 @@ function Index() {
         const amount = await signer.amountRaised();
         const users = await signer.usersCount();
         const donations = await signer.donationCount();
+        const pindonation = await signer.fetchAllDonationItems();
+        const filter = pindonation.filter(
+          (p) => p.donationstatus?.isPinned === true
+        );
+        setpindonation(filter);
         setusers(users.toString());
         setdonation(donations.toString());
         settotalAmount(amount);
@@ -75,6 +81,12 @@ function Index() {
                   title={'Donated'}
                   text="Total of amount donated"
                   unit={'ETH'}
+                />
+                <StatisticCard
+                  length={pindonation.length}
+                  icon="pin-outline"
+                  title={'Pin donation'}
+                  text="All pinned donations"
                 />
               </div>
             </div>

@@ -17,26 +17,9 @@ const Index = () => {
     setamountraised(ethers.utils.formatEther(amountRaised.toString()));
     setusers(alluser.toString());
   }
+
   useEffect(() => {
-    // if (address) {
-    //   const loadDonations = async () => {
-    //     const allDoners = await contract?.getAllDoners();
-    //     const amountRaised = await contract?.getAmountRaised();
-    //     const alluser = await contract?.getAllUsers();
-    //     setdoners(allDoners.toString());
-    //     setamountraised(ethers.utils.formatEther(amountRaised.toString()));
-    //     setusers(alluser.toString());
-    //     // console.log('allDoners', allDoners.toString());
-    //     // console.log(
-    //     //   'amount raised',
-    //     //   ethers.utils.formatEther(amountRaised.toString())
-    //     // );
-    //     // console.log('allusers', alluser.toString());
-    //     // console.log(data);
-    //     // setdonations(data);
-    //   };
     loadDonations();
-    // }
   }, [contract]);
 
   return (
