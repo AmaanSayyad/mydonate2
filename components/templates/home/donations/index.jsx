@@ -39,8 +39,8 @@ const Index = () => {
             <Card
               key={index}
               id={donation.id.toString()}
-              title={donation.title}
-              description={truncateString(donation.description, 30)}
+              title={truncateString(donation.title, 14)}
+              description={truncateString(donation.description, 20)}
               image={donation.hash}
               endDate={
                 Math.round(
@@ -62,7 +62,7 @@ const Index = () => {
                   ethers.utils.formatEther(donation.targetedAmount.toString())
                 ) * ethprice
               ).toLocaleString()}
-              country={donation.user.country}
+              country={truncateString(donation.user.country, 12)}
             />
           ))
           .reverse()}
