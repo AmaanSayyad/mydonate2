@@ -5,6 +5,8 @@ import { AuthContext } from '../../../utils/AuthProvider';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { ethers } from 'ethers';
 import Modal from '../../utility/modal';
+import Spinner from '../../utility/spinner/Spinner';
+
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 export default function Fund() {
   const [countries, setcountries] = useState([]);
@@ -125,8 +127,6 @@ export default function Fund() {
 
     setloading(false);
     setModalAlert(true);
-
-    // alert('Order sent succesfully');
   };
 
   async function isUserRegistered() {
@@ -902,7 +902,7 @@ export default function Fund() {
                         // }}
                         className="inline-flex justify-center py-2 px-8 border border-transparent shadow-sm text-md  font-medium rounded-full text-white bg-blue-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
-                        Upload{' '}
+                        {loading ? <Spinner /> : ' Upload'}
                       </button>
                     </div>
                   </div>
