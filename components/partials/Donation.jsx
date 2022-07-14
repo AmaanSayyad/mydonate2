@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../utils/AuthProvider';
-import { Progress } from '@material-tailwind/react';
-
 import { ethers } from 'ethers';
 import {
   numDaysBetween,
@@ -24,7 +22,6 @@ function Home({ id }) {
     endDate: 0,
   });
 
-  console.log('ethprice------', ethprice);
   const getDonationPercentage = () => {
     let fixVal = 2;
     let percentage =
@@ -97,13 +94,12 @@ function Home({ id }) {
   console.log(parseInt(targetedAmount()));
   const addDonation = async (value = amount) => {
     const amount_ = ethers.utils.parseUnits(value, 'ether');
-    //  const amount_ = ethers.utils.parseUnits(amount.toString(), 'ether');
+
     let transaction = await signer.addDonation(id, {
       value: amount_,
     });
     setloading(true);
-    await transaction.wait();
-
+    let hash = await transaction.wait();
     setModal(false);
 
     // setloading(false);
