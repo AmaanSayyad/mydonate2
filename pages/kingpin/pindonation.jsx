@@ -47,16 +47,10 @@ function PinDonation() {
 
   console.log(donation);
 
-  const approveDonation = async (id) => {
-    let transaction = await signer.approveDonation(id);
+  const disablePinnedDonation = async (id) => {
+    let transaction = await signer.disablePinnedDonation(id);
     await transaction.wait();
-    alert('donation approved');
-  };
-
-  const rejectDonation = async (id) => {
-    let transaction = await signer.rejectDonation(id);
-    await transaction.wait();
-    alert('donation rejected');
+    alert('pinned donation rejected');
   };
   const addPinDonation = async (amount) => {
     console.log('donation amount', amount);
@@ -241,16 +235,25 @@ function PinDonation() {
                               {donationItem.user.country}
                             </td>
                             <td class="p-4 space-x-3 text-gray-700 whitespace-nowrap">
-                              <button
-                                className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-red-600 text-base font-medium text-white hover:bg-red-700   sm:w-max sm:text-sm"
-                                onClick={() => {
-                                  rejectDonation(donationItem.id.toString());
-                                }}
-                              >
-                                {donationItem.donationstatus.isRejected === true
-                                  ? 'Rejected'
-                                  : 'Reject'}
-                              </button>
+                              {Math.round(
+                                numDaysBetween(
+                                  Number(
+                                    donationItem.donationstatus.pinnedEndDate.toString()
+                                  ),
+                                  new Date()
+                                )
+                              ) < 1 ? (
+                                <button
+                                  className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-red-600 text-base font-medium text-white hover:bg-red-700   sm:w-max sm:text-sm"
+                                  onClick={() => {
+                                    disablePinnedDonation(
+                                      donationItem.id.toString()
+                                    );
+                                  }}
+                                ></button>
+                              ) : (
+                                ''
+                              )}
                             </td>
                           </tr>
                         ))}
