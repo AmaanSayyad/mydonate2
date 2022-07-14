@@ -17,7 +17,7 @@ function PinDonation() {
   const [status, setstatus] = useState('');
   const [modalAlert, setModalAlert] = useState(false);
   const [date, setdate] = useState(new Date());
-
+  const [pindonation, setpindonation] = useState([]);
   const getDuration = () => {
     var date2 = new Date(date);
     var date1 = new Date();
@@ -34,6 +34,11 @@ function PinDonation() {
       const myDonations = async () => {
         const donation = await signer.fetchAllDonationItems();
         console.log('fund kingpin ', donation);
+        const pindonation = await signer.fetchAllDonationItems();
+        const filter = pindonation.filter(
+          (p) => p.donationstatus?.isPinned === true
+        );
+        setpindonation(filter);
         setdonation(donation);
       };
       myDonations();
@@ -113,9 +118,7 @@ function PinDonation() {
                         id="grid-state"
                       >
                         <option value="all">All</option>
-                        <option value="pending">Pending</option>
-                        <option value="rejected">Rejected</option>
-                        <option value="approved">Approved</option>
+                        <option value="expired">Expired</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg
@@ -166,7 +169,7 @@ function PinDonation() {
                     </thead>
 
                     <tbody class="divide-y divide-gray-100">
-                      {donation
+                      {pindonation
                         ?.filter((p) =>
                           status === 'pending'
                             ? p.donationstatus.isApproved === false
@@ -238,22 +241,6 @@ function PinDonation() {
                               {donationItem.user.country}
                             </td>
                             <td class="p-4 space-x-3 text-gray-700 whitespace-nowrap">
-                              <button
-                                type="button"
-                                disabled={
-                                  donationItem.donationstatus.isApproved ===
-                                  true
-                                }
-                                className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-max sm:text-sm"
-                                onClick={() => {
-                                  approveDonation(donationItem.id.toString());
-                                }}
-                              >
-                                {donationItem.donationstatus.isApproved === true
-                                  ? 'Approved'
-                                  : 'Approve'}
-                              </button>
-
                               <button
                                 className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-red-600 text-base font-medium text-white hover:bg-red-700   sm:w-max sm:text-sm"
                                 onClick={() => {

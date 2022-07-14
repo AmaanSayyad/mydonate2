@@ -57,12 +57,6 @@ function Index() {
                 </div>
               </div>
               <div className="grid grid-cols-12 gap-6">
-                {/* <StatisticCard
-                  length={5}
-                  icon="heart-dislike-outline"
-                  title={'Pending Funds'}
-                  text="All fund to be approved"
-                /> */}
                 <StatisticCard
                   length={donation}
                   icon="heart-outline"
