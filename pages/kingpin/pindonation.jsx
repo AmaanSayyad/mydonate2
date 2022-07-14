@@ -253,7 +253,9 @@ function PinDonation() {
                                       donationItem.id.toString()
                                     );
                                   }}
-                                ></button>
+                                >
+                                  Expired
+                                </button>
                               ) : (
                                 ''
                               )}

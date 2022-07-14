@@ -283,8 +283,8 @@ contract Donation {
   function disablePinnedDonation(uint256 _id) public {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
-    donation.donationstatus.isApproved = false;
-    donation.donationstatus.isVisible = false;
+    // donation.donationstatus.isApproved = false;
+    // donation.donationstatus.isVisible = false;
     donation.donationstatus.isPinned = false;
     idToDonationItem[_id] = donation;
   }
