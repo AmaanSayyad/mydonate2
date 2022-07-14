@@ -33,7 +33,7 @@ const About = () => {
         </div>
 
         <div class="grid grid-cols-1 gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3 sm:gap-16">
-          <div>
+          <div className="">
             <div className="mx-auto flex flex-row justify-center items-center">
               <ion-icon
                 name="lock-closed-outline"
@@ -41,10 +41,12 @@ const About = () => {
               ></ion-icon>
             </div>
 
-            <blockquote class="flex flex-col justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
-              <p class="text-lg font-bold text-gray-700">Trust & Safety</p>
+            <blockquote class="flex flex-col dark:border-1 dark:border-gray-200 justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
+              <p class="text-lg font-bold dark:text-gray-300 text-gray-700">
+                Trust & Safety
+              </p>
 
-              <p class="mt-4 text-sm text-gray-500">
+              <p class="mt-4 text-sm dark:text-gray-300 text-gray-500">
                 We have a trusted team that works timelessly to ensure safety
                 and protect against fraud on the platform. All processes and
                 activities on the platform flows on the blockchain hence making
@@ -64,9 +66,11 @@ const About = () => {
             </div>
 
             <blockquote class="flex flex-col justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
-              <p class="text-lg font-bold text-gray-700">Reach</p>
+              <p class="text-lg font-bold dark:text-gray-300 text-gray-700">
+                Reach
+              </p>
 
-              <p class="mt-4 text-sm text-gray-500">
+              <p class="mt-4 text-sm dark:text-gray-300 text-gray-500">
                 Mydonate helps you share your story far and wide over various
                 platforms to amass support for your cause. We as also have a
                 team that look for great stories to amplify and share with the
@@ -84,9 +88,11 @@ const About = () => {
             </div>
 
             <blockquote class="flex flex-col justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
-              <p class="text-lg font-bold text-gray-700">Restoration</p>
+              <p class="text-lg font-bold dark:text-gray-300 text-gray-700">
+                Restoration
+              </p>
 
-              <p class="mt-4 text-sm text-gray-500">
+              <p class="mt-4 text-sm dark:text-gray-300 text-gray-500">
                 We intend to help individuals, families and communities get back
                 on their feet as early as possible through our platform. Create
                 a fundraising, make use of the available tools to get the
