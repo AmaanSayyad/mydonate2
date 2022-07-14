@@ -25,8 +25,10 @@ function Fund() {
     var Difference_In_Time = date2.getTime() - date1.getTime();
 
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    if (Difference_In_Days < 1) {
+      return 0;
+    }
     return Math.round(Difference_In_Days);
-    console.log('day diff', Math.round(Difference_In_Days));
   };
   getDuration();
 
