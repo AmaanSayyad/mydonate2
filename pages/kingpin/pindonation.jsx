@@ -8,7 +8,7 @@ import { numDaysBetween, truncateString } from '../../lib/utilities';
 import { ethers } from 'ethers';
 import Modal from '../../components/utility/modal';
 
-function Fund() {
+function PinDonation() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [id, setid] = useState(0);
@@ -325,4 +325,4 @@ function Fund() {
   );
 }
 
-export default Fund;
+export default PinDonation;

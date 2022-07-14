@@ -69,6 +69,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       current: false,
     },
     {
+      name: 'Pin Donation',
+      href: '/kingpin/pindonation',
+      icon: 'pin-outline',
+      current: false,
+    },
+    {
       name: 'Users',
       href: '/kingpin/users',
       icon: 'people-outline',
