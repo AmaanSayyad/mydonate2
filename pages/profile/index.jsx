@@ -52,7 +52,7 @@ function Profile() {
     return sum;
   }
 
-  console.log(parseInt(getTotalAmountOfEthDonated()).toFixed(7));
+  console.log(Number(getTotalAmountOfEthDonated()).toFixed(5));
 
   return (
     <>
@@ -90,7 +90,7 @@ function Profile() {
                   text="All of the donations you have contributed"
                 />
                 <StatisticCard
-                  length={getTotalAmountOfEthDonated()}
+                  length={Number(getTotalAmountOfEthDonated()).toFixed(5)}
                   icon="wallet-outline"
                   title={'Donated'}
                   text="Total of amount of ETH donated"
