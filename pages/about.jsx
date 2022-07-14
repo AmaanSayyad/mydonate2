@@ -33,30 +33,6 @@ const About = () => {
         </div>
 
         <div class="grid grid-cols-1 gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3 sm:gap-16">
-          <div className="">
-            <div className="mx-auto flex flex-row justify-center items-center">
-              <ion-icon
-                name="lock-closed-outline"
-                class="text-4xl p-4 rounded-full bg-green-300  mx-auto shadow-xl"
-              ></ion-icon>
-            </div>
-
-            <blockquote class="flex flex-col dark:border-1 dark:border-gray-200 justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
-              <p class="text-lg font-bold dark:text-gray-300 text-gray-700">
-                Trust & Safety
-              </p>
-
-              <p class="mt-4 text-sm dark:text-gray-300 text-gray-500">
-                We have a trusted team that works timelessly to ensure safety
-                and protect against fraud on the platform. All processes and
-                activities on the platform flows on the blockchain hence making
-                them transparent to end users. Blockchain is a proven technology
-                in today’s world with regards to data safety and hence we are
-                taking such step.
-              </p>
-            </blockquote>
-          </div>
-
           <div>
             <div className="mx-auto flex flex-row justify-center items-center">
               <ion-icon
@@ -98,6 +74,30 @@ const About = () => {
                 a fundraising, make use of the available tools to get the
                 community donate funds to your fundraising to undertake whatever
                 cause.
+              </p>
+            </blockquote>
+          </div>
+
+          <div className="">
+            <div className="mx-auto flex flex-row justify-center items-center">
+              <ion-icon
+                name="lock-closed-outline"
+                class="text-4xl p-4 rounded-full bg-green-300  mx-auto shadow-xl"
+              ></ion-icon>
+            </div>
+
+            <blockquote class="flex flex-col dark:border-1 dark:border-gray-200 justify-between p-12 -mt-6 text-center rounded-lg shadow-xl">
+              <p class="text-lg font-bold dark:text-gray-300 text-gray-700">
+                Trust & Safety
+              </p>
+
+              <p class="mt-4 text-sm dark:text-gray-300 text-gray-500">
+                We have a trusted team that works timelessly to ensure safety
+                and protect against fraud on the platform. All processes and
+                activities on the platform flows on the blockchain hence making
+                them transparent to end users. Blockchain is a proven technology
+                in today’s world with regards to data safety and hence we are
+                taking such step.
               </p>
             </blockquote>
           </div>
