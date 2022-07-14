@@ -8,6 +8,8 @@ import {
   timeConverter,
 } from '../../lib/utilities';
 import Modal from '../utility/modal';
+import Spinner from '../utility/spinner/Spinner';
+
 function Home({ id }) {
   const [modal, setModal] = useState(false);
   const [amount, setamount] = useState(0);
@@ -101,11 +103,8 @@ function Home({ id }) {
     setloading(true);
     let hash = await transaction.wait();
     setModal(false);
-
-    // setloading(false);
+    setloading(false);
     setModalAlert(true);
-
-    // alert('donation added succesfully');
   };
 
   return (
@@ -233,7 +232,7 @@ function Home({ id }) {
                 }}
                 className="inline-block -mt-10 px-8 py-3 text-lg font-medium text-white transition  rounded-full w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 focus:outline-none focus:ring"
               >
-                Donate
+                {loading ? <Spinner /> : 'Donate'}
               </button>
               <details class="relative mt-4 group">
                 <div class="pb-6 prose max-w-none dark:text-gray-300">
@@ -349,7 +348,8 @@ function Home({ id }) {
             type="button"
             className="w-full inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700   sm:w-full sm:text-sm"
           >
-            Submit
+            {loading ? <Spinner /> : 'Submit'}
+            {/* Submit */}
           </button>
         </div>
       </Modal>
