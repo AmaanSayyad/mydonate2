@@ -266,7 +266,7 @@ function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-5 h-5 text-gray-900 shrink-0"
+                      class="w-5 h-5 dark:text-gray-100 text-gray-900 shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -279,7 +279,9 @@ function Footer() {
                       />
                     </svg>
 
-                    <span class="text-gray-700">mydonate.org@gmail.com</span>
+                    <span class="text-gray-700 dark:text-gray-100">
+                      mydonate.org@gmail.com
+                    </span>
                   </a>
                 </li>
 
@@ -290,7 +292,7 @@ function Footer() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-5 h-5 text-gray-900 shrink-0"
+                      class="w-5 h-5 dark:text-gray-200 text-gray-900 shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -303,14 +305,16 @@ function Footer() {
                       />
                     </svg>
 
-                    <span class="text-gray-700">+233 509287309 </span>
+                    <span class="text-gray-700 dark:text-gray-100">
+                      +233 509287309{' '}
+                    </span>
                   </a>
                 </li>
 
                 <li class="flex items-start justify-start gap-1.5 sm:justify-start">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5 text-gray-900 shrink-0"
+                    class="w-5 h-5 text-gray-900 dark:text-gray-200 shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -328,7 +332,7 @@ function Footer() {
                     />
                   </svg>
 
-                  <address class="-mt-0.5 not-italic text-gray-700">
+                  <address class="-mt-0.5 not-italic text-gray-700 dark:text-gray-100">
                     Bungalow 27, Nkwabeng Police Clinic
                   </address>
                 </li>
@@ -339,11 +343,11 @@ function Footer() {
 
         <div class="pt-6 mt-12 border-t border-gray-100">
           <div class="text-left sm:flex sm:justify-between sm:text-left">
-            <p class="text-sm text-gray-500">
+            <p class="text-sm text-gray-500 dark:text-gray-200">
               <span class="block sm:inline">All rights reserved.</span>
 
               <a
-                class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                class="inline-block text-teal-600 underline transition dark:text-gray-200 hover:text-teal-600/75"
                 href="/terms-condition"
               >
                 Terms & Conditions
@@ -359,7 +363,7 @@ function Footer() {
               </a>
             </p>
 
-            <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+            <p class="mt-4 text-sm dark:text-gray-200 text-gray-500 sm:order-first sm:mt-0">
               &copy; 2022 Company Name
             </p>
           </div>
