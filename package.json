@@ -2,11 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "graph build subgraph.yaml",
+    "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
-    "codegen": "graph generate-types subgraph.yaml",
-    "build-ipfs": "graph build --ipfs /ip4/127.0.0.1/tcp/5001 subgraph.yaml"
+    "type-check": "tsc"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.0",
