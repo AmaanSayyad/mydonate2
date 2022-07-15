@@ -144,36 +144,9 @@ function Footer() {
                   <li>
                     <a
                       class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
+                      href="/about"
                     >
                       Company History
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
-                    >
-                      Meet the Team
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
-                    >
-                      Employee Handbook
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
-                    >
-                      Careers
                     </a>
                   </li>
                 </ul>
@@ -182,7 +155,7 @@ function Footer() {
 
             <div class="text-left sm:text-left">
               <p class="text-lg font-medium text-gray-900 dark:text-gray-300">
-                Our Services
+                Fundraising for
               </p>
 
               <nav class="mt-8">
@@ -190,36 +163,71 @@ function Footer() {
                   <li>
                     <a
                       class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
+                      href="/donations"
                     >
-                      Web Development
+                      Environment
                     </a>
                   </li>
 
                   <li>
                     <a
                       class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
+                      href="/donations"
                     >
-                      Web Design
+                      Education
                     </a>
                   </li>
 
                   <li>
                     <a
                       class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
+                      href="/donations"
                     >
-                      Marketing
+                      Famine
                     </a>
                   </li>
 
                   <li>
                     <a
                       class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
+                      href="/donations"
                     >
-                      Google Ads
+                      Health
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
+                      href="/donations"
+                    >
+                      Community
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
+                      href="/donations"
+                    >
+                      War
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
+                      href="/donations"
+                    >
+                      Disaster
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
+                      href="/donations"
+                    >
+                      Others
                     </a>
                   </li>
                 </ul>
@@ -236,18 +244,9 @@ function Footer() {
                   <li>
                     <a
                       class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
+                      href="/faq"
                     >
                       FAQs
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      class="text-gray-700 transition hover:text-gray-700/75 dark:text-gray-200"
-                      href="/"
-                    >
-                      Support
                     </a>
                   </li>
                 </ul>
@@ -280,7 +279,7 @@ function Footer() {
                       />
                     </svg>
 
-                    <span class="text-gray-700">john@doe.com</span>
+                    <span class="text-gray-700">mydonate.org@gmail.com</span>
                   </a>
                 </li>
 
@@ -304,7 +303,7 @@ function Footer() {
                       />
                     </svg>
 
-                    <span class="text-gray-700">0123456789</span>
+                    <span class="text-gray-700">+233 509287309 </span>
                   </a>
                 </li>
 
@@ -330,7 +329,7 @@ function Footer() {
                   </svg>
 
                   <address class="-mt-0.5 not-italic text-gray-700">
-                    213 Lane, London, United Kingdom
+                    Bungalow 27, Nkwabeng Police Clinic
                   </address>
                 </li>
               </ul>
@@ -345,7 +344,7 @@ function Footer() {
 
               <a
                 class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
-                href="/"
+                href="/terms-condition"
               >
                 Terms & Conditions
               </a>
@@ -354,7 +353,7 @@ function Footer() {
 
               <a
                 class="inline-block text-teal-600 underline transition hover:text-teal-600/75"
-                href="/"
+                href="/privacy-policy"
               >
                 Privacy Policy
               </a>
