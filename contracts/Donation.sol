@@ -90,6 +90,21 @@ contract Donation {
     address doner;
   }
 
+  event DonationAdded(
+    uint256 _id,
+    address _owner,
+    uint256 donersCount,
+    uint256 donationsRaised,
+    uint256 startDate,
+    uint256 endDate,
+    uint256 targetedAmount,
+    string category,
+    string title,
+    string hash,
+    string purpose,
+    string description
+  );
+
   //get EthUsd
   function getEthUsd() public view returns (uint256) {
     (, int256 price, , , ) = eth_usd_price_feed.latestRoundData();
@@ -198,6 +213,21 @@ contract Donation {
     donation.donationstatus.approvedDate = 0;
     donation.donationstatus.pinnedDuration = 0;
     donation.donationstatus.pinnedEndDate = 0;
+
+    emit DonationAdded(
+      donationCount,
+      msg.sender,
+      donersCount,
+      amountRaised,
+      donation.startDate,
+      donation.endDate,
+      donation.targetedAmount,
+      donation.category,
+      donation.title,
+      donation.hash,
+      donation.purpose,
+      donation.description
+    );
   }
 
   //add a donation
