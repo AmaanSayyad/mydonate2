@@ -83,7 +83,7 @@ To run this project locally, follow these steps.
 1. Clone the project locally, change into the directory, and install the dependencies:
 
 ```sh
-git clone https://github.com/mendsalbert/myDonate
+git clone https://github.com/mendsalbert/mydonate2
 
 cd sympodiumCoin
 
@@ -190,7 +190,7 @@ Brilliant Kwakye - [@a_moah\_\_](https://twitter.com/mendalbert)
 
 Daniel Sarkodie - [@AbrantepaSark](https://twitter.com/mendalbert)
 
-Project Link: [https://github.com/mendsalbert/sympodiumCoin](https://github.com/mendsalbert/sympodiumCoin)
+Project Link: [https://github.com/mendsalbert/mydonate2](https://github.com/mendsalbert/mydonate2)
 
 <!-- ACKNOWLEDGMENTS -->
 
