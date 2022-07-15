@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">myDonate</h3>
@@ -13,7 +13,7 @@
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://my-donate.vercel.app">View App</a>
+    <a href="https://mydonate2.vercel.app/">View App</a>
     
   </p>
 </div>
