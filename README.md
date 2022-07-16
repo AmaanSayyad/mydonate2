@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://mydonate2.vercel.app/">
     <img src="public/images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -10,7 +10,7 @@
   <p align="center">
    A web3 transparent donation application 
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://mydonate2.vercel.app/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://mydonate2.vercel.app/">View App</a>
