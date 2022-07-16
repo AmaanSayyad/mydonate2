@@ -115,6 +115,10 @@ npm run dev
 
 ### Configuration
 
+The chain ID should be 80001. If you have a localhost rpc set up, you may need to overwrite it.
+
+![MetaMask RPC Import](public/images/testnet.png)
+
 To deploy to Polygon test or main networks, update the configurations located in **hardhat.config.js** to use a private key and, optionally, deploy to a private RPC like Infura.
 
 ```javascript
