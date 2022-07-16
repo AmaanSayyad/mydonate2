@@ -119,24 +119,23 @@ To deploy to Polygon test or main networks, update the configurations located in
 
 ```javascript
 /* hardhat.config.js */
+/* hardhat.config.js */
 require('@nomiclabs/hardhat-waffle');
+require('hardhat-contract-sizer');
 const fs = require('fs');
-const privateKey = fs.readFileSync('secret.txt').toString();
+const privateKey = 'xxx';
+const projectId = 'xx';
 
-const projectId = '745fcbe1f649402c9063fa946fdbb84c';
 module.exports = {
   defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
       chainId: 1337,
+      allowUnlimitedContractSize: true,
     },
-    //  unused configuration commented out for now
-
-    kovan: {
-      url: 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c',
+    matic: {
+      url: 'https://polygon-mumbai.g.alchemy.com/v2/2bGIFu-iEnl9RvAOTe1ddZI2gBnuYQGS',
       accounts: [privateKey],
-      gas: 2100000,
-      gasPrice: 8000000000,
     },
   },
   solidity: {
