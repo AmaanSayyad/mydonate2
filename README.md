@@ -60,6 +60,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 - [Solidity.js](https://docs.soliditylang.org/)
 - [Typescript.js](https://www.typescriptlang.org/)
 - [Express.js](https://expressjs.com/)
+- [IPFS.js](https://ipfs.io/)
 
 <!-- GETTING STARTED -->
 
