@@ -3,8 +3,8 @@ require('@nomiclabs/hardhat-waffle');
 require('hardhat-contract-sizer');
 const fs = require('fs');
 const privateKey =
-  'fbad5b495a37387d8d4278fbf8c7cf87728c787f0487a283b78b930991132192';
-const projectId = '8b7ba5517c414450a93ec7334975a7fe';
+  'xxx';
+const projectId = 'xxx';
 
 module.exports = {
   defaultNetwork: 'hardhat',
