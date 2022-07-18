@@ -203,8 +203,12 @@ const AuthProvider = ({ children }) => {
     /* create a generic provider and query for unsold market items */
     // const provider = new ethers.providers.JsonRpcProvider();
     const provider = new ethers.providers.JsonRpcProvider(
-      'https://rpc-mumbai.matic.today'
+      'https://rpc-mumbai.maticvigil.com/'
     );
+    // 'https://rpc-mumbai.matic.today'
+    // https://polygon-mumbai.g.alchemy.com/v2/2bGIFu-iEnl9RvAOTe1ddZI2gBnuYQGS'
+    // 'https://rpc-mumbai.matic.today'
+    // ' https://rpc-mumbai.maticvigil.com/'
     // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
     // 'https://rpc-mumbai.maticvigil.com'
     // 'https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c'
@@ -216,9 +220,10 @@ const AuthProvider = ({ children }) => {
       provider
     );
 
-    const getUsd = await contract?.getEthUsd();
-    let number = Number(getUsd.toString());
-    let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+    // const getUsd = await contract?.getEthUsd();
+    // let number = Number(getUsd.toString());
+    // let ethUSDPrice = ethers.utils.formatUnits(number, 8);
+    let ethUSDPrice = '1721.00';
     dispatch({
       type: 'SET_ETH_PRICE',
       ethprice: ethUSDPrice,

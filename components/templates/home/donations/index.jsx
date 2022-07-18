@@ -22,6 +22,7 @@ const Index = () => {
   async function loadDonations() {
     const data = await contract?.fetchAllDonationItems();
     console.log(data);
+    console.log('donations ----------', data);
     setdonations(data);
   }
 
@@ -29,6 +30,7 @@ const Index = () => {
     loadDonations();
   }, [contract]);
 
+  console.log('contract((*****((**(***((*', contract);
   return (
     <div>
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
