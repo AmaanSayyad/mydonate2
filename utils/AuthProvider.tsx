@@ -221,7 +221,7 @@ const AuthProvider = ({ children }) => {
     let ethUSDPrice = ethers.utils.formatUnits(number, 8);
     dispatch({
       type: 'SET_ETH_PRICE',
-      ethprice: 1,479.03,
+      ethprice: ethUSDPrice,
     });
     const { chainId } = await provider.getNetwork();
     if (chainId) {
