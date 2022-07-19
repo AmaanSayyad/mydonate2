@@ -16,33 +16,33 @@ function Profile() {
   useEffect(() => {
     if (address) {
       const myDonations = async () => {
-        const donation = await signer.fetchAllDonationItems();
-        const filter = donation.filter((p) => p.user?._address === address);
-        setdonation(filter);
+        const donation = await signer?.fetchAllDonationItems();
+        // const filter = donation.filter(p => p.user?._address === address);
+        setdonation(donation);
       };
       myDonations();
     }
   }, [signer]);
 
   useEffect(() => {
-    donation.map(function (donation) {
+    donation.map(function(donation) {
       const doners = signer
         .getDonersOfDonation(donation.id.toString())
-        .then((res) => {
+        .then(res => {
           console.log('results', res);
           var total = 0;
           res
-            .filter((p) => p.doner === address)
-            .map((tl) => {
+            .filter(p => p.doner === address)
+            .map(tl => {
               total =
                 total + Number(ethers.utils.formatEther(tl.amount.toString()));
             });
-          setnum((oldValue) => [...oldValue, total]);
+          setnum(oldValue => [...oldValue, total]);
           return total;
         });
     });
   }, [donation]);
-  console.log(num);
+  console.log(num.length);
 
   function getTotalAmountOfEthDonated() {
     let sum = 0;
@@ -84,7 +84,7 @@ function Profile() {
                   text="Every Donation Created"
                 />
                 <StatisticCard
-                  length={num[0] !== 0 ? num.length : 0}
+                  length={num.length}
                   icon="heart-outline"
                   title={'Donations'}
                   text="All of the donations you have contributed"

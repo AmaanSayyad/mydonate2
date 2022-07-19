@@ -19,27 +19,29 @@ function Donation() {
     if (address) {
       const myDonations = async () => {
         const donation = await signer.fetchAllDonationItems();
-        const filter = donation.filter((p) => p.user?._address === address);
-        setdonation(filter);
+        // const filter = donation.filter(p => p.user?._address === address);
+        setdonation(donation);
       };
       myDonations();
     }
   }, [signer]);
 
   useEffect(() => {
-    donation.map(function (donation) {
+    donation.map(function(donation) {
+      // console.log('donation---0-000-00', donation.length);
       const doners = signer
         .getDonersOfDonation(donation.id.toString())
-        .then((res) => {
+        .then(res => {
           console.log('results', res);
           var total = 0;
           res
-            .filter((p) => p.doner === address)
-            .map((tl) => {
+            .filter(p => p.doner === address)
+            .map(tl => {
+              console.log('tll------------' + tl);
               total =
                 total + Number(ethers.utils.formatEther(tl.amount.toString()));
             });
-          setnum((oldValue) => [...oldValue, total]);
+          setnum(oldValue => [...oldValue, total]);
           return total;
         });
     });
@@ -103,7 +105,7 @@ function Donation() {
 
                     <tbody class="divide-y divide-gray-100">
                       {donation
-                        .filter((p) => p.donationstatus.isApproved === true)
+                        .filter(p => p.donationstatus.isApproved === true)
                         .map((donationItem, index) => (
                           <tr>
                             <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
