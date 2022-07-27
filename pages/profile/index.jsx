@@ -17,8 +17,8 @@ function Profile() {
     if (address) {
       const myDonations = async () => {
         const donation = await signer?.fetchAllDonationItems();
-        // const filter = donation.filter(p => p.user?._address === address);
-        setdonation(donation);
+        const filter = donation.filter(p => p.user?._address === address);
+        setdonation(filter);
       };
       myDonations();
     }
