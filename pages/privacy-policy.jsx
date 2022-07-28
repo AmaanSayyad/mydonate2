@@ -5,8 +5,8 @@ const Privacy = () => {
   return (
     <Layout>
       <div className="dark:text-gray-300 mt-6">
-        <h1 className="text-3xl">Privacy Policy</h1>
-        <p>Last updated: July 14, 2022</p>
+        <h1 className="text-4xl font-bold">Privacy Policy</h1>
+        <p className="text-xl font-bold"> Last updated: July 14, 2022</p>
         <p>
           This Privacy Policy describes Our policies and procedures on the
           collection, use and disclosure of Your information when You use the
@@ -18,8 +18,10 @@ const Privacy = () => {
           the Service, You agree to the collection and use of information in
           accordance with this Privacy Policy.
         </p>
-        <h1>Interpretation and Definitions</h1>
-        <h2>Interpretation</h2>
+        <h1 className="text-2xl font-bold pt-4">
+          Interpretation and Definitions
+        </h1>
+        <h2 className="text-xl font-bold">Interpretation</h2>
         <p>
           The words of which the initial letter is capitalized have meanings
           defined under the following conditions. The following definitions
@@ -27,10 +29,10 @@ const Privacy = () => {
           singular or in plural.
         </p>
         <h2>Definitions</h2>
-        <p>For the purposes of this Privacy Policy:</p>
-        <ul>
+        <p className="mb-3 mt-3">For the purposes of this Privacy Policy:</p>
+        <ul className="py-4">
           <li>
-            <p>
+            <p className="py-2">
               <strong>Account</strong> means a unique account created for You to
               access our Service or parts of our Service.
             </p>

@@ -27,7 +27,7 @@ const Privacy = () => {
         </p>
         <ul>
           <li classname="mb-4">
-            <p classname="">
+            <p classname="py-2">
               <strong>Affiliate</strong> means an entity that controls, is
               controlled by or is under common control with a party, where
               &quot;control&quot; means ownership of 50% or more of the shares,
