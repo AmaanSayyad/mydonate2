@@ -239,8 +239,8 @@ function Home({ id }) {
               <div className="flex flex-row items-end justify-end">
                 <RWebShare
                   data={{
-                    text: 'Hi, check out this post on Tipster',
-                    url: `https://ipfs.infura.io/ipfs/`,
+                    text: 'Hi, check out this donation on mydonate',
+                    url: `https://mydonate2.vercel.app/${donation_.id}`,
                     title: 'Mydonate',
                   }}
                   onClick={() => console.log('shared successfully!')}
