@@ -4,7 +4,7 @@ import Layout from '../components/layouts/primary';
 const Privacy = () => {
   return (
     <Layout>
-      <div className="dark:text-gray-300 mt-6">
+      <div className="dark:text-gray-300 mt-6 text-center">
         <h1 className="text-3xl">Terms and Conditions</h1>
         <p>Last updated: July 14, 2022</p>
         <p>

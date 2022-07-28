@@ -9,6 +9,8 @@ import {
 } from '../../lib/utilities';
 import Modal from '../utility/modal';
 import Spinner from '../utility/spinner/Spinner';
+import { RWebShare } from 'react-web-share';
+import { ShareIcon } from '@heroicons/react/outline';
 
 function Home({ id }) {
   const [modal, setModal] = useState(false);
@@ -216,7 +218,7 @@ function Home({ id }) {
                       Number(donation_.endDate.toString()),
                       new Date()
                     )
-                  ) <= 1
+                  ) < 1
                     ? 'Donation Ended'
                     : Math.round(
                         numDaysBetween(
@@ -234,6 +236,18 @@ function Home({ id }) {
               >
                 {loading ? <Spinner /> : 'Donate'}
               </button>
+              <div className="flex flex-row items-end justify-end">
+                <RWebShare
+                  data={{
+                    text: 'Hi, check out this post on Tipster',
+                    url: `https://ipfs.infura.io/ipfs/`,
+                    title: 'Mydonate',
+                  }}
+                  onClick={() => console.log('shared successfully!')}
+                >
+                  <ShareIcon className="h-6 dark:text-white mt-2 text-gray-600" />
+                </RWebShare>
+              </div>
               <details class="relative mt-4 group">
                 <div class="pb-6 prose max-w-none dark:text-gray-300">
                   <div class="overflow-x-auto">
@@ -285,6 +299,8 @@ function Home({ id }) {
                     </span>
                   </div>
                 </summary>
+
+                <div></div>
               </details>
             </div>
           </div>
