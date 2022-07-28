@@ -72,13 +72,13 @@ const Index = () => {
           .reverse()}
       </div>
 
-      <Pagination
+      {/* <Pagination
         className="pagination-bar"
         currentPage={currentPage}
         totalCount={donations?.length || 0}
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
-      />
+      /> */}
     </div>
   );
 };

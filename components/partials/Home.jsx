@@ -14,7 +14,7 @@ function Home() {
       <PinnedDonation />
       <TrendingDonation />
       <Donations />
-      <div className="w-full flex flex-row justify-between">
+      {/* <div className="w-full flex flex-row justify-between">
         <a
           href="#"
           class=" inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-2xl hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -30,7 +30,7 @@ function Home() {
           Next
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }
