@@ -4,8 +4,8 @@ import Layout from '../components/layouts/primary';
 const Privacy = () => {
   return (
     <Layout>
-      <div className="dark:text-gray-300 mt-6 text-center">
-        <h1 className="text-3xl">Terms and Conditions</h1>
+      <div className="dark:text-gray-300 mt-6">
+        <h1 className="text-4xl font-bold">Terms and Conditions</h1>
         <p>Last updated: July 14, 2022</p>
         <p>
           Please read these terms and conditions carefully before using Our
