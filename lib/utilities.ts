@@ -41,7 +41,14 @@ export function ellipseAddress(address = '', width = 6): string {
 export function numDaysBetween(d1, d2) {
   var today = d2.getTime() / 1000;
   var diff = Math.abs(d1 - d2.getTime() / 1000);
+  console.log('d1', d1);
+  console.log('d2', d2);
 
+  console.log(
+    'difference--=-==-=-=-=-=-=-=',
+    Math.round(diff / (60 * 60 * 24))
+  );
+  console.log();
   return diff / (60 * 60 * 24);
 }
 

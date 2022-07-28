@@ -216,7 +216,7 @@ function Home({ id }) {
                       Number(donation_.endDate.toString()),
                       new Date()
                     )
-                  ) < 1
+                  ) <= 1
                     ? 'Donation Ended'
                     : Math.round(
                         numDaysBetween(
@@ -254,7 +254,7 @@ function Home({ id }) {
 
                       <tbody class="divide-y-0 divide-gray-50">
                         {doners
-                          .map((doners) => (
+                          .map(doners => (
                             <tr>
                               <td class="py-2 text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                 {/* <strong class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium"> */}
@@ -333,7 +333,7 @@ function Home({ id }) {
             <input
               type="number"
               value={amount}
-              onChange={(e) => {
+              onChange={e => {
                 setamount(e.target.value);
               }}
               placeholder="Enter amount manually"

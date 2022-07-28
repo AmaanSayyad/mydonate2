@@ -20,7 +20,7 @@ const pinnedDonations = () => {
   // }, [signer]);
   async function pinnedDonations() {
     const data = await contract?.fetchAllDonationItems();
-    const pinned = data?.filter((p) => p.donationstatus.isPinned === true);
+    const pinned = data?.filter(p => p.donationstatus.isPinned === true);
     console.log('pinned donation', pinned);
     setdonations(pinned);
   }
@@ -42,7 +42,7 @@ const pinnedDonations = () => {
       <div class="flex overflow-x-scroll pb-10 hide-scroll-bar snap-x">
         <div className="flex flex-nowrap mt-5">
           {donations
-            ?.filter((p) => p.donationstatus.isApproved === true)
+            ?.filter(p => p.donationstatus.isApproved === true)
             .map((donation, index) => (
               <div class="inline-block  px-3 snap-center">
                 <Card
@@ -57,7 +57,7 @@ const pinnedDonations = () => {
                         Number(donation.endDate.toString()),
                         new Date()
                       )
-                    ) < 1
+                    ) <= 1
                       ? 'Donation Ended'
                       : Math.round(
                           numDaysBetween(

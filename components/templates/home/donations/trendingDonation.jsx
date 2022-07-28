@@ -23,7 +23,7 @@ const TrendingDonation = () => {
   async function loadDonations() {
     const data = (await contract?.fetchAllDonationItems()) || donations;
     console.log(data);
-    let filter = data.filter((p) => p.donationstatus?.isApproved === true);
+    let filter = data.filter(p => p.donationstatus?.isApproved === true);
     setdonations(filter);
   }
 
@@ -66,7 +66,7 @@ const TrendingDonation = () => {
                     Number(donations[donations.length - 1].endDate.toString()),
                     new Date()
                   )
-                ) < 1
+                ) <= 1
                   ? 'Donation Ended'
                   : Math.round(
                       numDaysBetween(

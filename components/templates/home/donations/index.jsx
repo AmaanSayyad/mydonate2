@@ -9,8 +9,9 @@ const Index = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { address, signer, contract, provider, ethprice, chainId } =
-    useContext(AuthContext);
+  const { address, signer, contract, provider, ethprice, chainId } = useContext(
+    AuthContext
+  );
   const [donations, setdonations] = useState([]);
 
   const currentTableData = useMemo(() => {
@@ -36,7 +37,8 @@ const Index = () => {
       <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-10 ">
         {donations
-          ?.filter((p) => p.donationstatus.isApproved === true)
+          ?.slice(0, 16)
+          ?.filter(p => p.donationstatus.isApproved === true)
           ?.map((donation, index) => (
             <Card
               key={index}
@@ -50,7 +52,7 @@ const Index = () => {
                     Number(donation.endDate.toString()),
                     new Date()
                   )
-                ) < 1
+                ) <= 1
                   ? 'Donation Ended'
                   : Math.round(
                       numDaysBetween(
@@ -75,7 +77,7 @@ const Index = () => {
         currentPage={currentPage}
         totalCount={donations?.length || 0}
         pageSize={PageSize}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={page => setCurrentPage(page)}
       />
     </div>
   );
