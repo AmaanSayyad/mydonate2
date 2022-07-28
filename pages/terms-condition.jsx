@@ -6,13 +6,15 @@ const Privacy = () => {
     <Layout>
       <div className="dark:text-gray-300 mt-6">
         <h1 className="text-4xl font-bold">Terms and Conditions</h1>
-        <p>Last updated: July 14, 2022</p>
+        <p className="text-xl font-bold">Last updated: July 14, 2022</p>
         <p>
           Please read these terms and conditions carefully before using Our
           Service.
         </p>
-        <h1>Interpretation and Definitions</h1>
-        <h2>Interpretation</h2>
+        <h1 className="text-2xl font-bold pt-4">
+          Interpretation and Definitions
+        </h1>
+        <h2 className="text-xl font-bold">Interpretation</h2>
         <p>
           The words of which the initial letter is capitalized have meanings
           defined under the following conditions. The following definitions
@@ -20,10 +22,12 @@ const Privacy = () => {
           singular or in plural.
         </p>
         <h2>Definitions</h2>
-        <p>For the purposes of these Terms and Conditions:</p>
+        <p className="mb-3 mt-3">
+          For the purposes of these Terms and Conditions:
+        </p>
         <ul>
-          <li>
-            <p>
+          <li classname="mb-4">
+            <p classname="">
               <strong>Affiliate</strong> means an entity that controls, is
               controlled by or is under common control with a party, where
               &quot;control&quot; means ownership of 50% or more of the shares,
@@ -31,47 +35,47 @@ const Privacy = () => {
               of directors or other managing authority.
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="mt-4">
+            <p classname="mt-4 mb-4">
               <strong>Country</strong> refers to: Ghana
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>Company</strong> (referred to as either &quot;the
               Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot;
               in this Agreement) refers to Sympodium.
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>Device</strong> means any device that can access the
               Service such as a computer, a cellphone or a digital tablet.
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>Service</strong> refers to the Website.
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>Terms and Conditions</strong> (also referred as
               &quot;Terms&quot;) mean these Terms and Conditions that form the
               entire agreement between You and the Company regarding the use of
               the Service.
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>Third-party Social Media Service</strong> means any
               services or content (including data, information, products or
               services) provided by a third-party that may be displayed,
               included or made available by the Service.
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>Website</strong> refers to MyDonate, accessible from{' '}
               <a
                 href="https://mydonate2.vercel.app/"
@@ -82,8 +86,8 @@ const Privacy = () => {
               </a>
             </p>
           </li>
-          <li>
-            <p>
+          <li classname="">
+            <p classname="mt-4 mb-4">
               <strong>You</strong> means the individual accessing or using the
               Service, or the company, or other legal entity on behalf of which
               such individual is accessing or using the Service, as applicable.
@@ -91,7 +95,7 @@ const Privacy = () => {
           </li>
         </ul>
         <h1>Acknowledgment</h1>
-        <p>
+        <p classname="mt-4 mb-4">
           These are the Terms and Conditions governing the use of this Service
           and the agreement that operates between You and the Company. These
           Terms and Conditions set out the rights and obligations of all users
@@ -286,7 +290,7 @@ const Privacy = () => {
           contact us:
         </p>
         <ul>
-          <li>By phone number: 0509287309</li>
+          <li classname="">By phone number: 0509287309</li>
         </ul>
       </div>
     </Layout>
