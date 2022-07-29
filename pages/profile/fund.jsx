@@ -36,7 +36,7 @@ function Fund() {
     if (address) {
       const myDonations = async () => {
         const donation = await signer.fetchAllDonationItems();
-        const filter = donation.filter((p) => p.user?._address === address);
+        const filter = donation.filter(p => p.user?._address === address);
         setdonation(filter);
       };
       myDonations();
@@ -45,7 +45,7 @@ function Fund() {
 
   console.log(donation);
 
-  const addPinDonation = async (amount) => {
+  const addPinDonation = async amount => {
     console.log('donation amount', amount);
     console.log('donation id', id);
     const date_ = new Date(date);
@@ -63,6 +63,12 @@ function Fund() {
     await transaction.wait();
     setloading(false);
     alert('donation has been pinned');
+  };
+
+  const rejectDonation = async id => {
+    let transaction = await signer.rejectDonation(id);
+    await transaction.wait();
+    alert('donation ejected');
   };
   return (
     <>
@@ -99,7 +105,7 @@ function Fund() {
                   <div className="w-max md:w-max ">
                     <div className="relative">
                       <select
-                        onChange={(e) => {
+                        onChange={e => {
                           setstatus(e.target.value);
                         }}
                         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -144,7 +150,7 @@ function Fund() {
 
                     <tbody class="divide-y divide-gray-100">
                       {donation
-                        ?.filter((p) =>
+                        ?.filter(p =>
                           status === 'pending'
                             ? p.donationstatus.isApproved === false
                             : status === 'rejected'
@@ -153,7 +159,7 @@ function Fund() {
                             ? p.donationstatus.isApproved === true
                             : donation
                         )
-                        .map((donationItem) => (
+                        .map(donationItem => (
                           <tr>
                             <td class="p-4 dark:text-gray-200 font-medium text-gray-900 whitespace-nowrap">
                               {donationItem.title}{' '}
@@ -195,7 +201,25 @@ function Fund() {
                             <td class="p-4 dark:text-gray-200 text-gray-700 whitespace-nowrap">
                               {donationItem.user.country}
                             </td>
-
+                            <td class="p-4 space-x-3 text-gray-700 whitespace-nowrap">
+                              {Math.round(
+                                numDaysBetween(
+                                  Number(donationItem.endDate.toString()),
+                                  new Date()
+                                )
+                              ) <= 1 ? (
+                                <button
+                                  className="w-max inline-flex justify-center rounded-full border border-transparent shadow-sm px-4 py-1 bg-red-600 text-base font-medium text-white hover:bg-red-700   sm:w-max sm:text-sm"
+                                  onClick={() => {
+                                    rejectDonation(donationItem.id.toString());
+                                  }}
+                                >
+                                  Eject Donation (ended)
+                                </button>
+                              ) : (
+                                ''
+                              )}
+                            </td>
                             <td class="p-4 text-gray-700 whitespace-nowrap">
                               {donationItem.donationstatus.isApproved ===
                               true ? (
@@ -251,7 +275,7 @@ function Fund() {
               id="base-input"
               required
               value={date}
-              onChange={(e) => {
+              onChange={e => {
                 setdate(e.target.value);
               }}
               class=" mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

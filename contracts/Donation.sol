@@ -279,8 +279,8 @@ contract Donation {
   function rejectDonation(uint256 _id) public {
     require(_id > 0 && _id <= donationCount, 'donation id not valid');
     DonationItem storage donation = idToDonationItem[_id];
-    require(donation.donationstatus.isApproved == false);
-    require(donation.donationstatus.isVisible == false);
+    // require(donation.donationstatus.isApproved == false);
+    // require(donation.donationstatus.isVisible == false);
     donation.donationstatus.isApproved = false;
     donation.donationstatus.isVisible = false;
     donation.donationstatus.isRejected = true;
