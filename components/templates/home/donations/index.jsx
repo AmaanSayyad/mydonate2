@@ -3,7 +3,6 @@ import Card from './card';
 import { AuthContext } from '../../../../utils/AuthProvider';
 import { numDaysBetween, truncateString } from '../../../../lib/utilities';
 import { ethers } from 'ethers';
-import Pagination from '../../../utility/pagination/Pagination';
 const Index = () => {
   let PageSize = 10;
 
@@ -34,12 +33,17 @@ const Index = () => {
   console.log('contract((*****((**(***((*', contract);
   return (
     <div>
-      <p className="text-2xl py-4 dark:text-gray-100">Donations</p>
+      <p className="text-2xl py- dark:text-gray-100"></p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-10 ">
         {donations
+          
           ?.slice(0, 16)
           ?.filter(p => p.donationstatus.isApproved === true)
-          ?.map((donation, index) => (
+          ?.map((donation, index) => {
+            if (donation.id.toString() == donations.length) {
+              return ''
+          } else {
+            return (
             <Card
               key={index}
               id={donation.id.toString()}
@@ -55,11 +59,11 @@ const Index = () => {
                 ) <= 1
                   ? 'Donation Ended'
                   : Math.round(
-                      numDaysBetween(
-                        Number(donation.endDate.toString()),
-                        new Date()
-                      )
-                    ) + ' Days Left'
+                    numDaysBetween(
+                      Number(donation.endDate.toString()),
+                      new Date()
+                    )
+                  ) + ' Days Left'
               }
               targetedAmount={(
                 Number(
@@ -67,18 +71,13 @@ const Index = () => {
                 ) * ethprice
               ).toLocaleString()}
               country={truncateString(donation.user.country, 12)}
-            />
-          ))
-          .reverse()}
+              />
+              )
+          }}).reverse()
+          }
       </div>
 
-      {/* <Pagination
-        className="pagination-bar"
-        currentPage={currentPage}
-        totalCount={donations?.length || 0}
-        pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
-      /> */}
+
     </div>
   );
 };

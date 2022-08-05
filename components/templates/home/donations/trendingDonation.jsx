@@ -84,7 +84,7 @@ const TrendingDonation = () => {
                 class="text-lg md:text-2xl  dark:text-gray-100"
               ></ion-icon>
               <p className="text-lg md:text-xl dark:text-gray-200">
-                {(
+                {'$'+(
                   Number(
                     ethers.utils.formatEther(
                       donations[donations.length - 1].targetedAmount.toString()
