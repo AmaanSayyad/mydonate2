@@ -33,7 +33,7 @@ const Index = () => {
   console.log('contract((*****((**(***((*', contract);
   return (
     <div>
-      <p className="text-2xl py- dark:text-gray-100"></p>
+      <p className="text-2xl pt-4 dark:text-gray-100"></p>
       <div className=" grid grid-col-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 gap-10 ">
         {donations
           
