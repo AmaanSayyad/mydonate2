@@ -44,24 +44,11 @@ export function numDaysBetween(d1, d2) {
   console.log('d1', d1);
   console.log('d2', d2);
 
-  console.log(
-    'difference--=-==-=-=-=-=-=-=',
-    Math.round(diff / (60 * 60 * 24))
-  );
-  console.log('today=====', today);
-  return diff / (60 * 60 * 24);
-
-  // let date_1 = new Date(d1);
-  // let date_2 = d2;
-  // console.log(date_1.getTime());
-  // console.log(date_2.getTime());
-
-  // const days = (date_1, date_2) => {
-  //   let difference = date_1.getTime() - date_2.getTime();
-  //   let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
-  //   return TotalDays;
-  // };
-  // console.log(days(date_1, date_2) + ' days to world cup');
+  if (diff <= 0) {
+    return 0;
+  } else {
+    return diff / (60 * 60 * 24);
+  }
 }
 
 export function timeConverter(UNIX_timestamp) {

@@ -57,7 +57,7 @@ const pinnedDonations = () => {
                         Number(donation.endDate.toString()),
                         new Date()
                       )
-                    ) <= 1
+                    ) < 1
                       ? 'Donation Ended'
                       : Math.round(
                           numDaysBetween(

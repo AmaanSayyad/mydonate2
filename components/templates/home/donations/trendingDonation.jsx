@@ -66,7 +66,7 @@ const TrendingDonation = () => {
                     Number(donations[donations.length - 1].endDate.toString()),
                     new Date()
                   )
-                ) <= 1
+                ) < 1
                   ? 'Donation Ended'
                   : Math.round(
                       numDaysBetween(
