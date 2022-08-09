@@ -13,8 +13,9 @@
     <a href="https://mydonate2.vercel.app/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://mydonate2.vercel.app/">View App</a>
-    
+    <a href="https://mydonate2.vercel.app/">View App</a> |
+    <a href="https://www.youtube.com/watch?v=rP8760wDGvw&t=19s">Watch Video</a>
+
   </p>
 </div>
 
