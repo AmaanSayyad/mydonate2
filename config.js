@@ -3,4 +3,5 @@
 
 //polygon
 // export const donationAddress = '0xd1C14349664831a670cB5DCB030E012BB40cCd1f';
-export const donationAddress = '0xCa42c23f1E51631d8Cc56B646B3d2CD9781Ae826';
+// export const donationAddress = '0xCa42c23f1E51631d8Cc56B646B3d2CD9781Ae826';
+export const donationAddress = '0x02951d7aE5fD3C2bf92e616f3470445aC3c14568';
