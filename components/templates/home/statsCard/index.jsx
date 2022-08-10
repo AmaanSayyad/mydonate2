@@ -35,6 +35,7 @@ const Index = () => {
           {'+'}
         </h1>
         <p className="text-xl ">Fundarisers</p>
+        <p>adding some random paragraph to make sure this vedoe works . hello world ,fsahlfksjfdlfjsfj</p>
       </div>
 
       <div className="text-center">
