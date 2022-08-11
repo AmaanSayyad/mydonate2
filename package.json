@@ -41,6 +41,7 @@
     "react-web-share": "^1.1.6",
     "walletlink": "^2.5.0",
     "web3": "^1.7.3",
+    "web3.storage": "^4.3.0",
     "web3modal": "^1.9.7"
   },
   "devDependencies": {
